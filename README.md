@@ -15,11 +15,13 @@ pip install -r requirements.txt
 
 ## Execute
 To use the suite you have select a dataset in CSV format and store into the datasetRoot directory, then run the  file configurator.py the final json file will be stored in the json directory.
-If you already created the configuration file  you can use: python  dirtify.py  and then select your json fil. Results are stored in the experiments folder
+
+If you already created the configuration file  you can use: python  dirtify.py  and then select your json file. Results are stored in the experiments folder
+
 For the EPC analysis use python epc_analysis.py datasetname.csv results are stored in the epcResults directory. Experiments and results are stored in the database datasetname.csv.db
 
 
-for more information or suggestions please send an email to [andrea.maurino@unimib.it](andrea.maurino@unimib.it)
+For more information or suggestions please send an email to [andrea.maurino@unimib.it](andrea.maurino@unimib.it)
 
 
 
