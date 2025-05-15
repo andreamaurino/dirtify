@@ -1,0 +1,94 @@
+{
+    "datasetName": "Employee.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "JoiningYear",
+        "Age",
+        "ExperienceInCurrentDomain"
+    ],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [
+        "Education",
+        "City",
+        "Gender"
+    ],
+    "categoricalFeaturesInteger": [
+        "PaymentTier"
+    ],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "JoiningYear",
+                "Age",
+                "ExperienceInCurrentDomain",
+                "PaymentTier",
+                "Education",
+                "City",
+                "Gender"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "LeaveOrNot"
+}

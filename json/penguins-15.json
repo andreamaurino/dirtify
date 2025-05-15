@@ -1,0 +1,83 @@
+{
+    "datasetName": "penguins_binary_classification.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "year"
+    ],
+    "continousFeatures": [
+        "bill_length_mm",
+        "bill_depth_mm",
+        "flipper_length_mm",
+        "body_mass_g"
+    ],
+    "categoricalFeaturesString": [
+        "island"
+    ],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [ 
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "bill_length_mm",
+                "bill_depth_mm",
+                "flipper_length_mm",
+                "body_mass_g",
+                "year",
+                "island"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+      
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "species"
+}

@@ -1,0 +1,220 @@
+datasetName,errorType,feature,modelName,percentage,epc_at
+transfusion.csv,Labels,whether he/she donated blood in March 2007,AdaBoostClassifier,0.8,0.701
+transfusion.csv,Noisy,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.8,0.7071
+transfusion.csv,Noisy,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.8,0.7071
+transfusion.csv,Noisy,Monetary (c.c. blood),LogisticRegression,0.8,0.7071
+transfusion.csv,Outlier,Monetary (c.c. blood),RidgeClassifier,0.8,0.7071
+transfusion.csv,Noisy,Monetary (c.c. blood),RidgeClassifier,0.8,0.7071
+transfusion.csv,Outlier,Monetary (c.c. blood),GaussianNB,0.8,0.7071
+transfusion.csv,Noisy,Monetary (c.c. blood),GaussianNB,0.8,0.7071
+transfusion.csv,Outlier,Monetary (c.c. blood),SVC,0.8,0.7071
+transfusion.csv,Noisy,Monetary (c.c. blood),SVC,0.8,0.7071
+transfusion.csv,Outlier,Frequency (times),SVC,0.8,0.7071
+transfusion.csv,Noisy,Time (months),LinearDiscriminantAnalysis,0.8,0.7071
+transfusion.csv,Noisy,Time (months),RidgeClassifier,0.8,0.7071
+transfusion.csv,Outlier,Time (months),GaussianNB,0.8,0.7071
+transfusion.csv,Noisy,Time (months),GaussianNB,0.8,0.7071
+transfusion.csv,Outlier,Time (months),SVC,0.8,0.7071
+transfusion.csv,Noisy,Time (months),SVC,0.8,0.7071
+transfusion.csv,Outlier,Time (months),CatBoostClassifier,0.8,0.7071
+transfusion.csv,Noisy,Time (months),LogisticRegression,0.8,0.7071
+transfusion.csv,Noisy,Time (months),QuadraticDiscriminantAnalysis,0.8,0.7071
+transfusion.csv,Noisy,Frequency (times),QuadraticDiscriminantAnalysis,0.6,0.711
+transfusion.csv,Outlier,Monetary (c.c. blood),AdaBoostClassifier,0.6,0.7113
+transfusion.csv,Noisy,Time (months),CatBoostClassifier,0.6,0.7128
+transfusion.csv,Noisy,Monetary (c.c. blood),AdaBoostClassifier,0.8,0.7231
+transfusion.csv,Missing,Time (months),AdaBoostClassifier,0.8,0.7254
+transfusion.csv,Noisy,Frequency (times),RandomForestClassifier,0.6,0.7263
+transfusion.csv,Noisy,Time (months),AdaBoostClassifier,0.8,0.7265
+transfusion.csv,Missing,Time (months),DecisionTreeClassifier,0.4,0.7306
+transfusion.csv,Outlier,Time (months),AdaBoostClassifier,0.4,0.7339
+transfusion.csv,Missing,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.8,0.7355
+transfusion.csv,Missing,Frequency (times),QuadraticDiscriminantAnalysis,0.8,0.7355
+transfusion.csv,Noisy,Time (months),KNeighborsClassifier,0.8,0.7374
+transfusion.csv,Outlier,Frequency (times),QuadraticDiscriminantAnalysis,0.8,0.7397
+transfusion.csv,Noisy,Time (months),AdaBoostClassifier,0.4,0.7414
+transfusion.csv,Noisy,Time (months),RandomForestClassifier,0.6,0.7416
+transfusion.csv,Missing,Frequency (times),ExtraTreesClassifier,0.4,0.7448
+transfusion.csv,Labels,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.4,0.7525
+transfusion.csv,Noisy,Time (months),AdaBoostClassifier,0.6,0.753
+transfusion.csv,Labels,whether he/she donated blood in March 2007,CatBoostClassifier,0.4,0.7594
+transfusion.csv,Noisy,Monetary (c.c. blood),GaussianProcessClassifier,0.4,0.7612
+transfusion.csv,Outlier,Monetary (c.c. blood),GradientBoostingClassifier,0.6,0.7639
+transfusion.csv,DuplicatedAll,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.6,0.7642
+transfusion.csv,Noisy,Frequency (times),SVC,0.6,0.7692
+transfusion.csv,Outlier,Frequency (times),RandomForestClassifier,0.6,0.7693
+transfusion.csv,Noisy,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.6,0.7746
+transfusion.csv,Noisy,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.6,0.7746
+transfusion.csv,Noisy,Monetary (c.c. blood),LogisticRegression,0.6,0.7746
+transfusion.csv,Outlier,Monetary (c.c. blood),RidgeClassifier,0.6,0.7746
+transfusion.csv,Noisy,Monetary (c.c. blood),RidgeClassifier,0.6,0.7746
+transfusion.csv,Outlier,Monetary (c.c. blood),GaussianNB,0.6,0.7746
+transfusion.csv,Noisy,Monetary (c.c. blood),GaussianNB,0.6,0.7746
+transfusion.csv,Outlier,Monetary (c.c. blood),SVC,0.6,0.7746
+transfusion.csv,Noisy,Monetary (c.c. blood),SVC,0.6,0.7746
+transfusion.csv,Outlier,Frequency (times),SVC,0.6,0.7746
+transfusion.csv,Outlier,Time (months),LinearDiscriminantAnalysis,0.6,0.7746
+transfusion.csv,Noisy,Time (months),LinearDiscriminantAnalysis,0.6,0.7746
+transfusion.csv,Noisy,Time (months),RidgeClassifier,0.6,0.7746
+transfusion.csv,Outlier,Time (months),GaussianNB,0.6,0.7746
+transfusion.csv,Noisy,Time (months),GaussianNB,0.6,0.7746
+transfusion.csv,Outlier,Time (months),SVC,0.6,0.7746
+transfusion.csv,Noisy,Time (months),SVC,0.6,0.7746
+transfusion.csv,Outlier,Time (months),KNeighborsClassifier,0.6,0.7746
+transfusion.csv,Outlier,Time (months),CatBoostClassifier,0.6,0.7746
+transfusion.csv,Outlier,Time (months),LogisticRegression,0.6,0.7746
+transfusion.csv,Noisy,Time (months),LogisticRegression,0.6,0.7746
+transfusion.csv,Outlier,Time (months),GaussianProcessClassifier,0.6,0.7746
+transfusion.csv,Noisy,Time (months),QuadraticDiscriminantAnalysis,0.6,0.7746
+transfusion.csv,Missing,Time (months),AdaBoostClassifier,0.4,0.7841
+transfusion.csv,Labels,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.8,0.7901
+transfusion.csv,Outlier,Recency (months),KNeighborsClassifier,0.8,0.7925
+transfusion.csv,Outlier,Time (months),RandomForestClassifier,0.8,0.7935
+transfusion.csv,Outlier,Time (months),AdaBoostClassifier,0.8,0.7947
+transfusion.csv,Outlier,Time (months),KNeighborsClassifier,0.8,0.7952
+transfusion.csv,Outlier,Frequency (times),KNeighborsClassifier,0.6,0.8034
+transfusion.csv,Noisy,Frequency (times),CatBoostClassifier,0.8,0.8038
+transfusion.csv,Outlier,Time (months),AdaBoostClassifier,0.6,0.8043
+transfusion.csv,Outlier,Frequency (times),RandomForestClassifier,0.4,0.8058
+transfusion.csv,Outlier,Frequency (times),CatBoostClassifier,0.8,0.8064
+transfusion.csv,Outlier,Monetary (c.c. blood),RandomForestClassifier,0.8,0.8066
+transfusion.csv,Outlier,Monetary (c.c. blood),GradientBoostingClassifier,0.8,0.8126
+transfusion.csv,Missing,Frequency (times),CatBoostClassifier,0.4,0.8138
+transfusion.csv,Labels,whether he/she donated blood in March 2007,RandomForestClassifier,0.8,0.8149
+transfusion.csv,Outlier,Frequency (times),DecisionTreeClassifier,0.8,0.818
+transfusion.csv,Outlier,Time (months),GaussianProcessClassifier,0.8,0.821
+transfusion.csv,Noisy,Time (months),KNeighborsClassifier,0.6,0.8265
+transfusion.csv,Missing,Monetary (c.c. blood),KNeighborsClassifier,0.4,0.8268
+transfusion.csv,Outlier,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.6,0.8279
+transfusion.csv,Labels,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.6,0.8282
+transfusion.csv,Noisy,Time (months),GaussianProcessClassifier,0.8,0.8301
+transfusion.csv,Missing,Monetary (c.c. blood),DecisionTreeClassifier,0.8,0.8311
+transfusion.csv,Missing,Frequency (times),DecisionTreeClassifier,0.8,0.8311
+transfusion.csv,Outlier,Monetary (c.c. blood),GaussianProcessClassifier,0.4,0.8346
+transfusion.csv,Outlier,Time (months),DecisionTreeClassifier,0.8,0.835
+transfusion.csv,Outlier,Time (months),DecisionTreeClassifier,0.4,0.8383
+transfusion.csv,Outlier,Frequency (times),CatBoostClassifier,0.4,0.8384
+transfusion.csv,Noisy,Frequency (times),QuadraticDiscriminantAnalysis,0.8,0.8387
+transfusion.csv,Noisy,Frequency (times),RandomForestClassifier,0.8,0.8408
+transfusion.csv,Outlier,Frequency (times),CatBoostClassifier,0.6,0.841
+transfusion.csv,Outlier,Monetary (c.c. blood),KNeighborsClassifier,0.8,0.8416
+transfusion.csv,Outlier,Frequency (times),KNeighborsClassifier,0.8,0.8452
+transfusion.csv,DuplicatedAll,whether he/she donated blood in March 2007,SVC,0.4,0.846
+transfusion.csv,Noisy,Monetary (c.c. blood),CatBoostClassifier,0.6,0.8477
+transfusion.csv,Noisy,Frequency (times),SVC,0.8,0.8489
+transfusion.csv,Outlier,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.8,0.8491
+transfusion.csv,Noisy,Time (months),RandomForestClassifier,0.4,0.8527
+transfusion.csv,Outlier,Recency (months),DecisionTreeClassifier,0.4,0.8555
+transfusion.csv,Outlier,Monetary (c.c. blood),LogisticRegression,0.8,0.8576
+transfusion.csv,Noisy,Monetary (c.c. blood),RandomForestClassifier,0.8,0.8594
+transfusion.csv,DuplicatedAll,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.8,0.8626
+transfusion.csv,Labels,whether he/she donated blood in March 2007,CatBoostClassifier,0.6,0.8658
+transfusion.csv,Missing,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Outlier,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Outlier,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),LogisticRegression,0.4,0.866
+transfusion.csv,Outlier,Monetary (c.c. blood),AdaBoostClassifier,0.4,0.866
+transfusion.csv,Missing,Monetary (c.c. blood),RidgeClassifier,0.4,0.866
+transfusion.csv,Outlier,Monetary (c.c. blood),RidgeClassifier,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),RidgeClassifier,0.4,0.866
+transfusion.csv,Outlier,Monetary (c.c. blood),GaussianNB,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),GaussianNB,0.4,0.866
+transfusion.csv,Outlier,Monetary (c.c. blood),SVC,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),SVC,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),KNeighborsClassifier,0.4,0.866
+transfusion.csv,Outlier,Frequency (times),GaussianProcessClassifier,0.4,0.866
+transfusion.csv,Missing,Frequency (times),LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Outlier,Frequency (times),QuadraticDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Outlier,Frequency (times),SVC,0.4,0.866
+transfusion.csv,Noisy,Frequency (times),SVC,0.4,0.866
+transfusion.csv,Missing,Frequency (times),RidgeClassifier,0.4,0.866
+transfusion.csv,Outlier,Time (months),LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Noisy,Time (months),LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Missing,Time (months),RidgeClassifier,0.4,0.866
+transfusion.csv,Outlier,Time (months),RidgeClassifier,0.4,0.866
+transfusion.csv,Noisy,Time (months),RidgeClassifier,0.4,0.866
+transfusion.csv,Outlier,Time (months),GaussianNB,0.4,0.866
+transfusion.csv,Noisy,Time (months),GaussianNB,0.4,0.866
+transfusion.csv,Outlier,Time (months),SVC,0.4,0.866
+transfusion.csv,Noisy,Time (months),SVC,0.4,0.866
+transfusion.csv,Outlier,Time (months),KNeighborsClassifier,0.4,0.866
+transfusion.csv,Outlier,Time (months),CatBoostClassifier,0.4,0.866
+transfusion.csv,Outlier,Time (months),LogisticRegression,0.4,0.866
+transfusion.csv,Noisy,Time (months),LogisticRegression,0.4,0.866
+transfusion.csv,Outlier,Time (months),GaussianProcessClassifier,0.4,0.866
+transfusion.csv,Outlier,Time (months),GradientBoostingClassifier,0.4,0.866
+transfusion.csv,Noisy,Time (months),QuadraticDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Labels,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.4,0.866
+transfusion.csv,Labels,whether he/she donated blood in March 2007,LogisticRegression,0.4,0.866
+transfusion.csv,Labels,whether he/she donated blood in March 2007,RidgeClassifier,0.4,0.866
+transfusion.csv,Noisy,Monetary (c.c. blood),RandomForestClassifier,0.6,0.8663
+transfusion.csv,Noisy,Frequency (times),DecisionTreeClassifier,0.6,0.8677
+transfusion.csv,Noisy,Recency (months),QuadraticDiscriminantAnalysis,0.8,0.8682
+transfusion.csv,Noisy,Time (months),CatBoostClassifier,0.4,0.8684
+transfusion.csv,Noisy,Time (months),DecisionTreeClassifier,0.6,0.8722
+transfusion.csv,Noisy,Recency (months),QuadraticDiscriminantAnalysis,0.4,0.8727
+transfusion.csv,Labels,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.4,0.8747
+transfusion.csv,Outlier,Time (months),DecisionTreeClassifier,0.6,0.8787
+transfusion.csv,Missing,Time (months),RidgeClassifier,0.6,0.8806
+transfusion.csv,Outlier,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.6,0.8813
+transfusion.csv,Outlier,Time (months),RidgeClassifier,0.6,0.8815
+transfusion.csv,Missing,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.4,0.886
+transfusion.csv,Missing,Frequency (times),QuadraticDiscriminantAnalysis,0.4,0.886
+transfusion.csv,Outlier,Monetary (c.c. blood),RandomForestClassifier,0.6,0.8873
+transfusion.csv,Labels,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.8,0.8904
+transfusion.csv,Outlier,Monetary (c.c. blood),KNeighborsClassifier,0.6,0.8921
+transfusion.csv,Noisy,Monetary (c.c. blood),ExtraTreesClassifier,0.4,0.8923
+transfusion.csv,Outlier,Recency (months),QuadraticDiscriminantAnalysis,0.8,0.8944
+transfusion.csv,Noisy,Time (months),GaussianProcessClassifier,0.6,0.8948
+transfusion.csv,Noisy,Monetary (c.c. blood),CatBoostClassifier,0.8,0.8968
+transfusion.csv,Noisy,Recency (months),QuadraticDiscriminantAnalysis,0.6,0.8979
+transfusion.csv,Labels,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.6,0.8989
+transfusion.csv,Noisy,Monetary (c.c. blood),CatBoostClassifier,0.4,0.911
+transfusion.csv,Outlier,Time (months),RandomForestClassifier,0.6,0.9141
+transfusion.csv,Outlier,Monetary (c.c. blood),LogisticRegression,0.6,0.9211
+transfusion.csv,Noisy,Monetary (c.c. blood),RandomForestClassifier,0.4,0.9333
+transfusion.csv,Labels,whether he/she donated blood in March 2007,CatBoostClassifier,0.8,0.9353
+transfusion.csv,Noisy,Time (months),DecisionTreeClassifier,0.8,0.936
+transfusion.csv,Missing,Time (months),CatBoostClassifier,0.4,0.9376
+transfusion.csv,Outlier,Monetary (c.c. blood),RandomForestClassifier,0.4,0.9385
+transfusion.csv,Outlier,Recency (months),RandomForestClassifier,0.4,0.9397
+transfusion.csv,Outlier,Monetary (c.c. blood),DecisionTreeClassifier,0.4,0.94
+transfusion.csv,Outlier,Frequency (times),GaussianProcessClassifier,0.6,0.9415
+transfusion.csv,Missing,Time (months),RidgeClassifier,0.8,0.9416
+transfusion.csv,Noisy,Monetary (c.c. blood),KNeighborsClassifier,0.6,0.9445
+transfusion.csv,Missing,Time (months),LinearDiscriminantAnalysis,0.6,0.9449
+transfusion.csv,Noisy,Frequency (times),CatBoostClassifier,0.4,0.9455
+transfusion.csv,Outlier,Frequency (times),GaussianProcessClassifier,0.8,0.9462
+transfusion.csv,Outlier,Recency (months),QuadraticDiscriminantAnalysis,0.6,0.9466
+transfusion.csv,Labels,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.8,0.9507
+transfusion.csv,Noisy,Monetary (c.c. blood),AdaBoostClassifier,0.6,0.9513
+transfusion.csv,Missing,Frequency (times),RandomForestClassifier,0.4,0.9536
+transfusion.csv,Missing,Time (months),GaussianProcessClassifier,0.4,0.9578
+transfusion.csv,Missing,Time (months),QuadraticDiscriminantAnalysis,0.6,0.9582
+transfusion.csv,Noisy,Frequency (times),GradientBoostingClassifier,0.4,0.9644
+transfusion.csv,Noisy,Time (months),KNeighborsClassifier,0.4,0.9655
+transfusion.csv,Outlier,Time (months),RandomForestClassifier,0.4,0.9655
+transfusion.csv,Noisy,Time (months),GaussianProcessClassifier,0.4,0.9676
+transfusion.csv,Noisy,Monetary (c.c. blood),KNeighborsClassifier,0.8,0.968
+transfusion.csv,Missing,Time (months),LinearDiscriminantAnalysis,0.8,0.9728
+transfusion.csv,Noisy,Frequency (times),RandomForestClassifier,0.4,0.9776
+transfusion.csv,Noisy,Frequency (times),DecisionTreeClassifier,0.4,0.9779
+transfusion.csv,Labels,whether he/she donated blood in March 2007,RandomForestClassifier,0.4,0.9806
+transfusion.csv,Outlier,Recency (months),QuadraticDiscriminantAnalysis,0.4,0.9814
+transfusion.csv,Noisy,Monetary (c.c. blood),AdaBoostClassifier,0.4,0.9834
+transfusion.csv,Outlier,Monetary (c.c. blood),LogisticRegression,0.4,0.9881
+transfusion.csv,Outlier,Time (months),QuadraticDiscriminantAnalysis,0.4,0.9886
+transfusion.csv,Outlier,Monetary (c.c. blood),CatBoostClassifier,0.4,0.9915
+transfusion.csv,Missing,Monetary (c.c. blood),CatBoostClassifier,0.4,0.992
+transfusion.csv,Noisy,Monetary (c.c. blood),GradientBoostingClassifier,0.6,0.9921
+transfusion.csv,Missing,Time (months),QuadraticDiscriminantAnalysis,0.4,0.9935
+transfusion.csv,Noisy,Monetary (c.c. blood),GradientBoostingClassifier,0.8,0.996
+transfusion.csv,Outlier,Monetary (c.c. blood),CatBoostClassifier,0.6,0.9961
+transfusion.csv,Outlier,Monetary (c.c. blood),CatBoostClassifier,0.8,0.9965
+transfusion.csv,Missing,Recency (months),DecisionTreeClassifier,0.4,0.9965
+transfusion.csv,Outlier,Monetary (c.c. blood),KNeighborsClassifier,0.4,0.9968
+transfusion.csv,Noisy,Monetary (c.c. blood),GradientBoostingClassifier,0.4,0.9979
+transfusion.csv,Noisy,Monetary (c.c. blood),DecisionTreeClassifier,0.4,0.9995
+transfusion.csv,Missing,Time (months),LinearDiscriminantAnalysis,0.4,0.9999

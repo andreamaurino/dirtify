@@ -1,0 +1,104 @@
+{
+    "datasetName": "weatherAUS.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [],
+    "continousFeatures": [
+        "MinTemp",
+        "MaxTemp",
+        "Rainfall",
+        "WindGustSpeed",
+        "WindSpeed9am",
+        "WindSpeed3pm",
+        "Humidity9am",
+        "Humidity3pm",
+        "Pressure9am",
+        "Pressure3pm",
+        "Cloud9am",
+        "Cloud3pm",
+        "Temp9am",
+        "Temp3pm",
+        "RainToday"
+    ],
+    "categoricalFeaturesString": [
+        "Date",
+        "Location",
+        "WindGustDir",
+        "WindDir9am",
+        "WindDir3pm"
+    ],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "MinTemp",
+                "MaxTemp",
+                "Rainfall",
+                "WindGustSpeed",
+                "WindSpeed9am",
+                "WindSpeed3pm",
+                "Humidity9am",
+                "Humidity3pm",
+                "Pressure9am",
+                "Pressure3pm",
+                "Cloud9am",
+                "Cloud3pm",
+                "Temp9am",
+                "Temp3pm",
+                "RainToday",
+                "Date",
+                "Location",
+                "WindGustDir",
+                "WindDir9am",
+                "WindDir3pm"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "RainTomorrow"
+}

@@ -1,0 +1,112 @@
+{
+    "datasetName": "hypertension_data.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "age",
+        "trestbps",
+        "chol",
+        "thalach"
+    ],
+    "continousFeatures": [
+        "oldpeak"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [
+        "cp",
+        "slope",
+        "ca",
+        "thal"
+    ],
+    "binaryFeatures": [
+        "sex",
+        "fbs",
+        "restecg",
+        "exang"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "oldpeak",
+                "age",
+                "trestbps",
+                "chol",
+                "thalach",
+                "cp",
+                "slope",
+                "ca",
+                "thal",
+                "sex",
+                "fbs",
+                "restecg",
+                "exang"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "target"
+}

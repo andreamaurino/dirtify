@@ -1,0 +1,144 @@
+{
+    "datasetName": "Anonymize_Loan_Default_data.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "loan_amnt",
+        "funded_amnt",
+        "funded_amnt_inv",
+        "annual_inc",
+        "delinq_2yrs",
+        "inq_last_6mths",
+        "mths_since_last_delinq",
+        "open_acc",
+        "revol_bal",
+        "total_acc"
+    ],
+    "continousFeatures": [
+        "int_rate",
+        "installment",
+        "dti",
+        "revol_util",
+        "total_pymnt",
+        "total_pymnt_inv",
+        "total_rec_prncp",
+        "total_rec_int",
+        "last_pymnt_amnt"
+    ],
+    "categoricalFeaturesString": [
+        "term",
+        "emp_length",
+        "home_ownership",
+        "verification_status",
+        "issue_d",
+        "loan_status",
+        "purpose",
+        "zip_code",
+        "addr_state"
+    ],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [
+        "pub_rec"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "int_rate",
+                "installment",
+                "dti",
+                "revol_util",
+                "total_pymnt",
+                "total_pymnt_inv",
+                "total_rec_prncp",
+                "total_rec_int",
+                "last_pymnt_amnt",
+                "loan_amnt",
+                "funded_amnt",
+                "funded_amnt_inv",
+                "annual_inc",
+                "delinq_2yrs",
+                "inq_last_6mths",
+                "mths_since_last_delinq",
+                "open_acc",
+                "revol_bal",
+                "total_acc",
+                "term",
+                "emp_length",
+                "home_ownership",
+                "verification_status",
+                "issue_d",
+                "loan_status",
+                "purpose",
+                "zip_code",
+                "addr_state",
+                "pub_rec"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "repay_fail"
+}

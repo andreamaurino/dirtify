@@ -1,0 +1,970 @@
+",",datasetName,errorType,percentage,feature,modelName,Accuracy,Auc,Recall,Precision,F1
+0,transfusion.csv,NULL,0.0,NULL,CatBoostClassifier,0.7867,0.2961,0.35,0.7,0.4667
+1,transfusion.csv,NULL,0.0,NULL,RidgeClassifier,0.7733,,0.15,1.0,0.2609
+2,transfusion.csv,NULL,0.0,NULL,LinearDiscriminantAnalysis,0.7867,0.2726,0.2,1.0,0.3333
+3,transfusion.csv,NULL,0.0,NULL,LogisticRegression,0.7667,0.2715,0.15,0.8571,0.2553
+4,transfusion.csv,NULL,0.0,NULL,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+5,transfusion.csv,NULL,0.0,NULL,SVC,0.7267,0.3949,0.1,0.4444,0.1633
+6,transfusion.csv,NULL,0.0,NULL,GradientBoostingClassifier,0.7333,0.3795,0.3,0.5,0.375
+7,transfusion.csv,NULL,0.0,NULL,KNeighborsClassifier,0.7267,0.3699,0.275,0.4783,0.3492
+8,transfusion.csv,NULL,0.0,NULL,GaussianNB,0.76,0.4301,0.3,0.6,0.4
+9,transfusion.csv,NULL,0.0,NULL,AdaBoostClassifier,0.78,0.3533,0.3,0.7059,0.4211
+10,transfusion.csv,NULL,0.0,NULL,MLPClassifier,0.7333,0.5601,0.0,0.0,0.0
+11,transfusion.csv,NULL,0.0,NULL,ExtraTreesClassifier,0.72,0.412,0.35,0.4667,0.4
+12,transfusion.csv,NULL,0.0,NULL,GaussianProcessClassifier,0.68,0.4543,0.35,0.3889,0.3684
+13,transfusion.csv,NULL,0.0,NULL,RandomForestClassifier,0.76,0.4025,0.425,0.5667,0.4857
+14,transfusion.csv,NULL,0.0,NULL,SGDClassifier,0.7333,,0.0,0.0,0.0
+15,transfusion.csv,NULL,0.0,NULL,DecisionTreeClassifier,0.7333,0.516,0.425,0.5,0.4595
+16,transfusion.csv,NULL,0.0,NULL,QuadraticDiscriminantAnalysis,0.6867,0.5,0.525,0.4286,0.4719
+17,transfusion.csv,Missing,0.2,Recency (months),LogisticRegression,0.78,0.283,0.2,0.8889,0.3265
+18,transfusion.csv,Missing,0.2,Recency (months),RidgeClassifier,0.7733,,0.15,1.0,0.2609
+19,transfusion.csv,Missing,0.2,Recency (months),CatBoostClassifier,0.8067,0.2836,0.375,0.7895,0.5085
+20,transfusion.csv,Missing,0.2,Recency (months),LinearDiscriminantAnalysis,0.78,0.278,0.2,0.8889,0.3265
+21,transfusion.csv,Missing,0.2,Recency (months),SVC,0.7467,0.4186,0.1,0.6667,0.1739
+22,transfusion.csv,Missing,0.2,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+23,transfusion.csv,Missing,0.2,Recency (months),AdaBoostClassifier,0.7867,0.361,0.325,0.7222,0.4483
+24,transfusion.csv,Missing,0.2,Recency (months),KNeighborsClassifier,0.72,0.3575,0.25,0.4545,0.3226
+25,transfusion.csv,Missing,0.2,Recency (months),GaussianNB,0.7533,0.4482,0.275,0.5789,0.3729
+26,transfusion.csv,Missing,0.2,Recency (months),GradientBoostingClassifier,0.7933,0.4059,0.35,0.7368,0.4746
+27,transfusion.csv,Missing,0.2,Recency (months),RandomForestClassifier,0.7667,0.3949,0.375,0.6,0.4615
+28,transfusion.csv,Missing,0.2,Recency (months),MLPClassifier,0.6067,0.6189,0.725,0.3766,0.4957
+29,transfusion.csv,Missing,0.2,Recency (months),GaussianProcessClassifier,0.6867,0.4578,0.325,0.3939,0.3562
+30,transfusion.csv,Missing,0.2,Recency (months),ExtraTreesClassifier,0.7467,0.4512,0.375,0.5357,0.4412
+31,transfusion.csv,Missing,0.2,Recency (months),SGDClassifier,0.7,,0.625,0.4545,0.5263
+32,transfusion.csv,Missing,0.2,Recency (months),DecisionTreeClassifier,0.7467,0.5501,0.375,0.5357,0.4412
+33,transfusion.csv,Missing,0.2,Recency (months),QuadraticDiscriminantAnalysis,0.66,0.4875,0.075,0.1765,0.1053
+34,transfusion.csv,Missing,0.4,Recency (months),CatBoostClassifier,0.8,0.3099,0.35,0.7778,0.4828
+35,transfusion.csv,Missing,0.4,Recency (months),RidgeClassifier,0.7733,,0.15,1.0,0.2609
+36,transfusion.csv,Missing,0.4,Recency (months),LogisticRegression,0.78,0.2876,0.2,0.8889,0.3265
+37,transfusion.csv,Missing,0.4,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+38,transfusion.csv,Missing,0.4,Recency (months),SVC,0.7467,0.4361,0.1,0.6667,0.1739
+39,transfusion.csv,Missing,0.4,Recency (months),LinearDiscriminantAnalysis,0.78,0.2842,0.2,0.8889,0.3265
+40,transfusion.csv,Missing,0.4,Recency (months),AdaBoostClassifier,0.78,0.3858,0.35,0.6667,0.459
+41,transfusion.csv,Missing,0.4,Recency (months),KNeighborsClassifier,0.72,0.4136,0.225,0.45,0.3
+42,transfusion.csv,Missing,0.4,Recency (months),MLPClassifier,0.7333,0.5993,0.0,0.0,0.0
+43,transfusion.csv,Missing,0.4,Recency (months),GaussianNB,0.76,0.4434,0.275,0.6111,0.3793
+44,transfusion.csv,Missing,0.4,Recency (months),SGDClassifier,0.6,,0.85,0.3864,0.5312
+45,transfusion.csv,Missing,0.4,Recency (months),GradientBoostingClassifier,0.7733,0.4026,0.325,0.65,0.4333
+46,transfusion.csv,Missing,0.4,Recency (months),ExtraTreesClassifier,0.7533,0.4634,0.325,0.5652,0.4127
+47,transfusion.csv,Missing,0.4,Recency (months),RandomForestClassifier,0.76,0.4035,0.35,0.5833,0.4375
+48,transfusion.csv,Missing,0.4,Recency (months),GaussianProcessClassifier,0.7067,0.4509,0.3,0.4286,0.3529
+49,transfusion.csv,Missing,0.4,Recency (months),DecisionTreeClassifier,0.72,0.5211,0.375,0.4688,0.4167
+50,transfusion.csv,Missing,0.4,Recency (months),QuadraticDiscriminantAnalysis,0.68,0.5,0.425,0.4048,0.4146
+51,transfusion.csv,Missing,0.6,Recency (months),KNeighborsClassifier,0.72,0.4382,0.225,0.45,0.3
+52,transfusion.csv,Missing,0.6,Recency (months),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+53,transfusion.csv,Missing,0.6,Recency (months),LogisticRegression,0.7667,0.2986,0.225,0.6923,0.3396
+54,transfusion.csv,Missing,0.6,Recency (months),CatBoostClassifier,0.8067,0.3255,0.45,0.72,0.5538
+55,transfusion.csv,Missing,0.6,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+56,transfusion.csv,Missing,0.6,Recency (months),LinearDiscriminantAnalysis,0.78,0.3052,0.225,0.8182,0.3529
+57,transfusion.csv,Missing,0.6,Recency (months),SVC,0.7533,0.4001,0.1,0.8,0.1778
+58,transfusion.csv,Missing,0.6,Recency (months),GaussianProcessClassifier,0.6933,0.4541,0.3,0.4,0.3429
+59,transfusion.csv,Missing,0.6,Recency (months),GradientBoostingClassifier,0.78,0.3618,0.375,0.6522,0.4762
+60,transfusion.csv,Missing,0.6,Recency (months),AdaBoostClassifier,0.76,0.4165,0.35,0.5833,0.4375
+61,transfusion.csv,Missing,0.6,Recency (months),MLPClassifier,0.7333,0.5928,0.0,0.0,0.0
+62,transfusion.csv,Missing,0.6,Recency (months),ExtraTreesClassifier,0.7667,0.4591,0.425,0.5862,0.4928
+63,transfusion.csv,Missing,0.6,Recency (months),GaussianNB,0.7467,0.452,0.275,0.55,0.3667
+64,transfusion.csv,Missing,0.6,Recency (months),RandomForestClassifier,0.7667,0.411,0.45,0.5806,0.507
+65,transfusion.csv,Missing,0.6,Recency (months),DecisionTreeClassifier,0.7267,0.5464,0.45,0.4865,0.4675
+66,transfusion.csv,Missing,0.6,Recency (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+67,transfusion.csv,Missing,0.6,Recency (months),QuadraticDiscriminantAnalysis,0.7267,0.5,0.025,0.3333,0.0465
+68,transfusion.csv,Missing,0.8,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+69,transfusion.csv,Missing,0.8,Recency (months),RidgeClassifier,0.78,,0.175,1.0,0.2979
+70,transfusion.csv,Missing,0.8,Recency (months),LinearDiscriminantAnalysis,0.78,0.2909,0.2,0.8889,0.3265
+71,transfusion.csv,Missing,0.8,Recency (months),LogisticRegression,0.78,0.293,0.2,0.8889,0.3265
+72,transfusion.csv,Missing,0.8,Recency (months),KNeighborsClassifier,0.7067,0.417,0.2,0.4,0.2667
+73,transfusion.csv,Missing,0.8,Recency (months),CatBoostClassifier,0.7733,0.3117,0.225,0.75,0.3462
+74,transfusion.csv,Missing,0.8,Recency (months),GradientBoostingClassifier,0.76,0.3507,0.3,0.6,0.4
+75,transfusion.csv,Missing,0.8,Recency (months),GaussianNB,0.7667,0.4514,0.275,0.6471,0.386
+76,transfusion.csv,Missing,0.8,Recency (months),SVC,0.7333,0.4086,0.0,0.0,0.0
+77,transfusion.csv,Missing,0.8,Recency (months),MLPClassifier,0.7333,0.4305,0.0,0.0,0.0
+78,transfusion.csv,Missing,0.8,Recency (months),AdaBoostClassifier,0.78,0.3723,0.35,0.6667,0.459
+79,transfusion.csv,Missing,0.8,Recency (months),ExtraTreesClassifier,0.76,0.3893,0.325,0.5909,0.4194
+80,transfusion.csv,Missing,0.8,Recency (months),RandomForestClassifier,0.7667,0.3497,0.275,0.6471,0.386
+81,transfusion.csv,Missing,0.8,Recency (months),GaussianProcessClassifier,0.6867,0.3953,0.25,0.3704,0.2985
+82,transfusion.csv,Missing,0.8,Recency (months),DecisionTreeClassifier,0.7067,0.5,0.25,0.4167,0.3125
+83,transfusion.csv,Missing,0.8,Recency (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+84,transfusion.csv,Missing,0.8,Recency (months),QuadraticDiscriminantAnalysis,0.5867,0.5,0.25,0.2381,0.2439
+85,transfusion.csv,Missing,0.2,Frequency (times),CatBoostClassifier,0.7933,0.3169,0.35,0.7368,0.4746
+86,transfusion.csv,Missing,0.2,Frequency (times),MLPClassifier,0.7333,0.4731,0.0,0.0,0.0
+87,transfusion.csv,Missing,0.2,Frequency (times),LogisticRegression,0.7733,0.2547,0.15,1.0,0.2609
+88,transfusion.csv,Missing,0.2,Frequency (times),LinearDiscriminantAnalysis,0.7733,0.2534,0.15,1.0,0.2609
+89,transfusion.csv,Missing,0.2,Frequency (times),SVC,0.74,0.4442,0.1,0.5714,0.1702
+90,transfusion.csv,Missing,0.2,Frequency (times),RidgeClassifier,0.7533,,0.075,1.0,0.1395
+91,transfusion.csv,Missing,0.2,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+92,transfusion.csv,Missing,0.2,Frequency (times),GaussianNB,0.7667,0.4192,0.325,0.619,0.4262
+93,transfusion.csv,Missing,0.2,Frequency (times),ExtraTreesClassifier,0.74,0.4491,0.275,0.5238,0.3607
+94,transfusion.csv,Missing,0.2,Frequency (times),GradientBoostingClassifier,0.7533,0.3955,0.3,0.5714,0.3934
+95,transfusion.csv,Missing,0.2,Frequency (times),QuadraticDiscriminantAnalysis,0.7867,0.285,0.2,1.0,0.3333
+96,transfusion.csv,Missing,0.2,Frequency (times),KNeighborsClassifier,0.7267,0.3424,0.275,0.4783,0.3492
+97,transfusion.csv,Missing,0.2,Frequency (times),AdaBoostClassifier,0.7467,0.4397,0.175,0.5833,0.2692
+98,transfusion.csv,Missing,0.2,Frequency (times),RandomForestClassifier,0.7467,0.3824,0.35,0.5385,0.4242
+99,transfusion.csv,Missing,0.2,Frequency (times),GaussianProcessClassifier,0.6867,0.459,0.325,0.3939,0.3562
+100,transfusion.csv,Missing,0.2,Frequency (times),SGDClassifier,0.52,,0.925,0.3491,0.5068
+101,transfusion.csv,Missing,0.2,Frequency (times),DecisionTreeClassifier,0.76,0.5317,0.425,0.5667,0.4857
+102,transfusion.csv,Missing,0.4,Frequency (times),LogisticRegression,0.7733,0.2535,0.15,1.0,0.2609
+103,transfusion.csv,Missing,0.4,Frequency (times),LinearDiscriminantAnalysis,0.7733,0.253,0.15,1.0,0.2609
+104,transfusion.csv,Missing,0.4,Frequency (times),RidgeClassifier,0.7533,,0.075,1.0,0.1395
+105,transfusion.csv,Missing,0.4,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+106,transfusion.csv,Missing,0.4,Frequency (times),SVC,0.74,0.429,0.1,0.5714,0.1702
+107,transfusion.csv,Missing,0.4,Frequency (times),GaussianNB,0.7667,0.4307,0.35,0.6087,0.4444
+108,transfusion.csv,Missing,0.4,Frequency (times),KNeighborsClassifier,0.7267,0.3932,0.25,0.4762,0.3279
+109,transfusion.csv,Missing,0.4,Frequency (times),QuadraticDiscriminantAnalysis,0.78,0.3411,0.2,0.8889,0.3265
+110,transfusion.csv,Missing,0.4,Frequency (times),CatBoostClassifier,0.78,0.3011,0.275,0.7333,0.4
+111,transfusion.csv,Missing,0.4,Frequency (times),GradientBoostingClassifier,0.7667,0.3757,0.275,0.6471,0.386
+112,transfusion.csv,Missing,0.4,Frequency (times),AdaBoostClassifier,0.7667,0.4283,0.225,0.6923,0.3396
+113,transfusion.csv,Missing,0.4,Frequency (times),ExtraTreesClassifier,0.7267,0.4283,0.3,0.48,0.3692
+114,transfusion.csv,Missing,0.4,Frequency (times),RandomForestClassifier,0.7467,0.39,0.325,0.5417,0.4062
+115,transfusion.csv,Missing,0.4,Frequency (times),MLPClassifier,0.7333,0.5233,0.0,0.0,0.0
+116,transfusion.csv,Missing,0.4,Frequency (times),GaussianProcessClassifier,0.68,0.4522,0.325,0.3824,0.3514
+117,transfusion.csv,Missing,0.4,Frequency (times),SGDClassifier,0.68,,0.775,0.4429,0.5636
+118,transfusion.csv,Missing,0.4,Frequency (times),DecisionTreeClassifier,0.7333,0.5211,0.4,0.5,0.4444
+119,transfusion.csv,Missing,0.6,Frequency (times),LogisticRegression,0.7733,0.2712,0.175,0.875,0.2917
+120,transfusion.csv,Missing,0.6,Frequency (times),KNeighborsClassifier,0.7267,0.4082,0.25,0.4762,0.3279
+121,transfusion.csv,Missing,0.6,Frequency (times),QuadraticDiscriminantAnalysis,0.78,0.4614,0.3,0.7059,0.4211
+122,transfusion.csv,Missing,0.6,Frequency (times),RidgeClassifier,0.7733,,0.15,1.0,0.2609
+123,transfusion.csv,Missing,0.6,Frequency (times),LinearDiscriminantAnalysis,0.7867,0.2766,0.2,1.0,0.3333
+124,transfusion.csv,Missing,0.6,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+125,transfusion.csv,Missing,0.6,Frequency (times),CatBoostClassifier,0.78,0.2951,0.375,0.6522,0.4762
+126,transfusion.csv,Missing,0.6,Frequency (times),MLPClassifier,0.8067,0.4538,0.6,0.6486,0.6234
+127,transfusion.csv,Missing,0.6,Frequency (times),GradientBoostingClassifier,0.76,0.379,0.35,0.5833,0.4375
+128,transfusion.csv,Missing,0.6,Frequency (times),SVC,0.7467,0.3849,0.1,0.6667,0.1739
+129,transfusion.csv,Missing,0.6,Frequency (times),GaussianNB,0.72,0.4925,0.375,0.4688,0.4167
+130,transfusion.csv,Missing,0.6,Frequency (times),RandomForestClassifier,0.7467,0.3495,0.45,0.5294,0.4865
+131,transfusion.csv,Missing,0.6,Frequency (times),AdaBoostClassifier,0.7667,0.4405,0.3,0.6316,0.4068
+132,transfusion.csv,Missing,0.6,Frequency (times),ExtraTreesClassifier,0.7533,0.4076,0.45,0.5455,0.4932
+133,transfusion.csv,Missing,0.6,Frequency (times),GaussianProcessClassifier,0.68,0.4617,0.325,0.3824,0.3514
+134,transfusion.csv,Missing,0.6,Frequency (times),DecisionTreeClassifier,0.72,0.5273,0.4,0.4706,0.4324
+135,transfusion.csv,Missing,0.6,Frequency (times),SGDClassifier,0.68,,0.775,0.4429,0.5636
+136,transfusion.csv,Missing,0.8,Frequency (times),MLPClassifier,0.7333,0.5914,0.0,0.0,0.0
+137,transfusion.csv,Missing,0.8,Frequency (times),SVC,0.7467,0.3822,0.05,1.0,0.0952
+138,transfusion.csv,Missing,0.8,Frequency (times),LinearDiscriminantAnalysis,0.7333,0.2781,0.0,0.0,0.0
+139,transfusion.csv,Missing,0.8,Frequency (times),AdaBoostClassifier,0.7,0.3851,0.075,0.2727,0.1176
+140,transfusion.csv,Missing,0.8,Frequency (times),LogisticRegression,0.7333,0.2898,0.0,0.0,0.0
+141,transfusion.csv,Missing,0.8,Frequency (times),RidgeClassifier,0.7333,,0.0,0.0,0.0
+142,transfusion.csv,Missing,0.8,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+143,transfusion.csv,Missing,0.8,Frequency (times),QuadraticDiscriminantAnalysis,0.7333,0.3852,0.0,0.0,0.0
+144,transfusion.csv,Missing,0.8,Frequency (times),CatBoostClassifier,0.7667,0.3194,0.225,0.6923,0.3396
+145,transfusion.csv,Missing,0.8,Frequency (times),GradientBoostingClassifier,0.76,0.3805,0.2,0.6667,0.3077
+146,transfusion.csv,Missing,0.8,Frequency (times),KNeighborsClassifier,0.7267,0.3832,0.275,0.4783,0.3492
+147,transfusion.csv,Missing,0.8,Frequency (times),GaussianNB,0.7333,0.3625,0.0,0.0,0.0
+148,transfusion.csv,Missing,0.8,Frequency (times),RandomForestClassifier,0.7533,0.3593,0.25,0.5882,0.3509
+149,transfusion.csv,Missing,0.8,Frequency (times),ExtraTreesClassifier,0.7333,0.3558,0.25,0.5,0.3333
+150,transfusion.csv,Missing,0.8,Frequency (times),GaussianProcessClassifier,0.68,0.4661,0.3,0.375,0.3333
+151,transfusion.csv,Missing,0.8,Frequency (times),DecisionTreeClassifier,0.7067,0.4914,0.275,0.4231,0.3333
+152,transfusion.csv,Missing,0.8,Frequency (times),SGDClassifier,0.68,,0.775,0.4429,0.5636
+153,transfusion.csv,Missing,0.2,Monetary (c.c. blood),CatBoostClassifier,0.78,0.3199,0.325,0.6842,0.4407
+154,transfusion.csv,Missing,0.2,Monetary (c.c. blood),MLPClassifier,0.4733,0.6602,0.925,0.3274,0.4837
+155,transfusion.csv,Missing,0.2,Monetary (c.c. blood),LogisticRegression,0.7733,0.2547,0.15,1.0,0.2609
+156,transfusion.csv,Missing,0.2,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7733,0.2534,0.15,1.0,0.2609
+157,transfusion.csv,Missing,0.2,Monetary (c.c. blood),SVC,0.7467,0.4392,0.1,0.6667,0.1739
+158,transfusion.csv,Missing,0.2,Monetary (c.c. blood),RidgeClassifier,0.7533,,0.075,1.0,0.1395
+159,transfusion.csv,Missing,0.2,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+160,transfusion.csv,Missing,0.2,Monetary (c.c. blood),KNeighborsClassifier,0.7333,0.3702,0.2,0.5,0.2857
+161,transfusion.csv,Missing,0.2,Monetary (c.c. blood),GaussianNB,0.7667,0.4191,0.325,0.619,0.4262
+162,transfusion.csv,Missing,0.2,Monetary (c.c. blood),GradientBoostingClassifier,0.7533,0.3955,0.3,0.5714,0.3934
+163,transfusion.csv,Missing,0.2,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7867,0.285,0.2,1.0,0.3333
+164,transfusion.csv,Missing,0.2,Monetary (c.c. blood),AdaBoostClassifier,0.7467,0.4397,0.175,0.5833,0.2692
+165,transfusion.csv,Missing,0.2,Monetary (c.c. blood),RandomForestClassifier,0.7667,0.3961,0.35,0.6087,0.4444
+166,transfusion.csv,Missing,0.2,Monetary (c.c. blood),ExtraTreesClassifier,0.7267,0.4575,0.275,0.4783,0.3492
+167,transfusion.csv,Missing,0.2,Monetary (c.c. blood),GaussianProcessClassifier,0.6933,0.461,0.325,0.4062,0.3611
+168,transfusion.csv,Missing,0.2,Monetary (c.c. blood),DecisionTreeClassifier,0.76,0.5317,0.425,0.5667,0.4857
+169,transfusion.csv,Missing,0.2,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+170,transfusion.csv,Missing,0.4,Monetary (c.c. blood),LogisticRegression,0.7733,0.2535,0.15,1.0,0.2609
+171,transfusion.csv,Missing,0.4,Monetary (c.c. blood),SVC,0.7467,0.4431,0.1,0.6667,0.1739
+172,transfusion.csv,Missing,0.4,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7733,0.253,0.15,1.0,0.2609
+173,transfusion.csv,Missing,0.4,Monetary (c.c. blood),RidgeClassifier,0.7533,,0.075,1.0,0.1395
+174,transfusion.csv,Missing,0.4,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+175,transfusion.csv,Missing,0.4,Monetary (c.c. blood),GaussianNB,0.7667,0.4307,0.35,0.6087,0.4444
+176,transfusion.csv,Missing,0.4,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.78,0.3411,0.2,0.8889,0.3265
+177,transfusion.csv,Missing,0.4,Monetary (c.c. blood),CatBoostClassifier,0.78,0.2968,0.275,0.7333,0.4
+178,transfusion.csv,Missing,0.4,Monetary (c.c. blood),KNeighborsClassifier,0.74,0.4158,0.2,0.5333,0.2909
+179,transfusion.csv,Missing,0.4,Monetary (c.c. blood),GradientBoostingClassifier,0.7733,0.3768,0.3,0.6667,0.4138
+180,transfusion.csv,Missing,0.4,Monetary (c.c. blood),MLPClassifier,0.7333,0.5877,0.0,0.0,0.0
+181,transfusion.csv,Missing,0.4,Monetary (c.c. blood),ExtraTreesClassifier,0.74,0.432,0.35,0.5185,0.4179
+182,transfusion.csv,Missing,0.4,Monetary (c.c. blood),AdaBoostClassifier,0.7667,0.4283,0.225,0.6923,0.3396
+183,transfusion.csv,Missing,0.4,Monetary (c.c. blood),RandomForestClassifier,0.78,0.4059,0.4,0.64,0.4923
+184,transfusion.csv,Missing,0.4,Monetary (c.c. blood),GaussianProcessClassifier,0.7,0.4522,0.325,0.4194,0.3662
+185,transfusion.csv,Missing,0.4,Monetary (c.c. blood),DecisionTreeClassifier,0.7333,0.5211,0.4,0.5,0.4444
+186,transfusion.csv,Missing,0.4,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+187,transfusion.csv,Missing,0.6,Monetary (c.c. blood),LogisticRegression,0.7733,0.2713,0.175,0.875,0.2917
+188,transfusion.csv,Missing,0.6,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.78,0.4614,0.3,0.7059,0.4211
+189,transfusion.csv,Missing,0.6,Monetary (c.c. blood),RidgeClassifier,0.7733,,0.15,1.0,0.2609
+190,transfusion.csv,Missing,0.6,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7867,0.2766,0.2,1.0,0.3333
+191,transfusion.csv,Missing,0.6,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+192,transfusion.csv,Missing,0.6,Monetary (c.c. blood),CatBoostClassifier,0.7867,0.2958,0.35,0.7,0.4667
+193,transfusion.csv,Missing,0.6,Monetary (c.c. blood),SVC,0.7533,0.3994,0.1,0.8,0.1778
+194,transfusion.csv,Missing,0.6,Monetary (c.c. blood),GradientBoostingClassifier,0.7533,0.3794,0.325,0.5652,0.4127
+195,transfusion.csv,Missing,0.6,Monetary (c.c. blood),MLPClassifier,0.76,0.4752,0.675,0.54,0.6
+196,transfusion.csv,Missing,0.6,Monetary (c.c. blood),GaussianNB,0.72,0.4924,0.375,0.4688,0.4167
+197,transfusion.csv,Missing,0.6,Monetary (c.c. blood),AdaBoostClassifier,0.7667,0.4405,0.3,0.6316,0.4068
+198,transfusion.csv,Missing,0.6,Monetary (c.c. blood),KNeighborsClassifier,0.74,0.426,0.25,0.5263,0.339
+199,transfusion.csv,Missing,0.6,Monetary (c.c. blood),GaussianProcessClassifier,0.7,0.4575,0.35,0.4242,0.3836
+200,transfusion.csv,Missing,0.6,Monetary (c.c. blood),RandomForestClassifier,0.7533,0.3669,0.475,0.5429,0.5067
+201,transfusion.csv,Missing,0.6,Monetary (c.c. blood),ExtraTreesClassifier,0.76,0.4214,0.475,0.5588,0.5135
+202,transfusion.csv,Missing,0.6,Monetary (c.c. blood),DecisionTreeClassifier,0.72,0.5273,0.4,0.4706,0.4324
+203,transfusion.csv,Missing,0.6,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+204,transfusion.csv,Missing,0.8,Monetary (c.c. blood),CatBoostClassifier,0.7667,0.3098,0.225,0.6923,0.3396
+205,transfusion.csv,Missing,0.8,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7333,0.2781,0.0,0.0,0.0
+206,transfusion.csv,Missing,0.8,Monetary (c.c. blood),AdaBoostClassifier,0.7,0.3851,0.075,0.2727,0.1176
+207,transfusion.csv,Missing,0.8,Monetary (c.c. blood),LogisticRegression,0.7333,0.2898,0.0,0.0,0.0
+208,transfusion.csv,Missing,0.8,Monetary (c.c. blood),RidgeClassifier,0.7333,,0.0,0.0,0.0
+209,transfusion.csv,Missing,0.8,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+210,transfusion.csv,Missing,0.8,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.3852,0.0,0.0,0.0
+211,transfusion.csv,Missing,0.8,Monetary (c.c. blood),GradientBoostingClassifier,0.76,0.3805,0.2,0.6667,0.3077
+212,transfusion.csv,Missing,0.8,Monetary (c.c. blood),SVC,0.7333,0.4052,0.0,0.0,0.0
+213,transfusion.csv,Missing,0.8,Monetary (c.c. blood),GaussianNB,0.7333,0.3626,0.0,0.0,0.0
+214,transfusion.csv,Missing,0.8,Monetary (c.c. blood),KNeighborsClassifier,0.7,0.5065,0.125,0.3333,0.1818
+215,transfusion.csv,Missing,0.8,Monetary (c.c. blood),MLPClassifier,0.7133,0.2886,0.175,0.4118,0.2456
+216,transfusion.csv,Missing,0.8,Monetary (c.c. blood),ExtraTreesClassifier,0.7333,0.3789,0.275,0.5,0.3548
+217,transfusion.csv,Missing,0.8,Monetary (c.c. blood),RandomForestClassifier,0.7467,0.3542,0.25,0.5556,0.3448
+218,transfusion.csv,Missing,0.8,Monetary (c.c. blood),GaussianProcessClassifier,0.72,0.4066,0.15,0.4286,0.2222
+219,transfusion.csv,Missing,0.8,Monetary (c.c. blood),DecisionTreeClassifier,0.7067,0.4914,0.275,0.4231,0.3333
+220,transfusion.csv,Missing,0.8,Monetary (c.c. blood),SGDClassifier,0.3,,1.0,0.2759,0.4324
+221,transfusion.csv,Missing,0.2,Time (months),CatBoostClassifier,0.7933,0.3123,0.325,0.7647,0.4561
+222,transfusion.csv,Missing,0.2,Time (months),LinearDiscriminantAnalysis,0.78,0.2681,0.175,1.0,0.2979
+223,transfusion.csv,Missing,0.2,Time (months),LogisticRegression,0.7667,0.2633,0.15,0.8571,0.2553
+224,transfusion.csv,Missing,0.2,Time (months),RidgeClassifier,0.7733,,0.15,1.0,0.2609
+225,transfusion.csv,Missing,0.2,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+226,transfusion.csv,Missing,0.2,Time (months),SVC,0.7467,0.4558,0.125,0.625,0.2083
+227,transfusion.csv,Missing,0.2,Time (months),GaussianNB,0.7933,0.4295,0.325,0.7647,0.4561
+228,transfusion.csv,Missing,0.2,Time (months),RandomForestClassifier,0.76,0.4168,0.4,0.5714,0.4706
+229,transfusion.csv,Missing,0.2,Time (months),GradientBoostingClassifier,0.78,0.3983,0.325,0.6842,0.4407
+230,transfusion.csv,Missing,0.2,Time (months),ExtraTreesClassifier,0.7067,0.4424,0.275,0.4231,0.3333
+231,transfusion.csv,Missing,0.2,Time (months),AdaBoostClassifier,0.7867,0.3277,0.325,0.7222,0.4483
+232,transfusion.csv,Missing,0.2,Time (months),KNeighborsClassifier,0.7133,0.3557,0.275,0.44,0.3385
+233,transfusion.csv,Missing,0.2,Time (months),GaussianProcessClassifier,0.6933,0.4784,0.325,0.4062,0.3611
+234,transfusion.csv,Missing,0.2,Time (months),MLPClassifier,0.7333,0.4569,0.0,0.0,0.0
+235,transfusion.csv,Missing,0.2,Time (months),DecisionTreeClassifier,0.7333,0.5317,0.375,0.5,0.4286
+236,transfusion.csv,Missing,0.2,Time (months),SGDClassifier,0.52,,0.925,0.3491,0.5068
+237,transfusion.csv,Missing,0.2,Time (months),QuadraticDiscriminantAnalysis,0.7467,0.5045,0.15,0.6,0.24
+238,transfusion.csv,Missing,0.4,Time (months),CatBoostClassifier,0.7867,0.3139,0.275,0.7857,0.4074
+239,transfusion.csv,Missing,0.4,Time (months),KNeighborsClassifier,0.7267,0.4022,0.25,0.4762,0.3279
+240,transfusion.csv,Missing,0.4,Time (months),GradientBoostingClassifier,0.7733,0.3872,0.275,0.6875,0.3929
+241,transfusion.csv,Missing,0.4,Time (months),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+242,transfusion.csv,Missing,0.4,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+243,transfusion.csv,Missing,0.4,Time (months),LogisticRegression,0.7733,0.258,0.15,1.0,0.2609
+244,transfusion.csv,Missing,0.4,Time (months),ExtraTreesClassifier,0.7067,0.4686,0.325,0.4333,0.3714
+245,transfusion.csv,Missing,0.4,Time (months),MLPClassifier,0.72,0.2982,0.0,0.0,0.0
+246,transfusion.csv,Missing,0.4,Time (months),LinearDiscriminantAnalysis,0.7733,0.2575,0.15,1.0,0.2609
+247,transfusion.csv,Missing,0.4,Time (months),SVC,0.7467,0.404,0.125,0.625,0.2083
+248,transfusion.csv,Missing,0.4,Time (months),GaussianNB,0.7533,0.4276,0.25,0.5882,0.3509
+249,transfusion.csv,Missing,0.4,Time (months),RandomForestClassifier,0.74,0.4366,0.35,0.5185,0.4179
+250,transfusion.csv,Missing,0.4,Time (months),GaussianProcessClassifier,0.6867,0.4775,0.3,0.3871,0.338
+251,transfusion.csv,Missing,0.4,Time (months),AdaBoostClassifier,0.7533,0.4186,0.175,0.6364,0.2745
+252,transfusion.csv,Missing,0.4,Time (months),DecisionTreeClassifier,0.7067,0.5493,0.425,0.4474,0.4359
+253,transfusion.csv,Missing,0.4,Time (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+254,transfusion.csv,Missing,0.4,Time (months),QuadraticDiscriminantAnalysis,0.7133,0.4919,0.05,0.2857,0.0851
+255,transfusion.csv,Missing,0.6,Time (months),CatBoostClassifier,0.7933,0.3095,0.375,0.7143,0.4918
+256,transfusion.csv,Missing,0.6,Time (months),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+257,transfusion.csv,Missing,0.6,Time (months),LinearDiscriminantAnalysis,0.7733,0.2509,0.15,1.0,0.2609
+258,transfusion.csv,Missing,0.6,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+259,transfusion.csv,Missing,0.6,Time (months),KNeighborsClassifier,0.72,0.4369,0.225,0.45,0.3
+260,transfusion.csv,Missing,0.6,Time (months),MLPClassifier,0.7333,0.4778,0.0,0.0,0.0
+261,transfusion.csv,Missing,0.6,Time (months),GradientBoostingClassifier,0.7333,0.3693,0.25,0.5,0.3333
+262,transfusion.csv,Missing,0.6,Time (months),LogisticRegression,0.7667,0.256,0.125,1.0,0.2222
+263,transfusion.csv,Missing,0.6,Time (months),ExtraTreesClassifier,0.7467,0.481,0.35,0.5385,0.4242
+264,transfusion.csv,Missing,0.6,Time (months),GaussianProcessClassifier,0.7133,0.4862,0.375,0.4545,0.411
+265,transfusion.csv,Missing,0.6,Time (months),RandomForestClassifier,0.7667,0.4336,0.35,0.6087,0.4444
+266,transfusion.csv,Missing,0.6,Time (months),SVC,0.76,0.3653,0.125,0.8333,0.2174
+267,transfusion.csv,Missing,0.6,Time (months),GaussianNB,0.7467,0.4332,0.3,0.5455,0.3871
+268,transfusion.csv,Missing,0.6,Time (months),AdaBoostClassifier,0.76,0.3605,0.275,0.6111,0.3793
+269,transfusion.csv,Missing,0.6,Time (months),DecisionTreeClassifier,0.76,0.5493,0.4,0.5714,0.4706
+270,transfusion.csv,Missing,0.6,Time (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+271,transfusion.csv,Missing,0.6,Time (months),QuadraticDiscriminantAnalysis,0.7133,0.5,0.025,0.2,0.0444
+272,transfusion.csv,Missing,0.8,Time (months),RidgeClassifier,0.74,,0.025,1.0,0.0488
+273,transfusion.csv,Missing,0.8,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+274,transfusion.csv,Missing,0.8,Time (months),SVC,0.7467,0.3466,0.05,1.0,0.0952
+275,transfusion.csv,Missing,0.8,Time (months),GradientBoostingClassifier,0.76,0.4208,0.3,0.6,0.4
+276,transfusion.csv,Missing,0.8,Time (months),CatBoostClassifier,0.78,0.3172,0.275,0.7333,0.4
+277,transfusion.csv,Missing,0.8,Time (months),LinearDiscriminantAnalysis,0.76,0.2718,0.125,0.8333,0.2174
+278,transfusion.csv,Missing,0.8,Time (months),KNeighborsClassifier,0.7267,0.4226,0.25,0.4762,0.3279
+279,transfusion.csv,Missing,0.8,Time (months),LogisticRegression,0.7533,0.2766,0.125,0.7143,0.2128
+280,transfusion.csv,Missing,0.8,Time (months),MLPClassifier,0.7333,0.5335,0.0,0.0,0.0
+281,transfusion.csv,Missing,0.8,Time (months),ExtraTreesClassifier,0.7467,0.4217,0.275,0.55,0.3667
+282,transfusion.csv,Missing,0.8,Time (months),AdaBoostClassifier,0.7333,0.3392,0.175,0.5,0.2593
+283,transfusion.csv,Missing,0.8,Time (months),GaussianNB,0.7867,0.327,0.225,0.9,0.36
+284,transfusion.csv,Missing,0.8,Time (months),RandomForestClassifier,0.76,0.4016,0.325,0.5909,0.4194
+285,transfusion.csv,Missing,0.8,Time (months),DecisionTreeClassifier,0.7333,0.5355,0.225,0.5,0.3103
+286,transfusion.csv,Missing,0.8,Time (months),GaussianProcessClassifier,0.7333,0.4465,0.35,0.5,0.4118
+287,transfusion.csv,Missing,0.8,Time (months),SGDClassifier,0.2867,,1.0,0.2721,0.4278
+288,transfusion.csv,Missing,0.8,Time (months),QuadraticDiscriminantAnalysis,0.7067,0.5091,0.15,0.375,0.2143
+289,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,SVC,0.7333,0.3689,0.1,0.5,0.1667
+290,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,LogisticRegression,0.7733,0.2944,0.2,0.8,0.32
+291,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.7733,0.295,0.2,0.8,0.32
+292,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,AdaBoostClassifier,0.78,0.4082,0.325,0.6842,0.4407
+293,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,RidgeClassifier,0.7733,,0.15,1.0,0.2609
+294,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+295,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,GaussianNB,0.7467,0.4589,0.3,0.5455,0.3871
+296,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,CatBoostClassifier,0.7933,0.2782,0.375,0.7143,0.4918
+297,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.78,0.3436,0.4,0.64,0.4923
+298,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,RandomForestClassifier,0.7867,0.3977,0.425,0.6538,0.5152
+299,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,KNeighborsClassifier,0.7067,0.4078,0.25,0.4167,0.3125
+300,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.6933,0.5588,0.375,0.4167,0.3947
+301,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.7267,0.4368,0.35,0.4828,0.4058
+302,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.7667,0.4125,0.375,0.6,0.4615
+303,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,MLPClassifier,0.8,0.5106,0.65,0.619,0.6341
+304,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,SGDClassifier,0.38,,0.975,0.2977,0.4561
+305,transfusion.csv,DuplicatedAll,0.2,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.62,0.5,0.325,0.3023,0.3133
+306,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,SVC,0.7267,0.338,0.05,0.4,0.0889
+307,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,LogisticRegression,0.78,0.302,0.225,0.8182,0.3529
+308,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,CatBoostClassifier,0.7933,0.3305,0.4,0.6957,0.5079
+309,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.7733,0.3756,0.35,0.6364,0.4516
+310,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,RandomForestClassifier,0.7933,0.4009,0.525,0.6364,0.5753
+311,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.78,0.448,0.45,0.6207,0.5217
+312,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.7267,0.4137,0.35,0.4828,0.4058
+313,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.7733,0.2968,0.2,0.8,0.32
+314,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,KNeighborsClassifier,0.7267,0.4785,0.275,0.4783,0.3492
+315,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,AdaBoostClassifier,0.7667,0.364,0.275,0.6471,0.386
+316,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,RidgeClassifier,0.7867,,0.2,1.0,0.3333
+317,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+318,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,MLPClassifier,0.7333,0.317,0.0,0.0,0.0
+319,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,GaussianNB,0.7333,0.4778,0.3,0.5,0.375
+320,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.7733,0.5349,0.525,0.5833,0.5526
+321,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.34,0.5,0.9,0.2748,0.4211
+322,transfusion.csv,DuplicatedAll,0.4,whether he/she donated blood in March 2007,SGDClassifier,0.74,,0.075,0.6,0.1333
+323,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,RandomForestClassifier,0.78,0.4139,0.525,0.6,0.56
+324,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,SVC,0.7333,0.3514,0.125,0.5,0.2
+325,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,CatBoostClassifier,0.78,0.3142,0.425,0.6296,0.5075
+326,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.7467,0.4266,0.45,0.5294,0.4865
+327,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.7133,0.418,0.4,0.4571,0.4267
+328,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.7667,0.3464,0.45,0.5806,0.507
+329,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.72,0.532,0.525,0.4773,0.5
+330,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,KNeighborsClassifier,0.72,0.4432,0.325,0.4643,0.3824
+331,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,LogisticRegression,0.7733,0.3105,0.225,0.75,0.3462
+332,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,AdaBoostClassifier,0.8,0.3269,0.35,0.7778,0.4828
+333,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.7733,0.3014,0.2,0.8,0.32
+334,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,RidgeClassifier,0.7867,,0.2,1.0,0.3333
+335,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,GaussianNB,0.7267,0.4859,0.3,0.48,0.3692
+336,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+337,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,MLPClassifier,0.7333,0.5094,0.0,0.0,0.0
+338,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,SGDClassifier,0.7,,0.675,0.4576,0.5455
+339,transfusion.csv,DuplicatedAll,0.6,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.5333,0.5,0.2,0.1739,0.186
+340,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,CatBoostClassifier,0.7667,0.3361,0.3,0.6316,0.4068
+341,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,SVC,0.7333,0.3603,0.125,0.5,0.2
+342,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.74,0.4217,0.4,0.5161,0.4507
+343,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,KNeighborsClassifier,0.7133,0.4666,0.3,0.4444,0.3582
+344,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,RandomForestClassifier,0.7467,0.3828,0.4,0.5333,0.4571
+345,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.74,0.3556,0.325,0.52,0.4
+346,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.7467,0.5283,0.55,0.5238,0.5366
+347,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.7267,0.422,0.375,0.4839,0.4225
+348,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,AdaBoostClassifier,0.76,0.3422,0.25,0.625,0.3571
+349,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,LogisticRegression,0.7733,0.3093,0.225,0.75,0.3462
+350,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.7667,0.3043,0.2,0.7273,0.3137
+351,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,RidgeClassifier,0.7867,,0.2,1.0,0.3333
+352,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+353,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,GaussianNB,0.72,0.4838,0.3,0.4615,0.3636
+354,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,SGDClassifier,0.7333,,0.0,0.0,0.0
+355,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,MLPClassifier,0.7467,0.535,0.7,0.5185,0.5957
+356,transfusion.csv,DuplicatedAll,0.8,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.7067,0.5,0.1,0.3333,0.1538
+357,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,SVC,0.74,0.3122,0.125,0.5556,0.2041
+358,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+359,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,RidgeClassifier,0.7333,,0.0,0.0,0.0
+360,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,KNeighborsClassifier,0.7267,0.4759,0.3,0.48,0.3692
+361,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,LogisticRegression,0.7333,0.2993,0.0,0.0,0.0
+362,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.7333,0.3016,0.0,0.0,0.0
+363,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,CatBoostClassifier,0.7867,0.3405,0.375,0.6818,0.4839
+364,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,AdaBoostClassifier,0.8067,0.3102,0.375,0.7895,0.5085
+365,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.7867,0.3364,0.4,0.6667,0.5
+366,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,RandomForestClassifier,0.74,0.4215,0.375,0.5172,0.4348
+367,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.6933,0.4472,0.4,0.4211,0.4103
+368,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.7067,0.4289,0.4,0.4444,0.4211
+369,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,MLPClassifier,0.5467,0.6428,0.875,0.3571,0.5072
+370,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.7,0.5598,0.475,0.4419,0.4578
+371,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,GaussianNB,0.6267,0.5766,0.475,0.3519,0.4043
+372,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,SGDClassifier,0.2867,,1.0,0.2721,0.4278
+373,transfusion.csv,Labels,0.2,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.5,0.5,0.625,0.2941,0.4
+374,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+375,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.6733,0.5466,0.5,0.4082,0.4494
+376,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,RidgeClassifier,0.6667,,0.0,0.0,0.0
+377,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.6667,0.3874,0.0,0.0,0.0
+378,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,LogisticRegression,0.6667,0.3869,0.0,0.0,0.0
+379,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,AdaBoostClassifier,0.66,0.554,0.525,0.3962,0.4516
+380,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,SGDClassifier,0.7333,,0.0,0.0,0.0
+381,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,MLPClassifier,0.5533,0.4862,0.65,0.3291,0.437
+382,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,CatBoostClassifier,0.6333,0.5377,0.45,0.3529,0.3956
+383,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,SVC,0.66,0.5693,0.15,0.2609,0.1905
+384,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,RandomForestClassifier,0.5667,0.48,0.4,0.2807,0.3299
+385,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.6,0.5633,0.45,0.3214,0.375
+386,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.6,0.4698,0.35,0.2917,0.3182
+387,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,GaussianNB,0.4,0.6793,0.625,0.25,0.3571
+388,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,KNeighborsClassifier,0.6267,0.5236,0.45,0.3462,0.3913
+389,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.5333,0.5789,0.675,0.3214,0.4355
+390,transfusion.csv,Labels,0.4,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.6067,0.4086,0.375,0.3061,0.3371
+391,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,DummyClassifier,0.2667,0.5,1.0,0.2667,0.4211
+392,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,LogisticRegression,0.2267,0.2569,0.85,0.2361,0.3696
+393,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,RidgeClassifier,0.2267,,0.85,0.2361,0.3696
+394,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.2267,0.2574,0.85,0.2361,0.3696
+395,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,GaussianNB,0.2867,0.5569,0.7,0.2276,0.3436
+396,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,CatBoostClassifier,0.36,0.5685,0.75,0.2586,0.3846
+397,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,SGDClassifier,0.4933,,0.075,0.0714,0.0732
+398,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,MLPClassifier,0.2667,0.5868,1.0,0.2667,0.4211
+399,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,KNeighborsClassifier,0.5,0.5219,0.65,0.2989,0.4094
+400,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.2467,0.5718,0.725,0.2214,0.3392
+401,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,SVC,0.38,0.5739,0.875,0.2846,0.4294
+402,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,RandomForestClassifier,0.4533,0.5028,0.7,0.2857,0.4058
+403,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.3933,0.5397,0.675,0.2571,0.3724
+404,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,AdaBoostClassifier,0.3733,0.638,0.775,0.2672,0.3974
+405,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.42,0.3944,0.575,0.2473,0.3459
+406,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.4867,0.5036,0.675,0.2967,0.4122
+407,transfusion.csv,Labels,0.6,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.4667,0.5176,0.6,0.2727,0.375
+408,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,DummyClassifier,0.2667,0.5,1.0,0.2667,0.4211
+409,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,RidgeClassifier,0.22,,0.825,0.2308,0.3607
+410,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,LogisticRegression,0.22,0.2683,0.825,0.2308,0.3607
+411,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,LinearDiscriminantAnalysis,0.22,0.2673,0.825,0.2308,0.3607
+412,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,SVC,0.2933,0.3973,0.925,0.2643,0.4111
+413,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,GaussianNB,0.2733,0.4949,0.7,0.224,0.3394
+414,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,CatBoostClassifier,0.24,0.3955,0.675,0.2109,0.3214
+415,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,AdaBoostClassifier,0.2467,0.3431,0.7,0.2171,0.3314
+416,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,MLPClassifier,0.2667,0.6109,1.0,0.2667,0.4211
+417,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,KNeighborsClassifier,0.4067,0.495,0.725,0.271,0.3946
+418,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,SGDClassifier,0.3067,,0.225,0.1098,0.1475
+419,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,RandomForestClassifier,0.28,0.443,0.625,0.2119,0.3165
+420,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,GradientBoostingClassifier,0.2733,0.44,0.7,0.224,0.3394
+421,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,GaussianProcessClassifier,0.3267,0.4253,0.525,0.2039,0.2937
+422,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,DecisionTreeClassifier,0.3933,0.5456,0.525,0.2258,0.3158
+423,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,ExtraTreesClassifier,0.3133,0.4525,0.6,0.2162,0.3179
+424,transfusion.csv,Labels,0.8,whether he/she donated blood in March 2007,QuadraticDiscriminantAnalysis,0.2467,0.4744,0.7,0.2171,0.3314
+425,transfusion.csv,Outlier,0.2,Recency (months),SVC,0.7467,0.4324,0.1,0.6667,0.1739
+426,transfusion.csv,Outlier,0.2,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+427,transfusion.csv,Outlier,0.2,Recency (months),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+428,transfusion.csv,Outlier,0.2,Recency (months),AdaBoostClassifier,0.76,0.3805,0.25,0.625,0.3571
+429,transfusion.csv,Outlier,0.2,Recency (months),LinearDiscriminantAnalysis,0.78,0.281,0.175,1.0,0.2979
+430,transfusion.csv,Outlier,0.2,Recency (months),CatBoostClassifier,0.8,0.2656,0.35,0.7778,0.4828
+431,transfusion.csv,Outlier,0.2,Recency (months),LogisticRegression,0.78,0.2735,0.175,1.0,0.2979
+432,transfusion.csv,Outlier,0.2,Recency (months),KNeighborsClassifier,0.7267,0.3598,0.275,0.4783,0.3492
+433,transfusion.csv,Outlier,0.2,Recency (months),ExtraTreesClassifier,0.74,0.4815,0.35,0.5185,0.4179
+434,transfusion.csv,Outlier,0.2,Recency (months),GaussianProcessClassifier,0.7,0.461,0.325,0.4194,0.3662
+435,transfusion.csv,Outlier,0.2,Recency (months),GradientBoostingClassifier,0.7733,0.3542,0.3,0.6667,0.4138
+436,transfusion.csv,Outlier,0.2,Recency (months),GaussianNB,0.74,0.4576,0.3,0.5217,0.381
+437,transfusion.csv,Outlier,0.2,Recency (months),MLPClassifier,0.8,0.3215,0.275,0.9167,0.4231
+438,transfusion.csv,Outlier,0.2,Recency (months),RandomForestClassifier,0.7667,0.4089,0.325,0.619,0.4262
+439,transfusion.csv,Outlier,0.2,Recency (months),DecisionTreeClassifier,0.7667,0.5356,0.375,0.6,0.4615
+440,transfusion.csv,Outlier,0.2,Recency (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+441,transfusion.csv,Outlier,0.2,Recency (months),QuadraticDiscriminantAnalysis,0.5667,0.5,0.375,0.2727,0.3158
+442,transfusion.csv,Outlier,0.4,Recency (months),SVC,0.7467,0.4456,0.1,0.6667,0.1739
+443,transfusion.csv,Outlier,0.4,Recency (months),CatBoostClassifier,0.8,0.2788,0.375,0.75,0.5
+444,transfusion.csv,Outlier,0.4,Recency (months),AdaBoostClassifier,0.7733,0.3697,0.35,0.6364,0.4516
+445,transfusion.csv,Outlier,0.4,Recency (months),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+446,transfusion.csv,Outlier,0.4,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+447,transfusion.csv,Outlier,0.4,Recency (months),LogisticRegression,0.7733,0.2855,0.175,0.875,0.2917
+448,transfusion.csv,Outlier,0.4,Recency (months),LinearDiscriminantAnalysis,0.7733,0.2944,0.175,0.875,0.2917
+449,transfusion.csv,Outlier,0.4,Recency (months),GaussianProcessClassifier,0.7,0.4522,0.325,0.4194,0.3662
+450,transfusion.csv,Outlier,0.4,Recency (months),ExtraTreesClassifier,0.74,0.461,0.35,0.5185,0.4179
+451,transfusion.csv,Outlier,0.4,Recency (months),KNeighborsClassifier,0.7333,0.4255,0.275,0.5,0.3548
+452,transfusion.csv,Outlier,0.4,Recency (months),MLPClassifier,0.7333,0.5245,0.0,0.0,0.0
+453,transfusion.csv,Outlier,0.4,Recency (months),GaussianNB,0.74,0.472,0.275,0.5238,0.3607
+454,transfusion.csv,Outlier,0.4,Recency (months),GradientBoostingClassifier,0.7733,0.338,0.275,0.6875,0.3929
+455,transfusion.csv,Outlier,0.4,Recency (months),RandomForestClassifier,0.7533,0.3935,0.325,0.5652,0.4127
+456,transfusion.csv,Outlier,0.4,Recency (months),QuadraticDiscriminantAnalysis,0.7333,0.5,0.0,0.0,0.0
+457,transfusion.csv,Outlier,0.4,Recency (months),DecisionTreeClassifier,0.7133,0.5211,0.325,0.4483,0.3768
+458,transfusion.csv,Outlier,0.4,Recency (months),SGDClassifier,0.28,,1.0,0.2703,0.4255
+459,transfusion.csv,Outlier,0.6,Recency (months),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+460,transfusion.csv,Outlier,0.6,Recency (months),CatBoostClassifier,0.8,0.2935,0.4,0.7273,0.5161
+461,transfusion.csv,Outlier,0.6,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+462,transfusion.csv,Outlier,0.6,Recency (months),LinearDiscriminantAnalysis,0.7733,0.3014,0.175,0.875,0.2917
+463,transfusion.csv,Outlier,0.6,Recency (months),LogisticRegression,0.7733,0.2889,0.175,0.875,0.2917
+464,transfusion.csv,Outlier,0.6,Recency (months),SVC,0.7533,0.3765,0.1,0.8,0.1778
+465,transfusion.csv,Outlier,0.6,Recency (months),GaussianProcessClassifier,0.7067,0.4575,0.375,0.4412,0.4054
+466,transfusion.csv,Outlier,0.6,Recency (months),AdaBoostClassifier,0.78,0.2935,0.35,0.6667,0.459
+467,transfusion.csv,Outlier,0.6,Recency (months),GaussianNB,0.74,0.4877,0.275,0.5238,0.3607
+468,transfusion.csv,Outlier,0.6,Recency (months),ExtraTreesClassifier,0.76,0.4415,0.475,0.5588,0.5135
+469,transfusion.csv,Outlier,0.6,Recency (months),MLPClassifier,0.7333,0.624,0.0,0.0,0.0
+470,transfusion.csv,Outlier,0.6,Recency (months),GradientBoostingClassifier,0.8133,0.3369,0.425,0.7727,0.5484
+471,transfusion.csv,Outlier,0.6,Recency (months),KNeighborsClassifier,0.7267,0.3944,0.25,0.4762,0.3279
+472,transfusion.csv,Outlier,0.6,Recency (months),RandomForestClassifier,0.7533,0.3698,0.425,0.5484,0.4789
+473,transfusion.csv,Outlier,0.6,Recency (months),QuadraticDiscriminantAnalysis,0.7333,0.5,0.0,0.0,0.0
+474,transfusion.csv,Outlier,0.6,Recency (months),DecisionTreeClassifier,0.7333,0.5289,0.5,0.5,0.5
+475,transfusion.csv,Outlier,0.6,Recency (months),SGDClassifier,0.4333,,0.95,0.314,0.472
+476,transfusion.csv,Outlier,0.8,Recency (months),SVC,0.7333,0.4049,0.0,0.0,0.0
+477,transfusion.csv,Outlier,0.8,Recency (months),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+478,transfusion.csv,Outlier,0.8,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+479,transfusion.csv,Outlier,0.8,Recency (months),LogisticRegression,0.7733,0.2815,0.175,0.875,0.2917
+480,transfusion.csv,Outlier,0.8,Recency (months),LinearDiscriminantAnalysis,0.7733,0.2901,0.175,0.875,0.2917
+481,transfusion.csv,Outlier,0.8,Recency (months),GradientBoostingClassifier,0.7467,0.2897,0.125,0.625,0.2083
+482,transfusion.csv,Outlier,0.8,Recency (months),CatBoostClassifier,0.76,0.2797,0.225,0.6429,0.3333
+483,transfusion.csv,Outlier,0.8,Recency (months),GaussianNB,0.74,0.4827,0.275,0.5238,0.3607
+484,transfusion.csv,Outlier,0.8,Recency (months),KNeighborsClassifier,0.72,0.3857,0.175,0.4375,0.25
+485,transfusion.csv,Outlier,0.8,Recency (months),AdaBoostClassifier,0.78,0.2967,0.375,0.6522,0.4762
+486,transfusion.csv,Outlier,0.8,Recency (months),MLPClassifier,0.7333,0.6253,0.0,0.0,0.0
+487,transfusion.csv,Outlier,0.8,Recency (months),QuadraticDiscriminantAnalysis,0.7333,0.5,0.0,0.0,0.0
+488,transfusion.csv,Outlier,0.8,Recency (months),RandomForestClassifier,0.6933,0.3222,0.225,0.375,0.2812
+489,transfusion.csv,Outlier,0.8,Recency (months),ExtraTreesClassifier,0.7467,0.3336,0.3,0.5455,0.3871
+490,transfusion.csv,Outlier,0.8,Recency (months),GaussianProcessClassifier,0.72,0.4066,0.275,0.4583,0.3438
+491,transfusion.csv,Outlier,0.8,Recency (months),SGDClassifier,0.28,,1.0,0.2703,0.4255
+492,transfusion.csv,Outlier,0.8,Recency (months),DecisionTreeClassifier,0.7133,0.5124,0.25,0.4348,0.3175
+493,transfusion.csv,Outlier,0.2,Frequency (times),LogisticRegression,0.7733,0.2843,0.175,0.875,0.2917
+494,transfusion.csv,Outlier,0.2,Frequency (times),LinearDiscriminantAnalysis,0.78,0.2961,0.2,0.8889,0.3265
+495,transfusion.csv,Outlier,0.2,Frequency (times),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+496,transfusion.csv,Outlier,0.2,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+497,transfusion.csv,Outlier,0.2,Frequency (times),SVC,0.7333,0.4005,0.0,0.0,0.0
+498,transfusion.csv,Outlier,0.2,Frequency (times),QuadraticDiscriminantAnalysis,0.7733,0.3624,0.2,0.8,0.32
+499,transfusion.csv,Outlier,0.2,Frequency (times),CatBoostClassifier,0.76,0.2892,0.25,0.625,0.3571
+500,transfusion.csv,Outlier,0.2,Frequency (times),MLPClassifier,0.7333,0.6198,0.0,0.0,0.0
+501,transfusion.csv,Outlier,0.2,Frequency (times),GaussianNB,0.7667,0.4516,0.225,0.6923,0.3396
+502,transfusion.csv,Outlier,0.2,Frequency (times),AdaBoostClassifier,0.78,0.3419,0.375,0.6522,0.4762
+503,transfusion.csv,Outlier,0.2,Frequency (times),KNeighborsClassifier,0.72,0.3523,0.175,0.4375,0.25
+504,transfusion.csv,Outlier,0.2,Frequency (times),GradientBoostingClassifier,0.7467,0.3102,0.175,0.5833,0.2692
+505,transfusion.csv,Outlier,0.2,Frequency (times),RandomForestClassifier,0.7067,0.3241,0.25,0.4167,0.3125
+506,transfusion.csv,Outlier,0.2,Frequency (times),ExtraTreesClassifier,0.7267,0.3517,0.275,0.4783,0.3492
+507,transfusion.csv,Outlier,0.2,Frequency (times),DecisionTreeClassifier,0.7267,0.5124,0.35,0.4828,0.4058
+508,transfusion.csv,Outlier,0.2,Frequency (times),GaussianProcessClassifier,0.7133,0.4066,0.275,0.44,0.3385
+509,transfusion.csv,Outlier,0.2,Frequency (times),SGDClassifier,0.5467,,0.9,0.36,0.5143
+510,transfusion.csv,Outlier,0.4,Frequency (times),LogisticRegression,0.78,0.297,0.2,0.8889,0.3265
+511,transfusion.csv,Outlier,0.4,Frequency (times),LinearDiscriminantAnalysis,0.78,0.308,0.2,0.8889,0.3265
+512,transfusion.csv,Outlier,0.4,Frequency (times),RidgeClassifier,0.78,,0.175,1.0,0.2979
+513,transfusion.csv,Outlier,0.4,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+514,transfusion.csv,Outlier,0.4,Frequency (times),QuadraticDiscriminantAnalysis,0.7733,0.3525,0.2,0.8,0.32
+515,transfusion.csv,Outlier,0.4,Frequency (times),SVC,0.7333,0.4016,0.0,0.0,0.0
+516,transfusion.csv,Outlier,0.4,Frequency (times),MLPClassifier,0.7333,0.5599,0.0,0.0,0.0
+517,transfusion.csv,Outlier,0.4,Frequency (times),GaussianNB,0.7667,0.4506,0.225,0.6923,0.3396
+518,transfusion.csv,Outlier,0.4,Frequency (times),AdaBoostClassifier,0.78,0.3331,0.375,0.6522,0.4762
+519,transfusion.csv,Outlier,0.4,Frequency (times),GradientBoostingClassifier,0.7933,0.3123,0.325,0.7647,0.4561
+520,transfusion.csv,Outlier,0.4,Frequency (times),CatBoostClassifier,0.7667,0.2939,0.25,0.6667,0.3636
+521,transfusion.csv,Outlier,0.4,Frequency (times),KNeighborsClassifier,0.7333,0.3728,0.2,0.5,0.2857
+522,transfusion.csv,Outlier,0.4,Frequency (times),SGDClassifier,0.5733,,0.875,0.3723,0.5224
+523,transfusion.csv,Outlier,0.4,Frequency (times),GaussianProcessClassifier,0.7133,0.4066,0.275,0.44,0.3385
+524,transfusion.csv,Outlier,0.4,Frequency (times),ExtraTreesClassifier,0.74,0.3581,0.275,0.5238,0.3607
+525,transfusion.csv,Outlier,0.4,Frequency (times),RandomForestClassifier,0.7067,0.3102,0.275,0.4231,0.3333
+526,transfusion.csv,Outlier,0.4,Frequency (times),DecisionTreeClassifier,0.7667,0.5351,0.375,0.6,0.4615
+527,transfusion.csv,Outlier,0.6,Frequency (times),LogisticRegression,0.7733,0.3222,0.2,0.8,0.32
+528,transfusion.csv,Outlier,0.6,Frequency (times),LinearDiscriminantAnalysis,0.78,0.3408,0.25,0.7692,0.3774
+529,transfusion.csv,Outlier,0.6,Frequency (times),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+530,transfusion.csv,Outlier,0.6,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+531,transfusion.csv,Outlier,0.6,Frequency (times),QuadraticDiscriminantAnalysis,0.7667,0.4169,0.25,0.6667,0.3636
+532,transfusion.csv,Outlier,0.6,Frequency (times),GaussianNB,0.7733,0.4525,0.225,0.75,0.3462
+533,transfusion.csv,Outlier,0.6,Frequency (times),MLPClassifier,0.7333,0.378,0.0,0.0,0.0
+534,transfusion.csv,Outlier,0.6,Frequency (times),CatBoostClassifier,0.7667,0.2773,0.225,0.6923,0.3396
+535,transfusion.csv,Outlier,0.6,Frequency (times),SVC,0.7333,0.5968,0.0,0.0,0.0
+536,transfusion.csv,Outlier,0.6,Frequency (times),KNeighborsClassifier,0.7267,0.3727,0.15,0.4615,0.2264
+537,transfusion.csv,Outlier,0.6,Frequency (times),AdaBoostClassifier,0.7867,0.3807,0.375,0.6818,0.4839
+538,transfusion.csv,Outlier,0.6,Frequency (times),RandomForestClassifier,0.7067,0.3197,0.25,0.4167,0.3125
+539,transfusion.csv,Outlier,0.6,Frequency (times),ExtraTreesClassifier,0.7533,0.3464,0.3,0.5714,0.3934
+540,transfusion.csv,Outlier,0.6,Frequency (times),GradientBoostingClassifier,0.7867,0.3057,0.25,0.8333,0.3846
+541,transfusion.csv,Outlier,0.6,Frequency (times),GaussianProcessClassifier,0.7133,0.4066,0.25,0.4348,0.3175
+542,transfusion.csv,Outlier,0.6,Frequency (times),DecisionTreeClassifier,0.7067,0.5267,0.325,0.4333,0.3714
+543,transfusion.csv,Outlier,0.6,Frequency (times),SGDClassifier,0.7333,,0.0,0.0,0.0
+544,transfusion.csv,Outlier,0.8,Frequency (times),MLPClassifier,0.7333,0.6024,0.0,0.0,0.0
+545,transfusion.csv,Outlier,0.8,Frequency (times),SVC,0.7333,0.3964,0.0,0.0,0.0
+546,transfusion.csv,Outlier,0.8,Frequency (times),LogisticRegression,0.78,0.2888,0.2,0.8889,0.3265
+547,transfusion.csv,Outlier,0.8,Frequency (times),RidgeClassifier,0.78,,0.175,1.0,0.2979
+548,transfusion.csv,Outlier,0.8,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+549,transfusion.csv,Outlier,0.8,Frequency (times),LinearDiscriminantAnalysis,0.78,0.3123,0.2,0.8889,0.3265
+550,transfusion.csv,Outlier,0.8,Frequency (times),GaussianNB,0.78,0.453,0.225,0.8182,0.3529
+551,transfusion.csv,Outlier,0.8,Frequency (times),AdaBoostClassifier,0.76,0.2886,0.15,0.75,0.25
+552,transfusion.csv,Outlier,0.8,Frequency (times),QuadraticDiscriminantAnalysis,0.7533,0.2799,0.175,0.6364,0.2745
+553,transfusion.csv,Outlier,0.8,Frequency (times),CatBoostClassifier,0.7667,0.3068,0.225,0.6923,0.3396
+554,transfusion.csv,Outlier,0.8,Frequency (times),KNeighborsClassifier,0.7133,0.3909,0.15,0.4,0.2182
+555,transfusion.csv,Outlier,0.8,Frequency (times),ExtraTreesClassifier,0.7533,0.3453,0.3,0.5714,0.3934
+556,transfusion.csv,Outlier,0.8,Frequency (times),RandomForestClassifier,0.72,0.3234,0.275,0.4583,0.3438
+557,transfusion.csv,Outlier,0.8,Frequency (times),GradientBoostingClassifier,0.7667,0.3206,0.2,0.7273,0.3137
+558,transfusion.csv,Outlier,0.8,Frequency (times),GaussianProcessClassifier,0.7133,0.4066,0.2,0.4211,0.2712
+559,transfusion.csv,Outlier,0.8,Frequency (times),DecisionTreeClassifier,0.7267,0.5123,0.25,0.4762,0.3279
+560,transfusion.csv,Outlier,0.8,Frequency (times),SGDClassifier,0.5467,,0.9,0.36,0.5143
+561,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+562,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),SVC,0.7333,0.4128,0.0,0.0,0.0
+563,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),GaussianNB,0.7333,0.2958,0.0,0.0,0.0
+564,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),LogisticRegression,0.76,0.2502,0.1,1.0,0.1818
+565,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+566,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.2559,0.05,0.5,0.0909
+567,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.76,0.2531,0.1,1.0,0.1818
+568,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),MLPClassifier,0.5067,0.6594,0.875,0.3365,0.4861
+569,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),AdaBoostClassifier,0.72,0.3515,0.0,0.0,0.0
+570,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),CatBoostClassifier,0.7667,0.2727,0.2,0.7273,0.3137
+571,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),GradientBoostingClassifier,0.7733,0.2768,0.275,0.6875,0.3929
+572,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),KNeighborsClassifier,0.7467,0.392,0.175,0.5833,0.2692
+573,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),RandomForestClassifier,0.7067,0.3226,0.3,0.4286,0.3529
+574,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),ExtraTreesClassifier,0.7467,0.352,0.25,0.5556,0.3448
+575,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),GaussianProcessClassifier,0.7133,0.4066,0.225,0.4286,0.2951
+576,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),DecisionTreeClassifier,0.6867,0.5123,0.3,0.3871,0.338
+577,transfusion.csv,Outlier,0.2,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+578,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),SVC,0.7333,0.3993,0.0,0.0,0.0
+579,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),GaussianNB,0.7333,0.313,0.0,0.0,0.0
+580,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+581,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+582,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),LogisticRegression,0.7533,0.2401,0.075,1.0,0.1395
+583,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.76,0.2483,0.1,1.0,0.1818
+584,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.2622,0.05,0.5,0.0909
+585,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),AdaBoostClassifier,0.7333,0.2857,0.0,0.0,0.0
+586,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),CatBoostClassifier,0.76,0.2933,0.125,0.8333,0.2174
+587,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),KNeighborsClassifier,0.7267,0.4264,0.1,0.4444,0.1633
+588,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),MLPClassifier,0.7333,0.6365,0.0,0.0,0.0
+589,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),GradientBoostingClassifier,0.78,0.2685,0.25,0.7692,0.3774
+590,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),RandomForestClassifier,0.6933,0.314,0.275,0.3929,0.3235
+591,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),ExtraTreesClassifier,0.7267,0.3585,0.3,0.48,0.3692
+592,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),GaussianProcessClassifier,0.72,0.4066,0.225,0.45,0.3
+593,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),DecisionTreeClassifier,0.7333,0.4959,0.225,0.5,0.3103
+594,transfusion.csv,Outlier,0.4,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+595,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),GaussianNB,0.7333,0.3182,0.0,0.0,0.0
+596,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+597,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),SVC,0.7333,0.4005,0.0,0.0,0.0
+598,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+599,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7533,0.2528,0.075,1.0,0.1395
+600,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),LogisticRegression,0.7533,0.2472,0.075,1.0,0.1395
+601,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7267,0.2618,0.025,0.3333,0.0465
+602,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),CatBoostClassifier,0.7467,0.2825,0.05,1.0,0.0952
+603,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),AdaBoostClassifier,0.7267,0.3014,0.025,0.3333,0.0465
+604,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),KNeighborsClassifier,0.72,0.39,0.125,0.4167,0.1923
+605,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),RandomForestClassifier,0.7067,0.3183,0.25,0.4167,0.3125
+606,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),ExtraTreesClassifier,0.7667,0.358,0.325,0.619,0.4262
+607,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),GradientBoostingClassifier,0.7533,0.2714,0.125,0.7143,0.2128
+608,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),MLPClassifier,0.7333,0.6192,0.0,0.0,0.0
+609,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),GaussianProcessClassifier,0.7333,0.4066,0.25,0.5,0.3333
+610,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),DecisionTreeClassifier,0.76,0.5267,0.325,0.5909,0.4194
+611,transfusion.csv,Outlier,0.6,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+612,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),GaussianNB,0.7333,0.3811,0.0,0.0,0.0
+613,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+614,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),SVC,0.7333,0.5951,0.0,0.0,0.0
+615,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),LogisticRegression,0.7533,0.2589,0.075,1.0,0.1395
+616,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+617,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7533,0.2625,0.075,1.0,0.1395
+618,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),CatBoostClassifier,0.7333,0.3042,0.0,0.0,0.0
+619,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),AdaBoostClassifier,0.72,0.3042,0.0,0.0,0.0
+620,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),KNeighborsClassifier,0.7,0.5019,0.125,0.3333,0.1818
+621,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),MLPClassifier,0.6333,0.5964,0.825,0.4074,0.5455
+622,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),GradientBoostingClassifier,0.76,0.2641,0.15,0.75,0.25
+623,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),RandomForestClassifier,0.7467,0.3332,0.225,0.5625,0.3214
+624,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.78,0.2968,0.25,0.7692,0.3774
+625,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),ExtraTreesClassifier,0.74,0.3693,0.275,0.5238,0.3607
+626,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),GaussianProcessClassifier,0.7333,0.4066,0.2,0.5,0.2857
+627,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),DecisionTreeClassifier,0.7067,0.5172,0.3,0.4286,0.3529
+628,transfusion.csv,Outlier,0.8,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+629,transfusion.csv,Outlier,0.2,Time (months),GaussianNB,0.7333,0.4141,0.0,0.0,0.0
+630,transfusion.csv,Outlier,0.2,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+631,transfusion.csv,Outlier,0.2,Time (months),SVC,0.7333,0.5906,0.0,0.0,0.0
+632,transfusion.csv,Outlier,0.2,Time (months),LogisticRegression,0.7533,0.2867,0.075,1.0,0.1395
+633,transfusion.csv,Outlier,0.2,Time (months),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+634,transfusion.csv,Outlier,0.2,Time (months),LinearDiscriminantAnalysis,0.7533,0.2884,0.075,1.0,0.1395
+635,transfusion.csv,Outlier,0.2,Time (months),CatBoostClassifier,0.7333,0.321,0.0,0.0,0.0
+636,transfusion.csv,Outlier,0.2,Time (months),AdaBoostClassifier,0.7267,0.3253,0.025,0.3333,0.0465
+637,transfusion.csv,Outlier,0.2,Time (months),MLPClassifier,0.6667,0.5057,0.0,0.0,0.0
+638,transfusion.csv,Outlier,0.2,Time (months),KNeighborsClassifier,0.7,0.5019,0.125,0.3333,0.1818
+639,transfusion.csv,Outlier,0.2,Time (months),GradientBoostingClassifier,0.7267,0.3216,0.025,0.3333,0.0465
+640,transfusion.csv,Outlier,0.2,Time (months),RandomForestClassifier,0.7533,0.3606,0.25,0.5882,0.3509
+641,transfusion.csv,Outlier,0.2,Time (months),QuadraticDiscriminantAnalysis,0.7867,0.283,0.2,1.0,0.3333
+642,transfusion.csv,Outlier,0.2,Time (months),ExtraTreesClassifier,0.74,0.37,0.3,0.5217,0.381
+643,transfusion.csv,Outlier,0.2,Time (months),GaussianProcessClassifier,0.7267,0.4066,0.175,0.4667,0.2545
+644,transfusion.csv,Outlier,0.2,Time (months),DecisionTreeClassifier,0.6733,0.5219,0.275,0.3548,0.3099
+645,transfusion.csv,Outlier,0.2,Time (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+646,transfusion.csv,Outlier,0.4,Time (months),GaussianNB,0.7333,0.4323,0.0,0.0,0.0
+647,transfusion.csv,Outlier,0.4,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+648,transfusion.csv,Outlier,0.4,Time (months),LogisticRegression,0.7533,0.2999,0.075,1.0,0.1395
+649,transfusion.csv,Outlier,0.4,Time (months),RidgeClassifier,0.7467,,0.05,1.0,0.0952
+650,transfusion.csv,Outlier,0.4,Time (months),LinearDiscriminantAnalysis,0.7533,0.2995,0.075,1.0,0.1395
+651,transfusion.csv,Outlier,0.4,Time (months),SVC,0.7333,0.588,0.0,0.0,0.0
+652,transfusion.csv,Outlier,0.4,Time (months),CatBoostClassifier,0.7333,0.3289,0.0,0.0,0.0
+653,transfusion.csv,Outlier,0.4,Time (months),AdaBoostClassifier,0.74,0.2324,0.075,0.6,0.1333
+654,transfusion.csv,Outlier,0.4,Time (months),KNeighborsClassifier,0.7,0.5019,0.125,0.3333,0.1818
+655,transfusion.csv,Outlier,0.4,Time (months),GradientBoostingClassifier,0.7267,0.315,0.025,0.3333,0.0465
+656,transfusion.csv,Outlier,0.4,Time (months),QuadraticDiscriminantAnalysis,0.7467,0.2634,0.05,1.0,0.0952
+657,transfusion.csv,Outlier,0.4,Time (months),MLPClassifier,0.7333,0.6716,0.0,0.0,0.0
+658,transfusion.csv,Outlier,0.4,Time (months),RandomForestClassifier,0.7533,0.3426,0.2,0.6154,0.3019
+659,transfusion.csv,Outlier,0.4,Time (months),ExtraTreesClassifier,0.7467,0.383,0.25,0.5556,0.3448
+660,transfusion.csv,Outlier,0.4,Time (months),GaussianProcessClassifier,0.7267,0.4066,0.175,0.4667,0.2545
+661,transfusion.csv,Outlier,0.4,Time (months),DecisionTreeClassifier,0.6867,0.491,0.275,0.3793,0.3188
+662,transfusion.csv,Outlier,0.4,Time (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+663,transfusion.csv,Outlier,0.6,Time (months),GaussianNB,0.7333,0.4342,0.0,0.0,0.0
+664,transfusion.csv,Outlier,0.6,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+665,transfusion.csv,Outlier,0.6,Time (months),LogisticRegression,0.7533,0.3173,0.075,1.0,0.1395
+666,transfusion.csv,Outlier,0.6,Time (months),RidgeClassifier,0.74,,0.025,1.0,0.0488
+667,transfusion.csv,Outlier,0.6,Time (months),LinearDiscriminantAnalysis,0.7533,0.317,0.075,1.0,0.1395
+668,transfusion.csv,Outlier,0.6,Time (months),SVC,0.7333,0.4035,0.0,0.0,0.0
+669,transfusion.csv,Outlier,0.6,Time (months),CatBoostClassifier,0.7333,0.3158,0.0,0.0,0.0
+670,transfusion.csv,Outlier,0.6,Time (months),AdaBoostClassifier,0.72,0.2631,0.0,0.0,0.0
+671,transfusion.csv,Outlier,0.6,Time (months),KNeighborsClassifier,0.7,0.5199,0.125,0.3333,0.1818
+672,transfusion.csv,Outlier,0.6,Time (months),QuadraticDiscriminantAnalysis,0.7867,0.3493,0.2,1.0,0.3333
+673,transfusion.csv,Outlier,0.6,Time (months),GradientBoostingClassifier,0.74,0.2992,0.15,0.5455,0.2353
+674,transfusion.csv,Outlier,0.6,Time (months),RandomForestClassifier,0.74,0.3245,0.2,0.5333,0.2909
+675,transfusion.csv,Outlier,0.6,Time (months),GaussianProcessClassifier,0.7267,0.4066,0.175,0.4667,0.2545
+676,transfusion.csv,Outlier,0.6,Time (months),ExtraTreesClassifier,0.7533,0.3611,0.275,0.5789,0.3729
+677,transfusion.csv,Outlier,0.6,Time (months),DecisionTreeClassifier,0.7067,0.5134,0.2,0.4,0.2667
+678,transfusion.csv,Outlier,0.6,Time (months),MLPClassifier,0.42,0.5288,0.25,0.1493,0.1869
+679,transfusion.csv,Outlier,0.6,Time (months),SGDClassifier,0.7133,,0.425,0.4595,0.4416
+680,transfusion.csv,Outlier,0.8,Time (months),GaussianNB,0.7333,0.4188,0.0,0.0,0.0
+681,transfusion.csv,Outlier,0.8,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+682,transfusion.csv,Outlier,0.8,Time (months),RidgeClassifier,0.7667,,0.125,1.0,0.2222
+683,transfusion.csv,Outlier,0.8,Time (months),LinearDiscriminantAnalysis,0.7733,0.2668,0.15,1.0,0.2609
+684,transfusion.csv,Outlier,0.8,Time (months),LogisticRegression,0.7667,0.2642,0.125,1.0,0.2222
+685,transfusion.csv,Outlier,0.8,Time (months),CatBoostClassifier,0.7333,0.3076,0.0,0.0,0.0
+686,transfusion.csv,Outlier,0.8,Time (months),SVC,0.7333,0.5982,0.0,0.0,0.0
+687,transfusion.csv,Outlier,0.8,Time (months),AdaBoostClassifier,0.72,0.2982,0.0,0.0,0.0
+688,transfusion.csv,Outlier,0.8,Time (months),KNeighborsClassifier,0.6933,0.5109,0.1,0.2857,0.1481
+689,transfusion.csv,Outlier,0.8,Time (months),MLPClassifier,0.7,0.7174,0.0,0.0,0.0
+690,transfusion.csv,Outlier,0.8,Time (months),GradientBoostingClassifier,0.7667,0.3133,0.175,0.7778,0.2857
+691,transfusion.csv,Outlier,0.8,Time (months),RandomForestClassifier,0.74,0.3432,0.225,0.5294,0.3158
+692,transfusion.csv,Outlier,0.8,Time (months),GaussianProcessClassifier,0.72,0.4066,0.15,0.4286,0.2222
+693,transfusion.csv,Outlier,0.8,Time (months),ExtraTreesClassifier,0.7533,0.3732,0.3,0.5714,0.3934
+694,transfusion.csv,Outlier,0.8,Time (months),QuadraticDiscriminantAnalysis,0.7333,0.4907,0.325,0.5,0.3939
+695,transfusion.csv,Outlier,0.8,Time (months),DecisionTreeClassifier,0.72,0.5134,0.2,0.4444,0.2759
+696,transfusion.csv,Outlier,0.8,Time (months),SGDClassifier,0.5333,,0.925,0.3558,0.5139
+697,transfusion.csv,Noisy,0.2,Recency (months),KNeighborsClassifier,0.7333,0.3641,0.3,0.5,0.375
+698,transfusion.csv,Noisy,0.2,Recency (months),LogisticRegression,0.7867,0.2752,0.2,1.0,0.3333
+699,transfusion.csv,Noisy,0.2,Recency (months),CatBoostClassifier,0.8067,0.2882,0.375,0.7895,0.5085
+700,transfusion.csv,Noisy,0.2,Recency (months),SVC,0.7467,0.4156,0.1,0.6667,0.1739
+701,transfusion.csv,Noisy,0.2,Recency (months),LinearDiscriminantAnalysis,0.7867,0.2841,0.2,1.0,0.3333
+702,transfusion.csv,Noisy,0.2,Recency (months),RidgeClassifier,0.7733,,0.15,1.0,0.2609
+703,transfusion.csv,Noisy,0.2,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+704,transfusion.csv,Noisy,0.2,Recency (months),AdaBoostClassifier,0.8067,0.3091,0.4,0.7619,0.5246
+705,transfusion.csv,Noisy,0.2,Recency (months),GaussianProcessClassifier,0.7133,0.4589,0.325,0.4483,0.3768
+706,transfusion.csv,Noisy,0.2,Recency (months),GaussianNB,0.74,0.4694,0.275,0.5238,0.3607
+707,transfusion.csv,Noisy,0.2,Recency (months),GradientBoostingClassifier,0.7933,0.3224,0.35,0.7368,0.4746
+708,transfusion.csv,Noisy,0.2,Recency (months),ExtraTreesClassifier,0.7333,0.4576,0.325,0.5,0.3939
+709,transfusion.csv,Noisy,0.2,Recency (months),RandomForestClassifier,0.7533,0.4005,0.375,0.5556,0.4478
+710,transfusion.csv,Noisy,0.2,Recency (months),MLPClassifier,0.7333,0.6034,0.0,0.0,0.0
+711,transfusion.csv,Noisy,0.2,Recency (months),DecisionTreeClassifier,0.7533,0.537,0.375,0.5556,0.4478
+712,transfusion.csv,Noisy,0.2,Recency (months),SGDClassifier,0.7933,,0.3,0.8,0.4364
+713,transfusion.csv,Noisy,0.2,Recency (months),QuadraticDiscriminantAnalysis,0.6467,0.5,0.575,0.3898,0.4646
+714,transfusion.csv,Noisy,0.4,Recency (months),KNeighborsClassifier,0.7267,0.398,0.25,0.4762,0.3279
+715,transfusion.csv,Noisy,0.4,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+716,transfusion.csv,Noisy,0.4,Recency (months),SVC,0.7467,0.4365,0.1,0.6667,0.1739
+717,transfusion.csv,Noisy,0.4,Recency (months),CatBoostClassifier,0.7867,0.3101,0.375,0.6818,0.4839
+718,transfusion.csv,Noisy,0.4,Recency (months),RidgeClassifier,0.78,,0.175,1.0,0.2979
+719,transfusion.csv,Noisy,0.4,Recency (months),LogisticRegression,0.7867,0.2835,0.2,1.0,0.3333
+720,transfusion.csv,Noisy,0.4,Recency (months),LinearDiscriminantAnalysis,0.7867,0.2957,0.2,1.0,0.3333
+721,transfusion.csv,Noisy,0.4,Recency (months),GradientBoostingClassifier,0.78,0.3248,0.325,0.6842,0.4407
+722,transfusion.csv,Noisy,0.4,Recency (months),MLPClassifier,0.7267,0.3339,0.025,0.3333,0.0465
+723,transfusion.csv,Noisy,0.4,Recency (months),GaussianNB,0.74,0.4733,0.3,0.5217,0.381
+724,transfusion.csv,Noisy,0.4,Recency (months),AdaBoostClassifier,0.8,0.3561,0.375,0.75,0.5
+725,transfusion.csv,Noisy,0.4,Recency (months),ExtraTreesClassifier,0.74,0.4786,0.4,0.5161,0.4507
+726,transfusion.csv,Noisy,0.4,Recency (months),RandomForestClassifier,0.7533,0.4461,0.375,0.5556,0.4478
+727,transfusion.csv,Noisy,0.4,Recency (months),GaussianProcessClassifier,0.7133,0.453,0.325,0.4483,0.3768
+728,transfusion.csv,Noisy,0.4,Recency (months),QuadraticDiscriminantAnalysis,0.7333,0.5,0.0,0.0,0.0
+729,transfusion.csv,Noisy,0.4,Recency (months),DecisionTreeClassifier,0.7533,0.5165,0.45,0.5455,0.4932
+730,transfusion.csv,Noisy,0.4,Recency (months),SGDClassifier,0.2867,,1.0,0.2721,0.4278
+731,transfusion.csv,Noisy,0.6,Recency (months),SVC,0.7467,0.4469,0.1,0.6667,0.1739
+732,transfusion.csv,Noisy,0.6,Recency (months),CatBoostClassifier,0.7867,0.3314,0.45,0.6429,0.5294
+733,transfusion.csv,Noisy,0.6,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+734,transfusion.csv,Noisy,0.6,Recency (months),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+735,transfusion.csv,Noisy,0.6,Recency (months),RandomForestClassifier,0.7267,0.4153,0.425,0.4857,0.4533
+736,transfusion.csv,Noisy,0.6,Recency (months),GaussianProcessClassifier,0.7133,0.4486,0.35,0.4516,0.3944
+737,transfusion.csv,Noisy,0.6,Recency (months),AdaBoostClassifier,0.78,0.3285,0.4,0.64,0.4923
+738,transfusion.csv,Noisy,0.6,Recency (months),LogisticRegression,0.78,0.3024,0.2,0.8889,0.3265
+739,transfusion.csv,Noisy,0.6,Recency (months),LinearDiscriminantAnalysis,0.7867,0.3108,0.225,0.9,0.36
+740,transfusion.csv,Noisy,0.6,Recency (months),KNeighborsClassifier,0.7267,0.3739,0.25,0.4762,0.3279
+741,transfusion.csv,Noisy,0.6,Recency (months),GaussianNB,0.7333,0.4758,0.3,0.5,0.375
+742,transfusion.csv,Noisy,0.6,Recency (months),GradientBoostingClassifier,0.7733,0.35,0.4,0.6154,0.4848
+743,transfusion.csv,Noisy,0.6,Recency (months),ExtraTreesClassifier,0.7267,0.4694,0.425,0.4857,0.4533
+744,transfusion.csv,Noisy,0.6,Recency (months),MLPClassifier,0.74,0.2972,0.075,0.6,0.1333
+745,transfusion.csv,Noisy,0.6,Recency (months),QuadraticDiscriminantAnalysis,0.7333,0.5,0.0,0.0,0.0
+746,transfusion.csv,Noisy,0.6,Recency (months),DecisionTreeClassifier,0.6933,0.5191,0.525,0.4375,0.4773
+747,transfusion.csv,Noisy,0.6,Recency (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+748,transfusion.csv,Noisy,0.8,Recency (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+749,transfusion.csv,Noisy,0.8,Recency (months),CatBoostClassifier,0.76,0.3402,0.375,0.5769,0.4545
+750,transfusion.csv,Noisy,0.8,Recency (months),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+751,transfusion.csv,Noisy,0.8,Recency (months),LinearDiscriminantAnalysis,0.7867,0.3158,0.225,0.9,0.36
+752,transfusion.csv,Noisy,0.8,Recency (months),LogisticRegression,0.78,0.3041,0.2,0.8889,0.3265
+753,transfusion.csv,Noisy,0.8,Recency (months),MLPClassifier,0.7333,0.5483,0.0,0.0,0.0
+754,transfusion.csv,Noisy,0.8,Recency (months),SVC,0.7333,0.4112,0.025,0.5,0.0476
+755,transfusion.csv,Noisy,0.8,Recency (months),KNeighborsClassifier,0.72,0.3585,0.275,0.4583,0.3438
+756,transfusion.csv,Noisy,0.8,Recency (months),GaussianNB,0.7333,0.4816,0.3,0.5,0.375
+757,transfusion.csv,Noisy,0.8,Recency (months),AdaBoostClassifier,0.76,0.3542,0.35,0.5833,0.4375
+758,transfusion.csv,Noisy,0.8,Recency (months),QuadraticDiscriminantAnalysis,0.7333,0.5,0.0,0.0,0.0
+759,transfusion.csv,Noisy,0.8,Recency (months),GradientBoostingClassifier,0.7533,0.3448,0.325,0.5652,0.4127
+760,transfusion.csv,Noisy,0.8,Recency (months),RandomForestClassifier,0.7267,0.3923,0.375,0.4839,0.4225
+761,transfusion.csv,Noisy,0.8,Recency (months),GaussianProcessClassifier,0.72,0.3992,0.35,0.4667,0.4
+762,transfusion.csv,Noisy,0.8,Recency (months),ExtraTreesClassifier,0.74,0.4057,0.35,0.5185,0.4179
+763,transfusion.csv,Noisy,0.8,Recency (months),DecisionTreeClassifier,0.72,0.4816,0.3,0.4615,0.3636
+764,transfusion.csv,Noisy,0.8,Recency (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+765,transfusion.csv,Noisy,0.2,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+766,transfusion.csv,Noisy,0.2,Frequency (times),CatBoostClassifier,0.76,0.3352,0.375,0.5769,0.4545
+767,transfusion.csv,Noisy,0.2,Frequency (times),QuadraticDiscriminantAnalysis,0.78,0.4084,0.275,0.7333,0.4
+768,transfusion.csv,Noisy,0.2,Frequency (times),LogisticRegression,0.78,0.3057,0.2,0.8889,0.3265
+769,transfusion.csv,Noisy,0.2,Frequency (times),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+770,transfusion.csv,Noisy,0.2,Frequency (times),SVC,0.7333,0.3562,0.025,0.5,0.0476
+771,transfusion.csv,Noisy,0.2,Frequency (times),LinearDiscriminantAnalysis,0.7867,0.3159,0.225,0.9,0.36
+772,transfusion.csv,Noisy,0.2,Frequency (times),GaussianNB,0.7733,0.4275,0.225,0.75,0.3462
+773,transfusion.csv,Noisy,0.2,Frequency (times),KNeighborsClassifier,0.7133,0.3386,0.25,0.4348,0.3175
+774,transfusion.csv,Noisy,0.2,Frequency (times),AdaBoostClassifier,0.7533,0.3228,0.35,0.56,0.4308
+775,transfusion.csv,Noisy,0.2,Frequency (times),GradientBoostingClassifier,0.7267,0.3577,0.3,0.48,0.3692
+776,transfusion.csv,Noisy,0.2,Frequency (times),MLPClassifier,0.7333,0.4541,0.0,0.0,0.0
+777,transfusion.csv,Noisy,0.2,Frequency (times),RandomForestClassifier,0.7467,0.3794,0.375,0.5357,0.4412
+778,transfusion.csv,Noisy,0.2,Frequency (times),ExtraTreesClassifier,0.7067,0.4141,0.375,0.4412,0.4054
+779,transfusion.csv,Noisy,0.2,Frequency (times),GaussianProcessClassifier,0.7067,0.3991,0.35,0.4375,0.3889
+780,transfusion.csv,Noisy,0.2,Frequency (times),DecisionTreeClassifier,0.72,0.4816,0.375,0.4688,0.4167
+781,transfusion.csv,Noisy,0.2,Frequency (times),SGDClassifier,0.5067,,0.925,0.3426,0.5
+782,transfusion.csv,Noisy,0.4,Frequency (times),QuadraticDiscriminantAnalysis,0.7867,0.4133,0.3,0.75,0.4286
+783,transfusion.csv,Noisy,0.4,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+784,transfusion.csv,Noisy,0.4,Frequency (times),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+785,transfusion.csv,Noisy,0.4,Frequency (times),LogisticRegression,0.7867,0.3107,0.225,0.9,0.36
+786,transfusion.csv,Noisy,0.4,Frequency (times),LinearDiscriminantAnalysis,0.7867,0.3167,0.225,0.9,0.36
+787,transfusion.csv,Noisy,0.4,Frequency (times),SVC,0.7333,0.3556,0.025,0.5,0.0476
+788,transfusion.csv,Noisy,0.4,Frequency (times),CatBoostClassifier,0.7467,0.359,0.325,0.5417,0.4062
+789,transfusion.csv,Noisy,0.4,Frequency (times),AdaBoostClassifier,0.76,0.3676,0.425,0.5667,0.4857
+790,transfusion.csv,Noisy,0.4,Frequency (times),GaussianNB,0.7733,0.4288,0.225,0.75,0.3462
+791,transfusion.csv,Noisy,0.4,Frequency (times),MLPClassifier,0.6867,0.5082,0.7,0.4444,0.5437
+792,transfusion.csv,Noisy,0.4,Frequency (times),GradientBoostingClassifier,0.7067,0.383,0.3,0.4286,0.3529
+793,transfusion.csv,Noisy,0.4,Frequency (times),KNeighborsClassifier,0.7067,0.3364,0.25,0.4167,0.3125
+794,transfusion.csv,Noisy,0.4,Frequency (times),RandomForestClassifier,0.72,0.3825,0.275,0.4583,0.3438
+795,transfusion.csv,Noisy,0.4,Frequency (times),ExtraTreesClassifier,0.72,0.3835,0.35,0.4667,0.4
+796,transfusion.csv,Noisy,0.4,Frequency (times),DecisionTreeClassifier,0.6933,0.4816,0.275,0.3929,0.3235
+797,transfusion.csv,Noisy,0.4,Frequency (times),GaussianProcessClassifier,0.6933,0.3975,0.3,0.4,0.3429
+798,transfusion.csv,Noisy,0.4,Frequency (times),SGDClassifier,0.6133,,0.85,0.3953,0.5397
+799,transfusion.csv,Noisy,0.6,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+800,transfusion.csv,Noisy,0.6,Frequency (times),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+801,transfusion.csv,Noisy,0.6,Frequency (times),QuadraticDiscriminantAnalysis,0.78,0.4072,0.275,0.7333,0.4
+802,transfusion.csv,Noisy,0.6,Frequency (times),LogisticRegression,0.78,0.3059,0.2,0.8889,0.3265
+803,transfusion.csv,Noisy,0.6,Frequency (times),LinearDiscriminantAnalysis,0.7867,0.3161,0.225,0.9,0.36
+804,transfusion.csv,Noisy,0.6,Frequency (times),MLPClassifier,0.6067,0.6407,0.85,0.3908,0.5354
+805,transfusion.csv,Noisy,0.6,Frequency (times),CatBoostClassifier,0.7667,0.3437,0.35,0.6087,0.4444
+806,transfusion.csv,Noisy,0.6,Frequency (times),SVC,0.74,0.6155,0.025,1.0,0.0488
+807,transfusion.csv,Noisy,0.6,Frequency (times),GaussianNB,0.7733,0.4233,0.225,0.75,0.3462
+808,transfusion.csv,Noisy,0.6,Frequency (times),GradientBoostingClassifier,0.76,0.3363,0.325,0.5909,0.4194
+809,transfusion.csv,Noisy,0.6,Frequency (times),AdaBoostClassifier,0.7533,0.3251,0.425,0.5484,0.4789
+810,transfusion.csv,Noisy,0.6,Frequency (times),RandomForestClassifier,0.7267,0.3973,0.35,0.4828,0.4058
+811,transfusion.csv,Noisy,0.6,Frequency (times),ExtraTreesClassifier,0.72,0.3974,0.35,0.4667,0.4
+812,transfusion.csv,Noisy,0.6,Frequency (times),KNeighborsClassifier,0.7133,0.322,0.225,0.4286,0.2951
+813,transfusion.csv,Noisy,0.6,Frequency (times),SGDClassifier,0.2867,,1.0,0.2721,0.4278
+814,transfusion.csv,Noisy,0.6,Frequency (times),GaussianProcessClassifier,0.68,0.407,0.325,0.3824,0.3514
+815,transfusion.csv,Noisy,0.6,Frequency (times),DecisionTreeClassifier,0.7067,0.4816,0.3,0.4286,0.3529
+816,transfusion.csv,Noisy,0.8,Frequency (times),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+817,transfusion.csv,Noisy,0.8,Frequency (times),LogisticRegression,0.78,0.303,0.2,0.8889,0.3265
+818,transfusion.csv,Noisy,0.8,Frequency (times),SVC,0.7333,0.6244,0.0,0.0,0.0
+819,transfusion.csv,Noisy,0.8,Frequency (times),RidgeClassifier,0.7867,,0.2,1.0,0.3333
+820,transfusion.csv,Noisy,0.8,Frequency (times),MLPClassifier,0.7333,0.5593,0.0,0.0,0.0
+821,transfusion.csv,Noisy,0.8,Frequency (times),LinearDiscriminantAnalysis,0.78,0.3153,0.2,0.8889,0.3265
+822,transfusion.csv,Noisy,0.8,Frequency (times),QuadraticDiscriminantAnalysis,0.7733,0.4075,0.25,0.7143,0.3704
+823,transfusion.csv,Noisy,0.8,Frequency (times),CatBoostClassifier,0.76,0.3225,0.275,0.6111,0.3793
+824,transfusion.csv,Noisy,0.8,Frequency (times),GradientBoostingClassifier,0.6867,0.353,0.25,0.3704,0.2985
+825,transfusion.csv,Noisy,0.8,Frequency (times),GaussianNB,0.7733,0.4251,0.225,0.75,0.3462
+826,transfusion.csv,Noisy,0.8,Frequency (times),AdaBoostClassifier,0.76,0.3334,0.225,0.6429,0.3333
+827,transfusion.csv,Noisy,0.8,Frequency (times),KNeighborsClassifier,0.7133,0.325,0.2,0.4211,0.2712
+828,transfusion.csv,Noisy,0.8,Frequency (times),RandomForestClassifier,0.7267,0.3777,0.25,0.4762,0.3279
+829,transfusion.csv,Noisy,0.8,Frequency (times),ExtraTreesClassifier,0.7533,0.3858,0.375,0.5556,0.4478
+830,transfusion.csv,Noisy,0.8,Frequency (times),DecisionTreeClassifier,0.6933,0.4816,0.35,0.4118,0.3784
+831,transfusion.csv,Noisy,0.8,Frequency (times),GaussianProcessClassifier,0.6933,0.3999,0.3,0.4,0.3429
+832,transfusion.csv,Noisy,0.8,Frequency (times),SGDClassifier,0.6133,,0.85,0.3953,0.5397
+833,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),RidgeClassifier,0.7333,,0.0,0.0,0.0
+834,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+835,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),SVC,0.7333,0.6259,0.0,0.0,0.0
+836,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),CatBoostClassifier,0.7867,0.2999,0.325,0.7222,0.4483
+837,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),LogisticRegression,0.7333,0.2452,0.0,0.0,0.0
+838,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7333,0.2406,0.0,0.0,0.0
+839,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),GaussianNB,0.7333,0.2443,0.0,0.0,0.0
+840,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.2944,0.0,0.0,0.0
+841,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),GradientBoostingClassifier,0.7133,0.3366,0.25,0.4348,0.3175
+842,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),ExtraTreesClassifier,0.72,0.3873,0.25,0.4545,0.3226
+843,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),KNeighborsClassifier,0.72,0.3622,0.15,0.4286,0.2222
+844,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),RandomForestClassifier,0.7267,0.389,0.25,0.4762,0.3279
+845,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),AdaBoostClassifier,0.7467,0.3158,0.1,0.6667,0.1739
+846,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),GaussianProcessClassifier,0.6933,0.3999,0.3,0.4,0.3429
+847,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+848,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),MLPClassifier,0.7333,0.6284,0.0,0.0,0.0
+849,transfusion.csv,Noisy,0.2,Monetary (c.c. blood),DecisionTreeClassifier,0.6533,0.4907,0.3,0.3333,0.3158
+850,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),LogisticRegression,0.7333,0.2493,0.0,0.0,0.0
+851,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),RidgeClassifier,0.7333,,0.0,0.0,0.0
+852,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.3602,0.0,0.0,0.0
+853,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7333,0.2491,0.0,0.0,0.0
+854,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+855,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),GaussianNB,0.7333,0.267,0.0,0.0,0.0
+856,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),SVC,0.7333,0.6141,0.0,0.0,0.0
+857,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),CatBoostClassifier,0.7467,0.3276,0.2,0.5714,0.2963
+858,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),ExtraTreesClassifier,0.7133,0.3915,0.25,0.4348,0.3175
+859,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),KNeighborsClassifier,0.72,0.4055,0.15,0.4286,0.2222
+860,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),RandomForestClassifier,0.7467,0.4083,0.2,0.5714,0.2963
+861,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),GradientBoostingClassifier,0.7133,0.3966,0.175,0.4118,0.2456
+862,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),AdaBoostClassifier,0.7267,0.3155,0.025,0.3333,0.0465
+863,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+864,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),MLPClassifier,0.7333,0.6467,0.0,0.0,0.0
+865,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),GaussianProcessClassifier,0.7,0.409,0.3,0.4138,0.3478
+866,transfusion.csv,Noisy,0.4,Monetary (c.c. blood),DecisionTreeClassifier,0.6533,0.5039,0.15,0.25,0.1875
+867,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),LogisticRegression,0.7333,0.255,0.0,0.0,0.0
+868,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),GaussianNB,0.7333,0.2722,0.0,0.0,0.0
+869,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),SGDClassifier,0.7333,,0.0,0.0,0.0
+870,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),RidgeClassifier,0.7333,,0.0,0.0,0.0
+871,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.3677,0.0,0.0,0.0
+872,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7333,0.2526,0.0,0.0,0.0
+873,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+874,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),SVC,0.7333,0.5997,0.0,0.0,0.0
+875,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),CatBoostClassifier,0.76,0.3141,0.225,0.6429,0.3333
+876,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),RandomForestClassifier,0.74,0.3924,0.2,0.5333,0.2909
+877,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),AdaBoostClassifier,0.72,0.2949,0.0,0.0,0.0
+878,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),ExtraTreesClassifier,0.76,0.3981,0.275,0.6111,0.3793
+879,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),GradientBoostingClassifier,0.6867,0.3585,0.1,0.2667,0.1455
+880,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),KNeighborsClassifier,0.72,0.4133,0.075,0.375,0.125
+881,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),MLPClassifier,0.7333,0.4926,0.0,0.0,0.0
+882,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),GaussianProcessClassifier,0.7,0.4185,0.325,0.4194,0.3662
+883,transfusion.csv,Noisy,0.6,Monetary (c.c. blood),DecisionTreeClassifier,0.72,0.4945,0.375,0.4688,0.4167
+884,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),LogisticRegression,0.7333,0.2569,0.0,0.0,0.0
+885,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),GaussianNB,0.7333,0.2541,0.0,0.0,0.0
+886,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),MLPClassifier,0.7333,0.6426,0.0,0.0,0.0
+887,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),RidgeClassifier,0.7333,,0.0,0.0,0.0
+888,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),LinearDiscriminantAnalysis,0.7333,0.2544,0.0,0.0,0.0
+889,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+890,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),SVC,0.7333,0.59,0.0,0.0,0.0
+891,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),QuadraticDiscriminantAnalysis,0.7333,0.3117,0.0,0.0,0.0
+892,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),CatBoostClassifier,0.7267,0.2775,0.025,0.3333,0.0465
+893,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),RandomForestClassifier,0.74,0.3502,0.175,0.5385,0.2642
+894,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),AdaBoostClassifier,0.74,0.3283,0.075,0.6,0.1333
+895,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),ExtraTreesClassifier,0.74,0.3373,0.275,0.5238,0.3607
+896,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),GradientBoostingClassifier,0.6933,0.3561,0.05,0.2,0.08
+897,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),KNeighborsClassifier,0.7267,0.4506,0.0,0.0,0.0
+898,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),GaussianProcessClassifier,0.72,0.4066,0.15,0.4286,0.2222
+899,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),SGDClassifier,0.28,,1.0,0.2703,0.4255
+900,transfusion.csv,Noisy,0.8,Monetary (c.c. blood),DecisionTreeClassifier,0.7067,0.4816,0.2,0.4,0.2667
+901,transfusion.csv,Noisy,0.2,Time (months),LogisticRegression,0.7333,0.2584,0.0,0.0,0.0
+902,transfusion.csv,Noisy,0.2,Time (months),GaussianNB,0.7333,0.2484,0.0,0.0,0.0
+903,transfusion.csv,Noisy,0.2,Time (months),RidgeClassifier,0.7333,,0.0,0.0,0.0
+904,transfusion.csv,Noisy,0.2,Time (months),LinearDiscriminantAnalysis,0.7333,0.2582,0.0,0.0,0.0
+905,transfusion.csv,Noisy,0.2,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+906,transfusion.csv,Noisy,0.2,Time (months),SVC,0.7333,0.5914,0.0,0.0,0.0
+907,transfusion.csv,Noisy,0.2,Time (months),QuadraticDiscriminantAnalysis,0.7333,0.282,0.0,0.0,0.0
+908,transfusion.csv,Noisy,0.2,Time (months),CatBoostClassifier,0.74,0.2443,0.05,0.6667,0.093
+909,transfusion.csv,Noisy,0.2,Time (months),RandomForestClassifier,0.7467,0.3264,0.2,0.5714,0.2963
+910,transfusion.csv,Noisy,0.2,Time (months),GradientBoostingClassifier,0.7,0.289,0.05,0.2222,0.0816
+911,transfusion.csv,Noisy,0.2,Time (months),AdaBoostClassifier,0.7133,0.3389,0.025,0.2,0.0444
+912,transfusion.csv,Noisy,0.2,Time (months),ExtraTreesClassifier,0.76,0.3539,0.325,0.5909,0.4194
+913,transfusion.csv,Noisy,0.2,Time (months),KNeighborsClassifier,0.74,0.4638,0.05,0.6667,0.093
+914,transfusion.csv,Noisy,0.2,Time (months),GaussianProcessClassifier,0.7333,0.4066,0.2,0.5,0.2857
+915,transfusion.csv,Noisy,0.2,Time (months),MLPClassifier,0.7333,0.6348,0.0,0.0,0.0
+916,transfusion.csv,Noisy,0.2,Time (months),SGDClassifier,0.58,,0.875,0.3763,0.5263
+917,transfusion.csv,Noisy,0.2,Time (months),DecisionTreeClassifier,0.72,0.4907,0.35,0.4667,0.4
+918,transfusion.csv,Noisy,0.4,Time (months),LogisticRegression,0.7333,0.2391,0.0,0.0,0.0
+919,transfusion.csv,Noisy,0.4,Time (months),GaussianNB,0.7333,0.2435,0.0,0.0,0.0
+920,transfusion.csv,Noisy,0.4,Time (months),RidgeClassifier,0.7333,,0.0,0.0,0.0
+921,transfusion.csv,Noisy,0.4,Time (months),LinearDiscriminantAnalysis,0.7333,0.2406,0.0,0.0,0.0
+922,transfusion.csv,Noisy,0.4,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+923,transfusion.csv,Noisy,0.4,Time (months),SVC,0.7333,0.5927,0.0,0.0,0.0
+924,transfusion.csv,Noisy,0.4,Time (months),CatBoostClassifier,0.7333,0.2777,0.05,0.5,0.0909
+925,transfusion.csv,Noisy,0.4,Time (months),QuadraticDiscriminantAnalysis,0.7333,0.3236,0.0,0.0,0.0
+926,transfusion.csv,Noisy,0.4,Time (months),RandomForestClassifier,0.7533,0.3259,0.2,0.6154,0.3019
+927,transfusion.csv,Noisy,0.4,Time (months),GradientBoostingClassifier,0.7267,0.3189,0.125,0.4545,0.1961
+928,transfusion.csv,Noisy,0.4,Time (months),MLPClassifier,0.7333,0.5525,0.0,0.0,0.0
+929,transfusion.csv,Noisy,0.4,Time (months),ExtraTreesClassifier,0.7533,0.3557,0.275,0.5789,0.3729
+930,transfusion.csv,Noisy,0.4,Time (months),AdaBoostClassifier,0.7267,0.3334,0.075,0.4286,0.1277
+931,transfusion.csv,Noisy,0.4,Time (months),KNeighborsClassifier,0.7267,0.4576,0.0,0.0,0.0
+932,transfusion.csv,Noisy,0.4,Time (months),GaussianProcessClassifier,0.7267,0.4066,0.175,0.4667,0.2545
+933,transfusion.csv,Noisy,0.4,Time (months),DecisionTreeClassifier,0.76,0.4907,0.325,0.5909,0.4194
+934,transfusion.csv,Noisy,0.4,Time (months),SGDClassifier,0.2667,,1.0,0.2667,0.4211
+935,transfusion.csv,Noisy,0.6,Time (months),LogisticRegression,0.7333,0.2515,0.0,0.0,0.0
+936,transfusion.csv,Noisy,0.6,Time (months),GaussianNB,0.7333,0.2724,0.0,0.0,0.0
+937,transfusion.csv,Noisy,0.6,Time (months),RidgeClassifier,0.7333,,0.0,0.0,0.0
+938,transfusion.csv,Noisy,0.6,Time (months),QuadraticDiscriminantAnalysis,0.7333,0.2931,0.0,0.0,0.0
+939,transfusion.csv,Noisy,0.6,Time (months),LinearDiscriminantAnalysis,0.7333,0.2505,0.0,0.0,0.0
+940,transfusion.csv,Noisy,0.6,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+941,transfusion.csv,Noisy,0.6,Time (months),SVC,0.7333,0.59,0.0,0.0,0.0
+942,transfusion.csv,Noisy,0.6,Time (months),AdaBoostClassifier,0.7267,0.3174,0.025,0.3333,0.0465
+943,transfusion.csv,Noisy,0.6,Time (months),CatBoostClassifier,0.74,0.234,0.075,0.6,0.1333
+944,transfusion.csv,Noisy,0.6,Time (months),GradientBoostingClassifier,0.7067,0.2927,0.075,0.3,0.12
+945,transfusion.csv,Noisy,0.6,Time (months),RandomForestClassifier,0.76,0.325,0.2,0.6667,0.3077
+946,transfusion.csv,Noisy,0.6,Time (months),MLPClassifier,0.7333,0.5962,0.0,0.0,0.0
+947,transfusion.csv,Noisy,0.6,Time (months),KNeighborsClassifier,0.7333,0.4543,0.025,0.5,0.0476
+948,transfusion.csv,Noisy,0.6,Time (months),ExtraTreesClassifier,0.7533,0.3328,0.3,0.5714,0.3934
+949,transfusion.csv,Noisy,0.6,Time (months),GaussianProcessClassifier,0.7267,0.4066,0.175,0.4667,0.2545
+950,transfusion.csv,Noisy,0.6,Time (months),DecisionTreeClassifier,0.7133,0.4907,0.3,0.4444,0.3582
+951,transfusion.csv,Noisy,0.6,Time (months),SGDClassifier,0.28,,1.0,0.2703,0.4255
+952,transfusion.csv,Noisy,0.8,Time (months),LogisticRegression,0.7333,0.2458,0.0,0.0,0.0
+953,transfusion.csv,Noisy,0.8,Time (months),GaussianNB,0.7333,0.2615,0.0,0.0,0.0
+954,transfusion.csv,Noisy,0.8,Time (months),RidgeClassifier,0.7333,,0.0,0.0,0.0
+955,transfusion.csv,Noisy,0.8,Time (months),QuadraticDiscriminantAnalysis,0.7333,0.2951,0.0,0.0,0.0
+956,transfusion.csv,Noisy,0.8,Time (months),LinearDiscriminantAnalysis,0.7333,0.2441,0.0,0.0,0.0
+957,transfusion.csv,Noisy,0.8,Time (months),DummyClassifier,0.7333,0.5,0.0,0.0,0.0
+958,transfusion.csv,Noisy,0.8,Time (months),SVC,0.7333,0.5914,0.0,0.0,0.0
+959,transfusion.csv,Noisy,0.8,Time (months),CatBoostClassifier,0.7467,0.2566,0.05,1.0,0.0952
+960,transfusion.csv,Noisy,0.8,Time (months),SGDClassifier,0.7333,,0.0,0.0,0.0
+961,transfusion.csv,Noisy,0.8,Time (months),RandomForestClassifier,0.76,0.329,0.275,0.6111,0.3793
+962,transfusion.csv,Noisy,0.8,Time (months),AdaBoostClassifier,0.7267,0.3472,0.025,0.3333,0.0465
+963,transfusion.csv,Noisy,0.8,Time (months),ExtraTreesClassifier,0.7533,0.3369,0.3,0.5714,0.3934
+964,transfusion.csv,Noisy,0.8,Time (months),GradientBoostingClassifier,0.7533,0.3751,0.175,0.6364,0.2745
+965,transfusion.csv,Noisy,0.8,Time (months),KNeighborsClassifier,0.7333,0.4543,0.025,0.5,0.0476
+966,transfusion.csv,Noisy,0.8,Time (months),GaussianProcessClassifier,0.7267,0.4066,0.175,0.4667,0.2545
+967,transfusion.csv,Noisy,0.8,Time (months),DecisionTreeClassifier,0.7267,0.4992,0.25,0.4762,0.3279
+968,transfusion.csv,Noisy,0.8,Time (months),MLPClassifier,0.7333,0.6134,0.0,0.0,0.0

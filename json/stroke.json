@@ -1,0 +1,106 @@
+{
+    "datasetName": "/home/douni/Desktop/epc/datasetRoot/stroke_data.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "age"
+    ],
+    "continousFeatures": [
+        "avg_glucose_level",
+        "bmi"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [
+        "work_type"
+    ],
+    "binaryFeatures": [
+        "sex",
+        "hypertension",
+        "heart_disease",
+        "ever_married",
+        "Residence_type",
+        "smoking_status"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "avg_glucose_level",
+                "bmi",
+                "age",
+                "work_type",
+                "sex",
+                "hypertension",
+                "heart_disease",
+                "ever_married",
+                "Residence_type",
+                "smoking_status"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "stroke"
+}

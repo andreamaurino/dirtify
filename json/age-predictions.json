@@ -1,0 +1,85 @@
+{
+    "datasetName": "age_predictions_cleaned-3.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "LBXGLU",
+        "LBXGLT"
+    ],
+    "continousFeatures": [
+        "BMXBMI",
+        "LBXIN",
+        "PAQ605"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "BMXBMI",
+                "LBXIN",
+                "LBXGLU",
+                "LBXGLT",
+                "PAQ605"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "age_group"
+}

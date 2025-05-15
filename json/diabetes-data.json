@@ -1,0 +1,109 @@
+{
+    "datasetName": "diabetes_data.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "Age",
+        "BMI",
+        "MentHlth",
+        "PhysHlth"
+    ],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [
+        "GenHlth"
+    ],
+    "binaryFeatures": [
+        "Sex",
+        "HighChol",
+        "CholCheck",
+        "Smoker",
+        "HeartDiseaseorAttack",
+        "PhysActivity",
+        "Fruits",
+        "Veggies",
+        "HvyAlcoholConsump",
+        "DiffWalk",
+        "Stroke",
+        "HighBP"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "Age",
+                "BMI",
+                "MentHlth",
+                "PhysHlth",
+                "GenHlth",
+                "Sex",
+                "HighChol",
+                "CholCheck",
+                "Smoker",
+                "HeartDiseaseorAttack",
+                "PhysActivity",
+                "Fruits",
+                "Veggies",
+                "HvyAlcoholConsump",
+                "DiffWalk",
+                "Stroke",
+                "HighBP"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "Diabetes"
+}

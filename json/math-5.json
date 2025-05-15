@@ -1,0 +1,150 @@
+{
+    "datasetName": "student-mat-5.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "age"
+    ],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [
+        "school",
+        "sex",
+        "address",
+        "famsize",
+        "Pstatus",
+        "Fedu",
+        "Mjob",
+        "Fjob",
+        "reason",
+        "guardian",
+        "schoolsup",
+        "famsup",
+        "paid",
+        "activities",
+        "nursery",
+        "internet",
+        "romantic"
+
+    ],
+    "categoricalFeaturesInteger": [
+        "Medu",
+        "traveltime",
+        "studytime",
+        "failures",
+        "famrel",
+        "freetime",
+        "goout",
+        "Dalc",
+        "Walc",
+        "health",
+        "absences",
+        "G1",
+        "G2",
+        "G3"
+    ],
+    "binaryFeatures": [
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },{
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "age",
+                "Medu",
+                "traveltime",
+                "studytime",
+                "failures",
+                "famrel",
+                "freetime",
+                "goout",
+                "Dalc",
+                "Walc",
+                "health",
+                "absences",
+                "G1",
+                "G2",
+                "G3",
+                "school",
+                "sex",
+                "address",
+                "famsize",
+                "Pstatus",
+                "Fedu",
+                "Mjob",
+                "Fjob",
+                "reason",
+                "guardian",
+                "schoolsup",
+                "famsup",
+                "paid",
+                "activities",
+                "nursery",
+                "internet",
+                "romantic"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "higher"
+}

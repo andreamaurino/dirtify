@@ -1,0 +1,16 @@
+datasetName,errorType,feature,modelName,percentage,epc_at
+recruitment_data.csv,Outlier,SkillScore,SGDClassifier,0.6,0.7224
+recruitment_data.csv,Outlier,ExperienceYears,MLPClassifier,0.6,0.7641
+recruitment_data.csv,Outlier,SkillScore,DecisionTreeClassifier,0.6,0.7657
+recruitment_data.csv,Outlier,DistanceFromCompany,MLPClassifier,0.8,0.7858
+recruitment_data.csv,Outlier,SkillScore,SGDClassifier,0.8,0.8152
+recruitment_data.csv,Outlier,ExperienceYears,MLPClassifier,0.8,0.8392
+recruitment_data.csv,Outlier,EducationLevel,GradientBoostingClassifier,0.6,0.8975
+recruitment_data.csv,Outlier,EducationLevel,GradientBoostingClassifier,0.8,0.951
+recruitment_data.csv,Outlier,EducationLevel,CatBoostClassifier,0.8,0.9572
+recruitment_data.csv,Outlier,SkillScore,LinearDiscriminantAnalysis,0.8,0.9759
+recruitment_data.csv,Outlier,EducationLevel,CatBoostClassifier,0.6,0.984
+recruitment_data.csv,Outlier,SkillScore,LinearDiscriminantAnalysis,0.6,0.9973
+recruitment_data.csv,Outlier,InterviewScore,MLPClassifier,0.6,0.9984
+recruitment_data.csv,Outlier,EducationLevel,SGDClassifier,0.8,0.9997
+recruitment_data.csv,Outlier,EducationLevel,SGDClassifier,0.6,0.9998

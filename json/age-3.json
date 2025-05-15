@@ -1,0 +1,75 @@
+{
+    "datasetName": "age_predictions_cleaned-3.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [ ],
+    "continousFeatures": [
+        "BMXBMI",
+        "LBXGLU",
+        "LBXGLT",
+        "LBXIN",
+        "PAQ605"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "standard"
+        },
+    
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "BMXBMI",
+                "LBXGLU",
+                "LBXGLT",
+                "LBXIN",
+                "PAQ605"
+            ]
+        }
+    ],
+    "targetVariable": "age_group"
+}

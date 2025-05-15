@@ -1,0 +1,34 @@
+Feature,Error Type,Percentage,Correlation,Correlation Type
+radius_mean,missing,0.2,0.7374446560254314,Point-Biserial
+texture_mean,missing,0.2,0.3900361641989075,Point-Biserial
+perimeter_mean,missing,0.2,0.745795387718579,Point-Biserial
+area_mean,missing,0.2,0.7280343233803318,Point-Biserial
+concavity_mean,missing,0.2,0.6600100859309914,Point-Biserial
+concave points_mean,missing,0.2,0.751403721044815,Point-Biserial
+area_se,missing,0.2,0.6901552611911181,Point-Biserial
+radius_worst,missing,0.2,0.7730382492376594,Point-Biserial
+perimeter_worst,missing,0.2,0.7764940139469565,Point-Biserial
+area_worst,missing,0.2,0.7336015461855581,Point-Biserial
+concave points_worst,missing,0.2,0.7630471448284648,Point-Biserial
+radius_mean,missing,0.2,0.7374446560254314,Point-Biserial
+texture_mean,missing,0.2,0.3900361641989075,Point-Biserial
+perimeter_mean,missing,0.2,0.745795387718579,Point-Biserial
+area_mean,missing,0.2,0.7280343233803318,Point-Biserial
+concavity_mean,missing,0.2,0.6600100859309914,Point-Biserial
+concave points_mean,missing,0.2,0.751403721044815,Point-Biserial
+area_se,missing,0.2,0.6901552611911181,Point-Biserial
+radius_worst,missing,0.2,0.7730382492376594,Point-Biserial
+perimeter_worst,missing,0.2,0.7764940139469565,Point-Biserial
+area_worst,missing,0.2,0.7336015461855581,Point-Biserial
+concave points_worst,missing,0.2,0.7630471448284648,Point-Biserial
+radius_mean,outlier,0.2,0.039484822495355634,Point-Biserial
+texture_mean,outlier,0.2,0.01466241239850503,Point-Biserial
+perimeter_mean,outlier,0.2,0.03989073149447114,Point-Biserial
+area_mean,outlier,0.2,0.039252909233543215,Point-Biserial
+concavity_mean,outlier,0.2,0.032211916791918385,Point-Biserial
+concave points_mean,outlier,0.2,0.039472263980321824,Point-Biserial
+area_se,outlier,0.2,0.034048118512802025,Point-Biserial
+radius_worst,outlier,0.2,0.04183682330279988,Point-Biserial
+perimeter_worst,outlier,0.2,0.04192921620864976,Point-Biserial
+area_worst,outlier,0.2,0.04006466074551614,Point-Biserial
+concave points_worst,outlier,0.2,0.03939847284258939,Point-Biserial

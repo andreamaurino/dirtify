@@ -1,0 +1,89 @@
+{
+    "datasetName": "adultdata.csv",
+    "outputDirectory": "adultdataDir",
+    "machineLearningModels": ["lr","knn","nb","svm","dt","rbfsvm","gpc","mlp", "ridge","qda","ada","lda", "dummy","rf", "et","gbc", "lightgbm", "catboost"],
+
+    "discreteFeatures": [
+        "age",
+        "hours-per-week"
+    ],
+    "continousFeatures": [
+        "capital-gain",
+        "capital-loss"
+    ],
+    "categoricalFeaturesString": [
+        "income",
+        "workclass",
+        "Education",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "Gender",
+        "native-country"
+    ],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.1,
+            "columns": [
+                "capital-gain",
+                "capital-loss",
+                "age",
+                "hours-per-week",
+                "workclass",
+                "Education",
+                "marital-status",
+                "occupation",
+                "relationship",
+                "race",
+                "Gender",
+                "native-country"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "income2"
+}

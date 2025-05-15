@@ -1,0 +1,132 @@
+{
+    "datasetName": "fraud_detection_bank_dataset-1.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "ada",
+        "rf",
+        "gbc"
+    ],
+    "discreteFeatures": [
+        "col_0",
+        "col_1",
+        "col_6",
+        "col_33",
+        "col_57",
+        "col_58",
+        "col_68",
+        "col_69",
+        "col_111"
+    ],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [
+        "col_13",
+        "col_14",
+        "col_15",
+        "col_16",
+        "col_73",
+        "col_74",
+        "col_75",
+        "col_76",
+        "col_77",
+        "col_78",
+        "col_82",
+        "col_83",
+        "col_84",
+        "col_85",
+        "col_86",
+        "col_87",
+        "col_88",
+        "col_89",
+        "col_90",
+        "col_96",
+        "col_97",
+        "col_98",
+        "col_99",
+        "col_100",
+        "col_104",
+        "col_106",
+        "col_107"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "col_0",
+                "col_1",
+                "col_6",
+                "col_33",
+                "col_57",
+                "col_58",
+                "col_68",
+                "col_69",
+                "col_111",
+                "col_13",
+                "col_14",
+                "col_15",
+                "col_16",
+                "col_73",
+                "col_74",
+                "col_75",
+                "col_76",
+                "col_77",
+                "col_78",
+                "col_82",
+                "col_83",
+                "col_84",
+                "col_85",
+                "col_86",
+                "col_87",
+                "col_88",
+                "col_89",
+                "col_90",
+                "col_96",
+                "col_97",
+                "col_98",
+                "col_99",
+                "col_100",
+                "col_104",
+                "col_106",
+                "col_107"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "targets"
+}

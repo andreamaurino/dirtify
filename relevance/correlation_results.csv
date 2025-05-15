@@ -1,0 +1,8 @@
+Feature,Type,Correlation,Type of Correlation
+JoiningYear,Discrete,0.19468436440674833,Point-biserial
+Age,Discrete,-0.04782820772476229,Point-biserial
+ExperienceInCurrentDomain,Discrete,-0.025552549465442997,Point-biserial
+Education,CategoricalString,0.15923511584268812,Cramér's V
+City,CategoricalString,0.2121996746871874,Cramér's V
+Gender,CategoricalString,0.2291244529109405,Cramér's V
+PaymentTier,CategoricalInt,0.26949570841092657,Cramér's V

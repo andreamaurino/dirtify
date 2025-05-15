@@ -1,0 +1,106 @@
+{
+    "datasetName": "ShippingData.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "Cost_of_the_Product",
+        "Discount_offered",
+        "Weight_in_gms"
+    ],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [
+        "Warehouse_block",
+        "Mode_of_Shipment",
+        "Product_importance"
+    ],
+    "categoricalFeaturesInteger": [
+        "Customer_care_calls",
+        "Customer_rating",
+        "Prior_purchases"
+    ],
+    "binaryFeatures": [
+        "Gender"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "Cost_of_the_Product",
+                "Discount_offered",
+                "Weight_in_gms",
+                "Customer_care_calls",
+                "Customer_rating",
+                "Prior_purchases",
+                "Warehouse_block",
+                "Mode_of_Shipment",
+                "Product_importance",
+                "Gender"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "Reached.on.Time_Y.N"
+}

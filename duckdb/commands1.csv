@@ -1,0 +1,18 @@
+command
+update MODPERF as M  set EPC= e.epc_at  from epc_adultdata as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_age_predictions_cleaned_3 as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_at_breast_cancer_augmented as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_at_Healthcare_Diabetes as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_at_loan_approval as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_citrus as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_diabetes_data_upload as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_Employee as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_Healthcare_Diabetes as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_heart_failure_clinical_records as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_loan_approval as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_penguins_binary_classification as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_recruitment_data as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_ShippingData as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_student_mat_5 as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_transfusion as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;
+update MODPERF as M  set EPC= e.epc_at  from epc_water_potability as e where  M.ERRTYPE=e.errorType and M.MODELNAME=e.modelName and M.FEATNAME=e.feature and M.ERRPERC=e.percentage;

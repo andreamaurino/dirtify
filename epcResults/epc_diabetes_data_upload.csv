@@ -1,0 +1,455 @@
+datasetName,errorType,feature,modelName,percentage,epc_at
+diabetes_data_upload.csv,Noisy,Polyphagia,LinearDiscriminantAnalysis,0.8,0.7006
+diabetes_data_upload.csv,Noisy,Obesity,AdaBoostClassifier,0.8,0.7036
+diabetes_data_upload.csv,Noisy,weakness,AdaBoostClassifier,0.4,0.7046
+diabetes_data_upload.csv,Noisy,Alopecia,LinearDiscriminantAnalysis,0.8,0.7055
+diabetes_data_upload.csv,Noisy,Polyuria,SGDClassifier,0.8,0.7056
+diabetes_data_upload.csv,Noisy,Irritability,AdaBoostClassifier,0.8,0.7058
+diabetes_data_upload.csv,Noisy,Alopecia,DecisionTreeClassifier,0.8,0.7069
+diabetes_data_upload.csv,Noisy,sudden weight loss,SGDClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,sudden weight loss,AdaBoostClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,Polydipsia,SGDClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,delayed healing,GaussianNB,0.8,0.7071
+diabetes_data_upload.csv,Noisy,Alopecia,SVC,0.8,0.7071
+diabetes_data_upload.csv,Noisy,Obesity,RidgeClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,Obesity,LogisticRegression,0.8,0.7071
+diabetes_data_upload.csv,Noisy,Obesity,SGDClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,visual blurring,SGDClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,Irritability,RandomForestClassifier,0.8,0.7071
+diabetes_data_upload.csv,Labels,class,DummyClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,weakness,SGDClassifier,0.8,0.7071
+diabetes_data_upload.csv,Noisy,partial paresis,RandomForestClassifier,0.8,0.7084
+diabetes_data_upload.csv,Noisy,visual blurring,DecisionTreeClassifier,0.8,0.7088
+diabetes_data_upload.csv,Noisy,Polyphagia,SVC,0.6,0.7097
+diabetes_data_upload.csv,Noisy,delayed healing,ExtraTreesClassifier,0.8,0.7109
+diabetes_data_upload.csv,Noisy,delayed healing,GaussianProcessClassifier,0.6,0.711
+diabetes_data_upload.csv,Noisy,Obesity,GaussianProcessClassifier,0.6,0.711
+diabetes_data_upload.csv,Noisy,Itching,RandomForestClassifier,0.6,0.7136
+diabetes_data_upload.csv,Noisy,delayed healing,SVC,0.6,0.7148
+diabetes_data_upload.csv,Noisy,Polyuria,SGDClassifier,0.4,0.7153
+diabetes_data_upload.csv,Missing,partial paresis,SGDClassifier,0.8,0.7153
+diabetes_data_upload.csv,Noisy,Irritability,RidgeClassifier,0.8,0.7158
+diabetes_data_upload.csv,Noisy,weakness,LinearDiscriminantAnalysis,0.8,0.716
+diabetes_data_upload.csv,Noisy,Irritability,GaussianNB,0.6,0.7168
+diabetes_data_upload.csv,Noisy,Obesity,KNeighborsClassifier,0.8,0.7172
+diabetes_data_upload.csv,Missing,Polyuria,SGDClassifier,0.8,0.7173
+diabetes_data_upload.csv,Noisy,Genital thrush,SVC,0.8,0.7175
+diabetes_data_upload.csv,Noisy,muscle stiffness,AdaBoostClassifier,0.8,0.7177
+diabetes_data_upload.csv,Missing,muscle stiffness,SGDClassifier,0.8,0.7179
+diabetes_data_upload.csv,Noisy,Irritability,LogisticRegression,0.8,0.7179
+diabetes_data_upload.csv,Noisy,delayed healing,LogisticRegression,0.8,0.7198
+diabetes_data_upload.csv,Noisy,Irritability,DecisionTreeClassifier,0.8,0.72
+diabetes_data_upload.csv,Noisy,Polyphagia,RidgeClassifier,0.8,0.7202
+diabetes_data_upload.csv,Noisy,weakness,ExtraTreesClassifier,0.8,0.7208
+diabetes_data_upload.csv,Noisy,Obesity,LinearDiscriminantAnalysis,0.8,0.7222
+diabetes_data_upload.csv,Noisy,weakness,RandomForestClassifier,0.6,0.7229
+diabetes_data_upload.csv,Noisy,Obesity,AdaBoostClassifier,0.6,0.7253
+diabetes_data_upload.csv,Noisy,partial paresis,ExtraTreesClassifier,0.6,0.7262
+diabetes_data_upload.csv,Noisy,weakness,RidgeClassifier,0.4,0.7268
+diabetes_data_upload.csv,Noisy,Genital thrush,AdaBoostClassifier,0.6,0.7277
+diabetes_data_upload.csv,Noisy,muscle stiffness,GaussianNB,0.6,0.7282
+diabetes_data_upload.csv,Noisy,sudden weight loss,LogisticRegression,0.6,0.7293
+diabetes_data_upload.csv,Noisy,delayed healing,LinearDiscriminantAnalysis,0.8,0.7298
+diabetes_data_upload.csv,Noisy,delayed healing,RidgeClassifier,0.8,0.7298
+diabetes_data_upload.csv,Noisy,Alopecia,GaussianProcessClassifier,0.8,0.7306
+diabetes_data_upload.csv,Noisy,weakness,DecisionTreeClassifier,0.8,0.7313
+diabetes_data_upload.csv,Noisy,muscle stiffness,KNeighborsClassifier,0.8,0.732
+diabetes_data_upload.csv,Noisy,Genital thrush,LogisticRegression,0.6,0.7333
+diabetes_data_upload.csv,Noisy,partial paresis,SVC,0.6,0.7347
+diabetes_data_upload.csv,Noisy,Age,SGDClassifier,0.4,0.7351
+diabetes_data_upload.csv,Noisy,Gender,SGDClassifier,0.8,0.7366
+diabetes_data_upload.csv,Noisy,Irritability,GaussianProcessClassifier,0.8,0.7371
+diabetes_data_upload.csv,Noisy,Genital thrush,GaussianProcessClassifier,0.6,0.7373
+diabetes_data_upload.csv,Noisy,weakness,GaussianNB,0.4,0.7376
+diabetes_data_upload.csv,Noisy,sudden weight loss,ExtraTreesClassifier,0.8,0.7378
+diabetes_data_upload.csv,Noisy,muscle stiffness,GradientBoostingClassifier,0.8,0.738
+diabetes_data_upload.csv,Noisy,weakness,RidgeClassifier,0.8,0.7386
+diabetes_data_upload.csv,Noisy,Irritability,DecisionTreeClassifier,0.6,0.7391
+diabetes_data_upload.csv,Noisy,muscle stiffness,LinearDiscriminantAnalysis,0.6,0.7412
+diabetes_data_upload.csv,Noisy,muscle stiffness,RidgeClassifier,0.6,0.7412
+diabetes_data_upload.csv,Labels,class,SGDClassifier,0.6,0.7437
+diabetes_data_upload.csv,Noisy,Itching,LogisticRegression,0.6,0.7443
+diabetes_data_upload.csv,Noisy,Polydipsia,DecisionTreeClassifier,0.8,0.7447
+diabetes_data_upload.csv,Missing,weakness,SGDClassifier,0.6,0.7455
+diabetes_data_upload.csv,Noisy,Alopecia,RidgeClassifier,0.8,0.7456
+diabetes_data_upload.csv,Noisy,visual blurring,AdaBoostClassifier,0.4,0.7464
+diabetes_data_upload.csv,Noisy,visual blurring,LogisticRegression,0.6,0.7465
+diabetes_data_upload.csv,Noisy,Genital thrush,SGDClassifier,0.8,0.7465
+diabetes_data_upload.csv,Noisy,muscle stiffness,GaussianProcessClassifier,0.8,0.7466
+diabetes_data_upload.csv,Noisy,Irritability,SVC,0.6,0.7475
+diabetes_data_upload.csv,Noisy,Alopecia,AdaBoostClassifier,0.6,0.748
+diabetes_data_upload.csv,Noisy,Irritability,RidgeClassifier,0.6,0.7497
+diabetes_data_upload.csv,Noisy,sudden weight loss,GaussianProcessClassifier,0.4,0.7514
+diabetes_data_upload.csv,Noisy,Alopecia,LogisticRegression,0.6,0.7515
+diabetes_data_upload.csv,Noisy,Obesity,SVC,0.6,0.7519
+diabetes_data_upload.csv,Noisy,visual blurring,LinearDiscriminantAnalysis,0.8,0.7519
+diabetes_data_upload.csv,Noisy,delayed healing,RandomForestClassifier,0.8,0.7522
+diabetes_data_upload.csv,Noisy,Genital thrush,RidgeClassifier,0.4,0.7529
+diabetes_data_upload.csv,Noisy,Polyphagia,LinearDiscriminantAnalysis,0.6,0.7562
+diabetes_data_upload.csv,Noisy,partial paresis,SVC,0.8,0.7602
+diabetes_data_upload.csv,Noisy,weakness,LogisticRegression,0.6,0.7608
+diabetes_data_upload.csv,Missing,Itching,SGDClassifier,0.6,0.7612
+diabetes_data_upload.csv,Noisy,Irritability,LinearDiscriminantAnalysis,0.6,0.7616
+diabetes_data_upload.csv,Noisy,muscle stiffness,SVC,0.8,0.7639
+diabetes_data_upload.csv,Noisy,Alopecia,DecisionTreeClassifier,0.6,0.764
+diabetes_data_upload.csv,Noisy,Polyphagia,LogisticRegression,0.8,0.765
+diabetes_data_upload.csv,Noisy,Alopecia,LinearDiscriminantAnalysis,0.6,0.7658
+diabetes_data_upload.csv,Noisy,partial paresis,ExtraTreesClassifier,0.4,0.7659
+diabetes_data_upload.csv,Noisy,partial paresis,GaussianNB,0.8,0.767
+diabetes_data_upload.csv,Noisy,sudden weight loss,ExtraTreesClassifier,0.6,0.7679
+diabetes_data_upload.csv,Noisy,Itching,RandomForestClassifier,0.8,0.7702
+diabetes_data_upload.csv,Noisy,delayed healing,ExtraTreesClassifier,0.6,0.7729
+diabetes_data_upload.csv,Noisy,weakness,DecisionTreeClassifier,0.6,0.7729
+diabetes_data_upload.csv,Noisy,Obesity,KNeighborsClassifier,0.6,0.7731
+diabetes_data_upload.csv,Noisy,Itching,GaussianNB,0.6,0.7731
+diabetes_data_upload.csv,Noisy,Itching,GaussianProcessClassifier,0.6,0.7734
+diabetes_data_upload.csv,Noisy,partial paresis,AdaBoostClassifier,0.8,0.7736
+diabetes_data_upload.csv,Noisy,delayed healing,LogisticRegression,0.6,0.7741
+diabetes_data_upload.csv,Noisy,Genital thrush,GaussianNB,0.6,0.7744
+diabetes_data_upload.csv,Noisy,sudden weight loss,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,sudden weight loss,AdaBoostClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Polydipsia,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Polyphagia,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,delayed healing,LinearDiscriminantAnalysis,0.6,0.7746
+diabetes_data_upload.csv,Noisy,delayed healing,RidgeClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,delayed healing,GaussianNB,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Alopecia,SVC,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Obesity,GaussianNB,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Obesity,RidgeClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Obesity,LinearDiscriminantAnalysis,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Obesity,LogisticRegression,0.6,0.7746
+diabetes_data_upload.csv,Missing,Obesity,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Obesity,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,visual blurring,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Irritability,RandomForestClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,weakness,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Genital thrush,SGDClassifier,0.6,0.7746
+diabetes_data_upload.csv,Noisy,Obesity,DecisionTreeClassifier,0.8,0.7769
+diabetes_data_upload.csv,Noisy,partial paresis,GaussianProcessClassifier,0.8,0.7775
+diabetes_data_upload.csv,Missing,Polydipsia,QuadraticDiscriminantAnalysis,0.6,0.7783
+diabetes_data_upload.csv,Noisy,weakness,GaussianProcessClassifier,0.8,0.7787
+diabetes_data_upload.csv,Noisy,Itching,AdaBoostClassifier,0.8,0.7813
+diabetes_data_upload.csv,Noisy,Irritability,GaussianProcessClassifier,0.6,0.7836
+diabetes_data_upload.csv,Noisy,visual blurring,GaussianNB,0.6,0.784
+diabetes_data_upload.csv,Noisy,weakness,LogisticRegression,0.8,0.7845
+diabetes_data_upload.csv,Noisy,muscle stiffness,AdaBoostClassifier,0.6,0.7849
+diabetes_data_upload.csv,Noisy,Alopecia,GaussianNB,0.8,0.7851
+diabetes_data_upload.csv,Missing,sudden weight loss,QuadraticDiscriminantAnalysis,0.4,0.7856
+diabetes_data_upload.csv,Noisy,Irritability,SVC,0.8,0.7858
+diabetes_data_upload.csv,Noisy,Polyphagia,RidgeClassifier,0.6,0.7867
+diabetes_data_upload.csv,Noisy,partial paresis,SGDClassifier,0.8,0.7882
+diabetes_data_upload.csv,Noisy,Irritability,LogisticRegression,0.6,0.789
+diabetes_data_upload.csv,Noisy,Obesity,RandomForestClassifier,0.4,0.79
+diabetes_data_upload.csv,Noisy,Genital thrush,AdaBoostClassifier,0.8,0.79
+diabetes_data_upload.csv,Noisy,Itching,ExtraTreesClassifier,0.8,0.7908
+diabetes_data_upload.csv,Noisy,delayed healing,KNeighborsClassifier,0.8,0.7916
+diabetes_data_upload.csv,Noisy,Polyphagia,ExtraTreesClassifier,0.4,0.7929
+diabetes_data_upload.csv,Noisy,Alopecia,RidgeClassifier,0.6,0.7956
+diabetes_data_upload.csv,Noisy,Genital thrush,RidgeClassifier,0.6,0.7962
+diabetes_data_upload.csv,Noisy,delayed healing,AdaBoostClassifier,0.6,0.7964
+diabetes_data_upload.csv,Noisy,Genital thrush,DecisionTreeClassifier,0.4,0.7968
+diabetes_data_upload.csv,Noisy,muscle stiffness,GradientBoostingClassifier,0.6,0.7973
+diabetes_data_upload.csv,Noisy,muscle stiffness,DecisionTreeClassifier,0.4,0.7988
+diabetes_data_upload.csv,Noisy,Polydipsia,KNeighborsClassifier,0.4,0.8009
+diabetes_data_upload.csv,Noisy,Polyphagia,AdaBoostClassifier,0.4,0.801
+diabetes_data_upload.csv,Noisy,Irritability,AdaBoostClassifier,0.6,0.8011
+diabetes_data_upload.csv,Noisy,Irritability,KNeighborsClassifier,0.4,0.8012
+diabetes_data_upload.csv,Noisy,Alopecia,ExtraTreesClassifier,0.4,0.8017
+diabetes_data_upload.csv,Noisy,muscle stiffness,SVC,0.6,0.8024
+diabetes_data_upload.csv,Noisy,Alopecia,RandomForestClassifier,0.8,0.8026
+diabetes_data_upload.csv,Noisy,Genital thrush,LogisticRegression,0.4,0.8038
+diabetes_data_upload.csv,Noisy,Alopecia,AdaBoostClassifier,0.4,0.8054
+diabetes_data_upload.csv,Noisy,Itching,DecisionTreeClassifier,0.6,0.8055
+diabetes_data_upload.csv,Noisy,Genital thrush,LinearDiscriminantAnalysis,0.4,0.8057
+diabetes_data_upload.csv,Noisy,Genital thrush,ExtraTreesClassifier,0.8,0.8058
+diabetes_data_upload.csv,Noisy,Genital thrush,GaussianProcessClassifier,0.4,0.8059
+diabetes_data_upload.csv,Noisy,partial paresis,GaussianNB,0.6,0.8087
+diabetes_data_upload.csv,Noisy,visual blurring,KNeighborsClassifier,0.8,0.8093
+diabetes_data_upload.csv,Noisy,partial paresis,DecisionTreeClassifier,0.6,0.8095
+diabetes_data_upload.csv,Noisy,Genital thrush,LinearDiscriminantAnalysis,0.6,0.8095
+diabetes_data_upload.csv,Noisy,partial paresis,GradientBoostingClassifier,0.8,0.8097
+diabetes_data_upload.csv,Noisy,muscle stiffness,ExtraTreesClassifier,0.6,0.8108
+diabetes_data_upload.csv,Noisy,partial paresis,GaussianProcessClassifier,0.4,0.811
+diabetes_data_upload.csv,Noisy,partial paresis,GaussianProcessClassifier,0.6,0.8114
+diabetes_data_upload.csv,Noisy,Itching,ExtraTreesClassifier,0.6,0.8117
+diabetes_data_upload.csv,Labels,class,LinearDiscriminantAnalysis,0.4,0.8134
+diabetes_data_upload.csv,Labels,class,RidgeClassifier,0.4,0.8134
+diabetes_data_upload.csv,Noisy,Itching,SVC,0.4,0.8149
+diabetes_data_upload.csv,Noisy,delayed healing,SVC,0.4,0.8164
+diabetes_data_upload.csv,Noisy,visual blurring,RidgeClassifier,0.6,0.8176
+diabetes_data_upload.csv,Noisy,Itching,KNeighborsClassifier,0.8,0.8179
+diabetes_data_upload.csv,Noisy,delayed healing,RandomForestClassifier,0.6,0.8187
+diabetes_data_upload.csv,Noisy,Genital thrush,SVC,0.6,0.8187
+diabetes_data_upload.csv,Noisy,weakness,LogisticRegression,0.4,0.819
+diabetes_data_upload.csv,Labels,class,MLPClassifier,0.4,0.8209
+diabetes_data_upload.csv,Noisy,delayed healing,KNeighborsClassifier,0.6,0.8222
+diabetes_data_upload.csv,Noisy,visual blurring,RidgeClassifier,0.4,0.8223
+diabetes_data_upload.csv,Noisy,partial paresis,KNeighborsClassifier,0.4,0.8227
+diabetes_data_upload.csv,Noisy,weakness,RandomForestClassifier,0.4,0.8231
+diabetes_data_upload.csv,Noisy,Age,SGDClassifier,0.6,0.8247
+diabetes_data_upload.csv,Noisy,Itching,RidgeClassifier,0.6,0.8249
+diabetes_data_upload.csv,Noisy,Obesity,AdaBoostClassifier,0.4,0.825
+diabetes_data_upload.csv,Noisy,Alopecia,GaussianProcessClassifier,0.6,0.8262
+diabetes_data_upload.csv,Noisy,visual blurring,RandomForestClassifier,0.6,0.828
+diabetes_data_upload.csv,Noisy,sudden weight loss,SVC,0.8,0.8296
+diabetes_data_upload.csv,Noisy,sudden weight loss,SVC,0.6,0.8309
+diabetes_data_upload.csv,Noisy,Polyphagia,DecisionTreeClassifier,0.6,0.8318
+diabetes_data_upload.csv,Noisy,visual blurring,GaussianProcessClassifier,0.8,0.8318
+diabetes_data_upload.csv,Noisy,Polydipsia,AdaBoostClassifier,0.8,0.8321
+diabetes_data_upload.csv,Noisy,Itching,DecisionTreeClassifier,0.4,0.8339
+diabetes_data_upload.csv,Missing,Polyuria,QuadraticDiscriminantAnalysis,0.4,0.834
+diabetes_data_upload.csv,DuplicatedAll,class,SGDClassifier,0.4,0.8341
+diabetes_data_upload.csv,Noisy,weakness,DecisionTreeClassifier,0.4,0.8341
+diabetes_data_upload.csv,Noisy,delayed healing,DecisionTreeClassifier,0.6,0.8343
+diabetes_data_upload.csv,Labels,class,KNeighborsClassifier,0.4,0.8343
+diabetes_data_upload.csv,Noisy,Polyphagia,GaussianProcessClassifier,0.8,0.8344
+diabetes_data_upload.csv,Noisy,partial paresis,GradientBoostingClassifier,0.6,0.8347
+diabetes_data_upload.csv,Noisy,Obesity,KNeighborsClassifier,0.4,0.836
+diabetes_data_upload.csv,Noisy,visual blurring,LinearDiscriminantAnalysis,0.4,0.8362
+diabetes_data_upload.csv,Noisy,Alopecia,GaussianNB,0.6,0.8374
+diabetes_data_upload.csv,Noisy,Genital thrush,ExtraTreesClassifier,0.6,0.838
+diabetes_data_upload.csv,Noisy,Alopecia,GaussianProcessClassifier,0.4,0.839
+diabetes_data_upload.csv,Noisy,Itching,GaussianProcessClassifier,0.4,0.8391
+diabetes_data_upload.csv,Noisy,delayed healing,AdaBoostClassifier,0.4,0.8395
+diabetes_data_upload.csv,Noisy,Polyphagia,RidgeClassifier,0.4,0.84
+diabetes_data_upload.csv,Noisy,Obesity,GaussianProcessClassifier,0.4,0.8403
+diabetes_data_upload.csv,Noisy,Alopecia,LinearDiscriminantAnalysis,0.4,0.8405
+diabetes_data_upload.csv,Noisy,muscle stiffness,GaussianProcessClassifier,0.6,0.8406
+diabetes_data_upload.csv,Noisy,Itching,LogisticRegression,0.4,0.8407
+diabetes_data_upload.csv,Noisy,sudden weight loss,LogisticRegression,0.4,0.8409
+diabetes_data_upload.csv,Noisy,muscle stiffness,KNeighborsClassifier,0.6,0.8409
+diabetes_data_upload.csv,Noisy,Alopecia,LogisticRegression,0.4,0.8418
+diabetes_data_upload.csv,Noisy,Polyphagia,GaussianProcessClassifier,0.6,0.842
+diabetes_data_upload.csv,Noisy,visual blurring,ExtraTreesClassifier,0.8,0.8421
+diabetes_data_upload.csv,Noisy,Age,SVC,0.4,0.843
+diabetes_data_upload.csv,Noisy,visual blurring,LinearDiscriminantAnalysis,0.6,0.8432
+diabetes_data_upload.csv,Noisy,Alopecia,RandomForestClassifier,0.4,0.8441
+diabetes_data_upload.csv,Noisy,Polyphagia,KNeighborsClassifier,0.4,0.8443
+diabetes_data_upload.csv,Noisy,Polydipsia,GaussianNB,0.4,0.8449
+diabetes_data_upload.csv,Noisy,Irritability,RidgeClassifier,0.4,0.8453
+diabetes_data_upload.csv,Noisy,Irritability,LinearDiscriminantAnalysis,0.4,0.8453
+diabetes_data_upload.csv,Noisy,Itching,ExtraTreesClassifier,0.4,0.8459
+diabetes_data_upload.csv,Noisy,partial paresis,RandomForestClassifier,0.4,0.8464
+diabetes_data_upload.csv,Noisy,Alopecia,RandomForestClassifier,0.6,0.847
+diabetes_data_upload.csv,Noisy,Itching,AdaBoostClassifier,0.6,0.8472
+diabetes_data_upload.csv,Noisy,partial paresis,AdaBoostClassifier,0.6,0.8489
+diabetes_data_upload.csv,Labels,class,QuadraticDiscriminantAnalysis,0.8,0.8496
+diabetes_data_upload.csv,Outlier,Age,SVC,0.4,0.8497
+diabetes_data_upload.csv,Noisy,Itching,RidgeClassifier,0.4,0.8527
+diabetes_data_upload.csv,Noisy,muscle stiffness,LogisticRegression,0.4,0.8536
+diabetes_data_upload.csv,Noisy,weakness,GaussianProcessClassifier,0.6,0.8536
+diabetes_data_upload.csv,Noisy,visual blurring,DecisionTreeClassifier,0.6,0.854
+diabetes_data_upload.csv,Noisy,Itching,LinearDiscriminantAnalysis,0.8,0.8545
+diabetes_data_upload.csv,Missing,Itching,SGDClassifier,0.4,0.8548
+diabetes_data_upload.csv,Noisy,Itching,RidgeClassifier,0.8,0.8553
+diabetes_data_upload.csv,Noisy,visual blurring,GaussianNB,0.4,0.8559
+diabetes_data_upload.csv,Noisy,partial paresis,RidgeClassifier,0.8,0.8561
+diabetes_data_upload.csv,Noisy,Genital thrush,GaussianNB,0.4,0.8565
+diabetes_data_upload.csv,Noisy,Itching,KNeighborsClassifier,0.6,0.8565
+diabetes_data_upload.csv,Noisy,sudden weight loss,DecisionTreeClassifier,0.8,0.8566
+diabetes_data_upload.csv,Noisy,partial paresis,RandomForestClassifier,0.6,0.8569
+diabetes_data_upload.csv,Noisy,Polydipsia,GaussianNB,0.6,0.8571
+diabetes_data_upload.csv,Noisy,Alopecia,DecisionTreeClassifier,0.4,0.8572
+diabetes_data_upload.csv,Noisy,Irritability,DecisionTreeClassifier,0.4,0.8573
+diabetes_data_upload.csv,Noisy,visual blurring,GaussianProcessClassifier,0.6,0.8599
+diabetes_data_upload.csv,Noisy,Alopecia,SGDClassifier,0.8,0.8626
+diabetes_data_upload.csv,Noisy,Polyphagia,LogisticRegression,0.6,0.8635
+diabetes_data_upload.csv,Missing,Age,SVC,0.8,0.8652
+diabetes_data_upload.csv,Noisy,Gender,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,sudden weight loss,LinearDiscriminantAnalysis,0.4,0.866
+diabetes_data_upload.csv,Noisy,sudden weight loss,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,sudden weight loss,AdaBoostClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,sudden weight loss,RidgeClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,muscle stiffness,LinearDiscriminantAnalysis,0.4,0.866
+diabetes_data_upload.csv,Noisy,muscle stiffness,MLPClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,muscle stiffness,RidgeClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,muscle stiffness,GaussianNB,0.4,0.866
+diabetes_data_upload.csv,Noisy,Polydipsia,SVC,0.4,0.866
+diabetes_data_upload.csv,Noisy,Polydipsia,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,Polyphagia,LinearDiscriminantAnalysis,0.4,0.866
+diabetes_data_upload.csv,Noisy,Polyphagia,LogisticRegression,0.4,0.866
+diabetes_data_upload.csv,Noisy,Polyphagia,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,delayed healing,LinearDiscriminantAnalysis,0.4,0.866
+diabetes_data_upload.csv,Noisy,delayed healing,GaussianProcessClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,delayed healing,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,delayed healing,RidgeClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,delayed healing,GaussianNB,0.4,0.866
+diabetes_data_upload.csv,Noisy,Alopecia,SVC,0.4,0.866
+diabetes_data_upload.csv,Noisy,Alopecia,KNeighborsClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,Obesity,GaussianNB,0.4,0.866
+diabetes_data_upload.csv,Noisy,Obesity,RidgeClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,Obesity,LinearDiscriminantAnalysis,0.4,0.866
+diabetes_data_upload.csv,Noisy,Obesity,SVC,0.4,0.866
+diabetes_data_upload.csv,Noisy,Obesity,LogisticRegression,0.4,0.866
+diabetes_data_upload.csv,Missing,Obesity,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,Obesity,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,visual blurring,LogisticRegression,0.4,0.866
+diabetes_data_upload.csv,Noisy,visual blurring,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,Irritability,RandomForestClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,weakness,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,Genital thrush,SGDClassifier,0.4,0.866
+diabetes_data_upload.csv,Noisy,partial paresis,LogisticRegression,0.8,0.8666
+diabetes_data_upload.csv,Noisy,sudden weight loss,DecisionTreeClassifier,0.6,0.8673
+diabetes_data_upload.csv,Noisy,partial paresis,LinearDiscriminantAnalysis,0.8,0.8679
+diabetes_data_upload.csv,Noisy,Polyuria,SGDClassifier,0.6,0.8709
+diabetes_data_upload.csv,Labels,class,GaussianNB,0.6,0.8735
+diabetes_data_upload.csv,Noisy,muscle stiffness,AdaBoostClassifier,0.4,0.8747
+diabetes_data_upload.csv,Noisy,muscle stiffness,SGDClassifier,0.6,0.8752
+diabetes_data_upload.csv,Noisy,Polydipsia,SVC,0.6,0.8759
+diabetes_data_upload.csv,Noisy,Itching,LinearDiscriminantAnalysis,0.6,0.8775
+diabetes_data_upload.csv,Noisy,Alopecia,RidgeClassifier,0.4,0.8782
+diabetes_data_upload.csv,Noisy,Genital thrush,AdaBoostClassifier,0.4,0.8783
+diabetes_data_upload.csv,Noisy,delayed healing,SGDClassifier,0.6,0.8789
+diabetes_data_upload.csv,Labels,class,LogisticRegression,0.4,0.8793
+diabetes_data_upload.csv,Noisy,visual blurring,SVC,0.8,0.8798
+diabetes_data_upload.csv,Noisy,Irritability,GaussianNB,0.4,0.8804
+diabetes_data_upload.csv,Missing,Polydipsia,QuadraticDiscriminantAnalysis,0.8,0.8808
+diabetes_data_upload.csv,DuplicatedAll,class,SGDClassifier,0.6,0.8815
+diabetes_data_upload.csv,Noisy,delayed healing,LogisticRegression,0.4,0.8819
+diabetes_data_upload.csv,Noisy,muscle stiffness,GaussianProcessClassifier,0.4,0.882
+diabetes_data_upload.csv,Noisy,Alopecia,GaussianNB,0.4,0.8835
+diabetes_data_upload.csv,Outlier,Age,SVC,0.8,0.8871
+diabetes_data_upload.csv,Noisy,Irritability,AdaBoostClassifier,0.4,0.8883
+diabetes_data_upload.csv,Noisy,muscle stiffness,ExtraTreesClassifier,0.4,0.8893
+diabetes_data_upload.csv,Noisy,Polydipsia,DecisionTreeClassifier,0.6,0.8906
+diabetes_data_upload.csv,Noisy,Polydipsia,LogisticRegression,0.6,0.8909
+diabetes_data_upload.csv,Noisy,sudden weight loss,GaussianNB,0.6,0.8911
+diabetes_data_upload.csv,Noisy,delayed healing,DecisionTreeClassifier,0.4,0.892
+diabetes_data_upload.csv,Noisy,weakness,ExtraTreesClassifier,0.6,0.8927
+diabetes_data_upload.csv,Noisy,Itching,GaussianNB,0.4,0.8927
+diabetes_data_upload.csv,Noisy,visual blurring,SVC,0.4,0.8933
+diabetes_data_upload.csv,Noisy,delayed healing,KNeighborsClassifier,0.4,0.8941
+diabetes_data_upload.csv,Noisy,muscle stiffness,GradientBoostingClassifier,0.4,0.8943
+diabetes_data_upload.csv,Noisy,Polyphagia,SGDClassifier,0.8,0.8943
+diabetes_data_upload.csv,Noisy,Gender,SGDClassifier,0.6,0.8944
+diabetes_data_upload.csv,Noisy,delayed healing,ExtraTreesClassifier,0.4,0.8945
+diabetes_data_upload.csv,Noisy,weakness,SVC,0.4,0.8951
+diabetes_data_upload.csv,Noisy,Alopecia,GradientBoostingClassifier,0.6,0.8954
+diabetes_data_upload.csv,Noisy,Polyphagia,GaussianProcessClassifier,0.4,0.8956
+diabetes_data_upload.csv,Noisy,partial paresis,GradientBoostingClassifier,0.4,0.8959
+diabetes_data_upload.csv,Noisy,visual blurring,SVC,0.6,0.8967
+diabetes_data_upload.csv,Noisy,Irritability,GaussianProcessClassifier,0.4,0.8991
+diabetes_data_upload.csv,Noisy,Polyphagia,SVC,0.4,0.9002
+diabetes_data_upload.csv,Noisy,Irritability,GradientBoostingClassifier,0.6,0.9006
+diabetes_data_upload.csv,Noisy,sudden weight loss,GaussianNB,0.8,0.9008
+diabetes_data_upload.csv,Noisy,weakness,GaussianProcessClassifier,0.4,0.9011
+diabetes_data_upload.csv,Noisy,partial paresis,LogisticRegression,0.6,0.9023
+diabetes_data_upload.csv,Noisy,delayed healing,RandomForestClassifier,0.4,0.9032
+diabetes_data_upload.csv,Noisy,Genital thrush,SVC,0.4,0.9032
+diabetes_data_upload.csv,Noisy,Polydipsia,LogisticRegression,0.8,0.9043
+diabetes_data_upload.csv,Missing,sudden weight loss,SGDClassifier,0.4,0.9046
+diabetes_data_upload.csv,Noisy,muscle stiffness,SGDClassifier,0.4,0.9059
+diabetes_data_upload.csv,Noisy,Obesity,DecisionTreeClassifier,0.6,0.9066
+diabetes_data_upload.csv,Noisy,Polydipsia,AdaBoostClassifier,0.6,0.907
+diabetes_data_upload.csv,Noisy,partial paresis,GaussianNB,0.4,0.9071
+diabetes_data_upload.csv,Noisy,Irritability,ExtraTreesClassifier,0.4,0.9079
+diabetes_data_upload.csv,Missing,Age,GaussianProcessClassifier,0.6,0.9079
+diabetes_data_upload.csv,Noisy,Itching,LinearDiscriminantAnalysis,0.4,0.908
+diabetes_data_upload.csv,Noisy,weakness,SVC,0.6,0.9085
+diabetes_data_upload.csv,Noisy,partial paresis,LinearDiscriminantAnalysis,0.4,0.909
+diabetes_data_upload.csv,Noisy,partial paresis,RidgeClassifier,0.4,0.909
+diabetes_data_upload.csv,Noisy,visual blurring,DecisionTreeClassifier,0.4,0.9099
+diabetes_data_upload.csv,Noisy,muscle stiffness,SVC,0.4,0.91
+diabetes_data_upload.csv,Noisy,Irritability,LogisticRegression,0.4,0.9107
+diabetes_data_upload.csv,Noisy,Irritability,SVC,0.4,0.9112
+diabetes_data_upload.csv,Noisy,Irritability,SGDClassifier,0.4,0.9121
+diabetes_data_upload.csv,Noisy,visual blurring,GaussianProcessClassifier,0.4,0.9134
+diabetes_data_upload.csv,Noisy,Polyphagia,DecisionTreeClassifier,0.4,0.9144
+diabetes_data_upload.csv,Noisy,Age,SGDClassifier,0.8,0.9161
+diabetes_data_upload.csv,Noisy,visual blurring,ExtraTreesClassifier,0.6,0.9173
+diabetes_data_upload.csv,Noisy,partial paresis,DecisionTreeClassifier,0.4,0.9177
+diabetes_data_upload.csv,Noisy,Polydipsia,GaussianNB,0.8,0.9179
+diabetes_data_upload.csv,Noisy,sudden weight loss,ExtraTreesClassifier,0.4,0.9191
+diabetes_data_upload.csv,Noisy,partial paresis,RidgeClassifier,0.6,0.9197
+diabetes_data_upload.csv,Noisy,weakness,SVC,0.8,0.9199
+diabetes_data_upload.csv,Noisy,Polydipsia,LogisticRegression,0.4,0.9213
+diabetes_data_upload.csv,Labels,class,QuadraticDiscriminantAnalysis,0.6,0.922
+diabetes_data_upload.csv,Labels,class,AdaBoostClassifier,0.4,0.9222
+diabetes_data_upload.csv,Missing,Age,GaussianProcessClassifier,0.4,0.9241
+diabetes_data_upload.csv,Noisy,Obesity,ExtraTreesClassifier,0.4,0.9252
+diabetes_data_upload.csv,Noisy,partial paresis,SVC,0.4,0.9254
+diabetes_data_upload.csv,Noisy,Itching,RandomForestClassifier,0.4,0.9266
+diabetes_data_upload.csv,Noisy,partial paresis,LogisticRegression,0.4,0.9269
+diabetes_data_upload.csv,Noisy,partial paresis,LinearDiscriminantAnalysis,0.6,0.9275
+diabetes_data_upload.csv,Noisy,Itching,AdaBoostClassifier,0.4,0.9275
+diabetes_data_upload.csv,Labels,class,KNeighborsClassifier,0.6,0.928
+diabetes_data_upload.csv,Noisy,partial paresis,AdaBoostClassifier,0.4,0.9289
+diabetes_data_upload.csv,Noisy,Age,SVC,0.6,0.9289
+diabetes_data_upload.csv,Labels,class,LinearDiscriminantAnalysis,0.6,0.9298
+diabetes_data_upload.csv,Labels,class,RidgeClassifier,0.6,0.9298
+diabetes_data_upload.csv,Noisy,Alopecia,SGDClassifier,0.4,0.9313
+diabetes_data_upload.csv,Labels,class,GaussianNB,0.4,0.9318
+diabetes_data_upload.csv,Labels,class,MLPClassifier,0.6,0.9319
+diabetes_data_upload.csv,Noisy,Irritability,GradientBoostingClassifier,0.4,0.9338
+diabetes_data_upload.csv,Noisy,Genital thrush,ExtraTreesClassifier,0.4,0.9348
+diabetes_data_upload.csv,Labels,class,SVC,0.8,0.9349
+diabetes_data_upload.csv,Noisy,Polydipsia,SVC,0.8,0.9352
+diabetes_data_upload.csv,Noisy,sudden weight loss,GaussianNB,0.4,0.9354
+diabetes_data_upload.csv,Noisy,Obesity,DecisionTreeClassifier,0.4,0.9364
+diabetes_data_upload.csv,Labels,class,GaussianNB,0.8,0.9379
+diabetes_data_upload.csv,Noisy,Polydipsia,LinearDiscriminantAnalysis,0.4,0.9395
+diabetes_data_upload.csv,Noisy,Polydipsia,RidgeClassifier,0.4,0.9395
+diabetes_data_upload.csv,Noisy,Age,SVC,0.8,0.9399
+diabetes_data_upload.csv,Noisy,sudden weight loss,RandomForestClassifier,0.4,0.9402
+diabetes_data_upload.csv,Noisy,Polyphagia,KNeighborsClassifier,0.6,0.9405
+diabetes_data_upload.csv,DuplicatedAll,class,SGDClassifier,0.8,0.9405
+diabetes_data_upload.csv,Noisy,visual blurring,RandomForestClassifier,0.4,0.9412
+diabetes_data_upload.csv,Noisy,visual blurring,KNeighborsClassifier,0.6,0.9418
+diabetes_data_upload.csv,Outlier,Age,SVC,0.6,0.9426
+diabetes_data_upload.csv,Noisy,muscle stiffness,KNeighborsClassifier,0.4,0.9457
+diabetes_data_upload.csv,Noisy,Polyphagia,GaussianNB,0.4,0.9461
+diabetes_data_upload.csv,Noisy,Polydipsia,RidgeClassifier,0.8,0.9469
+diabetes_data_upload.csv,Missing,Age,GaussianProcessClassifier,0.8,0.9477
+diabetes_data_upload.csv,Noisy,sudden weight loss,SVC,0.4,0.9481
+diabetes_data_upload.csv,Labels,class,LinearDiscriminantAnalysis,0.8,0.9487
+diabetes_data_upload.csv,Labels,class,RidgeClassifier,0.8,0.9487
+diabetes_data_upload.csv,Labels,class,MLPClassifier,0.8,0.9501
+diabetes_data_upload.csv,Noisy,Itching,KNeighborsClassifier,0.4,0.9503
+diabetes_data_upload.csv,Noisy,sudden weight loss,RandomForestClassifier,0.6,0.9532
+diabetes_data_upload.csv,Labels,class,LogisticRegression,0.6,0.9532
+diabetes_data_upload.csv,Noisy,Polyphagia,GaussianNB,0.6,0.9539
+diabetes_data_upload.csv,Labels,class,AdaBoostClassifier,0.6,0.9568
+diabetes_data_upload.csv,Noisy,Polyphagia,GaussianNB,0.8,0.9575
+diabetes_data_upload.csv,Noisy,visual blurring,ExtraTreesClassifier,0.4,0.9584
+diabetes_data_upload.csv,Noisy,weakness,ExtraTreesClassifier,0.4,0.9599
+diabetes_data_upload.csv,Labels,class,LogisticRegression,0.8,0.9611
+diabetes_data_upload.csv,Missing,Age,SVC,0.4,0.9619
+diabetes_data_upload.csv,Noisy,sudden weight loss,RandomForestClassifier,0.8,0.9621
+diabetes_data_upload.csv,Labels,class,KNeighborsClassifier,0.8,0.9634
+diabetes_data_upload.csv,Noisy,Polydipsia,LinearDiscriminantAnalysis,0.8,0.9636
+diabetes_data_upload.csv,Labels,class,AdaBoostClassifier,0.8,0.9639
+diabetes_data_upload.csv,Noisy,Polydipsia,DecisionTreeClassifier,0.4,0.9641
+diabetes_data_upload.csv,Outlier,Age,GaussianProcessClassifier,0.4,0.9648
+diabetes_data_upload.csv,Noisy,Polydipsia,AdaBoostClassifier,0.4,0.9673
+diabetes_data_upload.csv,Noisy,Alopecia,SGDClassifier,0.6,0.9673
+diabetes_data_upload.csv,Noisy,Polyphagia,KNeighborsClassifier,0.8,0.9704
+diabetes_data_upload.csv,Labels,class,GradientBoostingClassifier,0.8,0.9719
+diabetes_data_upload.csv,Outlier,Age,GaussianProcessClassifier,0.6,0.974
+diabetes_data_upload.csv,Noisy,visual blurring,KNeighborsClassifier,0.4,0.9746
+diabetes_data_upload.csv,Noisy,Polydipsia,LinearDiscriminantAnalysis,0.6,0.9756
+diabetes_data_upload.csv,Noisy,Polydipsia,RidgeClassifier,0.6,0.9756
+diabetes_data_upload.csv,Outlier,Age,GaussianProcessClassifier,0.8,0.9786
+diabetes_data_upload.csv,Labels,class,SVC,0.6,0.98
+diabetes_data_upload.csv,Labels,class,CatBoostClassifier,0.8,0.9823
+diabetes_data_upload.csv,Noisy,Alopecia,GradientBoostingClassifier,0.4,0.9828
+diabetes_data_upload.csv,Labels,class,RandomForestClassifier,0.8,0.9835
+diabetes_data_upload.csv,Missing,Age,SVC,0.6,0.9847
+diabetes_data_upload.csv,Labels,class,QuadraticDiscriminantAnalysis,0.4,0.9873
+diabetes_data_upload.csv,Labels,class,GaussianProcessClassifier,0.4,0.9886
+diabetes_data_upload.csv,Labels,class,GaussianProcessClassifier,0.8,0.9926
+diabetes_data_upload.csv,Noisy,Itching,SGDClassifier,0.4,0.9935
+diabetes_data_upload.csv,Labels,class,GaussianProcessClassifier,0.6,0.9938
+diabetes_data_upload.csv,Labels,class,GradientBoostingClassifier,0.4,0.9952
+diabetes_data_upload.csv,Labels,class,CatBoostClassifier,0.6,0.9963
+diabetes_data_upload.csv,Labels,class,GradientBoostingClassifier,0.6,0.9967
+diabetes_data_upload.csv,Missing,weakness,SGDClassifier,0.4,0.9968
+diabetes_data_upload.csv,Labels,class,DecisionTreeClassifier,0.8,0.9973
+diabetes_data_upload.csv,Noisy,sudden weight loss,DecisionTreeClassifier,0.4,0.9976
+diabetes_data_upload.csv,Labels,class,DecisionTreeClassifier,0.6,0.9981
+diabetes_data_upload.csv,Labels,class,RandomForestClassifier,0.4,0.9989
+diabetes_data_upload.csv,Labels,class,ExtraTreesClassifier,0.6,0.999
+diabetes_data_upload.csv,Labels,class,ExtraTreesClassifier,0.8,0.999
+diabetes_data_upload.csv,Labels,class,SVC,0.4,0.9992
+diabetes_data_upload.csv,Labels,class,CatBoostClassifier,0.4,0.9994
+diabetes_data_upload.csv,Labels,class,RandomForestClassifier,0.6,0.9995
+diabetes_data_upload.csv,Labels,class,DecisionTreeClassifier,0.4,0.9995

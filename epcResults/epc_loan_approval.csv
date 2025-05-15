@@ -1,0 +1,288 @@
+datasetName,errorType,feature,modelName,percentage,epc_at
+loan_approval.csv,Noisy, bank_asset_value,LogisticRegression,0.8,0.7017
+loan_approval.csv,Noisy, residential_assets_value,LinearDiscriminantAnalysis,0.8,0.7021
+loan_approval.csv,Noisy, luxury_assets_value,LogisticRegression,0.8,0.704
+loan_approval.csv,Outlier, income_annum,MLPClassifier,0.4,0.704
+loan_approval.csv,Noisy, luxury_assets_value,RidgeClassifier,0.8,0.7044
+loan_approval.csv,Noisy, bank_asset_value,LinearDiscriminantAnalysis,0.8,0.707
+loan_approval.csv,Outlier, bank_asset_value,LinearDiscriminantAnalysis,0.8,0.7071
+loan_approval.csv,Outlier, bank_asset_value,RidgeClassifier,0.8,0.7071
+loan_approval.csv,Outlier, bank_asset_value,LogisticRegression,0.8,0.7071
+loan_approval.csv,Outlier, commercial_assets_value,LinearDiscriminantAnalysis,0.8,0.7071
+loan_approval.csv,Outlier, commercial_assets_value,RidgeClassifier,0.8,0.7071
+loan_approval.csv,Outlier, commercial_assets_value,LogisticRegression,0.8,0.7071
+loan_approval.csv,Noisy, commercial_assets_value,LogisticRegression,0.8,0.7071
+loan_approval.csv,Outlier, luxury_assets_value,LinearDiscriminantAnalysis,0.8,0.7071
+loan_approval.csv,Outlier, luxury_assets_value,LogisticRegression,0.8,0.7071
+loan_approval.csv,Outlier, luxury_assets_value,RidgeClassifier,0.8,0.7071
+loan_approval.csv,Noisy, loan_term,SGDClassifier,0.8,0.7071
+loan_approval.csv,Outlier, residential_assets_value,LinearDiscriminantAnalysis,0.8,0.7071
+loan_approval.csv,Outlier, residential_assets_value,RidgeClassifier,0.8,0.7071
+loan_approval.csv,Outlier, residential_assets_value,LogisticRegression,0.8,0.7071
+loan_approval.csv,Outlier, bank_asset_value,QuadraticDiscriminantAnalysis,0.8,0.7076
+loan_approval.csv,Outlier, luxury_assets_value,QuadraticDiscriminantAnalysis,0.8,0.7076
+loan_approval.csv,Noisy, luxury_assets_value,DecisionTreeClassifier,0.8,0.708
+loan_approval.csv,Noisy, residential_assets_value,RidgeClassifier,0.8,0.7095
+loan_approval.csv,Outlier, commercial_assets_value,QuadraticDiscriminantAnalysis,0.8,0.7098
+loan_approval.csv,Noisy, commercial_assets_value,DecisionTreeClassifier,0.6,0.7105
+loan_approval.csv,Noisy, luxury_assets_value,LinearDiscriminantAnalysis,0.8,0.7106
+loan_approval.csv,Noisy, commercial_assets_value,SGDClassifier,0.8,0.7111
+loan_approval.csv,Outlier, residential_assets_value,QuadraticDiscriminantAnalysis,0.8,0.7129
+loan_approval.csv,Noisy, bank_asset_value,SGDClassifier,0.8,0.7134
+loan_approval.csv,Noisy, bank_asset_value,RidgeClassifier,0.8,0.7148
+loan_approval.csv,Outlier, cibil_score,LogisticRegression,0.8,0.7168
+loan_approval.csv,Noisy, loan_term,MLPClassifier,0.6,0.7181
+loan_approval.csv,Noisy, commercial_assets_value,QuadraticDiscriminantAnalysis,0.6,0.7192
+loan_approval.csv,Labels,loan_status,GaussianNB,0.4,0.7194
+loan_approval.csv,Noisy, residential_assets_value,SGDClassifier,0.8,0.7221
+loan_approval.csv,Noisy, luxury_assets_value,QuadraticDiscriminantAnalysis,0.8,0.7256
+loan_approval.csv,Noisy, bank_asset_value,CatBoostClassifier,0.8,0.7268
+loan_approval.csv,Missing, self_employed,MLPClassifier,0.6,0.7305
+loan_approval.csv,Noisy, residential_assets_value,CatBoostClassifier,0.6,0.7307
+loan_approval.csv,Noisy, income_annum,MLPClassifier,0.6,0.7311
+loan_approval.csv,Noisy, bank_asset_value,GradientBoostingClassifier,0.8,0.7316
+loan_approval.csv,Noisy, luxury_assets_value,GradientBoostingClassifier,0.6,0.7356
+loan_approval.csv,Outlier, cibil_score,MLPClassifier,0.6,0.7369
+loan_approval.csv,Noisy, residential_assets_value,AdaBoostClassifier,0.8,0.7389
+loan_approval.csv,Noisy, residential_assets_value,RandomForestClassifier,0.4,0.7392
+loan_approval.csv,Noisy, commercial_assets_value,AdaBoostClassifier,0.6,0.7401
+loan_approval.csv,Noisy, luxury_assets_value,AdaBoostClassifier,0.8,0.7421
+loan_approval.csv,Outlier, self_employed,QuadraticDiscriminantAnalysis,0.4,0.7429
+loan_approval.csv,Noisy, luxury_assets_value,CatBoostClassifier,0.8,0.7441
+loan_approval.csv,Outlier, cibil_score,RidgeClassifier,0.8,0.7447
+loan_approval.csv,Noisy, residential_assets_value,ExtraTreesClassifier,0.6,0.7457
+loan_approval.csv,Outlier, bank_asset_value,MLPClassifier,0.6,0.7484
+loan_approval.csv,Noisy, commercial_assets_value,CatBoostClassifier,0.6,0.75
+loan_approval.csv,Noisy, residential_assets_value,QuadraticDiscriminantAnalysis,0.6,0.7514
+loan_approval.csv,Outlier, cibil_score,LinearDiscriminantAnalysis,0.8,0.7525
+loan_approval.csv,Noisy, bank_asset_value,AdaBoostClassifier,0.6,0.7564
+loan_approval.csv,Noisy, bank_asset_value,DecisionTreeClassifier,0.8,0.7572
+loan_approval.csv,Noisy, residential_assets_value,DecisionTreeClassifier,0.4,0.7579
+loan_approval.csv,Noisy, commercial_assets_value,LinearDiscriminantAnalysis,0.6,0.759
+loan_approval.csv,Noisy, residential_assets_value,GradientBoostingClassifier,0.6,0.7629
+loan_approval.csv,Noisy, commercial_assets_value,ExtraTreesClassifier,0.6,0.7638
+loan_approval.csv,Missing, commercial_assets_value,MLPClassifier,0.8,0.7644
+loan_approval.csv,Noisy, commercial_assets_value,RidgeClassifier,0.6,0.7653
+loan_approval.csv,Noisy, luxury_assets_value,RidgeClassifier,0.6,0.7657
+loan_approval.csv,Noisy, bank_asset_value,DecisionTreeClassifier,0.6,0.7658
+loan_approval.csv,Outlier, self_employed,MLPClassifier,0.4,0.7661
+loan_approval.csv,Noisy, luxury_assets_value,QuadraticDiscriminantAnalysis,0.6,0.767
+loan_approval.csv,Outlier, self_employed,QuadraticDiscriminantAnalysis,0.6,0.767
+loan_approval.csv,Noisy, bank_asset_value,LinearDiscriminantAnalysis,0.6,0.7678
+loan_approval.csv,Noisy, bank_asset_value,LogisticRegression,0.6,0.7679
+loan_approval.csv,Noisy, residential_assets_value,RidgeClassifier,0.6,0.7681
+loan_approval.csv,Noisy, luxury_assets_value,CatBoostClassifier,0.6,0.7688
+loan_approval.csv,Noisy, residential_assets_value,LinearDiscriminantAnalysis,0.6,0.769
+loan_approval.csv,Outlier, residential_assets_value,MLPClassifier,0.6,0.769
+loan_approval.csv,Noisy, residential_assets_value,LogisticRegression,0.6,0.7715
+loan_approval.csv,Noisy, residential_assets_value,DecisionTreeClassifier,0.6,0.772
+loan_approval.csv,Noisy, bank_asset_value,RidgeClassifier,0.6,0.7735
+loan_approval.csv,Outlier, cibil_score,QuadraticDiscriminantAnalysis,0.8,0.7741
+loan_approval.csv,Noisy, bank_asset_value,QuadraticDiscriminantAnalysis,0.8,0.7743
+loan_approval.csv,Labels,loan_status,DummyClassifier,0.6,0.7746
+loan_approval.csv,Labels,loan_status,SVC,0.6,0.7746
+loan_approval.csv,Outlier, bank_asset_value,LinearDiscriminantAnalysis,0.6,0.7746
+loan_approval.csv,Outlier, bank_asset_value,RidgeClassifier,0.6,0.7746
+loan_approval.csv,Outlier, bank_asset_value,QuadraticDiscriminantAnalysis,0.6,0.7746
+loan_approval.csv,Outlier, bank_asset_value,LogisticRegression,0.6,0.7746
+loan_approval.csv,Outlier, commercial_assets_value,LinearDiscriminantAnalysis,0.6,0.7746
+loan_approval.csv,Outlier, commercial_assets_value,QuadraticDiscriminantAnalysis,0.6,0.7746
+loan_approval.csv,Outlier, commercial_assets_value,RidgeClassifier,0.6,0.7746
+loan_approval.csv,Outlier, commercial_assets_value,LogisticRegression,0.6,0.7746
+loan_approval.csv,Noisy, commercial_assets_value,LogisticRegression,0.6,0.7746
+loan_approval.csv,Outlier, luxury_assets_value,LinearDiscriminantAnalysis,0.6,0.7746
+loan_approval.csv,Outlier, luxury_assets_value,LogisticRegression,0.6,0.7746
+loan_approval.csv,Noisy, luxury_assets_value,LogisticRegression,0.6,0.7746
+loan_approval.csv,Outlier, luxury_assets_value,RidgeClassifier,0.6,0.7746
+loan_approval.csv,Noisy, loan_term,SGDClassifier,0.6,0.7746
+loan_approval.csv,Outlier, residential_assets_value,LinearDiscriminantAnalysis,0.6,0.7746
+loan_approval.csv,Outlier, residential_assets_value,RidgeClassifier,0.6,0.7746
+loan_approval.csv,Outlier, residential_assets_value,LogisticRegression,0.6,0.7746
+loan_approval.csv,Noisy, luxury_assets_value,AdaBoostClassifier,0.6,0.7753
+loan_approval.csv,Outlier, luxury_assets_value,QuadraticDiscriminantAnalysis,0.6,0.7761
+loan_approval.csv,Missing, loan_amount,LogisticRegression,0.8,0.7769
+loan_approval.csv,Missing, cibil_score,MLPClassifier,0.8,0.7772
+loan_approval.csv,Noisy, bank_asset_value,ExtraTreesClassifier,0.6,0.778
+loan_approval.csv,Noisy, luxury_assets_value,LinearDiscriminantAnalysis,0.6,0.778
+loan_approval.csv,Outlier, residential_assets_value,QuadraticDiscriminantAnalysis,0.6,0.78
+loan_approval.csv,Noisy, bank_asset_value,GradientBoostingClassifier,0.6,0.7832
+loan_approval.csv,Noisy, residential_assets_value,AdaBoostClassifier,0.6,0.7832
+loan_approval.csv,Outlier, cibil_score,LogisticRegression,0.6,0.784
+loan_approval.csv,Noisy, loan_amount,MLPClassifier,0.4,0.7848
+loan_approval.csv,Noisy, commercial_assets_value,RandomForestClassifier,0.6,0.7879
+loan_approval.csv,Noisy, bank_asset_value,SGDClassifier,0.4,0.7885
+loan_approval.csv,Labels,loan_status,LinearDiscriminantAnalysis,0.6,0.7946
+loan_approval.csv,Labels,loan_status,RidgeClassifier,0.6,0.7953
+loan_approval.csv,Missing, loan_amount,MLPClassifier,0.4,0.7963
+loan_approval.csv,Noisy, loan_amount,SGDClassifier,0.6,0.7983
+loan_approval.csv,Noisy, bank_asset_value,AdaBoostClassifier,0.4,0.8009
+loan_approval.csv,Labels,loan_status,GaussianNB,0.6,0.8064
+loan_approval.csv,Missing, education,MLPClassifier,0.8,0.8067
+loan_approval.csv,Noisy, luxury_assets_value,ExtraTreesClassifier,0.4,0.8084
+loan_approval.csv,Noisy, residential_assets_value,SGDClassifier,0.4,0.8088
+loan_approval.csv,Noisy, self_employed,MLPClassifier,0.4,0.8091
+loan_approval.csv,Outlier, cibil_score,RidgeClassifier,0.6,0.8113
+loan_approval.csv,Noisy, residential_assets_value,AdaBoostClassifier,0.4,0.8126
+loan_approval.csv,Labels,loan_status,LogisticRegression,0.6,0.8145
+loan_approval.csv,Missing, commercial_assets_value,SGDClassifier,0.8,0.8166
+loan_approval.csv,Noisy, bank_asset_value,CatBoostClassifier,0.6,0.8173
+loan_approval.csv,Outlier, cibil_score,LinearDiscriminantAnalysis,0.6,0.8189
+loan_approval.csv,Noisy, luxury_assets_value,GradientBoostingClassifier,0.4,0.8201
+loan_approval.csv,Noisy, commercial_assets_value,AdaBoostClassifier,0.4,0.8211
+loan_approval.csv,DuplicatedAll,loan_status,SGDClassifier,0.6,0.824
+loan_approval.csv,Noisy, commercial_assets_value,CatBoostClassifier,0.4,0.8289
+loan_approval.csv,Labels,loan_status,GradientBoostingClassifier,0.6,0.8303
+loan_approval.csv,Noisy, commercial_assets_value,MLPClassifier,0.4,0.8306
+loan_approval.csv,Noisy, bank_asset_value,ExtraTreesClassifier,0.4,0.8307
+loan_approval.csv,Noisy, bank_asset_value,QuadraticDiscriminantAnalysis,0.6,0.8315
+loan_approval.csv,Outlier, income_annum,MLPClassifier,0.6,0.8341
+loan_approval.csv,Outlier, cibil_score,QuadraticDiscriminantAnalysis,0.6,0.8358
+loan_approval.csv,Missing, loan_term,MLPClassifier,0.4,0.8432
+loan_approval.csv,Noisy, commercial_assets_value,GradientBoostingClassifier,0.4,0.8443
+loan_approval.csv,Noisy, residential_assets_value,GradientBoostingClassifier,0.4,0.8445
+loan_approval.csv,Labels,loan_status,AdaBoostClassifier,0.6,0.8449
+loan_approval.csv,Noisy, bank_asset_value,DecisionTreeClassifier,0.4,0.8486
+loan_approval.csv,Noisy, luxury_assets_value,CatBoostClassifier,0.4,0.849
+loan_approval.csv,Missing, commercial_assets_value,MLPClassifier,0.6,0.8493
+loan_approval.csv,Labels,loan_status,CatBoostClassifier,0.6,0.8509
+loan_approval.csv,Noisy, residential_assets_value,CatBoostClassifier,0.4,0.8526
+loan_approval.csv,Noisy, commercial_assets_value,LinearDiscriminantAnalysis,0.4,0.8567
+loan_approval.csv,Noisy, residential_assets_value,QuadraticDiscriminantAnalysis,0.4,0.8571
+loan_approval.csv,Noisy, loan_amount,MLPClassifier,0.8,0.8575
+loan_approval.csv,Noisy, cibil_score,MLPClassifier,0.6,0.8598
+loan_approval.csv,Noisy, cibil_score,RandomForestClassifier,0.4,0.86
+loan_approval.csv,Missing, self_employed,MLPClassifier,0.8,0.8602
+loan_approval.csv,Missing, commercial_assets_value,SGDClassifier,0.4,0.8608
+loan_approval.csv,Noisy, commercial_assets_value,ExtraTreesClassifier,0.4,0.8611
+loan_approval.csv,Noisy, residential_assets_value,ExtraTreesClassifier,0.4,0.8611
+loan_approval.csv,Noisy, bank_asset_value,RidgeClassifier,0.4,0.8623
+loan_approval.csv,Noisy, luxury_assets_value,RidgeClassifier,0.4,0.8623
+loan_approval.csv,Noisy, residential_assets_value,LinearDiscriminantAnalysis,0.4,0.8623
+loan_approval.csv,Noisy, luxury_assets_value,DecisionTreeClassifier,0.6,0.8629
+loan_approval.csv,Labels,loan_status,SGDClassifier,0.4,0.8632
+loan_approval.csv,Noisy, luxury_assets_value,QuadraticDiscriminantAnalysis,0.4,0.8633
+loan_approval.csv,Noisy, commercial_assets_value,RidgeClassifier,0.4,0.8637
+loan_approval.csv,Outlier, loan_amount,SGDClassifier,0.4,0.8643
+loan_approval.csv,Noisy, bank_asset_value,GradientBoostingClassifier,0.4,0.8643
+loan_approval.csv,Outlier, commercial_assets_value,SGDClassifier,0.4,0.8643
+loan_approval.csv,Missing, residential_assets_value,SGDClassifier,0.4,0.8643
+loan_approval.csv,Outlier, bank_asset_value,QuadraticDiscriminantAnalysis,0.4,0.8648
+loan_approval.csv,Noisy, residential_assets_value,RidgeClassifier,0.4,0.8654
+loan_approval.csv,Labels,loan_status,DummyClassifier,0.8,0.866
+loan_approval.csv,Labels,loan_status,SVC,0.8,0.866
+loan_approval.csv,Outlier, bank_asset_value,LinearDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Noisy, bank_asset_value,LinearDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Outlier, bank_asset_value,RidgeClassifier,0.4,0.866
+loan_approval.csv,Outlier, bank_asset_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Noisy, bank_asset_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Outlier, commercial_assets_value,LinearDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Outlier, commercial_assets_value,QuadraticDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Outlier, commercial_assets_value,RidgeClassifier,0.4,0.866
+loan_approval.csv,Outlier, commercial_assets_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Noisy, commercial_assets_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Outlier, luxury_assets_value,LinearDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Noisy, luxury_assets_value,LinearDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Outlier, luxury_assets_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Noisy, luxury_assets_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Outlier, luxury_assets_value,QuadraticDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Outlier, luxury_assets_value,RidgeClassifier,0.4,0.866
+loan_approval.csv,Noisy, loan_term,SGDClassifier,0.4,0.866
+loan_approval.csv,Outlier, residential_assets_value,LinearDiscriminantAnalysis,0.4,0.866
+loan_approval.csv,Outlier, residential_assets_value,RidgeClassifier,0.4,0.866
+loan_approval.csv,Outlier, residential_assets_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Noisy, residential_assets_value,LogisticRegression,0.4,0.866
+loan_approval.csv,Noisy, luxury_assets_value,AdaBoostClassifier,0.4,0.8675
+loan_approval.csv,Labels,loan_status,QuadraticDiscriminantAnalysis,0.6,0.868
+loan_approval.csv,Outlier, residential_assets_value,QuadraticDiscriminantAnalysis,0.4,0.8701
+loan_approval.csv,Missing, luxury_assets_value,SGDClassifier,0.4,0.8726
+loan_approval.csv,Labels,loan_status,LinearDiscriminantAnalysis,0.4,0.8729
+loan_approval.csv,Outlier, cibil_score,LogisticRegression,0.4,0.8739
+loan_approval.csv,Missing, loan_amount,LogisticRegression,0.6,0.8744
+loan_approval.csv,Noisy, cibil_score,GradientBoostingClassifier,0.8,0.8768
+loan_approval.csv,Noisy, commercial_assets_value,DecisionTreeClassifier,0.4,0.8789
+loan_approval.csv,Labels,loan_status,RandomForestClassifier,0.6,0.8804
+loan_approval.csv,Labels,loan_status,LinearDiscriminantAnalysis,0.8,0.8818
+loan_approval.csv,Labels,loan_status,RidgeClassifier,0.8,0.8821
+loan_approval.csv,Noisy, commercial_assets_value,QuadraticDiscriminantAnalysis,0.4,0.8839
+loan_approval.csv,Labels,loan_status,RidgeClassifier,0.4,0.8844
+loan_approval.csv,Noisy, bank_asset_value,CatBoostClassifier,0.4,0.8861
+loan_approval.csv,Noisy, bank_asset_value,QuadraticDiscriminantAnalysis,0.4,0.8865
+loan_approval.csv,Labels,loan_status,GaussianNB,0.8,0.8867
+loan_approval.csv,Noisy, residential_assets_value,SGDClassifier,0.6,0.8887
+loan_approval.csv,Missing, education,MLPClassifier,0.6,0.8911
+loan_approval.csv,Labels,loan_status,LogisticRegression,0.4,0.8917
+loan_approval.csv,Outlier, residential_assets_value,MLPClassifier,0.8,0.8918
+loan_approval.csv,Noisy, cibil_score,AdaBoostClassifier,0.8,0.895
+loan_approval.csv,Missing, cibil_score,MLPClassifier,0.6,0.8965
+loan_approval.csv,Outlier, cibil_score,RidgeClassifier,0.4,0.897
+loan_approval.csv,Missing, luxury_assets_value,SGDClassifier,0.6,0.8978
+loan_approval.csv,Outlier, loan_term,MLPClassifier,0.4,0.898
+loan_approval.csv,Labels,loan_status,LogisticRegression,0.8,0.8995
+loan_approval.csv,Noisy, loan_amount,SGDClassifier,0.4,0.903
+loan_approval.csv,Outlier, cibil_score,LinearDiscriminantAnalysis,0.4,0.9035
+loan_approval.csv,Noisy, cibil_score,CatBoostClassifier,0.8,0.904
+loan_approval.csv,Missing, loan_amount,LogisticRegression,0.4,0.9042
+loan_approval.csv,Noisy, commercial_assets_value,RandomForestClassifier,0.4,0.9042
+loan_approval.csv,Outlier, cibil_score,QuadraticDiscriminantAnalysis,0.4,0.9094
+loan_approval.csv,Labels,loan_status,GradientBoostingClassifier,0.8,0.9105
+loan_approval.csv,Noisy, luxury_assets_value,DecisionTreeClassifier,0.4,0.9125
+loan_approval.csv,Noisy, cibil_score,RandomForestClassifier,0.8,0.9148
+loan_approval.csv,Labels,loan_status,CatBoostClassifier,0.4,0.9149
+loan_approval.csv,Labels,loan_status,RandomForestClassifier,0.4,0.9183
+loan_approval.csv,Outlier, education,MLPClassifier,0.6,0.9186
+loan_approval.csv,Labels,loan_status,AdaBoostClassifier,0.8,0.9191
+loan_approval.csv,Missing, commercial_assets_value,SGDClassifier,0.6,0.9191
+loan_approval.csv,Labels,loan_status,ExtraTreesClassifier,0.6,0.9195
+loan_approval.csv,Outlier, education,QuadraticDiscriminantAnalysis,0.8,0.9215
+loan_approval.csv,Labels,loan_status,CatBoostClassifier,0.8,0.9221
+loan_approval.csv,Outlier, residential_assets_value,MLPClassifier,0.4,0.9286
+loan_approval.csv,Labels,loan_status,QuadraticDiscriminantAnalysis,0.8,0.93
+loan_approval.csv,Noisy, cibil_score,CatBoostClassifier,0.4,0.9301
+loan_approval.csv,Noisy, cibil_score,DecisionTreeClassifier,0.6,0.9308
+loan_approval.csv,Noisy, cibil_score,LinearDiscriminantAnalysis,0.4,0.931
+loan_approval.csv,Labels,loan_status,ExtraTreesClassifier,0.4,0.9342
+loan_approval.csv,Missing, education,MLPClassifier,0.4,0.9364
+loan_approval.csv,Noisy, cibil_score,LinearDiscriminantAnalysis,0.8,0.9376
+loan_approval.csv,Noisy, cibil_score,CatBoostClassifier,0.6,0.9379
+loan_approval.csv,Noisy, cibil_score,LinearDiscriminantAnalysis,0.6,0.9395
+loan_approval.csv,Noisy, cibil_score,RidgeClassifier,0.6,0.9411
+loan_approval.csv,Labels,loan_status,RandomForestClassifier,0.8,0.9412
+loan_approval.csv,Noisy, cibil_score,RidgeClassifier,0.8,0.9419
+loan_approval.csv,Noisy, cibil_score,RandomForestClassifier,0.6,0.9429
+loan_approval.csv,Missing, cibil_score,MLPClassifier,0.4,0.9472
+loan_approval.csv,Labels,loan_status,SGDClassifier,0.6,0.9476
+loan_approval.csv,Labels,loan_status,AdaBoostClassifier,0.4,0.9541
+loan_approval.csv,Labels,loan_status,GradientBoostingClassifier,0.4,0.9542
+loan_approval.csv,Outlier, education,QuadraticDiscriminantAnalysis,0.4,0.9544
+loan_approval.csv,Labels,loan_status,KNeighborsClassifier,0.4,0.955
+loan_approval.csv,Labels,loan_status,KNeighborsClassifier,0.6,0.9582
+loan_approval.csv,Noisy, cibil_score,DecisionTreeClassifier,0.8,0.9595
+loan_approval.csv,Outlier, no_of_dependents,MLPClassifier,0.4,0.9599
+loan_approval.csv,Labels,loan_status,QuadraticDiscriminantAnalysis,0.4,0.9605
+loan_approval.csv,Labels,loan_status,ExtraTreesClassifier,0.8,0.9606
+loan_approval.csv,Noisy, cibil_score,RidgeClassifier,0.4,0.9626
+loan_approval.csv,Outlier, education,QuadraticDiscriminantAnalysis,0.6,0.9644
+loan_approval.csv,Noisy, cibil_score,GradientBoostingClassifier,0.6,0.965
+loan_approval.csv,Noisy, cibil_score,ExtraTreesClassifier,0.8,0.9698
+loan_approval.csv,Noisy, cibil_score,GradientBoostingClassifier,0.4,0.9727
+loan_approval.csv,Labels,loan_status,KNeighborsClassifier,0.8,0.9767
+loan_approval.csv,Missing, loan_amount,SGDClassifier,0.4,0.9821
+loan_approval.csv,Noisy, cibil_score,DecisionTreeClassifier,0.4,0.9835
+loan_approval.csv,Noisy, cibil_score,AdaBoostClassifier,0.4,0.9853
+loan_approval.csv,Noisy, cibil_score,QuadraticDiscriminantAnalysis,0.4,0.9859
+loan_approval.csv,Noisy, cibil_score,QuadraticDiscriminantAnalysis,0.8,0.9867
+loan_approval.csv,Noisy, cibil_score,LogisticRegression,0.8,0.9886
+loan_approval.csv,Noisy, cibil_score,LogisticRegression,0.4,0.9892
+loan_approval.csv,DuplicatedAll,loan_status,SGDClassifier,0.4,0.9894
+loan_approval.csv,Noisy, cibil_score,LogisticRegression,0.6,0.9896
+loan_approval.csv,Noisy, cibil_score,QuadraticDiscriminantAnalysis,0.6,0.9901
+loan_approval.csv,Noisy, no_of_dependents,MLPClassifier,0.4,0.9903
+loan_approval.csv,Noisy, cibil_score,AdaBoostClassifier,0.6,0.9934
+loan_approval.csv,Noisy, cibil_score,ExtraTreesClassifier,0.6,0.9936
+loan_approval.csv,Noisy, cibil_score,ExtraTreesClassifier,0.4,0.9941
+loan_approval.csv,Outlier, education,MLPClassifier,0.4,0.9976
+loan_approval.csv,Labels,loan_status,DecisionTreeClassifier,0.6,0.9981
+loan_approval.csv,Labels,loan_status,DecisionTreeClassifier,0.8,0.9982
+loan_approval.csv,Labels,loan_status,DecisionTreeClassifier,0.4,0.9985
+loan_approval.csv,Outlier, loan_amount,MLPClassifier,0.4,0.9989
+loan_approval.csv,Missing, no_of_dependents,MLPClassifier,0.4,0.9992

@@ -1,0 +1,74 @@
+{
+    "datasetName": "recruitment_data.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "Age",
+        "EducationLevel",
+        "ExperienceYears",
+        "PreviousCompanies",
+        "InterviewScore",
+        "SkillScore",
+        "PersonalityScore"
+    ],
+    "continousFeatures": [
+        "DistanceFromCompany"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [
+        "RecruitmentStrategy"
+    ],
+    "binaryFeatures": [
+        "Gender"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "HiringDecision"
+}

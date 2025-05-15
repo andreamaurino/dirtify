@@ -1,0 +1,52 @@
+CREATE or replace TABLE  MODPERF (
+ACC DOUBLE,
+PREC DOUBLE,
+REC DOUBLE,
+EPC DOUBLE,
+F1 DOUBLE,
+AUC DOUBLE,
+DATASETNAME VARCHAR(255),
+ERRTYPE  VARCHAR(255),
+ERRPERC DOUBLE,
+FEATTYPE  VARCHAR(255),
+FEATNAME  VARCHAR(255),
+MODELNAME  VARCHAR(255),
+MODELTYPE VARCHAR(255)
+);
+
+CREATE OR REPLACE TABLE FEATURES (
+datasetname VARCHAR(255),
+feature  VARCHAR(255),
+type  VARCHAR(255),
+);
+
+CREATE OR REPLACE TABLE MODELS (
+ID INTEGER PRIMARY KEY,
+MODELLOCALNAME  VARCHAR(255),
+MODELNAME  VARCHAR(255),
+MODELTYPE VARCHAR(255)
+);
+
+insert or ignore into MODELS values
+(1,'LogisticRegression','Logistic Regression','Linear'),
+(2,'RidgeClassifier','Ridge Classifier', 'Linear'),
+(3,'LinearDiscriminantAnalysis','Linear Discriminant Analysis','Linear'),
+(4,'SGDClassifier','SGD Classifier','Linear'),
+(5,'SVC','Support Vector Machine','Linear'),
+(6,'GaussianNB','Gaussian Naive Bayes','Probabilistic'),
+(7,'GaussianProcessClassifier','Gaussian Process Classifier','Probabilistic'),
+(8,'QuadraticDiscriminantAnalysis','Quadratic Discriminant Analysis','Probabilistic'),
+(9,'MLPClassifier','MLP Classifier','Neural Networks'),
+(10,'DummyClassifier','Dummy Classifier','Heuristic based'),
+(11,'KNeighborsClassifier','K-Neighborg Classifier','Neighborg based'),
+(12,'ExtraTreesClassifier','Extra Tree Classifier','Single Tree'),
+(13,'DecisionTreeClassifier','Decision Tree Classifier','Single Tree'),
+(14,'RandomForestClassifier','Random Forest Classifier','Ensemble Tree'),
+(15,'GradientBoostingClassifier','Gradient Boosting Classifier','Ensemble Tree'),
+(16,'AdaBoostClassifier','Ada Boost Classifier','Ensemble Tree'),
+(17,'CatBoostClassifier','Cat Boost Classifier','Ensemble Tree'),
+(18,'LGBMClassifier','Light GBM','Ensemble Tree')
+;
+
+
+

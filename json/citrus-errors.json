@@ -1,0 +1,63 @@
+{
+    "datasetName": "citrus.csv",
+    "machineLearningModels": [
+       "lr","knn","nb","svm","dt","rbfsvm","gpc","mlp", "ridge","qda","ada","lda", "dummy","rf", "et","gbc", "catboost"
+    ],
+    "discreteFeatures": [
+        "red",
+        "green",
+        "blue"
+    ],
+    "continousFeatures": [
+        "diameter",
+        "weight"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "diameter",
+                "weight",
+                "red",
+                "green",
+                "blue"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "name"
+}

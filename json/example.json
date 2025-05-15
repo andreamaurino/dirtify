@@ -1,0 +1,40 @@
+{
+"datasetName":"adultdata.csv",
+"testset":"adultTest.csv",
+"outputDirectory":"outputAdultData",
+"targetVariabile":"income2",
+"IsBinary":"Yes",
+"discreteFeatures":["age","fnlwgt","educationYear","capital-gain","capital-loss","hours-per-week"],
+"categoricalFeaturesString":["workclass","Education","marital-status","occupation","relationship","race","Gender","native-country"],
+"machineLearningModels":["lr","knn","nb","svm","dt","rbfsvm","gpc","mlp", "ridge","qda","ada","lda", "dummy","rf", "et", "gbc", "xgboost", "lightgbm", "catboost"],
+"Experiments": [
+    {
+        "Errortype":"standard",
+        "machineLearningModels":["svm","nb"]
+        },
+    {
+            "Errortype":"labels",
+            "Step":0.2,
+            "machineLearningModels":["svm","nb"]
+            },
+    {
+        "Errortype":"noise",
+        "Step":0.2,
+        "FeatureType":"discrete",
+        "FeatureArray":["age","fnlwgt"],
+        "machineLearningModels":["svm","nb"]
+        },
+        {
+            "Errortype":"noise",
+            "Step":0.2,
+            "FeatureType":"categoricalString",
+            "machineLearningModels":["svm","nb"]
+            },
+        {
+                "Errortype":"duplicated",
+                "Step":0.2,
+                "machineLearningModels":["svm","nb"]
+                }
+   ]
+    
+}

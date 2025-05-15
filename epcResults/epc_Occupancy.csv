@@ -1,0 +1,10 @@
+datasetName,errorType,feature,modelName,percentage,epc_at
+Occupancy.csv,Noisy,Light,MLPClassifier,0.6,0.7191
+Occupancy.csv,Missing,date,GradientBoostingClassifier,0.8,0.7746
+Occupancy.csv,Missing,Light,MLPClassifier,0.8,0.8366
+Occupancy.csv,Missing,date,SGDClassifier,0.6,0.8375
+Occupancy.csv,Missing,date,RidgeClassifier,0.6,0.866
+Occupancy.csv,Missing,Light,SGDClassifier,0.8,0.8671
+Occupancy.csv,Missing,Light,MLPClassifier,0.6,0.8698
+Occupancy.csv,Missing,Light,SGDClassifier,0.6,0.8699
+Occupancy.csv,Noisy,Light,SGDClassifier,0.6,0.9201

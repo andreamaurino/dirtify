@@ -1,0 +1,75 @@
+{
+    "datasetName": "loan_approval.csv",
+    "machineLearningModels": [
+        "lr","knn","nb","svm","dt","rbfsvm","gpc","mlp", "ridge","qda","ada","lda", "dummy","rf", "et","gbc", "catboost"
+    ],
+    "discreteFeatures": [
+        " no_of_dependents",
+        " income_annum",
+        " loan_amount",
+        " loan_term",
+        " cibil_score",
+        " residential_assets_value",
+        " commercial_assets_value",
+        " luxury_assets_value",
+        " bank_asset_value"
+    ],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [
+        " education",
+        " self_employed"
+    ],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                " no_of_dependents",
+                " income_annum",
+                " loan_amount",
+                " loan_term",
+                " cibil_score",
+                " residential_assets_value",
+                " commercial_assets_value",
+                " luxury_assets_value",
+                " bank_asset_value",
+                " education",
+                " self_employed"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "loan_status"
+}

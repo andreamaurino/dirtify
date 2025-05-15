@@ -1,0 +1,53 @@
+{
+    "datasetName": "adultdata.csv",
+    "outputDirectory": "adultdataDir",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "xgboost",
+        "lightgbm",
+        "catboost"
+    ],
+    "discreteFeatures": [],
+    "continousFeatures": [],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": "0.2",
+            "columns": []
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": "0.2"
+        },
+        {
+            "Errortype": "labels",
+            "Step": "0.2"
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": "0.2"
+        }
+    ]
+}

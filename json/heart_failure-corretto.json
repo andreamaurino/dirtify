@@ -1,0 +1,99 @@
+{
+    "datasetName": "heart_failure_clinical_records.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "age",
+        "creatinine_phosphokinase",
+        "time",
+        "ejection_fraction",
+        "serum_sodium"
+    ],
+    "continousFeatures": [
+        "platelets",
+        "serum_creatinine"
+    ],
+    "categoricalFeaturesString": [],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [
+        "anaemia",
+        "diabetes",
+        "high_blood_pressure",
+        "sex",
+        "smoking"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "ejection_fraction",
+                "platelets",
+                "serum_creatinine",
+                "serum_sodium",
+                "age",
+                "creatinine_phosphokinase",
+                "time",
+                "anaemia",
+                "diabetes",
+                "high_blood_pressure",
+                "sex",
+                "smoking"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "DEATH_EVENT"
+}
