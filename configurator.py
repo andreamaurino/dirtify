@@ -1809,7 +1809,7 @@ class NoiseDiscreteWindow(QWidget):
         self.clear_layout2(self.scroll_area_layout2)
         self.column_types2.clear()
         # Crea un set di radiobuttons per ogni colonna
-        columns=self.grouped_columns["continousFeatures"]
+        columns=self.grouped_columns["discreteFeatures"]
         for column in columns:
             self.add_column_radiobuttons2(column)
 
