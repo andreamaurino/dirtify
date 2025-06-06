@@ -2659,9 +2659,34 @@ class NoiseCatIntWindow(QWidget):
         self.close() 
 
     def save(self, grouped_columns):
+        model_map = {
+            "Logistic Regression": "lr",
+            "K-Nearest Neighbors": "knn",
+            "Naive Bayes": "nb",
+            "Support Vector Machine": "svm",
+            "Decision Tree": "dt",
+            "Radial Basis Function SVM": "rbfsvm",
+            "Gaussian Process Classifier": "gpc",
+            "Multi-Layer Perceptron": "mlp",
+            "Ridge Classifier": "ridge",
+            "Quadratic Discriminant Analysis": "qda",
+            "AdaBoost": "ada",
+            "Linear Discriminant Analysis": "lda",
+            "Dummy Classifier": "dummy",
+            "Random Forest": "rf",
+            "Extra Trees": "et",
+            "Gradient Boosting Classifier": "gbc",
+            "LightGBM": "lgbm",
+            "CatBoost": "catboost"  
+        }
+
+        grouped_columns["machineLearningModels"] = [
+            model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
+        ]
+
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getSaveFileName(self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options)
-
+        
         try:
                 with open(file_name, 'w') as json_file:
                     json.dump(grouped_columns, json_file, indent=4)

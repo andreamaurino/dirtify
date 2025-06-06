@@ -1,0 +1,131 @@
+{
+    "datasetName": "C:/Users/Andrea Maurino/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/australian_credit_data.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "lightgbm",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "A5",
+        "A6",
+        "A10",
+        "A13",
+        "A14"
+    ],
+    "continousFeatures": [
+        "A2",
+        "A3",
+        "A7"
+    ],
+    "categoricalFeaturesString": [
+        "A12"
+    ],
+    "categoricalFeaturesInteger": [
+        "A4"
+    ],
+    "binaryFeatures": [
+        "A1",
+        "A8",
+        "A9",
+        "A11"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.2,
+            "columns": [
+                "A2",
+                "A3",
+                "A7",
+                "A5",
+                "A6",
+                "A10",
+                "A13",
+                "A14",
+                "A4",
+                "A12",
+                "A1",
+                "A8",
+                "A9",
+                "A11"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.2,
+            "FeatureArray": [
+                "A2",
+                "A3",
+                "A7"
+            ]
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "binary",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalString",
+            "Step": 0.2
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "categoricalInt",
+            "Step": 0.2
+        }
+    ],
+    "targetVariable": "Target"
+}

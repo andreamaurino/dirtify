@@ -623,7 +623,7 @@ def start(json_name,directory=""):
     )
  
 
-# INFORMAZIONE MUTUA
+
  mi_scores = calculate_correlations_with_mutual_info(data, target_variable, discrete_variables, continuos_variables, binary_variables, categorical_string_variables, categorical_int_variables)
 
  # IMPORTANCE
@@ -638,14 +638,14 @@ def start(json_name,directory=""):
             models=document['machineLearningModels']
           except KeyError:
             models=included_models
-            performanceAnalysis(dataset_name,train_df,test_df, target_variable,models,con)
+            performanceAnalysis(con,dataset_name,train_df,test_df, target_variable,models)
     if document['Errortype']=="labels":
         try: 
             models=document['machineLearningModels']
         except KeyError:
             models=included_models
         step=document["Step"]
-        AnalyzeWrongLabels(dataset_name, target_variable,step,train_df,test_df,models,con)
+        AnalyzeWrongLabels(con,dataset_name, target_variable,step,train_df,test_df,models)
     if document['Errortype']=="noise":
         try: 
             MLmodels=document['machineLearningModels']
@@ -680,7 +680,7 @@ def start(json_name,directory=""):
                 except KeyError:
                      variables=categorical_int_variables
 
-        AnalyzeNoiseValues(dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels,con)
+        AnalyzeNoiseValues(con,dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels)
 
     if document['Errortype']=="duplicate":
         try: 
@@ -694,7 +694,7 @@ def start(json_name,directory=""):
             specific_case="all"
         if specific_case=="all":
             target_class=""
-            AnalyzeDuplicatedAllValues(dataset_name, target_variable,step,train_df,test_df,MLmodels,con)
+            AnalyzeDuplicatedAllValues(con,dataset_name, target_variable,step,train_df,test_df,MLmodels)
         else:
             target_class=document["target_value"]
             #AnalyzeDuplicatedAllValues(step,train_df,test_df,target_variable,MLmodels)
@@ -707,7 +707,7 @@ def start(json_name,directory=""):
         step=document["Step"]
         columns = document["columns"]
         for column in columns:
-            AnalyzeMissingValues(dataset_name,[column],step,train_df,test_df,target_variable,MLmodels,con)
+            AnalyzeMissingValues(con,dataset_name,[column],step,train_df,test_df,target_variable,MLmodels)
     
     if document['Errortype']=="outlier":
         try: 
@@ -738,13 +738,13 @@ def start(json_name,directory=""):
                 except KeyError:
                      variables=categorical_int_variables
 
-        AnalyzeOutlierValues(dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels,con)
+        AnalyzeOutlierValues(con,dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels)
      
     
     experiments_dir = 'experiments'
     os.makedirs(experiments_dir, exist_ok=True)
 
-    experiments_df = duckdb.sql('SELECT * FROM experiments').to_df()
+    experiments_df = con.sql('SELECT * FROM experiments').to_df()
     experiments_df.insert(0, ',', range(len(experiments_df)))
     experiments_filename = f'experiments_{os.path.basename(dataset_name)}'  
     experiments_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
@@ -753,7 +753,7 @@ def start(json_name,directory=""):
 
  experiments_dir = 'experiments'
  os.makedirs(experiments_dir, exist_ok=True)
- experiments_df = duckdb.sql('SELECT * FROM experiments').to_df()
+ experiments_df = con.sql('SELECT * FROM experiments').to_df()
  experiments_df.insert(0, ',', range(len(experiments_df)))
 
  dataset_file_name = os.path.basename(dataset_name)  

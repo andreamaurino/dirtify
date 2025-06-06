@@ -175,7 +175,7 @@ def save_results_to_csv(results, output_file="synthetic_data_analysis_results.cs
 
 
 #common functions
-def performanceAnalysis(dataset_name, train_df, test_df, target_column, model_touse, EType="NULL", feature="NULL", percentage=0,con=False):
+def performanceAnalysis(con, dataset_name, train_df, test_df, target_column, model_touse, EType="NULL", feature="NULL", percentage=0):
     included_models = model_touse
     s = setup(train_df, target=target_column, session_id=123)
     models = compare_models(include=included_models, n_select=20)
@@ -227,7 +227,7 @@ def performanceAnalysis(dataset_name, train_df, test_df, target_column, model_to
     return results
 '''
 #Noise
-def AnalyzeNoiseValues(dataset_name, featureType, variables, step, train_df, test_df, target_variable, model_touse,con):
+def AnalyzeNoiseValues(con,dataset_name, featureType, variables, step, train_df, test_df, target_variable, model_touse):
     columns = variables
     EType = "Noisy"
     noisy_df = train_df.copy()
@@ -253,7 +253,7 @@ def AnalyzeNoiseValues(dataset_name, featureType, variables, step, train_df, tes
                     noisy_df = noiseCategoricalIntExtendedExistingValues(train_df, noisy_df, columns[i], percentage)
             
             # Ottieni i risultati di performance
-            results = performanceAnalysis(dataset_name, noisy_df, test_df, target_variable, model_touse, EType, columns[i], round(percentage, 1),con)
+            results = performanceAnalysis(con,dataset_name, noisy_df, test_df, target_variable, model_touse, EType, columns[i], round(percentage, 1))
             all_results.append(results)
 
             percentage += step
@@ -261,7 +261,7 @@ def AnalyzeNoiseValues(dataset_name, featureType, variables, step, train_df, tes
     return all_results
 
 #labels
-def AnalyzeWrongLabels(dataset_name,target_variable,step,train_df,test_df, model_touse, output_file="synthetic_data_analysis_results.csv",con=False):
+def AnalyzeWrongLabels(con,dataset_name,target_variable,step,train_df,test_df, model_touse, output_file="synthetic_data_analysis_results.csv"):
   errorType="Labels"
   percentage=step
   noisy_df=train_df.copy()
@@ -277,7 +277,7 @@ def AnalyzeWrongLabels(dataset_name,target_variable,step,train_df,test_df, model
       noisy_df.loc[0, target_variable] = ~noisy_df.loc[0, target_variable]
       noisy_df.loc[1, target_variable] = ~noisy_df.loc[1, target_variable]
     all_results = []
-    results = performanceAnalysis(dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1),con)
+    results = performanceAnalysis(con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1))
     all_results.append(results)
     '''
     calculate_feature_target_correlation_after_error(
@@ -293,7 +293,7 @@ def AnalyzeWrongLabels(dataset_name,target_variable,step,train_df,test_df, model
   return all_results
 
 #duplicated
-def AnalyzeDuplicatedAllValues(dataset_name,target_variable,step,train_df,test_df, model_touse,con):
+def AnalyzeDuplicatedAllValues(con,dataset_name,target_variable,step,train_df,test_df, model_touse):
   errorType="DuplicatedAll"
   percentage=step
   noisy_df=train_df.copy()
@@ -303,7 +303,7 @@ def AnalyzeDuplicatedAllValues(dataset_name,target_variable,step,train_df,test_d
     print ("step:"+str(round(percentage,1)))
     noisy_df=duplicateAllExtended(train_df,noisy_df,percentage)
     all_results = []
-    results = performanceAnalysis(dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1),con)
+    results = performanceAnalysis(con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1))
     all_results.append(results)
     '''
     calculate_feature_target_correlation_after_error(
@@ -320,7 +320,7 @@ def AnalyzeDuplicatedAllValues(dataset_name,target_variable,step,train_df,test_d
 
 
 #missing
-def AnalyzeMissingValues(dataset_name, variables,step,train_df,test_df, target_variable, model_touse,con):
+def AnalyzeMissingValues(con,dataset_name, variables,step,train_df,test_df, target_variable, model_touse):
   columns=variables
   EType="Missing"
   noisy_df=train_df.copy()
@@ -332,7 +332,7 @@ def AnalyzeMissingValues(dataset_name, variables,step,train_df,test_df, target_v
       print ("step:"+str(round(percentage,1)))
       noisy_df=missingExtended(train_df,noisy_df,columns[i],percentage)
       all_results = []
-      results = performanceAnalysis(dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1),con)
+      results = performanceAnalysis(con,dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1))
       all_results.append(results)
       '''
       calculate_feature_target_correlation_after_error(
@@ -348,7 +348,7 @@ def AnalyzeMissingValues(dataset_name, variables,step,train_df,test_df, target_v
     return all_results
 
 #outlier
-def AnalyzeOutlierValues(dataset_name, featureType, variables,step,train_df,test_df, target_variable, model_touse,con):
+def AnalyzeOutlierValues(con,dataset_name, featureType, variables,step,train_df,test_df, target_variable, model_touse):
   columns=variables
   EType="Outlier"
   noisy_df=train_df.copy()
@@ -368,7 +368,7 @@ def AnalyzeOutlierValues(dataset_name, featureType, variables,step,train_df,test
         case "categoricalInteger" :
           noisy_df=outliercategoricalIntegerExtended(train_df,noisy_df,columns[i],percentage)
       all_results = []
-      results = performanceAnalysis(dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1),con)
+      results = performanceAnalysis(con,dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1))
       all_results.append(results)
       '''
       calculate_feature_target_correlation_after_error(

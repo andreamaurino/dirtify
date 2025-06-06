@@ -1,8 +1,15 @@
 Feature,Type,Correlation,Type of Correlation
-JoiningYear,Discrete,0.19468436440674833,Point-biserial
-Age,Discrete,-0.04782820772476229,Point-biserial
-ExperienceInCurrentDomain,Discrete,-0.025552549465442997,Point-biserial
-Education,CategoricalString,0.15923511584268812,Cramér's V
-City,CategoricalString,0.2121996746871874,Cramér's V
-Gender,CategoricalString,0.2291244529109405,Cramér's V
-PaymentTier,CategoricalInt,0.26949570841092657,Cramér's V
+A2,Continuous,0.14952027942832796,Point-biserial
+A3,Continuous,0.2206056140021786,Point-biserial
+A7,Continuous,0.31991092554812234,Point-biserial
+A5,Discrete,0.36932463589382825,Point-biserial
+A6,Discrete,0.2557433853325884,Point-biserial
+A10,Discrete,0.3946932073633698,Point-biserial
+A13,Discrete,-0.10010930227046662,Point-biserial
+A14,Discrete,0.16904048310552616,Point-biserial
+A12,CategoricalString,0.09818672196875078,Cramér's V
+A4,CategoricalInt,0.18451139574776768,Cramér's V
+A1,Binary,0.016545367152015298,Matthews Correlation Coefficient
+A8,Binary,0.6957024210805126,Matthews Correlation Coefficient
+A9,Binary,0.4555835577017473,Matthews Correlation Coefficient
+A11,Binary,0.06956447946454385,Matthews Correlation Coefficient

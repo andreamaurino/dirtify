@@ -1,0 +1,88 @@
+{
+    "datasetName": "C:/Users/Andrea Maurino/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/sp500_may2025_with_target.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
+    ],
+    "discreteFeatures": [
+        "Volume"
+    ],
+    "continousFeatures": [
+        "Open",
+        "High",
+        "Low",
+        "Close"
+    ],
+    "categoricalFeaturesString": [
+        "Ticker"
+    ],
+    "categoricalFeaturesInteger": [],
+    "binaryFeatures": [],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "missing",
+            "Step": 0.1,
+            "columns": [
+                "Open",
+                "High",
+                "Low",
+                "Close",
+                "Volume",
+                "Ticker"
+            ]
+        },
+        {
+            "Errortype": "duplicate",
+            "Step": 0.1
+        },
+        {
+            "Errortype": "labels",
+            "Step": 0.1
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "continous",
+            "Step": 0.1
+        },
+        {
+            "Errortype": "outlier",
+            "FeatureType": "discrete",
+            "Step": 0.1
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "discrete",
+            "Step": 0.1,
+            "FeatureArray": [
+                "Open",
+                "High",
+                "Low",
+                "Close"
+            ]
+        },
+        {
+            "Errortype": "noise",
+            "FeatureType": "continous",
+            "Step": 0.1
+        }
+    ],
+    "targetVariable": "target"
+}
