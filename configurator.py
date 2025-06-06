@@ -2676,7 +2676,7 @@ class NoiseCatIntWindow(QWidget):
             "Random Forest": "rf",
             "Extra Trees": "et",
             "Gradient Boosting Classifier": "gbc",
-            "LightGBM": "lgbm",
+            "LightGBM": "lightgbm",
             "CatBoost": "catboost"  
         }
 
