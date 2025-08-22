@@ -6,7 +6,22 @@ import pandas as pd
 from PyQt5.QtWidgets import QApplication,  QTableWidget,  QTableWidgetItem, QWidget, QPushButton, QFileDialog, QVBoxLayout, QHBoxLayout, QLabel, QRadioButton, QButtonGroup, QScrollArea, QLabel, QLineEdit,  QHBoxLayout, QComboBox
 from PyQt5.QtGui import QDoubleValidator
 import UI
-
+##########################################
+#
+# dopo la scelta del dataset e eventuale test set, l'utente deve selezionare i modelli ML
+# in quella schermata devono apparire i pulsanti di 
+# back, save, save & run
+# 1) experimental one feature alone
+# 2) experimental correlated features
+# 3) custom experimental rule  
+#
+# 1) l'utente deve decidere ml, lo step gli errori a checkbox, eventuali selection_criteria default all
+# 2) l'utente deve decidere ml, lo step gli errori a checkbox, eventuali selection_criteria default all e le soglie min max di correlation. 
+# 3) l'utente deve inserire afected features a checkbox, selection criteria, step e modelli
+# 
+# in futuro il dataset modificato potrebbe essere usato per altri errori  
+#
+#########################################
 class CSVColumnTypeSelector(QWidget):
     def __init__(self, grouped_columns={}, parent=None):
         super(CSVColumnTypeSelector, self).__init__(parent)
@@ -45,13 +60,13 @@ class CSVColumnTypeSelector(QWidget):
         self.main_layout.addWidget(self.scroll_areadf)
 
         # ScrollArea per ospitare le colonne e i combo box
-        self.scroll_area = QScrollArea(self)
-        self.scroll_area_widget = QWidget()
-        self.scroll_area_layout = QVBoxLayout(self.scroll_area_widget)
+      #  self.scroll_area = QScrollArea(self)
+      #  self.scroll_area_widget = QWidget()
+      #  self.scroll_area_layout = QVBoxLayout(self.scroll_area_widget)
 
-        self.scroll_area.setWidgetResizable(True)
-        self.scroll_area.setWidget(self.scroll_area_widget)
-        self.main_layout.addWidget(self.scroll_area)
+      #  self.scroll_area.setWidgetResizable(True)
+      #  self.scroll_area.setWidget(self.scroll_area_widget)
+      #  self.main_layout.addWidget(self.scroll_area)
 
         # ScrollArea per ospitare i modelli di ML e i combo box
         self.scroll_area2 = QScrollArea(self)
@@ -63,7 +78,7 @@ class CSVColumnTypeSelector(QWidget):
         self.main_layout.addWidget(self.scroll_area2)
 
         # Bottone per salvare i risultati come JSON (spostato alla fine)
-        self.button = QPushButton("Compile Analysis", self)
+        self.button = QPushButton("Insert Experimental Strategy", self)
         self.button.clicked.connect(self.open_standard)
         self.button.setEnabled(False)  # Disabilitato finché non viene caricato un file
         self.main_layout.addWidget(self.button)
@@ -134,8 +149,8 @@ class CSVColumnTypeSelector(QWidget):
 
     def display_columns(self, file_path):
         # Pulisce il layout precedente e resetta le selezioni
-        self.clear_layout(self.scroll_area_layout)
-        self.column_types.clear()
+        #self.clear_layout(self.scroll_area_layout)
+        #self.column_types.clear()
 
         # Legge la prima riga del file CSV
         with open(file_path, newline='', encoding='utf-8') as csvfile:
@@ -143,33 +158,33 @@ class CSVColumnTypeSelector(QWidget):
             headers = next(reader)
 
         # Crea un set di combo box per ogni colonna
-        for header in headers:
-            self.add_column_combobox(header)
+#        for header in headers:
+#            self.add_column_combobox(header)
 
-    def add_column_combobox(self, column_name):
-        # Layout orizzontale per ogni colonna
-        column_layout = QHBoxLayout()
+   # def add_column_combobox(self, column_name):
+   #     # Layout orizzontale per ogni colonna
+   #     column_layout = QHBoxLayout()
+   #
+   #     # Etichetta con il nome della colonna
+   #     label = QLabel(column_name, self)
+   #     column_layout.addWidget(label)
 
-        # Etichetta con il nome della colonna
-        label = QLabel(column_name, self)
-        column_layout.addWidget(label)
+#        # Crea un QComboBox per selezionare il tipo di colonna
+#        combo_box = QComboBox(self)
+#        options = ["Not include", "Discrete", "Continuous", "CategoricalString", "CategoricalInt", "Binary", "Target"]
+#        combo_box.addItems(options)
+#        combo_box.currentTextChanged.connect(lambda opt: self.update_column_type(column_name, opt))
+#        column_layout.addWidget(combo_box)
+#
+#        # Imposta "Not include" come predefinito
+#        combo_box.setCurrentText("Not include")
+#        self.column_types[column_name] = "Not include"
+#
+#        # Aggiunge il layout al layout principale
+#        self.scroll_area_layout.addLayout(column_layout)
 
-        # Crea un QComboBox per selezionare il tipo di colonna
-        combo_box = QComboBox(self)
-        options = ["Not include", "Discrete", "Continuous", "CategoricalString", "CategoricalInt", "Binary", "Target"]
-        combo_box.addItems(options)
-        combo_box.currentTextChanged.connect(lambda opt: self.update_column_type(column_name, opt))
-        column_layout.addWidget(combo_box)
-
-        # Imposta "Not include" come predefinito
-        combo_box.setCurrentText("Not include")
-        self.column_types[column_name] = "Not include"
-
-        # Aggiunge il layout al layout principale
-        self.scroll_area_layout.addLayout(column_layout)
-
-    def update_column_type(self, column_name, option):
-        self.column_types[column_name] = option
+#    def update_column_type(self, column_name, option):
+#        self.column_types[column_name] = option
 
     def display_columns2(self):
         # Pulisce il layout precedente e resetta le selezioni
@@ -238,29 +253,24 @@ class CSVColumnTypeSelector(QWidget):
             grouped_columns = {
                 "datasetName": self.csv_file_name,
                 "machineLearningModels":[],
-                "discreteFeatures": [],
-                "continousFeatures": [],
-                "categoricalFeaturesString": [],
-                "categoricalFeaturesInteger": [],
-                "binaryFeatures": [],
                 "Experiments":[]
             }
             if self.testset_name!="":
                 grouped_columns["testset"]=self.testset_name
             # Popola il dizionario raggruppando le colonne per tipo
-            for column, col_type in self.column_types.items():
-                if col_type == "Discrete":
-                    grouped_columns["discreteFeatures"].append(column)
-                elif col_type == "Continuous":
-                    grouped_columns["continousFeatures"].append(column)
-                elif col_type == "CategoricalString":
-                    grouped_columns["categoricalFeaturesString"].append(column)
-                elif col_type == "CategoricalInt":
-                    grouped_columns["categoricalFeaturesInteger"].append(column)
-                elif col_type == "Binary":
-                    grouped_columns["binaryFeatures"].append(column)
-                elif col_type == "Target":
-                    grouped_columns["targetVariable"]=column
+#            for column, col_type in self.column_types.items():
+#                if col_type == "Discrete":
+#                    grouped_columns["discreteFeatures"].append(column)
+#                elif col_type == "Continuous":
+#                    grouped_columns["continousFeatures"].append(column)
+#                elif col_type == "CategoricalString":
+#                    grouped_columns["categoricalFeaturesString"].append(column)
+#                elif col_type == "CategoricalInt":
+#                    grouped_columns["categoricalFeaturesInteger"].append(column)
+#                elif col_type == "Binary":
+#                    grouped_columns["binaryFeatures"].append(column)
+#                elif col_type == "Target":
+#                    grouped_columns["targetVariable"]=column
                 # Popola il dizionario ml raggruppando le colonne per tipo
             for column2, col_type2 in self.column_types2.items():
                 if col_type2 == "Yes":
@@ -293,9 +303,9 @@ class MissingWindow(QWidget):
         if len(grouped_columns["Experiments"]) > 1:
             grouped_columns["Experiments"] = [
                 Experiments for Experiments in grouped_columns["Experiments"]
-                if not (Experiments["Errortype"] == "missing")
+                if not (Experiments["ErrorStrategy"] == "one-feature")
             ]
-        self.setWindowTitle("Missing Analysis")
+        self.setWindowTitle("One Features at time")
         self.setGeometry(100, 100, 1000, 1000)
         self.setStyleSheet("background-color: #2c2c2c; color: #ffffff;")
 
@@ -328,11 +338,21 @@ class MissingWindow(QWidget):
         self.step_layout.addWidget(self.step_label)
         self.step_layout.addWidget(self.step_input)
         self.layout.addLayout(self.step_layout)
+ # selection Input
+        self.selection_label = QLabel("Selection criteria:", self)
+        self.selection_input = QLineEdit(self)
+        self.selection_input.setText("all")
+        self.selection_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff;")
+        
+        self.selection_layout = QHBoxLayout()
+        self.selection_layout.addWidget(self.selection_label)
+        self.selection_layout.addWidget(self.selection_input)
+        self.layout.addLayout(self.selection_layout)
 
         # Label for Columns
-        self.labelColumn = QLabel("Choose Columns", self)
-        self.labelColumn.setStyleSheet("font-size: 18px; font-weight: bold;")
-        self.layout.addWidget(self.labelColumn)
+        #self.labelColumn = QLabel("Choose Columns", self)
+        #self.labelColumn.setStyleSheet("font-size: 18px; font-weight: bold;")
+        #self.layout.addWidget(self.labelColumn)
 
         # ScrollArea for Columns
         self.scroll_area2 = QScrollArea(self)
@@ -377,8 +397,9 @@ class MissingWindow(QWidget):
 
     def open_next_window(self):
         newML = []
-        addedDocument = {"Errortype": "missing"}
+        addedDocument = {"ErrorStrategy": "one-feature"}
         addedDocument["Step"] = float(self.step_input.text())
+        addedDocument["Selection_criteria"] = self.selection_input.text()
         for column3, col_type3 in self.column_types3.items():
             if col_type3 == "Yes":
                 newML.append(column3)
@@ -395,14 +416,16 @@ class MissingWindow(QWidget):
         self.next_window = DuplicateWindow(self.grouped_columns)
         self.next_window.show()
 
+
     def display_columns2(self):
         self.clear_layout2(self.scroll_area_layout2)
-        self.column_types2.clear()
-        columns = self.grouped_columns["continousFeatures"] + self.grouped_columns["discreteFeatures"] + \
-                  self.grouped_columns["categoricalFeaturesInteger"] + self.grouped_columns["categoricalFeaturesString"] + \
-                  self.grouped_columns["binaryFeatures"]
-        for column in columns:
-            self.add_column_radiobuttons2(column)
+        #add input box for selection_ criteria
+        #self.column_types2.clear()
+        #columns = self.grouped_columns["continousFeatures"] + self.grouped_columns["discreteFeatures"] + \
+        #          self.grouped_columns["categoricalFeaturesInteger"] + self.grouped_columns["categoricalFeaturesString"] + \
+        #          self.grouped_columns["binaryFeatures"]
+        #for column in columns:
+        #    self.add_column_radiobuttons2(column)
 
     def add_column_radiobuttons2(self, column_name2):
         column_layout2 = QHBoxLayout()
@@ -477,13 +500,13 @@ class DuplicateWindow(QWidget):
     def __init__(self, grouped_columns, parent=None):
         super(DuplicateWindow, self).__init__(parent)
         self.grouped_columns = grouped_columns
-        if len(grouped_columns["Experiments"]) > 1:
-            grouped_columns["Experiments"] = [
-                Experiments for Experiments in grouped_columns["Experiments"]
-                if not (Experiments["Errortype"] == "duplicate")
-            ]
-
-        self.setWindowTitle("Duplicate Analysis")
+        #if len(grouped_columns["Experiments"]) > 1:
+        #    grouped_columns["Experiments"] = [
+        #        Experiments for Experiments in grouped_columns["Experiments"]
+        #        if not (Experiments["ErrorStrategy"] == "correlated-features")
+        #    ]
+    
+        self.setWindowTitle("Correlated Features")
         self.setGeometry(100, 100, 1000, 1000)
 
         # Imposta il colore di sfondo
@@ -518,6 +541,44 @@ class DuplicateWindow(QWidget):
         self.step_layout.addWidget(self.step_input)
         self.layout.addLayout(self.step_layout)
 
+
+        # selection Input
+        self.selection_label = QLabel("Selection criteria:", self)
+        self.selection_input = QLineEdit(self)
+        self.selection_input.setText("all")
+        self.selection_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff;")
+
+        # Aggiungi label e input in un layout orizzontale
+        self.selection_layout = QHBoxLayout()
+        self.selection_layout.addWidget(self.selection_label)
+        self.selection_layout.addWidget(self.selection_input)
+        self.layout.addLayout(self.selection_layout)
+
+        # selection Input
+        self.min_label = QLabel("Min:", self)
+        self.min_input = QLineEdit(self)
+        self.min_input.setText("0.6")
+        self.min_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff;")
+
+        # Aggiungi label e input in un layout orizzontale
+        self.min_layout = QHBoxLayout()
+        self.min_layout.addWidget(self.min_label)
+        self.min_layout.addWidget(self.min_input)
+        self.layout.addLayout(self.min_layout)
+
+
+        # selection Input
+        self.max_label = QLabel("Max:", self)
+        self.max_input = QLineEdit(self)
+        self.max_input.setText("1.0")
+        self.max_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff;")
+        # Aggiungi label e input in un layout orizzontale
+        self.max_layout = QHBoxLayout()
+        self.max_layout.addWidget(self.max_label)
+        self.max_layout.addWidget(self.max_input)
+        self.layout.addLayout(self.max_layout)
+
+        
         # Layout orizzontale per i pulsanti di navigazione
         button_layout = QHBoxLayout()  # Crea un layout orizzontale per i pulsanti
 
@@ -553,8 +614,11 @@ class DuplicateWindow(QWidget):
 
     def open_next_window(self):
         newML = []
-        addedDocument = {"Errortype": "duplicate"}
+        addedDocument = {"ErrorStrategy": "Correlated-features"}
         addedDocument["Step"] = float(self.step_input.text())
+        addedDocument["Selection_criteria"] = self.selection_input.text()
+        addedDocument["Min"] = float(self.min_input.text())
+        addedDocument["Max"] = float(self.max_input.text())
         for column3, col_type3 in self.column_types3.items():
             if col_type3 == "Yes":
                 newML.append(column3)
@@ -624,13 +688,13 @@ class labelWindow(QWidget):
     def __init__(self, grouped_columns, parent=None):
         super(labelWindow, self).__init__(parent)
         self.grouped_columns = grouped_columns
-        if len(grouped_columns["Experiments"]) > 1:
-            grouped_columns["Experiments"] = [
-                Experiments for Experiments in grouped_columns["Experiments"]
-                if not (Experiments["Errortype"] == "labels")
-            ]
+#        if len(grouped_columns["Experiments"]) > 1:
+#            grouped_columns["Experiments"] = [
+#                Experiments for Experiments in grouped_columns["Experiments"]
+#                if not (Experiments["Errortype"] == "labels")
+#            ]
 
-        self.setWindowTitle("Label analysis")
+        self.setWindowTitle("Custome role")
         self.setGeometry(100, 100, 1000, 1000)
 
         # Imposta il colore di sfondo
@@ -653,7 +717,14 @@ class labelWindow(QWidget):
         self.scroll_area3.setWidgetResizable(True)
         self.scroll_area3.setWidget(self.scroll_area_widget3)
         self.layout.addWidget(self.scroll_area3)
-
+##############################################################################
+##############################################################################
+#
+#       da qui per inserire tutta la strategia e poter inserirne diverse
+#       aggiungere poi la parte di trasformazione delle regole in experiments
+#
+##############################################################################
+##############################################################################
         # Label e input per "Step"
         self.step_label = QLabel("Step:", self)
         self.step_label.setStyleSheet("color: #ffffff;")  # Testo bianco

@@ -3,10 +3,8 @@ import duckdb
 from analyzer import *
 import json
 import os
-import argparse
 from scipy.stats import chi2_contingency, pointbiserialr,spearmanr, pearsonr
 from sklearn.metrics import matthews_corrcoef
-import math
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
@@ -514,36 +512,50 @@ def start(json_name,directory=""):
  except KeyError:
         print('binary classifcation task')
         isBinary="Yes"
-#features type
- try:
-    discrete_variables=Jsondata['discreteFeatures']
- except KeyError:
-        print('no discrete features detected')
-        discrete_variables=[]    
- try:
-    categorical_string_variables=Jsondata['categoricalFeaturesString']
- except KeyError:
-        print('no categorical string features detected')
-        categorical_string_variables=[]
- try:
-    categorical_int_variables=Jsondata['categoricalFeaturesInteger']
- except KeyError:
-        print('no categorical integer features detected')
-        categorical_int_variables=[]
+###############
+#
+#
+#features type ok
+#
+#
+################
 
- try:
-    binary_variables=Jsondata['binaryFeatures']
- except KeyError:
-        print('no binary features detected')
-        binary_variables=[]
+ discrete_variables=[] 
+ categorical_string_variables=[] 
+ date_variables=[] 
+ continuos_variables=[] 
+ categorical_int_variables=[] 
+ binary_variables=[]
 
- try:
-    continuos_variables=Jsondata['continousFeatures']
- except KeyError:
-        print('no continous features detected')
-        continuos_variables=[]
+ for feature in train_df.columns:
+        if pd.api.types.is_string_dtype(train_df[feature]):
+            unique_values = train_df[feature].dropna().unique()
+            if unique_values<=20:
+                categorical_string_variables.append(feature)
+        elif pd.api.types.is_integer_dtype(train_df[feature]):
+            unique_values = train_df[feature].dropna().unique()
+            if len(unique_values)<=20:
+                categorical_int_variables.append(feature)
+            else:
+             discrete_variables.append(feature)
+        elif pd.api.types.is_datetime64_any_dtype(train_df[feature]):
+            date_variables.append(feature)
+        elif pd.api.types.is_float_dtype(train_df[feature]):
+            continuos_variables.append(feature)
+        elif pd.api.types.is_bool_dtype(train_df[feature]):
+            binary_variables.append(feature)
+        else:
+            raise ValueError(f"Unsupported column type for feature '{feature}'.")
 
+
+
+######################################
+#
+#
 #calcolo della correlazione e rilevanza
+#
+#
+######################################
  correlations = {
     "Continuous": {},
     "Discrete": {},
@@ -630,115 +642,37 @@ def start(json_name,directory=""):
  #featureImportance(dataset_name, train_df, test_df, target_variable)
 
 
-
+##########################
+#
+#
 #start experimental anaysis
+#
+#
+###########################
  for document in Jsondata['Experiments']:
+    
     if document['Errortype']=="standard":
           try:
             models=document['machineLearningModels']
           except KeyError:
             models=included_models
             performanceAnalysis(con,dataset_name,train_df,test_df, target_variable,models)
-    if document['Errortype']=="labels":
+    else:
+        strategy=document["strategy"]
         try: 
             models=document['machineLearningModels']
         except KeyError:
             models=included_models
-        step=document["Step"]
-        AnalyzeWrongLabels(con,dataset_name, target_variable,step,train_df,test_df,models)
-    if document['Errortype']=="noise":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        match document["FeatureType"]:
-            case "discrete":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                    variables=discrete_variables
-            case "continous":
-             try:
-                  variables=document["FeatureArray"]
-             except KeyError:
-                    variables=continuos_variables
-            case "binary":
-             try:
-                  variables=document["FeatureArray"]
-             except KeyError:
-                    variables=binary_variables
-            case "categoricalString":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_string_variables
-            case "categoricalInt":
-
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_int_variables
-
-        AnalyzeNoiseValues(con,dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels)
-
-    if document['Errortype']=="duplicate":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        try:
-            specific_case=document["cafrom sklearn.model_selection import train_test_splitse"]
-        except KeyError:
-            specific_case="all"
-        if specific_case=="all":
-            target_class=""
-            AnalyzeDuplicatedAllValues(con,dataset_name, target_variable,step,train_df,test_df,MLmodels)
-        else:
-            target_class=document["target_value"]
-            #AnalyzeDuplicatedAllValues(step,train_df,test_df,target_variable,MLmodels)
-
-    if document['Errortype']=="missing":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        columns = document["columns"]
-        for column in columns:
-            AnalyzeMissingValues(con,dataset_name,[column],step,train_df,test_df,target_variable,MLmodels)
-    
-    if document['Errortype']=="outlier":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        match document["FeatureType"]:
-            case "discrete":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                    variables=discrete_variables
-            case "continous":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                    variables=continuos_variables
-            case "categoricalString":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_string_variables
-            case "categoricalInt":
-
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_int_variables
-
-        AnalyzeOutlierValues(con,dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels)
+        if document['Errortype']=="labels":
+            AnalyzeWrongLabels(con,dataset_name, target_variable,strategy,train_df,test_df,models)
+        if document['Errortype']=="noise":
+            AnalyzeNoiseValues(con,dataset_name, strategy,train_df,test_df,target_variable,models)
+        if document['Errortype']=="duplicate":
+            AnalyzeDuplicatedValues(con,dataset_name, target_variable,strategy,train_df,test_df,models)     
+        if document['Errortype']=="missing":
+            AnalyzeMissingValues(con,dataset_name,strategy,train_df,test_df,target_variable,models)
+        if document['Errortype']=="outlier":  
+            AnalyzeOutlierValues(con,dataset_name, strategy,train_df,test_df,target_variable,models)
      
     
     experiments_dir = 'experiments'

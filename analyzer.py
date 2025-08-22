@@ -227,30 +227,24 @@ def performanceAnalysis(con, dataset_name, train_df, test_df, target_column, mod
     return results
 '''
 #Noise
-def AnalyzeNoiseValues(con,dataset_name, featureType, variables, step, train_df, test_df, target_variable, model_touse):
+def AnalyzeNoiseValues(con,dataset_name, strategy, train_df, test_df, target_variable, model_touse):
     columns = variables
     EType = "Noisy"
     noisy_df = train_df.copy()
     all_results = []
 
-    for i in range(len(columns)):
-        percentage = step
+    columns = strategy.get("affected_features")
+    step = strategy.get("percentage")
+    percentage=step
+    for i in range(len(columns)): 
         while percentage < 1:
             print("Noise error")
             print(f"Feature: {columns[i]}")
             print(f"Step: {round(percentage, 1)}")
-            
-            match featureType:
-                case "discrete":
-                    noisy_df = noiseDiscreteExtended(train_df, noisy_df, columns[i], percentage)
-                case "continous":
-                    noisy_df = noiseContinueExtended(train_df, noisy_df, columns[i], percentage)
-                case "binary":
-                    noisy_df = noiseBinaryExtended(train_df, noisy_df, columns[i], percentage)
-                case "categoricalString":
-                    noisy_df = noiseCategoricalStringExtendedExistingValues(train_df, noisy_df, columns[i], percentage)
-                case "categoricalInteger":
-                    noisy_df = noiseCategoricalIntExtendedExistingValues(train_df, noisy_df, columns[i], percentage)
+            strategy["mode"]="new"
+            noisy_df = noise(train_df, strategy)
+            strategy["mode"]="extended"
+            noisy_df = noise(noisy_df, strategy,train_df)
             
             # Ottieni i risultati di performance
             results = performanceAnalysis(con,dataset_name, noisy_df, test_df, target_variable, model_touse, EType, columns[i], round(percentage, 1))
@@ -261,8 +255,10 @@ def AnalyzeNoiseValues(con,dataset_name, featureType, variables, step, train_df,
     return all_results
 
 #labels
-def AnalyzeWrongLabels(con,dataset_name,target_variable,step,train_df,test_df, model_touse, output_file="synthetic_data_analysis_results.csv"):
+def AnalyzeWrongLabels(con,dataset_name,target_variable,strategy,train_df,test_df, model_touse, output_file="synthetic_data_analysis_results.csv"):
   errorType="Labels"
+  target_variable = strategy.get("affected_features")
+  step = strategy.get("percentage")
   percentage=step
   noisy_df=train_df.copy()
   
@@ -270,12 +266,10 @@ def AnalyzeWrongLabels(con,dataset_name,target_variable,step,train_df,test_df, m
     print ("labels error")
     print ("target: "+target_variable)
     print ("step:"+str(round(percentage,1)))
-    noisy_df=wrongLabelsBinaryExtended(train_df,noisy_df,target_variable,percentage)
-    zeros=(noisy_df[target_variable] == 0).sum()
-    unos=(noisy_df[target_variable] == 1).sum()
-    if noisy_df[target_variable].nunique()==1:
-      noisy_df.loc[0, target_variable] = ~noisy_df.loc[0, target_variable]
-      noisy_df.loc[1, target_variable] = ~noisy_df.loc[1, target_variable]
+    strategy["mode"]="new"
+    noisy_df=labels(train_df,strategy)
+    strategy["mode"]="extended"
+    noisy_df=labels(noisy_df,strategy,train_df)
     all_results = []
     results = performanceAnalysis(con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1))
     all_results.append(results)
@@ -293,36 +287,30 @@ def AnalyzeWrongLabels(con,dataset_name,target_variable,step,train_df,test_df, m
   return all_results
 
 #duplicated
-def AnalyzeDuplicatedAllValues(con,dataset_name,target_variable,step,train_df,test_df, model_touse):
-  errorType="DuplicatedAll"
+def AnalyzeDuplicatedValues(con,dataset_name,target_variable,strategy,train_df,test_df, model_touse):
+  errorType="Duplicated"
+  step = strategy.get("percentage")
   percentage=step
   noisy_df=train_df.copy()
-  
   while percentage<1:
     print ("Duplicate error")
     print ("step:"+str(round(percentage,1)))
-    noisy_df=duplicateAllExtended(train_df,noisy_df,percentage)
+    strategy["mode"]="new"
+    noisy_df=duplicate(train_df,strategy)
+    strategy["mode"]="extended"
+    noisy_df=duplicate(noisy_df,strategy,train_df)
     all_results = []
     results = performanceAnalysis(con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1))
     all_results.append(results)
-    '''
-    calculate_feature_target_correlation_after_error(
-                noisy_df,
-                target_variable,
-                errorType,
-                round(percentage, 1),
-                target_variable,  
-                featureType=None      # Specifica della feature     
-            )
-            '''
     percentage+=step
   return all_results
 
 
 #missing
-def AnalyzeMissingValues(con,dataset_name, variables,step,train_df,test_df, target_variable, model_touse):
-  columns=variables
+def AnalyzeMissingValues(con,dataset_name,strategy,train_df,test_df, target_variable, model_touse):
   EType="Missing"
+  columns = strategy.get("affected_features")
+  step = strategy.get("percentage")
   noisy_df=train_df.copy()
   for i in range(len(columns)):
     percentage=step
@@ -330,27 +318,21 @@ def AnalyzeMissingValues(con,dataset_name, variables,step,train_df,test_df, targ
       print ("Missing error")
       print ("feature: "+columns[i])
       print ("step:"+str(round(percentage,1)))
-      noisy_df=missingExtended(train_df,noisy_df,columns[i],percentage)
+      strategy["mode"]="extended"
+      noisy_df=missing(train_df,strategy)
+      strategy["mode"]="extended"
+      noisy_df=missing(noisy_df,strategy,train_df)
       all_results = []
       results = performanceAnalysis(con,dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1))
       all_results.append(results)
-      '''
-      calculate_feature_target_correlation_after_error(
-                noisy_df,
-                target_variable,
-                EType,
-                round(percentage, 1),
-                columns[i],
-                featureType=None        # Specifica della feature
-            )
-            '''
       percentage+=step
     return all_results
 
 #outlier
-def AnalyzeOutlierValues(con,dataset_name, featureType, variables,step,train_df,test_df, target_variable, model_touse):
-  columns=variables
+def AnalyzeOutlierValues(con,dataset_name, strategy,train_df,test_df, target_variable, model_touse):
   EType="Outlier"
+  columns = strategy.get("affected_features")
+  step = strategy.get("percentage")
   noisy_df=train_df.copy()
   for i in range(len(columns)):
     percentage=step
@@ -358,28 +340,13 @@ def AnalyzeOutlierValues(con,dataset_name, featureType, variables,step,train_df,
       print("Outlier error")
       print ("feature: "+columns[i])
       print ("step:"+str(round(percentage,1)))
-      match featureType:
-        case "discrete":
-          noisy_df=outlierDiscreteExtended3Sigma(train_df,noisy_df,columns[i],percentage)
-        case "continous":
-          noisy_df=outlierContinuosExtended3Sigma(train_df,noisy_df,columns[i],percentage)
-        case "categoricalString":
-          noisy_df=outliercategoricalStringExtended(train_df,noisy_df,columns[i],percentage)
-        case "categoricalInteger" :
-          noisy_df=outliercategoricalIntegerExtended(train_df,noisy_df,columns[i],percentage)
+      strategy["mode"]="new"
+      noisy_df=outlier(train_df,strategy)
+      strategy["mode"]="extended"
+      noisy_df=outlier(noisy_df,strategy,train_df)      
       all_results = []
       results = performanceAnalysis(con,dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1))
       all_results.append(results)
-      '''
-      calculate_feature_target_correlation_after_error(
-                noisy_df,
-                target_variable,
-                EType,
-                round(percentage, 1),
-                columns[i],
-                featureType        # Specifica della feature
-            )
-      '''
       percentage+=step
   return all_results
 
