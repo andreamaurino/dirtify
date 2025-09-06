@@ -241,12 +241,8 @@ def AnalyzeNoiseValues(con,dataset_name, strategy, train_df, test_df, target_var
             print("Noise error")
             print(f"Feature: {columns[i]}")
             print(f"Step: {round(percentage, 1)}")
-            strategy["mode"]="new"
-            noisy_df = noise(train_df, strategy)
             strategy["mode"]="extended"
-            noisy_df = noise(noisy_df, strategy,train_df)
-            
-            # Ottieni i risultati di performance
+            error,noisy_df = noise(noisy_df, strategy,train_df)
             results = performanceAnalysis(con,dataset_name, noisy_df, test_df, target_variable, model_touse, EType, columns[i], round(percentage, 1))
             all_results.append(results)
 
@@ -266,10 +262,8 @@ def AnalyzeWrongLabels(con,dataset_name,target_variable,strategy,train_df,test_d
     print ("labels error")
     print ("target: "+target_variable)
     print ("step:"+str(round(percentage,1)))
-    strategy["mode"]="new"
-    noisy_df=labels(train_df,strategy)
     strategy["mode"]="extended"
-    noisy_df=labels(noisy_df,strategy,train_df)
+    error,noisy_df=labels(noisy_df,strategy,train_df)
     all_results = []
     results = performanceAnalysis(con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1))
     all_results.append(results)
@@ -295,10 +289,8 @@ def AnalyzeDuplicatedValues(con,dataset_name,target_variable,strategy,train_df,t
   while percentage<1:
     print ("Duplicate error")
     print ("step:"+str(round(percentage,1)))
-    strategy["mode"]="new"
-    noisy_df=duplicate(train_df,strategy)
     strategy["mode"]="extended"
-    noisy_df=duplicate(noisy_df,strategy,train_df)
+    error,noisy_df=duplicate(noisy_df,strategy,train_df)
     all_results = []
     results = performanceAnalysis(con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(percentage,1))
     all_results.append(results)
@@ -319,9 +311,7 @@ def AnalyzeMissingValues(con,dataset_name,strategy,train_df,test_df, target_vari
       print ("feature: "+columns[i])
       print ("step:"+str(round(percentage,1)))
       strategy["mode"]="extended"
-      noisy_df=missing(train_df,strategy)
-      strategy["mode"]="extended"
-      noisy_df=missing(noisy_df,strategy,train_df)
+      error,noisy_df=missing(noisy_df,strategy,train_df)
       all_results = []
       results = performanceAnalysis(con,dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1))
       all_results.append(results)
@@ -340,10 +330,8 @@ def AnalyzeOutlierValues(con,dataset_name, strategy,train_df,test_df, target_var
       print("Outlier error")
       print ("feature: "+columns[i])
       print ("step:"+str(round(percentage,1)))
-      strategy["mode"]="new"
-      noisy_df=outlier(train_df,strategy)
       strategy["mode"]="extended"
-      noisy_df=outlier(noisy_df,strategy,train_df)      
+      error,noisy_df=outlier(noisy_df,strategy,train_df)      
       all_results = []
       results = performanceAnalysis(con,dataset_name,noisy_df,test_df, target_variable, model_touse, EType, columns[i],  round(percentage,1))
       all_results.append(results)

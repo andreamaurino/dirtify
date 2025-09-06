@@ -1,7 +1,7 @@
 Feature,Type,Correlation,Type of Correlation
-PAQ605,Continuous,0.16899154230560962,Point-biserial
-BMXBMI,Continuous,-0.15770963619375974,Point-biserial
-LBXGLU,Continuous,0.24454258499687112,Point-biserial
-LBXGLT,Continuous,0.33846127716052815,Point-biserial
-LBXIN,Continuous,-0.11399389249600303,Point-biserial
-age_group,CategoricalInt,0.9992901793415611,Cramér's V
+PAQ605,Continuous,0.161644649533178,Point-biserial
+BMXBMI,Continuous,-0.1611724041726197,Point-biserial
+LBXGLU,Continuous,0.24384266511125013,Point-biserial
+LBXGLT,Continuous,0.3516075076950824,Point-biserial
+LBXIN,Continuous,-0.10231144254843712,Point-biserial
+age_group,CategoricalInt,0.9992902565179719,Cramér's V
