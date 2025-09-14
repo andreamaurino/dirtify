@@ -6,6 +6,8 @@ import pandas as pd
 from PyQt5.QtWidgets import QApplication,  QTableWidget,  QTableWidgetItem, QWidget, QPushButton, QFileDialog, QVBoxLayout, QHBoxLayout, QLabel, QRadioButton, QButtonGroup, QScrollArea, QLabel, QLineEdit,  QHBoxLayout, QComboBox
 from PyQt5.QtGui import QDoubleValidator
 import UI
+from typing import List, Dict, Any
+
 ##########################################
 #
 # dopo la scelta del dataset e eventuale test set, l'utente deve selezionare i modelli ML
@@ -78,10 +80,11 @@ class CSVColumnTypeSelector(QWidget):
         self.main_layout.addWidget(self.scroll_area2)
         # Label e target"
         self.target_label = QLabel("Target:", self)
-        self.target_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.target_label.setStyleSheet("color: #ffffff;background-color: #000000;")  # Testo bianco
+        self.target_label.setStyleSheet("color: #ffffff; background-color: #000000;")  # Testo bianco
         self.target_input = QLineEdit(self)
         self.target_input.setText("")
-        self.target_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
+        self.target_input.setStyleSheet("color: #ffffff; background-color: #000000;")  # Testo bianco e sfondo scuro
 
         # Aggiungi label e input in un layout orizzontale
         self.target_layout = QHBoxLayout()
@@ -98,25 +101,62 @@ class CSVColumnTypeSelector(QWidget):
         self.setLayout(self.main_layout)
 
         self.setStyleSheet("""
-            QWidget {
-                background-color: #333; /* Grigio scuro */
-                color: #FFF; /* Testo bianco */
-                font-family: Arial, sans-serif;
-            }
-            QPushButton {
-                background-color: #0088CC; /* Azzurro */
-                color: white;
-                border-radius: 5px;
-                padding: 10px;
-                font-size: 16px;
-            }
-            QPushButton:hover {
-                background-color: #006699; /* Azzurro scuro al passaggio del mouse */
-            }
-            QLabel {
-                margin: 10px 0;
-            }
-        """)
+        QWidget {
+            background-color: #333333;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ScrollArea: evita “isole” bianche */
+        QScrollArea, QScrollArea > QWidget, QScrollArea > QWidget > QWidget#qt_scrollarea_viewport {
+            background-color: transparent;
+        }
+
+        /* Tabelle */
+        QTableView, QTableWidget {
+            background-color: #2b2b2b;
+            color: #eaeaea;
+            gridline-color: #555555;
+            selection-background-color: #006699;
+            selection-color: #ffffff;
+            alternate-background-color: #242424;
+        }
+
+        /* Intestazioni delle tabelle */
+        QHeaderView::section {
+            background-color: #444444;
+            color: #ffffff;
+            padding: 6px;
+            border: 1px solid #555555;
+            font-weight: 600;
+        }
+
+        /* Angolo in alto a sinistra della tabella */
+        QTableCornerButton::section {
+            background-color: #444444;
+            border: 1px solid #555555;
+        }
+
+        QPushButton {
+            background-color: #0088CC;
+            color: white;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+     QPushButton:hover { background-color: #006699; }
+        QLabel { margin: 10px 0; }
+
+        /* Campi input coerenti con tema scuro */
+        QLineEdit {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #555555;
+            padding: 6px;
+            border-radius: 4px;
+        }
+    """)
+
 
     def open_file_dialog(self):
         options = QFileDialog.Options()
@@ -236,7 +276,7 @@ class CSVColumnTypeSelector(QWidget):
             # Crea un dizionario per raggruppare le colonne per tipo
             grouped_columns = {
                 "datasetName": self.csv_file_name,
-                "target":self.target_input.text(),
+                "targetVariable":self.target_input.text(),
                 "machineLearningModels":[],
                 "Experiments":[]
             }
@@ -318,16 +358,53 @@ class MissingWindow(QWidget):
         self.selection_layout.addWidget(self.selection_label)
         self.selection_layout.addWidget(self.selection_input)
         self.layout.addLayout(self.selection_layout)
+ # Label e input per "distribution"
+        self.distribution_label = QLabel("Distribution:", self)
+        self.distribution_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.distribution_input = QLineEdit(self)
+        self.distribution_input.setText("random")
+        self.distribution_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
+
+        # Aggiungi label e input in un layout orizzontale
+        self.distribution_layout = QHBoxLayout()
+        self.distribution_layout.addWidget(self.distribution_label)
+        self.distribution_layout.addWidget(self.distribution_input)
+        self.layout.addLayout(self.distribution_layout)
+   # Label e input per "param"
+        self.param_label = QLabel("Parameter:", self)
+        self.param_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.param_input = QLineEdit(self)
+        self.param_input.setText("")
+        self.param_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
+
+        # Aggiungi label e input in un layout orizzontale
+        self.param_layout = QHBoxLayout()
+        self.param_layout.addWidget(self.param_label)
+        self.param_layout.addWidget(self.param_input)
+        self.layout.addLayout(self.param_layout)
+
+  # Label e input per "value"
+        self.value_label = QLabel("Parameter value:", self)
+        self.value_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.value_input = QLineEdit(self)
+        self.value_input.setText("")
+        self.value_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
+
+        # Aggiungi label e input in un layout orizzontale
+        self.value_layout = QHBoxLayout()
+        self.value_layout.addWidget(self.value_label)
+        self.value_layout.addWidget(self.value_input)
+        self.layout.addLayout(self.value_layout)
 
      
-        # ScrollArea for Columns
-        self.scroll_area2 = QScrollArea(self)
-        self.scroll_area_widget2 = QWidget()
-        self.scroll_area_layout2 = QVBoxLayout(self.scroll_area_widget2)
-        self.scroll_area2.setWidgetResizable(True)
-        self.scroll_area2.setWidget(self.scroll_area_widget2)
-        self.layout.addWidget(self.scroll_area2)
-        self.display_columns2()
+#        # ScrollArea for Columns
+#        self.scroll_area2 = QScrollArea(self)
+#        self.scroll_area_widget2 = QWidget()
+#        self.scroll_area_layout2 = QVBoxLayout(self.scroll_area_widget2)
+#        self.scroll_area2.setWidgetResizable(True)
+#        self.scroll_area2.setWidget(self.scroll_area_widget2)
+#        self.layout.addWidget(self.scroll_area2)
+#        self.display_columns2()
 
         # Navigation 
         button_layout = QHBoxLayout()  # Crea un layout orizzontale per i pulsanti
@@ -367,6 +444,15 @@ class MissingWindow(QWidget):
         addedDocument = {"ErrorStrategy": "one-feature"}
         addedDocument["Step"] = float(self.step_input.text())
         addedDocument["Selection_criteria"] = self.selection_input.text()
+        addedDocument["distribution"]=self.distribution_input.text()
+        if self.param_input.text()=="" or self.param_input.text() is None:
+            addedDocument["param"]=None
+        else:
+            addedDocument["param"]=self.param_input.text()
+        if self.value_input.text()=="" or self.value_input.text() is None:
+            addedDocument["value"]=None
+        else:
+            addedDocument["value"]=self.value_input.text()
         for column3, col_type3 in self.column_types3.items():
             if col_type3 == "Yes":
                 newML.append(column3)
@@ -834,17 +920,23 @@ class labelWindow(QWidget):
         self.close()  
         self.next_window = DuplicateWindow(self.grouped_columns)  # Apre la nuova finestra
         self.next_window.show()
-
    
     def display_columns2(self):
         self.clear_layout2(self.scroll_area_layout2)
         self.column_types2.clear()
-
-
         column_df=pd.read_csv(self.grouped_columns["datasetName"])
         columns=column_df.columns.tolist()
         for column in columns:
             self.add_column_radiobuttons2(column)
+    
+    def clear_layout2(self, layout):
+         if layout is not None:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget() is not None:
+                    child.widget().deleteLater()
+                elif child.layout() is not None:
+                    self.clear_layout(child.layout())
 
     def add_column_radiobuttons2(self, column_name2):
         # Layout orizzontale per ogni colonna
@@ -939,7 +1031,10 @@ class labelWindow(QWidget):
         newFeat=[]
         addedDocument = {"ErrorStrategy": "custom-role"}
         addedDocument["Step"] = float(self.step_input.text())
-        addedDocument["affected_features"]=self.affected_input.text()
+        for column in self.column_types2:
+            if self.column_types2[column] == "Yes":
+                newFeat.append(column)
+        addedDocument["affected_features"] = newFeat
         addedDocument["selection_criteria"]=self.selection_input.text()
         addedDocument["distribution"]=self.distribution_input.text()
         if self.param_input.text()=="" or self.param_input.text() is None:
@@ -1017,6 +1112,57 @@ class labelWindow(QWidget):
         UI.start(self.file_name)
         self.close() 
 
+    def expand_one_feature_strategy(self, config: List[Dict[str, Any]], dataset_columns: List[str]) -> List[Dict[str, Any]]:
+        ERRORTYPES = ["duplicate", "labels", "outlier", "noise"]
+        one_feature_blocks = []
+        for item in config:
+            if item.get("ErrorStrategy") == "one-feature":
+                one_feature_blocks.append(item)
+
+        if not one_feature_blocks:
+            return config
+
+        new_docs: List[Dict[str, Any]] = []
+        for block in one_feature_blocks:
+            selection_criteria = block.get("Selection_criteria") or block.get("Selection-criteria")
+            distribution = block.get("distribution")
+            percentage = block.get("Step")
+
+            for etype in ERRORTYPES:
+                if etype == "labels":
+                    doc = {
+                            "Errortype": etype,
+                            "Strategy": {
+                                "affected_features": self.grouped_columns["targetVariable"],
+                                "selection_criteria": selection_criteria,
+                                "percentage": percentage,
+                            "mode": "new",
+                            "perturbate_data": {
+                                "distribution": distribution
+                                }
+                        }
+                    }
+                    new_docs.append(doc)
+                else:
+                    for col in dataset_columns:
+                        doc = {
+                            "Errortype": etype,
+                            "Strategy": {
+                                "affected_features": [col],
+                                "selection_criteria": selection_criteria,
+                                "percentage": percentage,
+                            "mode": "new",
+                            "perturbate_data": {
+                                "distribution": distribution
+                                }
+                            }
+                        }
+                        new_docs.append(doc)
+
+        return new_docs
+
+
+
     def save(self, grouped_columns):
         model_map = {
             "Logistic Regression": "lr",
@@ -1042,13 +1188,19 @@ class labelWindow(QWidget):
         grouped_columns["machineLearningModels"] = [
             model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
         ]
+        dataset_columns=pd.read_csv(grouped_columns["datasetName"]).columns.tolist()
+        dataset_columns.remove(grouped_columns["targetVariable"])
+        grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
+        new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
+        grouped_columns["Experiments"] = new_doc
+        print(grouped_columns)
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getSaveFileName(self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options)
         
         try:
                 with open(file_name, 'w') as json_file:
                     json.dump(grouped_columns, json_file, indent=4)
-                print(f'Successfully saved JSON to {self.file_name}')
+                print(f'Successfully saved JSON to {file_name}')
         except Exception as e:
                 print(f'Error saving JSON file: {e}')
         return file_name
