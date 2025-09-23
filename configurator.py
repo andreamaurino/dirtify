@@ -3,27 +3,13 @@ import csv
 import json
 import os 
 import pandas as pd
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication,  QTableWidget,  QTableWidgetItem, QWidget, QPushButton, QFileDialog, QVBoxLayout, QHBoxLayout, QLabel, QRadioButton, QButtonGroup, QScrollArea, QLabel, QLineEdit,  QHBoxLayout, QComboBox
 from PyQt5.QtGui import QDoubleValidator
 import UI
 from typing import List, Dict, Any
 
-##########################################
-#
-# dopo la scelta del dataset e eventuale test set, l'utente deve selezionare i modelli ML
-# in quella schermata devono apparire i pulsanti di 
-# back, save, save & run
-# 1) experimental one feature alone
-# 2) experimental correlated features
-# 3) custom experimental rule  
-#
-# 1) l'utente deve decidere ml, lo step gli errori a checkbox, eventuali selection_criteria default all
-# 2) l'utente deve decidere ml, lo step gli errori a checkbox, eventuali selection_criteria default all e le soglie min max di correlation. 
-# 3) l'utente deve inserire afected features a checkbox, selection criteria, step e modelli
-# 
-# in futuro il dataset modificato potrebbe essere usato per altri errori  
-#
-#########################################
+
 class CSVColumnTypeSelector(QWidget):
     def __init__(self, grouped_columns={}, parent=None):
         super(CSVColumnTypeSelector, self).__init__(parent)
@@ -80,10 +66,12 @@ class CSVColumnTypeSelector(QWidget):
         self.main_layout.addWidget(self.scroll_area2)
         # Label e target"
         self.target_label = QLabel("Target:", self)
+        
+        self.target_label.setFont(QFont("Arial", 12))
         self.target_label.setStyleSheet("color: #ffffff;background-color: #000000;")  # Testo bianco
         self.target_label.setStyleSheet("color: #ffffff; background-color: #000000;")  # Testo bianco
         self.target_input = QLineEdit(self)
-        self.target_input.setText("")
+        self.target_input.setText(self.tmp_df.columns[-1] if hasattr(self, 'tmp_df') else "")
         self.target_input.setStyleSheet("color: #ffffff; background-color: #000000;")  # Testo bianco e sfondo scuro
 
         # Aggiungi label e input in un layout orizzontale
@@ -93,7 +81,7 @@ class CSVColumnTypeSelector(QWidget):
         self.main_layout.addLayout(self.target_layout)
 
         # Bottone per salvare i risultati come JSON (spostato alla fine)
-        self.button = QPushButton("Insert Experimental Strategy", self)
+        self.button = QPushButton("Create Error Strategy", self)
         self.button.clicked.connect(self.open_standard)
         self.button.setEnabled(False)  # Disabilitato finché non viene caricato un file
         self.main_layout.addWidget(self.button)
@@ -198,6 +186,7 @@ class CSVColumnTypeSelector(QWidget):
         if file_path:
             self.testset_name = os.path.basename(file_path) 
             self.display_columns(file_path)
+            self.tmp_df = pd.read_csv(file_path, sep=",", encoding='iso-8859-1')
 
     def display_columns(self, file_path):
         # Pulisce il layout precedente e resetta le selezioni
@@ -211,6 +200,8 @@ class CSVColumnTypeSelector(QWidget):
 
 
     def display_columns2(self):
+        self.tmp_df = pd.read_csv(self.csv_file_name, sep=",", encoding='iso-8859-1')
+        self.target_input.setText(self.tmp_df.columns[-1] if hasattr(self, 'tmp_df') else "")
         # Pulisce il layout precedente e resetta le selezioni
         self.clear_layout(self.scroll_area_layout2)
         self.column_types2.clear()
@@ -244,6 +235,7 @@ class CSVColumnTypeSelector(QWidget):
 
         # Etichetta con il nome della colonna
         label2 = QLabel(column_name2, self)
+        label2.setFont(QFont("Arial", 12))
         column_layout2.addWidget(label2)
 
         # Gruppo di radiobuttons
@@ -277,6 +269,7 @@ class CSVColumnTypeSelector(QWidget):
             grouped_columns = {
                 "datasetName": self.csv_file_name,
                 "targetVariable":self.target_input.text(),
+                "features":[],
                 "machineLearningModels":[],
                 "Experiments":[]
             }
@@ -286,6 +279,8 @@ class CSVColumnTypeSelector(QWidget):
             for column2, col_type2 in self.column_types2.items():
                 if col_type2 == "Yes":
                     grouped_columns["machineLearningModels"].append(column2)
+            self.tmp_df = pd.read_csv(self.csv_file_name, sep=",", encoding='iso-8859-1')
+            grouped_columns["features"] = list(self.tmp_df.columns)
             addedDocument={"Errortype":"standard"}
             grouped_columns["Experiments"].append(addedDocument)
             print(grouped_columns)
@@ -321,14 +316,28 @@ class MissingWindow(QWidget):
         self.setStyleSheet("background-color: #2c2c2c; color: #ffffff;")
 
         self.column_types3 = {}
+        self.column_types31 = {}
         self.column_types2 = {}
 
         self.layout = QVBoxLayout()
-        
+        # features
+        self.label11 = QLabel("Choose Features", self)
+        self.label11.setStyleSheet("font-size: 18px; font-weight: bold;")
+        self.layout.addWidget(self.label11)
+
+        # ScrollArea for ML Models
+        self.scroll_area31 = QScrollArea(self)
+        self.scroll_area_widget31 = QWidget()
+        self.scroll_area_layout31 = QVBoxLayout(self.scroll_area_widget31)
+        self.display_columns31()
+        self.scroll_area31.setWidgetResizable(True)
+        self.scroll_area31.setWidget(self.scroll_area_widget31)
+        self.layout.addWidget(self.scroll_area31)
+
         # Header Label
-        self.label = QLabel("Choose ML Model", self)
-        self.label.setStyleSheet("font-size: 18px; font-weight: bold;")
-        self.layout.addWidget(self.label)
+        self.label12 = QLabel("Choose ML Model", self)
+        self.label12.setStyleSheet("font-size: 18px; font-weight: bold;")
+        self.layout.addWidget(self.label12)
 
         # ScrollArea for ML Models
         self.scroll_area3 = QScrollArea(self)
@@ -383,7 +392,7 @@ class MissingWindow(QWidget):
         self.param_layout.addWidget(self.param_input)
         self.layout.addLayout(self.param_layout)
 
-  # Label e input per "value"
+        # Label e input per "value"
         self.value_label = QLabel("Parameter value:", self)
         self.value_label.setStyleSheet("color: #ffffff;")  # Testo bianco
         self.value_input = QLineEdit(self)
@@ -397,15 +406,6 @@ class MissingWindow(QWidget):
         self.layout.addLayout(self.value_layout)
 
      
-#        # ScrollArea for Columns
-#        self.scroll_area2 = QScrollArea(self)
-#        self.scroll_area_widget2 = QWidget()
-#        self.scroll_area_layout2 = QVBoxLayout(self.scroll_area_widget2)
-#        self.scroll_area2.setWidgetResizable(True)
-#        self.scroll_area2.setWidget(self.scroll_area_widget2)
-#        self.layout.addWidget(self.scroll_area2)
-#        self.display_columns2()
-
         # Navigation 
         button_layout = QHBoxLayout()  # Crea un layout orizzontale per i pulsanti
 
@@ -441,6 +441,7 @@ class MissingWindow(QWidget):
 
     def open_next_window(self):
         newML = []
+        features = []
         addedDocument = {"ErrorStrategy": "one-feature"}
         addedDocument["Step"] = float(self.step_input.text())
         addedDocument["Selection_criteria"] = self.selection_input.text()
@@ -456,6 +457,11 @@ class MissingWindow(QWidget):
         for column3, col_type3 in self.column_types3.items():
             if col_type3 == "Yes":
                 newML.append(column3)
+        for column31, col_type31 in self.column_types31.items():
+            if col_type31 == "Yes":
+                features.append(column31)
+        if features != self.grouped_columns["features"]:        
+            self.grouped_columns["features"] = features   
         if newML != self.grouped_columns["machineLearningModels"]:
             addedDocument["machineLearningModels"] = newML
         newColumns = []
@@ -529,6 +535,58 @@ class MissingWindow(QWidget):
                     child.widget().deleteLater()
                 elif child.layout() is not None:
                     self.clear_layout(child.layout())
+
+
+
+
+
+
+    def display_columns31(self):
+        self.clear_layout31(self.scroll_area_layout31)
+        self.column_types31.clear()
+        features = self.grouped_columns["features"]
+        for feat in features:
+            self.add_column_radiobuttons31(feat)
+
+    def add_column_radiobuttons31(self, column_name31):
+        column_layout31 = QHBoxLayout()
+        label31 = QLabel(column_name31, self)
+        column_layout31.addWidget(label31)
+        button_group31 = QButtonGroup(self)
+        options = ["Yes", "No"]
+        for option31 in options:
+            radiobutton31 = QRadioButton(option31, self)
+            button_group31.addButton(radiobutton31)
+            column_layout31.addWidget(radiobutton31)
+            radiobutton31.toggled.connect(lambda checked, col=column_name31, opt=option31: self.update_column_type31(col, opt, checked))
+
+        button_group31.buttons()[0].setChecked(True)
+        self.column_types31[column_name31] = "Yes"
+        self.scroll_area_layout31.addLayout(column_layout31)
+
+    def update_column_type31(self, column_name, option, checked):
+        if checked:
+            self.column_types31[column_name] = option
+
+    def clear_layout31(self, layout):
+        if layout is not None:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget() is not None:
+                    child.widget().deleteLater()
+                elif child.layout() is not None:
+                    self.clear_layout(child.layout())
+
+
+
+
+
+
+
+
+
+
+
 
     def clear_layout2(self, layout):
         if layout is not None:
@@ -1188,7 +1246,7 @@ class labelWindow(QWidget):
         grouped_columns["machineLearningModels"] = [
             model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
         ]
-        dataset_columns=pd.read_csv(grouped_columns["datasetName"]).columns.tolist()
+        dataset_columns=grouped_columns["features"].copy()
         dataset_columns.remove(grouped_columns["targetVariable"])
         grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
         new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
