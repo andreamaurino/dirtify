@@ -10,9 +10,9 @@ import UI
 from typing import List, Dict, Any
 
 
-class CSVColumnTypeSelector(QWidget):
+class InitWindow(QWidget):
     def __init__(self, grouped_columns={}, parent=None):
-        super(CSVColumnTypeSelector, self).__init__(parent)
+        super(InitWindow, self).__init__(parent)
         self.grouped_columns = grouped_columns
         if len(grouped_columns) > 1:
             if len(grouped_columns["Experiments"]) > 1:
@@ -285,7 +285,7 @@ class CSVColumnTypeSelector(QWidget):
             grouped_columns["Experiments"].append(addedDocument)
             print(grouped_columns)
             self.close()  # Chiude la finestra principale
-            self.standard_window = MissingWindow(grouped_columns)  # Apre la nuova finestra
+            self.standard_window = OneFeature(grouped_columns)  # Apre la nuova finestra
             self.standard_window.show()
 
     def show_final_window(self):
@@ -302,9 +302,9 @@ class CSVColumnTypeSelector(QWidget):
 
 
 # Classe per la finestra "one feature"
-class MissingWindow(QWidget):
+class OneFeature(QWidget):
     def __init__(self, grouped_columns, parent=None):
-        super(MissingWindow, self).__init__(parent)
+        super(OneFeature, self).__init__(parent)
         self.grouped_columns = grouped_columns
         if len(grouped_columns["Experiments"]) > 1:
             grouped_columns["Experiments"] = [
@@ -430,13 +430,13 @@ class MissingWindow(QWidget):
 
     def open_prev_window(self):
         self.close()
-        self.next_window = CSVColumnTypeSelector(self.grouped_columns)
+        self.next_window = InitWindow(self.grouped_columns)
         self.next_window.show()
 
     def open_skip_window(self):
         print(self.grouped_columns)
         self.close()
-        self.next_window = DuplicateWindow(self.grouped_columns)
+        self.next_window = CorrelatedFeature(self.grouped_columns)
         self.next_window.show()
 
     def open_next_window(self):
@@ -471,7 +471,7 @@ class MissingWindow(QWidget):
         self.grouped_columns["Experiments"].append(addedDocument)
         print(self.grouped_columns)
         self.close()
-        self.next_window = DuplicateWindow(self.grouped_columns)
+        self.next_window = CorrelatedFeature(self.grouped_columns)
         self.next_window.show()
 
 
@@ -598,10 +598,10 @@ class MissingWindow(QWidget):
                     self.clear_layout(child.layout())
 
 # Classe per la finestra corelate
-class DuplicateWindow(QWidget):
+class CorrelatedFeature(QWidget):
 
     def __init__(self, grouped_columns, parent=None):
-        super(DuplicateWindow, self).__init__(parent)
+        super(CorrelatedFeature, self).__init__(parent)
         self.grouped_columns = grouped_columns
         if len(grouped_columns["Experiments"]) > 1:
             grouped_columns["Experiments"] = [
@@ -713,12 +713,12 @@ class DuplicateWindow(QWidget):
 
     def open_prev_window(self):
         self.close()  # Chiude la finestra "Duplicate Analysis"
-        self.next_window = MissingWindow(self.grouped_columns)  # Apre la nuova finestra
+        self.next_window = OneFeature(self.grouped_columns)  # Apre la nuova finestra
         self.next_window.show()
 
     def open_skip_window(self):
         self.close()  # Chiude la finestra "Duplicate Analysis"
-        self.next_window = labelWindow(self.grouped_columns)  # Apre la nuova finestra
+        self.next_window = CustomRole(self.grouped_columns)  # Apre la nuova finestra
         self.next_window.show()
 
     def open_next_window(self):
@@ -736,7 +736,7 @@ class DuplicateWindow(QWidget):
         self.grouped_columns["Experiments"].append(addedDocument)
         print(self.grouped_columns)
         self.close()
-        self.next_window = labelWindow(self.grouped_columns)  # Apre la nuova finestra
+        self.next_window = CustomRole(self.grouped_columns)  # Apre la nuova finestra
         self.next_window.show()
 
     def display_columns3(self):
@@ -792,10 +792,10 @@ class DuplicateWindow(QWidget):
                     self.clear_layout3(child.layout())
 
 # Classe per la finestra custom role
-class labelWindow(QWidget):
+class CustomRole(QWidget):
 
     def __init__(self, grouped_columns, parent=None):
-        super(labelWindow, self).__init__(parent)
+        super(CustomRole, self).__init__(parent)
         self.grouped_columns = grouped_columns
         if len(grouped_columns["Experiments"]) > 1:
             grouped_columns["Experiments"] = [
@@ -910,11 +910,23 @@ class labelWindow(QWidget):
         # Crea un layout orizzontale per i pulsanti
         button_layout = QHBoxLayout()
 
+        self.next_role = QPushButton("Add new rule", self)
+        self.next_role.setStyleSheet("background-color: #0088CC; color: #000000;")
+        self.next_role.clicked.connect(self.open_same_window)
+        experiments = self.grouped_columns.get("Experiments", [])
+        if len(experiments)==2:
+           self.next_role.setEnabled(False)
+        else:
+            self.next_role.setEnabled(True)
+            self.next_role.setStyleSheet("background-color: #0088CC; color: #ffffff;")
+
         
+        #self.layout.addWidget(self.next_role)
+
         self.next_button = QPushButton("Save", self)
         self.next_button.setStyleSheet("background-color: #0088CC; color: #000000;")
         self.next_button.clicked.connect(self.open_next_window)
-        experiments = self.grouped_columns.get("Experiments", [])
+       
         if len(experiments)==2:
            self.next_button.setEnabled(False)
         else:
@@ -976,7 +988,7 @@ class labelWindow(QWidget):
 
     def open_prev_window(self):
         self.close()  
-        self.next_window = DuplicateWindow(self.grouped_columns)  # Apre la nuova finestra
+        self.next_window = CorrelatedFeature(self.grouped_columns)  # Apre la nuova finestra
         self.next_window.show()
    
     def display_columns2(self):
@@ -1083,16 +1095,41 @@ class labelWindow(QWidget):
                     child.widget().deleteLater()
                 elif child.layout() is not None:
                     self.clear_layout(child.layout())
+    def open_same_window(self):
+        newML = []
+        newFeat=[]
+        addedDocument = {"ErrorStrategy": "custom-role"}
+        addedDocument["Step"] = float(self.step_input.text())
+        addedDocument["selection_criteria"]=self.selection_input.text()
+        addedDocument["distribution"]=self.distribution_input.text()
+        if self.param_input.text()=="" or self.param_input.text() is None:
+            addedDocument["param"]=None
+        else:
+            addedDocument["param"]=self.param_input.text()
+        if self.value_input.text()=="" or self.value_input.text() is None:
+            addedDocument["value"]=None
+        else:
+            addedDocument["value"]=self.value_input.text()
+        for column2, col_type2 in self.column_types2.items():
+            if col_type2 == "Yes":
+                newFeat.append(column2)
+        addedDocument["affected_features"] = newFeat
+        self.grouped_columns["Experiments"].append(addedDocument)
+
+        for column3, col_type3 in self.column_types3.items():
+            if col_type3 == "Yes":
+                newML.append(column3)
+        if newML != self.grouped_columns["machineLearningModels"]:
+            addedDocument["machineLearningModels"] = newML
+        self.grouped_columns["Experiments"].append(addedDocument)
+        
+        self.__init__(self,self.grouped_columns)
 
     def open_next_window(self):
         newML = []
         newFeat=[]
         addedDocument = {"ErrorStrategy": "custom-role"}
         addedDocument["Step"] = float(self.step_input.text())
-        for column in self.column_types2:
-            if self.column_types2[column] == "Yes":
-                newFeat.append(column)
-        addedDocument["affected_features"] = newFeat
         addedDocument["selection_criteria"]=self.selection_input.text()
         addedDocument["distribution"]=self.distribution_input.text()
         if self.param_input.text()=="" or self.param_input.text() is None:
@@ -1118,7 +1155,8 @@ class labelWindow(QWidget):
         
         print(self.grouped_columns)
         self.close()  # Chiude la finestra "Duplicate Error"
-    
+        self.save(self.grouped_columns)
+
     def run(self):
         
         newML = []
@@ -1157,7 +1195,7 @@ class labelWindow(QWidget):
 
     def open_prev_window(self):
         self.close()  
-        self.next_window = DuplicateWindow(self.grouped_columns)  
+        self.next_window = CorrelatedFeature(self.grouped_columns)  
         self.next_window.show()
 
     def open_skip_window(self):
@@ -1246,15 +1284,35 @@ class labelWindow(QWidget):
         grouped_columns["machineLearningModels"] = [
             model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
         ]
-        dataset_columns=grouped_columns["features"].copy()
-        dataset_columns.remove(grouped_columns["targetVariable"])
-        grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
-        new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
-        grouped_columns["Experiments"] = new_doc
-        print(grouped_columns)
+        if grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature":
+            dataset_columns=grouped_columns["features"].copy()
+            dataset_columns.remove(grouped_columns["targetVariable"])
+            grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
+            new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
+            grouped_columns["Experiments"] = new_doc
+        elif grouped_columns["Experiments"][1]["ErrorStrategy"] == "custom-role":
+                doc = {
+                            "Errortype":"outlier",
+                            "Strategy": {
+                                "affected_features": self.grouped_columns["Experiments"][1]["affected_features"],
+                                "selection_criteria": self.grouped_columns["Experiments"][1]["selection_criteria"],
+                                "percentage": self.grouped_columns["Experiments"][1]["Step"],
+                            "mode": "new",
+                            "target_variable": self.grouped_columns["targetVariable"],
+                            "perturbate_data": {
+                                "distribution": self.grouped_columns["Experiments"][1]["distribution"]
+                                }
+                            }
+                        }
+                grouped_columns["Experiments"].append(doc)
+                new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
+                grouped_columns["Experiments"] = new_doc
+        print(grouped_columns)        
         options = QFileDialog.Options()
-        file_name, _ = QFileDialog.getSaveFileName(self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options)
-        
+        options |= QFileDialog.DontUseNativeDialog  # <— workaround
+        file_name, _ = QFileDialog.getSaveFileName(
+                self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options
+            )
         try:
                 with open(file_name, 'w') as json_file:
                     json.dump(grouped_columns, json_file, indent=4)
@@ -1274,7 +1332,7 @@ class labelWindow(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = CSVColumnTypeSelector()
+    ex = InitWindow()
     ex.show()
     sys.exit(app.exec_())
 
