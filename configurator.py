@@ -802,7 +802,7 @@ class CustomRole(QWidget):
                 exp for exp in grouped_columns["Experiments"]
                 if exp.get("ErrorStrategy") != "custom-role"
             ]    
-
+        self.ErrorType="Label"
         self.setWindowTitle("Custome role")
         self.setGeometry(100, 100, 1000, 1000)
 
@@ -813,6 +813,26 @@ class CustomRole(QWidget):
         self.column_types2 = {}  # Dictionary for features
         self.layout = QVBoxLayout()
 
+        self.label1 = QLabel("Error Type:")
+        self.label1.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.layout.addWidget(self.label1)
+        
+        # ComboBox (scelta a tendina)
+        self.combo = QComboBox()
+        self.combo.addItems(["Label","Missing","Noise","Outlier"])
+        # Segnale per catturare il cambiamento
+        self.combo.currentIndexChanged.connect(self.selection_changed)
+        self.layout.addWidget(self.combo)
+        self.combo.setStyleSheet("""
+            QComboBox {
+                color: white;         /* testo della scelta */
+            }
+            QComboBox QAbstractItemView {
+                color: white;         /* testo delle voci */
+                selection-background-color: #555555; /* sfondo della voce selezionata */
+            }
+        """)
+        
         # Label per il titolo
         self.label = QLabel("Choose ML", self)
         self.label.setStyleSheet("color: #ffffff;")  # Testo bianco
@@ -910,25 +930,26 @@ class CustomRole(QWidget):
         # Crea un layout orizzontale per i pulsanti
         button_layout = QHBoxLayout()
 
-        self.next_role = QPushButton("Add new rule", self)
-        self.next_role.setStyleSheet("background-color: #0088CC; color: #000000;")
-        self.next_role.clicked.connect(self.open_same_window)
+        self.next_rule = QPushButton("Add new rule", self)
+        self.next_rule.setStyleSheet("background-color: #0088CC; color: #000000;")
+        self.next_rule.clicked.connect(self.open_same_window)
         experiments = self.grouped_columns.get("Experiments", [])
         if len(experiments)==2:
-           self.next_role.setEnabled(False)
+            if self.grouped_columns["Experiments"][1]["ErrorType"] == "one-feature": #or ....:
+                self.next_rule.setEnabled(False)
         else:
-            self.next_role.setEnabled(True)
-            self.next_role.setStyleSheet("background-color: #0088CC; color: #ffffff;")
+            self.next_rule.setEnabled(True)
+            self.next_rule.setStyleSheet("background-color: #0088CC; color: #ffffff;")
 
         
-        #self.layout.addWidget(self.next_role)
+        self.layout.addWidget(self.next_rule)
 
         self.next_button = QPushButton("Save", self)
         self.next_button.setStyleSheet("background-color: #0088CC; color: #000000;")
         self.next_button.clicked.connect(self.open_next_window)
-       
         if len(experiments)==2:
-           self.next_button.setEnabled(False)
+            if self.grouped_columns["Experiments"][1]["ErrorType"] == "one-feature": #or ....:
+                self.next_button.setEnabled(False)
         else:
             self.next_button.setEnabled(True)
             self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
@@ -985,6 +1006,10 @@ class CustomRole(QWidget):
 
 
         self.setLayout(self.layout)
+
+    def selection_changed(self, index):
+        self.ErrorType=self.combo.currentText()
+
 
     def open_prev_window(self):
         self.close()  
@@ -1095,10 +1120,13 @@ class CustomRole(QWidget):
                     child.widget().deleteLater()
                 elif child.layout() is not None:
                     self.clear_layout(child.layout())
+
+
     def open_same_window(self):
         newML = []
         newFeat=[]
-        addedDocument = {"ErrorStrategy": "custom-role"}
+        addedDocument = {"ErrorType": "custom-role"}
+        addedDocument["ErrorType"]=self.ErrorType
         addedDocument["Step"] = float(self.step_input.text())
         addedDocument["selection_criteria"]=self.selection_input.text()
         addedDocument["distribution"]=self.distribution_input.text()
@@ -1115,15 +1143,18 @@ class CustomRole(QWidget):
                 newFeat.append(column2)
         addedDocument["affected_features"] = newFeat
         self.grouped_columns["Experiments"].append(addedDocument)
-
         for column3, col_type3 in self.column_types3.items():
             if col_type3 == "Yes":
                 newML.append(column3)
         if newML != self.grouped_columns["machineLearningModels"]:
             addedDocument["machineLearningModels"] = newML
         self.grouped_columns["Experiments"].append(addedDocument)
-        
-        self.__init__(self,self.grouped_columns)
+        self.prepare(self.grouped_columns)
+        print(self.grouped_columns)
+        self.close()
+        self.next_window = CustomRole(self.grouped_columns)  
+        self.next_window.show()
+
 
     def open_next_window(self):
         newML = []
@@ -1144,53 +1175,35 @@ class CustomRole(QWidget):
             if col_type2 == "Yes":
                 newFeat.append(column2)
         addedDocument["affected_features"] = newFeat
-        self.grouped_columns["Experiments"].append(addedDocument)
+        self.grouped_columns["Experiments"].append(addedDocument)#
 
         for column3, col_type3 in self.column_types3.items():
-            if col_type3 == "Yes":
+           if col_type3 == "Yes":
                 newML.append(column3)
         if newML != self.grouped_columns["machineLearningModels"]:
             addedDocument["machineLearningModels"] = newML
         self.grouped_columns["Experiments"].append(addedDocument)
         
-        print(self.grouped_columns)
         self.close()  # Chiude la finestra "Duplicate Error"
-        self.save(self.grouped_columns)
+        self.prepare(self.grouped_columns)
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog  # <— workaround
+        file_name, _ = QFileDialog.getSaveFileName(
+                self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options
+            )
+        try:
+                with open(file_name, 'w') as json_file:
+                    json.dump(self.grouped_columns, json_file, indent=4)
+                print(f'Successfully saved JSON to {file_name}')
+        except Exception as e:
+                print(f'Error saving JSON file: {e}')
+        return file_name
+  
 
     def run(self):
         
-        newML = []
-        newFeat=[]
-        addedDocument = {"ErrorStrategy": "custom-role"}
-        addedDocument["Step"] = float(self.step_input.text())
-        addedDocument["affected_features"]=self.affected_input.text()
-        addedDocument["selection_criteria"]=self.selection_input.text()
-        addedDocument["distribution"]=self.distribution_input.text()
-        if self.param_input.text()=="" or self.param_input.text() is None:
-            addedDocument["param"]=None
-        else:
-            addedDocument["param"]=self.param_input.text()
-        if self.value_input.text()=="" or self.value_input.text() is None:
-            addedDocument["value"]=None
-        else:
-            addedDocument["value"]=self.value_input.text()
-        for column2, col_type2 in self.column_types2.items():
-            if col_type2 == "Yes":
-                newFeat.append(column2)
-        addedDocument["affected_features"] = newFeat
-        self.grouped_columns["Experiments"].append(addedDocument)
-
-        for column3, col_type3 in self.column_types3.items():
-            if col_type3 == "Yes":
-                newML.append(column3)
-        if newML != self.grouped_columns["machineLearningModels"]:
-            addedDocument["machineLearningModels"] = newML
-        self.grouped_columns["Experiments"].append(addedDocument)
-        
-        print(self.grouped_columns)
-
-        self.file_name=self.save(self.grouped_columns)
-        UI.start(self.file_name)
+        file_name=self.open_next_window()
+        UI.start(file_name)
         self.close()
 
     def open_prev_window(self):
@@ -1200,12 +1213,34 @@ class CustomRole(QWidget):
 
     def open_skip_window(self):
         
-        self.save(self.grouped_columns)
+        self.prepare(self.grouped_columns)
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog  # <— workaround
+        file_name, _ = QFileDialog.getSaveFileName(
+                self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options
+            )
+        try:
+                with open(file_name, 'w') as json_file:
+                    json.dump(self.grouped_columns, json_file, indent=4)
+                print(f'Successfully saved JSON to {file_name}')
+        except Exception as e:
+                print(f'Error saving JSON file: {e}')
         self.close() 
 
     def skip_run(self):
-        self.file_name=self.save(self.grouped_columns)
-        UI.start(self.file_name)
+        self.prepare(self.grouped_columns)
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog  # <— workaround
+        file_name, _ = QFileDialog.getSaveFileName(
+                self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options
+            )
+        try:
+                with open(file_name, 'w') as json_file:
+                    json.dump(self.grouped_columns, json_file, indent=4)
+                print(f'Successfully saved JSON to {file_name}')
+        except Exception as e:
+                print(f'Error saving JSON file: {e}')
+        UI.start(file_name)
         self.close() 
 
     def expand_one_feature_strategy(self, config: List[Dict[str, Any]], dataset_columns: List[str]) -> List[Dict[str, Any]]:
@@ -1258,8 +1293,7 @@ class CustomRole(QWidget):
         return new_docs
 
 
-
-    def save(self, grouped_columns):
+    def prepare(self, grouped_columns):
         model_map = {
             "Logistic Regression": "lr",
             "K-Nearest Neighbors": "knn",
@@ -1284,15 +1318,16 @@ class CustomRole(QWidget):
         grouped_columns["machineLearningModels"] = [
             model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
         ]
-        if grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature":
+        if grouped_columns["Experiments"][1]["ErrorType"] == "one-feature":
             dataset_columns=grouped_columns["features"].copy()
             dataset_columns.remove(grouped_columns["targetVariable"])
             grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
             new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
             grouped_columns["Experiments"] = new_doc
-        elif grouped_columns["Experiments"][1]["ErrorStrategy"] == "custom-role":
+        else: 
+            #grouped_columns["Experiments"][1]["ErrorStrategy"] == "custom-role":
                 doc = {
-                            "Errortype":"outlier",
+                            "Errortype":self.ErrorType,
                             "Strategy": {
                                 "affected_features": self.grouped_columns["Experiments"][1]["affected_features"],
                                 "selection_criteria": self.grouped_columns["Experiments"][1]["selection_criteria"],
@@ -1308,19 +1343,8 @@ class CustomRole(QWidget):
                 new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
                 grouped_columns["Experiments"] = new_doc
         print(grouped_columns)        
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog  # <— workaround
-        file_name, _ = QFileDialog.getSaveFileName(
-                self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options
-            )
-        try:
-                with open(file_name, 'w') as json_file:
-                    json.dump(grouped_columns, json_file, indent=4)
-                print(f'Successfully saved JSON to {file_name}')
-        except Exception as e:
-                print(f'Error saving JSON file: {e}')
-        return file_name
-  
+        return grouped_columns
+    
     def clear_layout2(self, layout):
          if layout is not None:
             while layout.count():
