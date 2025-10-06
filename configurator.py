@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QApplication,  QTableWidget,  QTableWidgetItem, QWid
 from PyQt5.QtGui import QDoubleValidator
 import UI
 from typing import List, Dict, Any
+import itertools
 
 
 class InitWindow(QWidget):
@@ -283,7 +284,7 @@ class InitWindow(QWidget):
             grouped_columns["features"] = list(self.tmp_df.columns)
             addedDocument={"Errortype":"standard"}
             grouped_columns["Experiments"].append(addedDocument)
-            print(grouped_columns)
+         #   print(grouped_columns)
             self.close()  # Chiude la finestra principale
             self.standard_window = OneFeature(grouped_columns)  # Apre la nuova finestra
             self.standard_window.show()
@@ -434,7 +435,7 @@ class OneFeature(QWidget):
         self.next_window.show()
 
     def open_skip_window(self):
-        print(self.grouped_columns)
+      #  print(self.grouped_columns)
         self.close()
         self.next_window = CorrelatedFeature(self.grouped_columns)
         self.next_window.show()
@@ -469,7 +470,7 @@ class OneFeature(QWidget):
             if col_type2 == "Yes":
                 newColumns.append(column2)
         self.grouped_columns["Experiments"].append(addedDocument)
-        print(self.grouped_columns)
+       # print(self.grouped_columns)
         self.close()
         self.next_window = CorrelatedFeature(self.grouped_columns)
         self.next_window.show()
@@ -606,7 +607,7 @@ class CorrelatedFeature(QWidget):
         if len(grouped_columns["Experiments"]) > 1:
             grouped_columns["Experiments"] = [
                 exp for exp in grouped_columns["Experiments"]
-                if exp.get("ErrorStrategy") != "correlated-features"
+                if exp.get("ErrorStrategy") != "Correlated-features"
             ]    
         self.setWindowTitle("Correlated Features")
         self.setGeometry(100, 100, 1000, 1000)
@@ -935,7 +936,7 @@ class CustomRole(QWidget):
         self.next_rule.clicked.connect(self.open_same_window)
         experiments = self.grouped_columns.get("Experiments", [])
         if len(experiments)==2:
-            if self.grouped_columns["Experiments"][1]["ErrorType"] == "one-feature": #or ....:
+            if self.grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature": #or ....:
                 self.next_rule.setEnabled(False)
         else:
             self.next_rule.setEnabled(True)
@@ -948,13 +949,13 @@ class CustomRole(QWidget):
         self.next_button.setStyleSheet("background-color: #0088CC; color: #000000;")
         self.next_button.clicked.connect(self.open_next_window)
         if len(experiments)==2:
-            if self.grouped_columns["Experiments"][1]["ErrorType"] == "one-feature": #or ....:
+            if self.grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature": #or ....:
                 self.next_button.setEnabled(False)
         else:
             self.next_button.setEnabled(True)
             self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
 
-        
+        self.next_button.clicked.connect(self.open_next_window)
         self.layout.addWidget(self.next_button)
 
         self.run_button = QPushButton("Save and Run...", self)
@@ -966,7 +967,7 @@ class CustomRole(QWidget):
         else:
             self.run_button.setEnabled(True)
             self.run_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
-       
+        self.run_button.clicked.connect(self.run)  
         self.layout.addWidget(self.run_button)
 
         self.skip_button = QPushButton("Skip and Save", self)
@@ -1125,7 +1126,7 @@ class CustomRole(QWidget):
     def open_same_window(self):
         newML = []
         newFeat=[]
-        addedDocument = {"ErrorType": "custom-role"}
+        addedDocument = {"ErrorStrategy": "custom-role"}
         addedDocument["ErrorType"]=self.ErrorType
         addedDocument["Step"] = float(self.step_input.text())
         addedDocument["selection_criteria"]=self.selection_input.text()
@@ -1201,7 +1202,6 @@ class CustomRole(QWidget):
   
 
     def run(self):
-        
         file_name=self.open_next_window()
         UI.start(file_name)
         self.close()
@@ -1216,9 +1216,30 @@ class CustomRole(QWidget):
         self.prepare(self.grouped_columns)
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog  # <— workaround
-        file_name, _ = QFileDialog.getSaveFileName(
+        file_name, dialog= QFileDialog.getSaveFileName(
                 self, "Save JSON File", "", "JSON Files (*.json);;All Files (*)", options=options
             )
+        dialog.setStyleSheet("""
+            QWidget { 
+                color: white; 
+                background-color: #222222; 
+            }
+            QLineEdit {
+                color: white;
+                background-color: #333333;
+            }
+            QListView, QTreeView {
+                color: white;
+                background-color: #333333;
+            }
+            QPushButton {
+                color: white;
+                background-color: #444444;
+            }
+            QPushButton::hover {
+                background-color: #555555;
+            }
+        """)
         try:
                 with open(file_name, 'w') as json_file:
                     json.dump(self.grouped_columns, json_file, indent=4)
@@ -1292,8 +1313,61 @@ class CustomRole(QWidget):
 
         return new_docs
 
+    def correlated_feature_groups(self):
+        df=pd.read_csv(self.grouped_columns["datasetName"])
+        target=self.grouped_columns["targetVariable"]
+        min_corr=self.grouped_columns["Experiments"][1]["Min"] 
+        max_corr=self.grouped_columns["Experiments"][1]["Max"]    
+        original_cols = [c for c in df.columns if c != target]
+
+        cat_cols = df.select_dtypes(include=["object", "category"]).columns.tolist()
+
+        df_dummies = pd.get_dummies(df[original_cols], drop_first=False)
+
+        dummy_to_orig = {}
+        for col in df_dummies.columns:
+            base = col.split("_")[0]
+            dummy_to_orig[col] = base
+
+        corr = df_dummies.corr().abs()
+
+        pairs = [
+            (d1, d2)
+            for d1, d2 in itertools.combinations(df_dummies.columns, 2)
+            if min_corr <= corr.loc[d1, d2] < max_corr
+        ]
+
+        groups_dummy = []
+        for d1, d2 in pairs:
+            found = False
+            for g in groups_dummy:
+                if d1 in g or d2 in g:
+                    g.update([d1, d2])
+                    found = True
+                    break
+            if not found:
+                groups_dummy.append(set([d1, d2]))
+
+        groups_orig = []
+        for gd in groups_dummy:
+            s = set(dummy_to_orig[d] for d in gd)
+            groups_orig.append(s)
+
+        merged = []
+        for s in groups_orig:
+            found = False
+            for m in merged:
+                if not s.isdisjoint(m):  # se c’è intersezione
+                    m.update(s)
+                    found = True
+                    break
+            if not found:
+                merged.append(set(s))
+        merged = [g for g in merged if len(g) >= 2]
+        return merged
 
     def prepare(self, grouped_columns):
+        ERRORTYPES = ["duplicate", "labels", "outlier", "noise"]
         model_map = {
             "Logistic Regression": "lr",
             "K-Nearest Neighbors": "knn",
@@ -1318,14 +1392,38 @@ class CustomRole(QWidget):
         grouped_columns["machineLearningModels"] = [
             model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
         ]
-        if grouped_columns["Experiments"][1]["ErrorType"] == "one-feature":
+        if grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature":
             dataset_columns=grouped_columns["features"].copy()
             dataset_columns.remove(grouped_columns["targetVariable"])
             grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
             new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
             grouped_columns["Experiments"] = new_doc
+        elif grouped_columns["Experiments"][1]["ErrorStrategy"] == "Correlated-features":
+            ## calcola la correlazione
+            groups=self.correlated_feature_groups()
+            print("i gruppi")
+            print(groups)
+            for i in ERRORTYPES:
+                for group in groups:
+                    doc = {
+                        "Errortype":i,
+                        "Strategy": {
+                            "affected_features": group,
+                            "selection_criteria": self.grouped_columns["Experiments"][1]["Selection_criteria"],
+                            "min": self.grouped_columns["Experiments"][1]["Min"],
+                            "max": self.grouped_columns["Experiments"][1]["Max"],
+                            "percentage": self.grouped_columns["Experiments"][1]["Step"],
+                            "mode": "new",
+                            "perturbate_data": {
+                                "distribution": "random"
+                                }
+                            }
+                        }
+                    grouped_columns["Experiments"].append(doc)
+            new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
+            grouped_columns["Experiments"] = new_doc
         else: 
-            #grouped_columns["Experiments"][1]["ErrorStrategy"] == "custom-role":
+            
                 doc = {
                             "Errortype":self.ErrorType,
                             "Strategy": {
