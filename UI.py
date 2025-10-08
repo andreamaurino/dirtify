@@ -3,10 +3,8 @@ import duckdb
 from analyzer import *
 import json
 import os
-import argparse
 from scipy.stats import chi2_contingency, pointbiserialr,spearmanr, pearsonr
 from sklearn.metrics import matthews_corrcoef
-import math
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
@@ -27,6 +25,13 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+import pandas as pd
+import numpy as np
+from pandas.api.types import (
+    is_string_dtype, is_object_dtype, is_categorical_dtype,
+    is_integer_dtype, is_float_dtype, is_bool_dtype,
+    is_datetime64_any_dtype, is_numeric_dtype
+)
 
 
 def cramers_v(confusion_matrix):
@@ -323,7 +328,7 @@ def calcola_correlazione(dataframe, target_variable, error_type, step, feature_t
     tutte_le_correlazioni[key] = correlations
     print(f"error correlation calculated: {error_type}, step: {step}, feature_type: {feature_type}")
 
-def calculate_correlations_with_mutual_info(data, target_variable, discrete_variables, continuos_variables, binary_variables, categorical_string_variables, categorical_int_variables):
+def calculate_correlations_with_mutual_info(data, target_variable, discrete_variables, continuous_variables, binary_variables, categorical_string_variables, categorical_int_variables):
     # TARGET
     if data[target_variable].dtype == 'object':
         le = LabelEncoder()
@@ -338,7 +343,7 @@ def calculate_correlations_with_mutual_info(data, target_variable, discrete_vari
             data[var] = le.fit_transform(data[var])
 
     # Combinazione di variabili continue e categoriali
-    all_features = discrete_variables + continuos_variables + binary_variables  + categorical_string_variables + categorical_int_variables
+    all_features = discrete_variables + continuous_variables + binary_variables  + categorical_string_variables + categorical_int_variables
 
     X = data[all_features]
     y = data[target_variable]
@@ -458,7 +463,23 @@ def stability_analysis(model, X_train, X_test, y_train, y_test, n_repeats=10):
     print(importance_df)
 
     return importance_df
-    
+
+  
+def nunique(s: pd.Series) -> int:
+        return s.nunique(dropna=True)
+
+def is_integer_like_float(s: pd.Series) -> bool:
+        """True se tutti i valori non-NaN sono numeri e senza parte frazionaria."""
+        sn = s.dropna()
+        if sn.empty:
+            return False
+        # deve essere numerico
+        if not is_numeric_dtype(sn):
+            return False
+        # controlla parte frazionaria ~ 0
+        return np.isclose(sn % 1, 0).all()
+
+  
 
 def start(json_name,directory=""):
  
@@ -514,36 +535,98 @@ def start(json_name,directory=""):
  except KeyError:
         print('binary classifcation task')
         isBinary="Yes"
-#features type
- try:
-    discrete_variables=Jsondata['discreteFeatures']
- except KeyError:
-        print('no discrete features detected')
-        discrete_variables=[]    
- try:
-    categorical_string_variables=Jsondata['categoricalFeaturesString']
- except KeyError:
-        print('no categorical string features detected')
-        categorical_string_variables=[]
- try:
-    categorical_int_variables=Jsondata['categoricalFeaturesInteger']
- except KeyError:
-        print('no categorical integer features detected')
-        categorical_int_variables=[]
 
- try:
-    binary_variables=Jsondata['binaryFeatures']
- except KeyError:
-        print('no binary features detected')
-        binary_variables=[]
+ discrete_variables=[] 
+ categorical_string_variables=[] 
+ date_variables=[] 
+ continuous_variables=[] 
+ categorical_int_variables=[] 
+ binary_variables=[]
+ max_categorical_card = 20
+ for feature in train_df.columns:
+        s = train_df[feature]
+        nuniq = nunique(s)
 
- try:
-    continuos_variables=Jsondata['continousFeatures']
- except KeyError:
-        print('no continous features detected')
-        continuos_variables=[]
+        # 1) Datetime
+        if is_datetime64_any_dtype(s):
+            date_variables.append(feature)
+            continue
 
+        # 2) Boolean (inclusi pandas BooleanDtype)
+        if is_bool_dtype(s):
+            binary_variables.append(feature)
+            continue
+
+        # 3) Numeriche
+        if is_integer_dtype(s):
+            # Integers puri (anche Int64 pandas)
+            vals = set(s.dropna().unique().tolist())
+            if  vals.issubset({0, 1}):
+                binary_variables.append(feature)
+            elif nuniq <= max_categorical_card:
+                categorical_int_variables.append(feature)
+            else:
+                discrete_variables.append(feature)
+            continue
+
+        if is_float_dtype(s):
+            # Float che in realtà sono interi (es. NaN presenti hanno forzato a float)
+            if is_integer_like_float(s):
+                vals = set(pd.Series(s.dropna().astype(np.int64)).unique().tolist())
+                if  vals.issubset({0, 1}):
+                    binary_variables.append(feature)
+                elif nuniq <= max_categorical_card:
+                    categorical_int_variables.append(feature)  # interi con bassa cardinalità
+                else:
+                    discrete_variables.append(feature)        # interi con alta cardinalità
+            else:
+                continuous_variables.append(feature)
+            continue
+
+        # 4) Categorical dtype esplicito
+        if is_categorical_dtype(s):
+            # decidi se trattare come stringhe categoriche
+            if nuniq <= max_categorical_card:
+                categorical_string_variables.append(feature)
+            else:
+                # categoria ad alta cardinalità -> in genere la si tratta come testo
+                categorical_string_variables.append(feature)
+            continue
+
+        # 5) Stringhe / object (spesso stringhe/miste)
+        if is_string_dtype(s) or is_object_dtype(s):
+            # se è interamente stringa (ignorando NaN), valuta cardinalità
+            if nuniq <= max_categorical_card:
+                categorical_string_variables.append(feature)
+            else:
+                # testo ad alta cardinalità -> lasciamo tra le stringhe categoriche “larghe”
+                categorical_string_variables.append(feature)
+            continue
+
+        # 6) Fallback: prova a inferire
+        if is_numeric_dtype(s):
+            # safety net per casi rari
+            if is_integer_like_float(s):
+                if nuniq <= max_categorical_card:
+                    categorical_int_variables.append(feature)
+                else:
+                    discrete_variables.append(feature)
+            else:
+                continuous_variables.append(feature)
+        else:
+            raise ValueError(f"Unsupported column type for feature '{feature}' (dtype: {s.dtype}).")
+
+  
+
+
+
+######################################
+#
+#
 #calcolo della correlazione e rilevanza
+#
+#
+######################################
  correlations = {
     "Continuous": {},
     "Discrete": {},
@@ -556,8 +639,8 @@ def start(json_name,directory=""):
 
  correlations = []
 
- if continuos_variables:
-    continuous_results = calculate_correlations(train_df, target_variable, continuos_variables, [], [], [], [])
+ if continuous_variables:
+    continuous_results = calculate_correlations(train_df, target_variable, continuous_variables, [], [], [], [])
     for feature, result in continuous_results.items():
         if feature not in processed_features:
             correlations.append({"Feature": feature, "Type": "Continuous", "Correlation": result["correlation"], "Type of Correlation": result["type"]})
@@ -614,7 +697,7 @@ def start(json_name,directory=""):
 # CORRELAZIONI TRA FEATURE
  correlations = calculate_feature_correlations(
         data=data,
-        continuous_variables=continuos_variables,
+        continuous_variables=continuous_variables,
         discrete_variables=discrete_variables,
         categorical_string_variables=categorical_string_variables,
         categorical_int_variables=categorical_int_variables,
@@ -624,121 +707,43 @@ def start(json_name,directory=""):
  
 
 
- mi_scores = calculate_correlations_with_mutual_info(data, target_variable, discrete_variables, continuos_variables, binary_variables, categorical_string_variables, categorical_int_variables)
+ mi_scores = calculate_correlations_with_mutual_info(data, target_variable, discrete_variables, continuous_variables, binary_variables, categorical_string_variables, categorical_int_variables)
 
  # IMPORTANCE
  #featureImportance(dataset_name, train_df, test_df, target_variable)
 
 
-
+##########################
+#
+#
 #start experimental anaysis
+#
+#
+###########################
  for document in Jsondata['Experiments']:
+    
     if document['Errortype']=="standard":
           try:
             models=document['machineLearningModels']
           except KeyError:
             models=included_models
             performanceAnalysis(con,dataset_name,train_df,test_df, target_variable,models)
-    if document['Errortype']=="labels":
+    else:
+        strategy=document["strategy"]
         try: 
             models=document['machineLearningModels']
         except KeyError:
             models=included_models
-        step=document["Step"]
-        AnalyzeWrongLabels(con,dataset_name, target_variable,step,train_df,test_df,models)
-    if document['Errortype']=="noise":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        match document["FeatureType"]:
-            case "discrete":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                    variables=discrete_variables
-            case "continous":
-             try:
-                  variables=document["FeatureArray"]
-             except KeyError:
-                    variables=continuos_variables
-            case "binary":
-             try:
-                  variables=document["FeatureArray"]
-             except KeyError:
-                    variables=binary_variables
-            case "categoricalString":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_string_variables
-            case "categoricalInt":
-
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_int_variables
-
-        AnalyzeNoiseValues(con,dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels)
-
-    if document['Errortype']=="duplicate":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        try:
-            specific_case=document["cafrom sklearn.model_selection import train_test_splitse"]
-        except KeyError:
-            specific_case="all"
-        if specific_case=="all":
-            target_class=""
-            AnalyzeDuplicatedAllValues(con,dataset_name, target_variable,step,train_df,test_df,MLmodels)
-        else:
-            target_class=document["target_value"]
-            #AnalyzeDuplicatedAllValues(step,train_df,test_df,target_variable,MLmodels)
-
-    if document['Errortype']=="missing":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        columns = document["columns"]
-        for column in columns:
-            AnalyzeMissingValues(con,dataset_name,[column],step,train_df,test_df,target_variable,MLmodels)
-    
-    if document['Errortype']=="outlier":
-        try: 
-            MLmodels=document['machineLearningModels']
-        except KeyError:
-            MLmodels=included_models
-        step=document["Step"]
-        match document["FeatureType"]:
-            case "discrete":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                    variables=discrete_variables
-            case "continous":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                    variables=continuos_variables
-            case "categoricalString":
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_string_variables
-            case "categoricalInt":
-
-                try:
-                  variables=document["FeatureArray"]
-                except KeyError:
-                     variables=categorical_int_variables
-
-        AnalyzeOutlierValues(con,dataset_name, document["FeatureType"], variables,step,train_df,test_df,target_variable,MLmodels)
+        if document['Errortype']=="labels":
+            AnalyzeWrongLabels(con,dataset_name, target_variable,strategy,train_df,test_df,models)
+        if document['Errortype']=="noise":
+            AnalyzeNoiseValues(con,dataset_name, strategy,train_df,test_df,target_variable,models)
+        if document['Errortype']=="duplicate":
+            AnalyzeDuplicatedValues(con,dataset_name, target_variable,strategy,train_df,test_df,models)     
+        if document['Errortype']=="missing":
+            AnalyzeMissingValues(con,dataset_name,strategy,train_df,test_df,target_variable,models)
+        if document['Errortype']=="outlier":  
+            AnalyzeOutlierValues(con,dataset_name, strategy,train_df,test_df,target_variable,models)
      
     
     experiments_dir = 'experiments'

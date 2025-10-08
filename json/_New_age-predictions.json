@@ -1,0 +1,92 @@
+{
+    "datasetName": "age_predictions_cleaned-3.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        
+        {
+            "Errortype": "duplicate",
+            "strategy":{"affected_features":["BMXBMI"] , "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "duplicate",
+            "strategy":{"affected_features": ["PAQ605"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "duplicate",
+            "strategy":{"affected_features": ["LBXGLU"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "duplicate",
+            "strategy":{"affected_features": ["LBXGLT"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "duplicate",
+            "strategy":{"affected_features": ["LBXIN"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+    },
+        {
+            "Errortype": "labels",
+            "strategy":{"affected_features": "age_group", "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "outlier",
+            "strategy":{"affected_features": ["BMXBMI"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "outlier",
+            "strategy":{"affected_features": ["LBXIN"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "outlier",
+               "strategy":{"affected_features": ["LBXGLT"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+     },
+        {
+            "Errortype": "outlier",
+             "strategy":{"affected_features": ["LBXGLU"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+       },
+        {
+            "Errortype": "outlier",
+            "strategy":{"affected_features": ["PAQ605"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "noise",
+            "strategy":{"affected_features": ["BMXBMI"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "noise",
+            "strategy":{"affected_features": ["PAQ605"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "noise",
+               "strategy":{"affected_features": ["LBXGLU"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+      },
+        {
+            "Errortype": "noise",
+            "strategy":{"affected_features": ["LBXGLT"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+   },
+        {
+            "Errortype": "noise",
+              "strategy":{"affected_features": ["LBXIN"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+      }
+    ],
+    "targetVariable": "age_group"
+}
