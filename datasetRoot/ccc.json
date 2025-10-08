@@ -1,0 +1,60 @@
+{
+    "datasetName": "/Users/andreamaurino/dirtify/datasetRoot/adultdata.csv",
+    "targetVariable": "income2",
+    "features": [
+        "age",
+        "workclass",
+        "fnlwgt",
+        "Education",
+        "educationYear",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "Gender",
+        "capital-gain",
+        "capital-loss",
+        "hours-per-week",
+        "native-country",
+        "income",
+        "income2"
+    ],
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "lightgbm",
+        "catboost"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "target_variable": "income2",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}
