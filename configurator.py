@@ -1350,18 +1350,14 @@ class OutlierCatStreWindow(QWidget):
 
     
     def display_columns2(self):
-        # Pulisce il layout precedente e resetta le selezioni
         self.clear_layout2(self.scroll_area_layout2)
         self.column_types2.clear()
-        # Crea un set di radiobuttons per ogni colonna
         columns=self.grouped_columns["categoricalFeaturesString"]
         for column in columns:
             self.add_column_radiobuttons2(column)
 
     def add_column_radiobuttons2(self, column_name2):
-        # Layout orizzontale per ogni colonna
         column_layout2 = QHBoxLayout()
-        # Etichetta con il nome della colonna
         label2 = QLabel(column_name2, self)
         column_layout2.addWidget(label2)
 

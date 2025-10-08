@@ -1,0 +1,34 @@
+{
+    "datasetName": "/Users/andreamaurino/dirtify/datasetRoot/adultdata.csv",
+    "target": "income2",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "lightgbm",
+        "catboost"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "ErrorStrategy": "one-feature",
+            "Step": 0.2,
+            "Selection_criteria": "all"
+        }
+    ]
+}

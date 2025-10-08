@@ -1,15 +1,7 @@
 Feature,Type,Correlation,Type of Correlation
-A2,Continuous,0.14952027942832796,Point-biserial
-A3,Continuous,0.2206056140021786,Point-biserial
-A7,Continuous,0.31991092554812234,Point-biserial
-A5,Discrete,0.36932463589382825,Point-biserial
-A6,Discrete,0.2557433853325884,Point-biserial
-A10,Discrete,0.3946932073633698,Point-biserial
-A13,Discrete,-0.10010930227046662,Point-biserial
-A14,Discrete,0.16904048310552616,Point-biserial
-A12,CategoricalString,0.09818672196875078,Cramér's V
-A4,CategoricalInt,0.18451139574776768,Cramér's V
-A1,Binary,0.016545367152015298,Matthews Correlation Coefficient
-A8,Binary,0.6957024210805126,Matthews Correlation Coefficient
-A9,Binary,0.4555835577017473,Matthews Correlation Coefficient
-A11,Binary,0.06956447946454385,Matthews Correlation Coefficient
+PAQ605,Continuous,0.161644649533178,Point-biserial
+BMXBMI,Continuous,-0.1611724041726197,Point-biserial
+LBXGLU,Continuous,0.24384266511125013,Point-biserial
+LBXGLT,Continuous,0.3516075076950824,Point-biserial
+LBXIN,Continuous,-0.10231144254843712,Point-biserial
+age_group,CategoricalInt,0.9992902565179719,Cramér's V
