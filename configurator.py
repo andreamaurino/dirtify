@@ -727,7 +727,7 @@ class CorrelatedFeature(QWidget):
         if newML != self.grouped_columns["machineLearningModels"]:
             addedDocument["machineLearningModels"] = newML
         self.grouped_columns["Experiments"].append(addedDocument)
-        print(self.grouped_columns)
+        #print(self.grouped_columns)
         self.close()
         self.next_window = CustomRole(self.grouped_columns)  # Apre la nuova finestra
         self.next_window.showMaximized()
@@ -1410,17 +1410,14 @@ class CustomRole(QWidget):
         elif grouped_columns["Experiments"][1]["ErrorStrategy"] == "Correlated-features":
             ## calcola la correlazione
             groups=self.correlated_feature_groups()
-            print("i gruppi")
             print(groups)
             for i in ERRORTYPES:
                 for group in groups:
                     doc = {
                         "Errortype":i,
                         "Strategy": {
-                            "affected_features": group,
+                            "affected_features":  list(group),
                             "selection_criteria": self.grouped_columns["Experiments"][1]["Selection_criteria"],
-                            "min": self.grouped_columns["Experiments"][1]["Min"],
-                            "max": self.grouped_columns["Experiments"][1]["Max"],
                             "percentage": self.grouped_columns["Experiments"][1]["Step"],
                             "mode": "new",
                             "perturbate_data": {
@@ -1449,6 +1446,15 @@ class CustomRole(QWidget):
                 grouped_columns["Experiments"].append(doc)
                 new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
                 grouped_columns["Experiments"] = new_doc
+        flattened = []
+        for item in grouped_columns["Experiments"]:
+                if isinstance(item, list):
+                    flattened.extend(item)
+                else:
+                    flattened.append(item)
+
+        grouped_columns["Experiments"] = flattened
+
         print(grouped_columns)        
         return grouped_columns
     
