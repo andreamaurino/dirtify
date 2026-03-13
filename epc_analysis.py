@@ -8,7 +8,7 @@ if len(sys.argv) != 2:
 parser = argparse.ArgumentParser(description='Please give me the dataset name in csv format')
 
 # Aggiungere un argomento per il nome del file
-parser.add_argument('dataset_name', nargs='?', default='penguins_binary_classification.csv', type=str, help='filename')
+parser.add_argument('dataset_name', nargs='?', default='Healthcare-Diabetes.csv', type=str, help='filename')
 
 # Parse degli argomenti dalla riga di comando
 args = parser.parse_args()
