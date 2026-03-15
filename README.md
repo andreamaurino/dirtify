@@ -21,7 +21,7 @@ If you already created the configuration file  you can use: python  dirtify.py  
 For the EPC analysis use python epc_analysis.py datasetname.csv results are stored in the epcResults directory. Experiments and results are stored in the database datasetname.csv.db
 
 
-For more information or suggestions please send an email to [andrea.maurino@unimib.it](andrea.maurino@unimib.it)
+
 
 
 
