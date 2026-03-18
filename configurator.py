@@ -13,17 +13,26 @@ import itertools
 
 
 class InitWindow(QWidget):
-    def __init__(self, grouped_columns={}, parent=None):
+    def __init__(self, grouped_columns=None, parent=None):
         super(InitWindow, self).__init__(parent)
+        
+        # Inizializza a dizionario vuoto se non viene passato alcun argomento
+        if grouped_columns is None:
+            grouped_columns = {}
+            
         self.grouped_columns = grouped_columns
+        
+        # Ora len() non andrà in errore perché grouped_columns è garantito essere un dizionario
         if len(grouped_columns) > 1:
-            if len(grouped_columns["Experiments"]) > 1:
+            # Usa .get() per evitare KeyError se "Experiments" non è presente nel dizionario
+            if len(grouped_columns.get("Experiments", [])) > 1:
                 grouped_columns["Experiments"] = [
-                    Experiments for Experiments in grouped_columns["Experiments"]
-                    if not (Experiments["Errortype"] == "duplicate")
+                    exp for exp in grouped_columns["Experiments"]
+                    if not (exp.get("Errortype") == "duplicate") # Meglio usare .get() anche qui
                 ]
+                
         self.init_ui()
-        self.column_types = {}  # Dizionario per memorizzare i tipi selezionati
+        self.column_types = {}   # Dizionario per memorizzare i tipi selezionati
         self.column_types2 = {}  # Dizionario per memorizzare i ML
 
     def init_ui(self):
@@ -57,16 +66,52 @@ class InitWindow(QWidget):
         self.scroll_area2.setWidgetResizable(True)
         self.scroll_area2.setWidget(self.scroll_area_widget2)
         self.main_layout.addWidget(self.scroll_area2)
-        # Label e target"
-        self.target_label = QLabel("Target:", self)
         
+        # --- Nuovo menu a tendina "Tasks" ---
+        self.task_label = QLabel("Task:", self)
+        self.task_label.setFont(QFont("Arial", 12))
+        self.task_label.setStyleSheet("color: #ffffff; background-color: #000000;")
+
+        self.task_dropdown = QComboBox(self)
+        self.task_dropdown.addItems(["Classification", "Clustering", "Regression"])
+        # Stile per far combaciare la tendina al tema scuro
+        self.task_dropdown.setStyleSheet("""
+            QComboBox {
+                background-color: #000000;
+                color: #ffffff;
+                border: 1px solid #555555;
+                padding: 6px;
+                border-radius: 4px;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #000000;
+                color: #ffffff;
+                selection-background-color: #0088CC;
+            }
+        """)
+        
+        # Inizializza la variabile task_value a 1 (Classification di default)
+        self.task_value = 1
+        self.task_string = "Classification"
+        self.task_dropdown.currentIndexChanged.connect(self.update_task_value)
+
+        self.task_layout = QHBoxLayout()
+        self.task_layout.addWidget(self.task_label)
+        self.task_layout.addWidget(self.task_dropdown)
+        self.main_layout.addLayout(self.task_layout)
+        # ------------------------------------
+
+        # Label e target
+        self.target_label = QLabel("Target:", self)
         self.target_label.setFont(QFont("Arial", 12))
-        self.target_label.setStyleSheet("color: #ffffff;background-color: #000000;")  # Testo bianco
-        self.target_label.setStyleSheet("color: #ffffff; background-color: #000000;")  # Testo bianco
+        self.target_label.setStyleSheet("color: #ffffff; background-color: #000000;")  # Rimosso il duplicato presente nel codice originale
+        
         self.target_input = QLineEdit(self)
         self.target_input.setText(self.tmp_df.columns[-1] if hasattr(self, 'tmp_df') else "")
-        self.target_input.setStyleSheet("color: #ffffff; background-color: #000000;")  # Testo bianco e sfondo scuro
+        self.target_input.setStyleSheet("color: #ffffff; background-color: #000000;")
 
+        
+    
         # Aggiungi label e input in un layout orizzontale
         self.target_layout = QHBoxLayout()
         self.target_layout.addWidget(self.target_label)
@@ -138,6 +183,25 @@ class InitWindow(QWidget):
         }
     """)
 
+    def update_task_value(self, index):
+        """
+        Aggiorna la variabile del task in base alla selezione e aggiorna i modelli.
+        Indici QComboBox: 0=Classification, 1=Clustering, 2=Regression.
+        Valori finali: 1=Classification, 2=Clustering, 3=Regression.
+        """
+        self.task_value = index + 1
+        if self.task_value == 1:
+            self.task_string= "Classification"
+        elif self.task_value == 2:
+            self.task_string= "Clustering"
+        elif self.task_value == 3:
+            self.task_string= "Regression"
+        
+        
+        # Se un file CSV è già stato caricato, aggiorna dinamicamente l'elenco dei modelli ML
+        if hasattr(self, 'csv_file_name') and self.csv_file_name:
+            self.display_columns2()
+
 
     def open_file_dialog(self):
         options = QFileDialog.Options()
@@ -193,34 +257,44 @@ class InitWindow(QWidget):
 
 
     def display_columns2(self):
-        self.tmp_df = pd.read_csv(self.csv_file_name, sep=",", encoding='iso-8859-1')
-        self.target_input.setText(self.tmp_df.columns[-1] if hasattr(self, 'tmp_df') else "")
-        # Pulisce il layout precedente e resetta le selezioni
-        self.clear_layout(self.scroll_area_layout2)
-        self.column_types2.clear()
-        # Crea un set di radiobuttons per ogni modello di ML
-        ML = ["Logistic Regression", 
-              "K-Nearest Neighbors", 
-              "Naive Bayes", 
-              "Support Vector Machine", 
-              "Decision Tree", 
-              "Radial Basis Function SVM",
-              "Gaussian Process Classifier",
-              "Multi-Layer Perceptron",
-              "Ridge Classifier",
-              "Quadratic Discriminant Analysis",
-              "AdaBoost",
-              "Linear Discriminant Analysis",
-              "Dummy Classifier",
-              "Random Forest",
-              "Extra Trees",
-              "Gradient Boosting Classifier",
-              "LightGBM",
-              "CatBoost"
+          self.tmp_df = pd.read_csv(self.csv_file_name, sep=",", encoding='iso-8859-1')
+          self.target_input.setText(self.tmp_df.columns[-1] if hasattr(self, 'tmp_df') else "")
+          
+          # Pulisce il layout precedente e resetta le selezioni
+          self.clear_layout(self.scroll_area_layout2)
+          self.column_types2.clear()
+          
+          # Crea un set di radiobuttons in base al task selezionato (1=Classification, 2=Clustering, 3=Regression)
+          if self.task_value == 1:
+              ML = [
+                  "Logistic Regression", "K-Nearest Neighbors", "Naive Bayes", 
+                  "Support Vector Machine", "Decision Tree", "Radial Basis Function SVM",
+                  "Xgboost", "Multi-Layer Perceptron", "Ridge Classifier",
+                  "Quadratic Discriminant Analysis", "AdaBoost", "Linear Discriminant Analysis",
+                  "Dummy Classifier", "Random Forest", "Extra Trees",
+                  "Gradient Boosting Classifier", "LightGBM", "Gaussian Process Classifier",
+                  "CatBoost"
               ]
-
-        for model in ML:
-            self.add_column_radiobuttons2(model)
+          elif self.task_value == 2:
+              ML = [
+                  "K-Means", "DBSCAN", "Hierarchical Clustering", 
+                  "Gaussian Mixture Model", "Spectral Clustering", "Agglomerative Clustering",
+                  "Mean Shift", "Affinity Propagation", "OPTICS"
+              ]
+          elif self.task_value == 3:
+              ML = [
+                  "Linear Regression", "Ridge Regression", "Lasso Regression", 
+                  "Elastic Net", "Decision Tree Regressor", "Random Forest Regressor", 
+                  "Support Vector Regression", "K-Nearest Neighbors Regressor", 
+                  "Gradient Boosting Regressor", "XGBoost Regressor", 
+                  "LightGBM Regressor", "CatBoost Regressor"
+              ]
+          else:
+              ML = [] # Caso di fallback
+  
+          for model in ML:
+              self.add_column_radiobuttons2(model)
+  
 
     def add_column_radiobuttons2(self, column_name2):
         # Layout orizzontale per ogni colonna
@@ -258,28 +332,33 @@ class InitWindow(QWidget):
             self.column_types2[column_name] = option
 
     def open_standard(self):
-            # Crea un dizionario per raggruppare le colonne per tipo
-            grouped_columns = {
-                "datasetName": self.csv_file_name,
-                "targetVariable":self.target_input.text(),
-                "features":[],
-                "machineLearningModels":[],
-                "Experiments":[]
-            }
-            if self.testset_name!="":
-                grouped_columns["testset"]=self.testset_name
-                # Popola il dizionario ml raggruppando le colonne per tipo
-            for column2, col_type2 in self.column_types2.items():
-                if col_type2 == "Yes":
-                    grouped_columns["machineLearningModels"].append(column2)
-            self.tmp_df = pd.read_csv(self.csv_file_name, sep=",", encoding='iso-8859-1')
-            grouped_columns["features"] = list(self.tmp_df.columns)
-            addedDocument={"Errortype":"standard"}
-            grouped_columns["Experiments"].append(addedDocument)
-         #   print(grouped_columns)
-            self.close()  # Chiude la finestra principale
-            self.standard_window = OneFeature(grouped_columns)  # Apre la nuova finestra
-            self.standard_window.showMaximized()
+        # Crea un dizionario per raggruppare le colonne per tipo
+        grouped_columns = {
+            "datasetName": self.csv_file_name,
+            "task": self.task_string,  # Aggiunto il valore numerico del task
+            "targetVariable": self.target_input.text(),
+            "features": [],
+            "machineLearningModels": [],
+            "Experiments": []
+        }
+        
+        if self.testset_name != "":
+            grouped_columns["testset"] = self.testset_name
+            
+        # Popola il dizionario ml raggruppando le colonne per tipo
+        for column2, col_type2 in self.column_types2.items():
+            if col_type2 == "Yes":
+                grouped_columns["machineLearningModels"].append(column2)
+                
+        self.tmp_df = pd.read_csv(self.csv_file_name, sep=",", encoding='iso-8859-1')
+        grouped_columns["features"] = list(self.tmp_df.columns)
+        
+        addedDocument = {"Errortype": "standard"}
+        grouped_columns["Experiments"].append(addedDocument)
+        
+        self.close()  # Chiude la finestra principale
+        self.standard_window = OneFeature(grouped_columns)  # Apre la nuova finestra
+        self.standard_window.showMaximized()
 
     def show_final_window(self):
        self.final_window.show()
@@ -1273,7 +1352,7 @@ class CustomRole(QWidget):
          
 
     def expand_one_feature_strategy(self, config: List[Dict[str, Any]], dataset_columns: List[str]) -> List[Dict[str, Any]]:
-        ERRORTYPES = ["duplicate", "labels", "outlier", "noise"]
+        ERRORTYPES = ["duplicate", "labels", "missing", "outlier", "noise"]
         one_feature_blocks = []
         for item in config:
             if item.get("ErrorStrategy") == "one-feature":
@@ -1376,7 +1455,9 @@ class CustomRole(QWidget):
         return merged
 
     def prepare(self, grouped_columns):
-        ERRORTYPES = ["duplicate", "labels", "outlier", "noise"]
+        ERRORTYPES = ["duplicate", "labels", "missing", "outlier", "noise"]
+        
+        # Mappa per la Classificazione (Task 1)
         model_map = {
             "Logistic Regression": "lr",
             "K-Nearest Neighbors": "knn",
@@ -1384,7 +1465,7 @@ class CustomRole(QWidget):
             "Support Vector Machine": "svm",
             "Decision Tree": "dt",
             "Radial Basis Function SVM": "rbfsvm",
-            "Gaussian Process Classifier": "gpc",
+            "Xgboost": "xgboost",
             "Multi-Layer Perceptron": "mlp",
             "Ridge Classifier": "ridge",
             "Quadratic Discriminant Analysis": "qda",
@@ -1395,12 +1476,48 @@ class CustomRole(QWidget):
             "Extra Trees": "et",
             "Gradient Boosting Classifier": "gbc",
             "LightGBM": "lightgbm",
+            "Gaussian Process Classifier": "gpc",
             "CatBoost": "catboost"  
         }
 
+        # Mappa per il Clustering (Task 2) - Abbreviazioni standard di PyCaret
+        model_map = {
+            "K-Means": "kmeans",
+            "DBSCAN": "dbscan",
+            "Hierarchical Clustering": "hclust",
+            "Gaussian Mixture Model": "gmm", 
+            "Spectral Clustering": "sc",
+            "Agglomerative Clustering": "hclust", 
+            "Mean Shift": "meanshift",
+            "Affinity Propagation": "ap",
+            "OPTICS": "optics"
+        }
+
+        # Mappa per la Regressione (Task 3) - Abbreviazioni standard di PyCaret
+        model_map = {
+            "Linear Regression": "lr",
+            "Ridge Regression": "ridge",
+            "Lasso Regression": "lasso",
+            "Elastic Net": "en",
+            "Decision Tree Regressor": "dt",
+            "Random Forest Regressor": "rf",
+            "Support Vector Regression": "svm",
+            "K-Nearest Neighbors Regressor": "knn",
+            "Gradient Boosting Regressor": "gbr",
+            "XGBoost Regressor": "xgboost",
+            "LightGBM Regressor": "lightgbm",
+            "CatBoost Regressor": "catboost"
+        }
+
+        # Estrae il valore del task (usa 1 come default di sicurezza se la chiave manca)
+        task_value = grouped_columns.get("task", 1)
+        active_map = model_map
+
+        # Mappa i modelli scelti utilizzando il dizionario attivo
         grouped_columns["machineLearningModels"] = [
-            model_map.get(model, model) for model in grouped_columns["machineLearningModels"]
+            active_map.get(model, model) for model in grouped_columns.get("machineLearningModels", [])
         ]
+        
         if grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature":
             dataset_columns=grouped_columns["features"].copy()
             dataset_columns.remove(grouped_columns["targetVariable"])
@@ -1410,7 +1527,6 @@ class CustomRole(QWidget):
         elif grouped_columns["Experiments"][1]["ErrorStrategy"] == "Correlated-features":
             ## calcola la correlazione
             groups=self.correlated_feature_groups()
-            print(groups)
             for i in ERRORTYPES:
                 for group in groups:
                     doc = {
