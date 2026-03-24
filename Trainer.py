@@ -3,6 +3,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QFileDialog
 import UI
 import os
+import sys
+import argparse
 
 def select_json_file():
     app = QApplication(sys.argv)  
@@ -14,9 +16,13 @@ def select_json_file():
     return file_name
 
 if __name__ == "__main__":
-    file_name = select_json_file() 
-    if file_name:  
-        
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", nargs="?", help="JSON config file")  # nargs="?" lo rende opzionale
+    args = parser.parse_args()
+
+    file_name = args.file if args.file else select_json_file()
+
+    if file_name:
         UI.start(file_name)
     else:
         print("No selected file")

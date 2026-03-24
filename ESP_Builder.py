@@ -421,11 +421,11 @@ if __name__ == "__main__":
     #dataset_name = 'online_shoppers_intentionCorrelatedFeatures.csv'
     #dataset_name = 'online_shoppers_intention.csv'
     
-    dataset_name = 'online_shoppers_intentionOneFeatures.csv'
-    #dataset_name = 'SouthGermanCredit.csv'
-    metric = "F1"
+    #dataset_name = 'online_shoppers_intentionOneFeatures.csv'
+    dataset_name = 'iris.csv'
+    metric = "AMI"
     # AECP in percentuale: soglia pratica 5% come da paper
-    AECP_ABS_THRESHOLD = 5.0
+    AECP_ABS_THRESHOLD = 0.0
 
     filename = 'experiments_' + dataset_name
     percorso_file = './experiments/' + filename

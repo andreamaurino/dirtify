@@ -27,12 +27,15 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 import pandas as pd
 import numpy as np
+from sklearn.inspection import permutation_importance
+from strategy import RunStrategy
 from pandas.api.types import (
     is_string_dtype, is_object_dtype, is_categorical_dtype,
     is_integer_dtype, is_float_dtype, is_bool_dtype,
     is_datetime64_any_dtype, is_numeric_dtype
 )
-
+import pandas as pd
+import csv
 
 def cramers_v(confusion_matrix):
     chi2 = chi2_contingency(confusion_matrix)[0]
@@ -124,8 +127,7 @@ def calculate_correlations(data, target_variable, continuous_variables, discrete
 
     return correlations
 
-import pandas as pd
-import csv
+
 
 
 def calculate_feature_correlations(data, continuous_variables, discrete_variables, categorical_string_variables, categorical_int_variables, binary_variables, output_csv_path):
@@ -366,7 +368,7 @@ def calculate_correlations_with_mutual_info(data, target_variable, discrete_vari
         return {}
     
 
-from sklearn.inspection import permutation_importance
+
 
 def featureImportancePermutation(dataset_name, train_df, test_df, target_variable):
     X_train = remove_datetime_columns(train_df.drop(columns=[target_variable]))
@@ -479,63 +481,7 @@ def is_integer_like_float(s: pd.Series) -> bool:
         # controlla parte frazionaria ~ 0
         return np.isclose(sn % 1, 0).all()
 
-  
-
-def start(json_name,directory=""):
- 
- ## read json 
- filepath=""
- if directory=="":
-    file_path = json_name
- else:
-    file_path = os.path.join(directory, json_name
-                             )
- with open(file_path, 'r') as file:
-    Jsondata = json.load(file)
-
- dataset_name = os.path.join('datasetRoot', Jsondata['datasetName'])
- print("Dataset name:", Jsondata['datasetName'])
- con = duckdb.connect(dataset_name+".db")
- con.sql('drop table if exists experiments')
- con.sql('CREATE TABLE experiments (datasetName VARCHAR, errorType VARCHAR, percentage DOUBLE, feature VARCHAR, modelName VARCHAR, Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE)')
-
- data = pd.read_csv(dataset_name, sep=',') #encoding per anonymized loan
-
- target_variable = Jsondata.get('targetVariable')
-
- if target_variable is None:
-    print("Error: 'targetVariable' not specified in JSON.")
-    return
- 
- data = data.dropna(subset=[target_variable])
-
- dataset_name = Jsondata['datasetName']
- 
- train_df=data
- train_df.index = range(0, len(train_df))
- try:
-    test_name=Jsondata['testset']
- except KeyError:
-     print('no testset detected')
-     test_name=""
- if test_name == "":
-        train_df, test_df = train_test_split(data, test_size=0.2)
-
- else:
-        test_name_path = os.path.join('datasetRoot', test_name)  
-        test_df = pd.read_csv(test_name_path, sep=',')
-        print('Test set detected')
- train_df.index = range(0, len(train_df)) 
- short_models=Jsondata['machineLearningModels']
- included_models=short_models
- target_variable=Jsondata['targetVariable']
- data = data.dropna(subset=[target_variable])
- try:
-    isBinary=Jsondata['isBinary']
- except KeyError:
-        print('binary classifcation task')
-        isBinary="Yes"
-
+def correlation_analysis(train_df, target_variable,data):
  discrete_variables=[] 
  categorical_string_variables=[] 
  date_variables=[] 
@@ -713,54 +659,113 @@ def start(json_name,directory=""):
  #featureImportance(dataset_name, train_df, test_df, target_variable)
 
 
-##########################
-#
-#
-#start experimental anaysis
-#
-#
-###########################
- for document in Jsondata['Experiments']:
-    
-    if document['Errortype']=="standard":
-          try:
-            models=document['machineLearningModels']
-          except KeyError:
-            models=included_models
-            performanceAnalysis(con,dataset_name,train_df,test_df, target_variable,models)
-    else:
-        strategy=document["strategy"]
-        try: 
-            models=document['machineLearningModels']
-        except KeyError:
-            models=included_models
-        if document['Errortype']=="labels":
-            AnalyzeWrongLabels(con,dataset_name, target_variable,strategy,train_df,test_df,models)
-        if document['Errortype']=="noise":
-            AnalyzeNoiseValues(con,dataset_name, strategy,train_df,test_df,target_variable,models)
-        if document['Errortype']=="duplicate":
-            AnalyzeDuplicatedValues(con,dataset_name, target_variable,strategy,train_df,test_df,models)     
-        if document['Errortype']=="missing":
-            AnalyzeMissingValues(con,dataset_name,strategy,train_df,test_df,target_variable,models)
-        if document['Errortype']=="outlier":  
-            AnalyzeOutlierValues(con,dataset_name, strategy,train_df,test_df,target_variable,models)
-     
-    
-    experiments_dir = 'experiments'
-    os.makedirs(experiments_dir, exist_ok=True)
+def start(json_name,directory=""):
+ print("start experiments")
+ n_runs = 19 
+ ## read json 
+ filepath=""
+ if directory=="":
+    file_path = json_name
+ else:
+    file_path = os.path.join(directory, json_name
+                             )
+ with open(file_path, 'r') as file:
+    Jsondata = json.load(file)
 
-    experiments_df = con.sql('SELECT * FROM experiments').to_df()
-    experiments_df.insert(0, ',', range(len(experiments_df)))
-    experiments_filename = f'experiments_{os.path.basename(dataset_name)}'  
-    experiments_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
-    print(f"That's all folks! file {experiments_filename} saved in the 'experiments' folder.")
+ dataset_name = os.path.join('datasetRoot', Jsondata['datasetName'])
+ print("Dataset name:", Jsondata['datasetName'])
+ con = duckdb.connect(dataset_name+".db")
+ con.sql('drop table if exists experiments')
+ con.sql('CREATE TABLE experiments (experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, percentage DOUBLE, feature VARCHAR, modelName VARCHAR, Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE,AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)')
+
+ data = pd.read_csv(dataset_name, sep=',') #encoding per anonymized loan
+ target_variable = Jsondata.get('targetVariable')
+ data = data.dropna()
+ if not(target_variable is None or  target_variable == ''):
+     data = data.dropna(subset=[target_variable])
+ 
+ dataset_name = Jsondata['datasetName']
+ 
+ train_df=data
+ train_df.index = range(0, len(train_df))
+ try:
+    test_name=Jsondata['testset']
+ except KeyError:
+     print('no testset detected')
+     test_name=""
+
+#start experiments
+ for run in range(n_runs):
+    print("***********************************")
+    print("*********** RUN:"+str(run))
+    print("***********************************")
+
+    if test_name == "":
+            train_df, test_df = train_test_split(data, test_size=0.2)
+
+    else:
+            test_name_path = os.path.join('datasetRoot', test_name)  
+            test_df = pd.read_csv(test_name_path, sep=',')
+            print('Test set detected')
+    train_df.index = range(0, len(train_df)) 
+    short_models=Jsondata['machineLearningModels']
+    included_models=short_models
+    task=Jsondata['task']
+    data = data.dropna()
+    if not( target_variable is  None or target_variable == ''):
+         data = data.dropna(subset=[target_variable])
+
+    #correlation_analysis(train_df, target_variable,data)
+
+
+    ##########################
+    #
+    #
+    #start experimental anaysis
+    #
+    #
+    ###########################
+    stg=RunStrategy(
+        run=run,
+        con=con,
+        task=task,
+        dataset_name=dataset_name,
+        target_variable=target_variable,
+        train_df=train_df,
+        test_df=test_df,
+        n_clusters=Jsondata.get('Clusters'),
+        strategy=None,        
+    )
+
     
+    for document in Jsondata['Experiments']:
+        stg.EType = document["Errortype"]
+        if document['Errortype']=="standard":
+            try:
+                stg.models=document['machineLearningModels']
+            except KeyError:
+                stg.models=included_models
+                performanceAnalysis(stg) #run,con,dataset_name,train_df,test_df, target_variable,models)
+        else:
+            stg.strategy=document["Strategy"]
+            try: 
+                stg.models=document['machineLearningModels']
+            except KeyError:
+                stg.models=included_models
+            AnalyzeValues(stg)
+        experiments_dir = 'experiments'
+        os.makedirs(experiments_dir, exist_ok=True)
+
+        experiments_df = con.sql('SELECT * FROM experiments').to_df()
+        experiments_df.insert(0, ',', range(len(experiments_df)))
+        experiments_filename = f'experiments_{os.path.basename(dataset_name)}'  
+        experiments_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
+        print(f" file {experiments_filename} saved in the 'experiments' folder.")
 
  experiments_dir = 'experiments'
  os.makedirs(experiments_dir, exist_ok=True)
  experiments_df = con.sql('SELECT * FROM experiments').to_df()
  experiments_df.insert(0, ',', range(len(experiments_df)))
-
  dataset_file_name = os.path.basename(dataset_name)  
  experiments_filename = f'experiments_{dataset_file_name}' 
  experiments_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)

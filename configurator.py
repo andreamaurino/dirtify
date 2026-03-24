@@ -341,6 +341,10 @@ class InitWindow(QWidget):
             "machineLearningModels": [],
             "Experiments": []
         }
+        if self.task_string=="Clustering":
+            if self.target_input.text() is not None and self.target_input.text() != "":
+                grouped_columns["Clusters"]=self.tmp_df[self.target_input.text()].nunique()
+        
         
         if self.testset_name != "":
             grouped_columns["testset"] = self.testset_name
@@ -1368,7 +1372,9 @@ class CustomRole(QWidget):
             percentage = block.get("Step")
 
             for etype in ERRORTYPES:
-                if etype == "labels":
+                if self.grouped_columns.get("task")=="Clustering" and etype=="labels":
+                    continue
+                elif etype == "labels": 
                     doc = {
                             "Errortype": etype,
                             "Strategy": {
@@ -1520,7 +1526,10 @@ class CustomRole(QWidget):
         
         if grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature":
             dataset_columns=grouped_columns["features"].copy()
-            dataset_columns.remove(grouped_columns["targetVariable"])
+            try:
+                dataset_columns.remove(grouped_columns["targetVariable"])
+            except ValueError:
+                pass
             grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
             new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
             grouped_columns["Experiments"] = new_doc
