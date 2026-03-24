@@ -326,7 +326,7 @@ def _clustering_metrics(stg: RunStrategy):
                 silhouette = round(silhouette_score(test_features, labels), 4)
 
             if len(y_true) == len(labels):
-                ami = round(adjusted_mutual_info_score(y_true, labels), 4)
+                ami = (round(adjusted_mutual_info_score(y_true, labels), 4)+1)/2
             else:
                 print(f"Warning {model_name}: dimensioni diverse, AMI skippato")
 
