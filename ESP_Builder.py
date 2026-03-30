@@ -30,10 +30,16 @@ def analyze_robustness(df, metric, epc_df, dataset_name):
             if b_val_series.empty:
                 continue
             b_val = float(b_val_series.values[0])
+            MIN_BASELINE = 0.05  # soglia minima di qualità al baseline
+            if abs(b_val) < MIN_BASELINE:
+                print(f"  [SKIP] {model} baseline={b_val:.4f} < {MIN_BASELINE}, saltato")
+                continue    
 
             current_test = group_data[group_data['modelName'] == model].copy().dropna(subset=[metric])
             current_test = current_test.groupby('percentage')[metric].mean().reset_index()
-
+            if len(current_test) < 2:
+                    print(f"  [SKIP] run={run_id} model={model} feat={feat} err={err}: "f"solo {len(current_test)} punti validi per {metric}, saltato")
+                    continue
             combined = pd.concat([
                 pd.DataFrame({'percentage': [0.0], metric: [b_val]}),
                 current_test[['percentage', metric]]
@@ -216,9 +222,9 @@ def plot_hybrid_robustness(
     dataset_name,
     performance_metric,
     confidence=0.95,
-    target_span=0.30,
-    pad=0.05,
-    y_clip=(0.0, 1.05),
+    target_span_frac=0.20, 
+    pad_frac=0.10,    
+    y_clip=None,
     y_mode="mean",
     slope_fmt="{:+.3f}",
     flat_eps=1e-12,
@@ -315,6 +321,10 @@ def plot_hybrid_robustness(
     y_min, y_max = float(np.min(y_all)), float(np.max(y_all))
     span = y_max - y_min
 
+    ref = max(abs(baseline_y), 0.05)
+    target_span = target_span_frac * ref
+    pad = pad_frac * ref
+
     if span < target_span:
         center = (y_max + y_min) / 2
         y_lower = center - target_span / 2
@@ -323,10 +333,7 @@ def plot_hybrid_robustness(
         y_lower = y_min - pad
         y_upper = y_max + pad
 
-    if y_clip is not None:
-        y_lower = max(y_clip[0], y_lower)
-        y_upper = min(y_clip[1], y_upper)
-
+# Niente y_clip di default — lascia che i dati determinino l'asse
     if y_upper <= y_lower:
         y_upper = y_lower + 1e-6
 
@@ -419,13 +426,13 @@ if __name__ == "__main__":
 
     # --- settings ---
     #dataset_name = 'online_shoppers_intentionCorrelatedFeatures.csv'
-    #dataset_name = 'online_shoppers_intention.csv'
+    dataset_name = 'online_shoppers_intention.csv'
     
     #dataset_name = 'online_shoppers_intentionOneFeatures.csv'
-    dataset_name = 'iris.csv'
-    metric = "AMI"
-    # AECP in percentuale: soglia pratica 5% come da paper
-    AECP_ABS_THRESHOLD = 0.0
+    #dataset_name = 'dataset_32_pendigits.csv'
+    metric = "F1"
+    # AECP in percentuale: 
+    AECP_ABS_THRESHOLD = 0.05
 
     filename = 'experiments_' + dataset_name
     percorso_file = './experiments/' + filename
@@ -562,7 +569,10 @@ if __name__ == "__main__":
             EPC=sc["EPC_mean"],
             dataset_name=dataset_name,
             performance_metric=metric,
-            text_fontsize=13
+            text_fontsize=13,
+            y_clip=None,   # rimuove il taglio fisso
+            target_span_frac=0.20,
+            pad_frac=0.10,
         )
 
         txt = (

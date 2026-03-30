@@ -676,7 +676,8 @@ def start(json_name,directory=""):
  print("Dataset name:", Jsondata['datasetName'])
  con = duckdb.connect(dataset_name+".db")
  con.sql('drop table if exists experiments')
- con.sql('CREATE TABLE experiments (experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, percentage DOUBLE, feature VARCHAR, modelName VARCHAR, Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE,AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)')
+ con.sql('CREATE TABLE experiments (experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, percentage DOUBLE, feature VARCHAR, modelName VARCHAR, Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE,' \
+                                    'AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)')
 
  data = pd.read_csv(dataset_name, sep=',') #encoding per anonymized loan
  target_variable = Jsondata.get('targetVariable')

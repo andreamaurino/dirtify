@@ -1,6 +1,6 @@
 
-from multiprocessing.reduction import duplicate
-
+#from multiprocessing.reduction import duplicate
+import socket
 from pucktrick.noisy import *
 from pucktrick.labels import *
 from pucktrick.duplicated import *
@@ -340,7 +340,7 @@ def _clustering_metrics(stg: RunStrategy):
             """, [
                 stg.run, stg.dataset_name, str(stg.EType),
                 stg.percentage, stg.feature, model_name,
-                k, silhouette, ami
+                ami, silhouette, k
             ])
 
         except Exception as e:
