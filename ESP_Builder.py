@@ -426,11 +426,13 @@ if __name__ == "__main__":
 
     # --- settings ---
     #dataset_name = 'online_shoppers_intentionCorrelatedFeatures.csv'
-    dataset_name = 'online_shoppers_intention.csv'
+    #dataset_name = 'online_shoppers_intention.csv'
+    dataset_name = 'satimage_sample3600.csv'
     
     #dataset_name = 'online_shoppers_intentionOneFeatures.csv'
     #dataset_name = 'dataset_32_pendigits.csv'
-    metric = "F1"
+    #metric = "SILHOUETTE"
+    metric = "AMI"
     # AECP in percentuale: 
     AECP_ABS_THRESHOLD = 0.05
 

@@ -349,7 +349,21 @@ def select_features(csv_path,
     report_df = pd.DataFrame(report)
     print(report_df.to_string(index=False))
     print(f"{'='*60}")
-
+     # -- salva campione RIDOTTO con solo feature selezionate ------
+    # (eseguito dopo aver calcolato final_features)
+    cols_to_keep = final_features + [target_col]
+    df_reduced = df_work[cols_to_keep]
+    
+    reduced_path = csv_path.replace(
+        '.csv', 
+        f'_sample{len(df_work)}_selected{len(final_features)}feat.csv'
+    )
+    df_reduced.to_csv(reduced_path, index=False)
+    
+    print(f"Campione ridotto salvato in:  {reduced_path}")
+    print(f"  Feature: {df_work.shape[1]-1} → {len(final_features)}")
+    print(f"  Righe:   {len(df_work)}")
+    print(f"→ Usa questo file per gli esperimenti ESP")
     # -- salva lista feature per Dirtify ----------------------
     output_path = csv_path.replace('.csv', '_selected_features.txt')
     with open(output_path, 'w') as f:
@@ -369,7 +383,7 @@ def select_features(csv_path,
 if __name__ == "__main__":
     
     features, report = select_features(
-        csv_path='./datasetRoot/satimage.csv',
+        csv_path='./datasetRoot/optdigit.csv',
         target_col="class",
         n_total=12,          # feature totali da selezionare
         k_neighbors=5,       # vicini per Laplacian Score
