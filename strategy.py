@@ -9,6 +9,7 @@ class RunStrategy:
     dataset_name: str
     strategy: dict
     train_df: pd.DataFrame
+    noisy_df: pd.DataFrame
     test_df: pd.DataFrame
     target_variable: str
     models: list[str] = field(default_factory=list) 

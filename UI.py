@@ -665,10 +665,15 @@ def _run_single(args):
     (run, Jsondata, dataset_name, data, target_variable, test_name, experiments_dir) = args
     
     import duckdb
-    
+
+    # ── path del checkpoint di questo run ──
+    checkpoint_path = os.path.join(
+        experiments_dir,
+        f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
+    )
+
+    # ── resume: se il checkpoint esiste carica lo stato precedente ──
     local_con = duckdb.connect()
-    
-    
     local_con.sql(
         'CREATE TABLE experiments ('
         '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
@@ -677,6 +682,21 @@ def _run_single(args):
         '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)'
     )
 
+    already_done = set()  # set di (errorType, feature, percentage, modelName) già completati
+    if os.path.exists(checkpoint_path):
+        print(f"*** RUN {run} — resume da checkpoint esistente ***", flush=True)
+        existing_df = pd.read_csv(checkpoint_path)
+        # reinserisci i dati già calcolati in duckdb
+        local_con.execute("INSERT INTO experiments SELECT * FROM existing_df")
+        # costruisci il set di scenari già completati
+        for _, row in existing_df.iterrows():
+            already_done.add((
+                row['errorType'],
+                str(row['feature']),
+                row['percentage'],
+                row['modelName']
+            ))
+        print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
 
     data = data.dropna()
     if not (target_variable is None or target_variable == ''):
@@ -690,15 +710,14 @@ def _run_single(args):
         train_df = data.copy()
 
     train_df.index = range(len(train_df))
-
-    short_models    = Jsondata['machineLearningModels']
-    included_models = short_models
-    task            = Jsondata['task']
+    included_models = Jsondata['machineLearningModels']
+    task = Jsondata['task']
 
     stg = RunStrategy(
         run=run,
         con=local_con,
         task=task,
+        noisy_df=None,
         dataset_name=dataset_name,
         target_variable=target_variable,
         train_df=train_df,
@@ -707,6 +726,9 @@ def _run_single(args):
         strategy=None,
     )
     
+    # passa il set degli scenari già completati a stg
+    stg.already_done = already_done
+
     for document in Jsondata['Experiments']:
         stg.EType = document["Errortype"]
         if document['Errortype'] == "standard":
@@ -723,20 +745,16 @@ def _run_single(args):
                 stg.models = included_models
             AnalyzeValues(stg)
 
-    run_df = local_con.sql('SELECT * FROM experiments').to_df()
+        # ── checkpoint incrementale dopo ogni documento ────────────
+        run_df = local_con.sql('SELECT * FROM experiments').to_df()
+        run_df.to_csv(checkpoint_path, index=False)
+        print(f"*** RUN {run} — checkpoint aggiornato dopo {document['Errortype']} ***", 
+              flush=True)
+        # ──────────────────────────────────────────────────────────
+
     local_con.close()
-
-    # ── checkpoint: salva il run in file separato ──────────────────
-    checkpoint_path = os.path.join(
-        experiments_dir,
-        f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
-    )
-    run_df.to_csv(checkpoint_path, index=False)
-    print(f"*** RUN {run} DONE — checkpoint salvato: {checkpoint_path} ***")
-    # ──────────────────────────────────────────────────────────────
-
+    print(f"*** RUN {run} DONE ***", flush=True)
     return run_df
-
 
 
 def start(json_name, directory=""):

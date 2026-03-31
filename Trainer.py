@@ -5,7 +5,9 @@ import UI
 import os
 import sys
 import argparse
-
+import sys
+# forza flush immediato su stdout — fondamentale su HPC con output rediretto su file
+sys.stdout.reconfigure(line_buffering=True)
 def select_json_file():
     app = QApplication(sys.argv)  
     options = QFileDialog.Options()
