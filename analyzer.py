@@ -284,6 +284,7 @@ def get_n_clusters(stg, train_features: pd.DataFrame) -> int:
     return best_k
 
 def _clustering_metrics(stg: RunStrategy):
+    
     has_target = (
         stg.target_variable is not None and
         stg.target_variable in stg.train_df.columns
@@ -294,10 +295,11 @@ def _clustering_metrics(stg: RunStrategy):
     else:
         train_features = stg.train_df
         test_features  = stg.test_df
-
+    print(f"*** performanceAnalysis get_n_clustering run={stg.run} ***", flush=True)
     n_clusters = get_n_clusters(stg, train_features)
 
     for model_name in stg.models:
+        print(f"*** performanceAnalysis model={model_name} run={stg.run} ***", flush=True)
         model = _fresh_model(model_name, n_clusters)
         if model_name not in CLUSTERING_MODELS:
             print(f"Modello {model_name} non riconosciuto, skippato")
@@ -333,7 +335,7 @@ def _clustering_metrics(stg: RunStrategy):
                 print(f"Warning {model_name}: dimensioni diverse, AMI skippato")
 
             print(f"Model: {model_name}, Silhouette: {silhouette}, AMI: {ami}, Clusters: {k}")
-
+            print(f"*** performanceAnalysis START insert into db run={stg.run} ***", flush=True)
             stg.con.execute("""
                 INSERT INTO experiments 
                 VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, ?, ?, ?)
@@ -342,13 +344,14 @@ def _clustering_metrics(stg: RunStrategy):
                 stg.percentage, stg.feature, model_name,
                 ami, silhouette, k
             ])
-
+            print(f"*** performanceAnalysis insert ended run={stg.run} ***", flush=True)
         except Exception as e:
             print(f"Errore con {model_name}: {e}")
             continue
 
 
 def performanceAnalysis(stg: RunStrategy): #, con, dataset_name, train_df, test_df, target_column, model_touse, EType="NULL", feature="NULL", percentage=0):
+    print(f"*** performanceAnalysis START run={stg.run} ***", flush=True)
     if stg.task=="classification":
         _classification_metrics(stg)
     elif stg.task=="Regression":

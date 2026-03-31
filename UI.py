@@ -34,8 +34,11 @@ from pandas.api.types import (
     is_integer_dtype, is_float_dtype, is_bool_dtype,
     is_datetime64_any_dtype, is_numeric_dtype
 )
-import pandas as pd
 import csv
+from concurrent.futures import ProcessPoolExecutor, as_completed
+import multiprocessing
+from threading import Lock
+import os
 
 def cramers_v(confusion_matrix):
     chi2 = chi2_contingency(confusion_matrix)[0]
@@ -658,119 +661,174 @@ def correlation_analysis(train_df, target_variable,data):
  # IMPORTANCE
  #featureImportance(dataset_name, train_df, test_df, target_variable)
 
+def _run_single(args):
+    (run, Jsondata, dataset_name, data, target_variable, test_name, experiments_dir) = args
+    
+    import duckdb
+    
+    local_con = duckdb.connect()
+    
+    
+    local_con.sql(
+        'CREATE TABLE experiments ('
+        '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
+        '  percentage DOUBLE, feature VARCHAR, modelName VARCHAR, '
+        '  Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE, '
+        '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)'
+    )
 
-def start(json_name,directory=""):
- print("start experiments")
- n_runs = 19 
- ## read json 
- filepath=""
- if directory=="":
-    file_path = json_name
- else:
-    file_path = os.path.join(directory, json_name
-                             )
- with open(file_path, 'r') as file:
-    Jsondata = json.load(file)
 
- dataset_name = os.path.join('datasetRoot', Jsondata['datasetName'])
- print("Dataset name:", Jsondata['datasetName'])
- con = duckdb.connect(dataset_name+".db")
- con.sql('drop table if exists experiments')
- con.sql('CREATE TABLE experiments (experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, percentage DOUBLE, feature VARCHAR, modelName VARCHAR, Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE,' \
-                                    'AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)')
-
- data = pd.read_csv(dataset_name, sep=',') #encoding per anonymized loan
- target_variable = Jsondata.get('targetVariable')
- data = data.dropna()
- if not(target_variable is None or  target_variable == ''):
-     data = data.dropna(subset=[target_variable])
- 
- dataset_name = Jsondata['datasetName']
- 
- train_df=data
- train_df.index = range(0, len(train_df))
- try:
-    test_name=Jsondata['testset']
- except KeyError:
-     print('no testset detected')
-     test_name=""
-
-#start experiments
- for run in range(n_runs):
-    print("***********************************")
-    print("*********** RUN:"+str(run))
-    print("***********************************")
+    data = data.dropna()
+    if not (target_variable is None or target_variable == ''):
+        data = data.dropna(subset=[target_variable])
 
     if test_name == "":
-            train_df, test_df = train_test_split(data, test_size=0.2)
-
+        train_df, test_df = train_test_split(data, test_size=0.2, random_state=run)
     else:
-            test_name_path = os.path.join('datasetRoot', test_name)  
-            test_df = pd.read_csv(test_name_path, sep=',')
-            print('Test set detected')
-    train_df.index = range(0, len(train_df)) 
-    short_models=Jsondata['machineLearningModels']
-    included_models=short_models
-    task=Jsondata['task']
-    data = data.dropna()
-    if not( target_variable is  None or target_variable == ''):
-         data = data.dropna(subset=[target_variable])
+        test_name_path = os.path.join('datasetRoot', test_name)
+        test_df = pd.read_csv(test_name_path, sep=',')
+        train_df = data.copy()
 
-    #correlation_analysis(train_df, target_variable,data)
+    train_df.index = range(len(train_df))
 
+    short_models    = Jsondata['machineLearningModels']
+    included_models = short_models
+    task            = Jsondata['task']
 
-    ##########################
-    #
-    #
-    #start experimental anaysis
-    #
-    #
-    ###########################
-    stg=RunStrategy(
+    stg = RunStrategy(
         run=run,
-        con=con,
+        con=local_con,
         task=task,
         dataset_name=dataset_name,
         target_variable=target_variable,
         train_df=train_df,
         test_df=test_df,
         n_clusters=Jsondata.get('Clusters'),
-        strategy=None,        
+        strategy=None,
     )
-
     
     for document in Jsondata['Experiments']:
         stg.EType = document["Errortype"]
-        if document['Errortype']=="standard":
+        if document['Errortype'] == "standard":
             try:
-                stg.models=document['machineLearningModels']
+                stg.models = document['machineLearningModels']
             except KeyError:
-                stg.models=included_models
-                performanceAnalysis(stg) #run,con,dataset_name,train_df,test_df, target_variable,models)
+                stg.models = included_models
+            performanceAnalysis(stg)
         else:
-            stg.strategy=document["Strategy"]
-            try: 
-                stg.models=document['machineLearningModels']
+            stg.strategy = document["Strategy"]
+            try:
+                stg.models = document['machineLearningModels']
             except KeyError:
-                stg.models=included_models
+                stg.models = included_models
             AnalyzeValues(stg)
-        experiments_dir = 'experiments'
-        os.makedirs(experiments_dir, exist_ok=True)
 
-        experiments_df = con.sql('SELECT * FROM experiments').to_df()
-        experiments_df.insert(0, ',', range(len(experiments_df)))
-        experiments_filename = f'experiments_{os.path.basename(dataset_name)}'  
-        experiments_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
-        print(f" file {experiments_filename} saved in the 'experiments' folder.")
+    run_df = local_con.sql('SELECT * FROM experiments').to_df()
+    local_con.close()
 
- experiments_dir = 'experiments'
- os.makedirs(experiments_dir, exist_ok=True)
- experiments_df = con.sql('SELECT * FROM experiments').to_df()
- experiments_df.insert(0, ',', range(len(experiments_df)))
- dataset_file_name = os.path.basename(dataset_name)  
- experiments_filename = f'experiments_{dataset_file_name}' 
- experiments_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
- print(f"That's all folks! file {experiments_filename} saved in the 'experiments' folder.")
+    # ── checkpoint: salva il run in file separato ──────────────────
+    checkpoint_path = os.path.join(
+        experiments_dir,
+        f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
+    )
+    run_df.to_csv(checkpoint_path, index=False)
+    print(f"*** RUN {run} DONE — checkpoint salvato: {checkpoint_path} ***")
+    # ──────────────────────────────────────────────────────────────
+
+    return run_df
 
 
 
+def start(json_name, directory=""):
+    import platform
+    if platform.system() != 'Windows':
+        try:
+            multiprocessing.set_start_method('fork', force=True)
+        except RuntimeError:
+            pass
+    else:
+        try:
+            multiprocessing.set_start_method('spawn', force=True)
+        except RuntimeError:
+            pass
+    slurm_cpus = os.environ.get('SLURM_CPUS_PER_TASK')  # None su Windows
+    n_workers = max(1, int(slurm_cpus) - 1) if slurm_cpus else max(1, multiprocessing.cpu_count() - 1)  # ← esegue questo
+
+    print("start experiments")
+    n_runs = 19
+
+    file_path = json_name if directory == "" else os.path.join(directory, json_name)
+    with open(file_path, 'r') as file:
+        Jsondata = json.load(file)
+
+    dataset_name = os.path.join('datasetRoot', Jsondata['datasetName'])
+    print("Dataset name:", Jsondata['datasetName'])
+
+    data = pd.read_csv(dataset_name, sep=',')
+    target_variable = Jsondata.get('targetVariable')
+    data = data.dropna()
+    if not (target_variable is None or target_variable == ''):
+        data = data.dropna(subset=[target_variable])
+
+    dataset_name = Jsondata['datasetName']
+
+    try:
+        test_name = Jsondata['testset']
+    except KeyError:
+        print('no testset detected')
+        test_name = ""
+
+    experiments_dir = 'experiments'
+    os.makedirs(experiments_dir, exist_ok=True)
+
+    # ── resume: salta i run già completati ────────────────────────
+    completed_runs = set()
+    all_dfs = []
+    for run in range(n_runs):
+        checkpoint_path = os.path.join(
+            experiments_dir,
+            f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
+        )
+        if os.path.exists(checkpoint_path):
+            print(f"  Run {run} già completato — carico checkpoint")
+            all_dfs.append(pd.read_csv(checkpoint_path))
+            completed_runs.add(run)
+    # ──────────────────────────────────────────────────────────────
+
+    runs_to_do = [r for r in range(n_runs) if r not in completed_runs]
+
+    if not runs_to_do:
+        print("Tutti i run già completati, procedo solo al merge finale")
+    else:
+        n_workers = max(1, multiprocessing.cpu_count() - 1)
+        print(f"Avvio {len(runs_to_do)} run su {n_workers} worker "
+              f"(saltati {len(completed_runs)} già completati)")
+
+        tasks = [
+            (run, Jsondata, dataset_name, data.copy(), target_variable, 
+             test_name, experiments_dir)
+            for run in runs_to_do
+        ]
+
+        with ProcessPoolExecutor(max_workers=n_workers) as executor:
+            futures = {executor.submit(_run_single, t): t[0] for t in tasks}
+            for future in as_completed(futures):
+                run_id = futures[future]
+                try:
+                    run_df = future.result()
+                    all_dfs.append(run_df)
+                    print(f"  Run {run_id} completato — {len(run_df)} righe")
+                except Exception as e:
+                    print(f"  [ERR] Run {run_id} fallito: {e}")
+                    import traceback; traceback.print_exc()
+
+    if not all_dfs:
+        print("Nessun risultato!")
+        return
+
+    # merge finale
+    final_df = pd.concat(all_dfs, ignore_index=True)
+    final_df.insert(0, ',', range(len(final_df)))
+    experiments_filename = f'experiments_{os.path.basename(dataset_name)}'
+    final_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
+    print(f"That's all folks! file {experiments_filename} salvato — {len(final_df)} righe totali")
