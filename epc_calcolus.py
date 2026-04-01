@@ -25,7 +25,6 @@ def start(dataset_name, filename,performance_metric="Accuracy"):
     # 1. Caricamento dati originali
     con.execute("DROP TABLE IF EXISTS experiments")
     con.execute(f"CREATE TABLE experiments AS SELECT * FROM read_csv_auto('{experiment_path}')")
-    
     # 2. Creazione tabelle EPC
     con.execute("DROP TABLE IF EXISTS epc")
     con.execute("""
@@ -44,7 +43,10 @@ def start(dataset_name, filename,performance_metric="Accuracy"):
     scenarios = con.execute("""
         SELECT DISTINCT experiment_run, modelName, errorType, feature 
         FROM experiments 
-        WHERE errorType != 'NULL' AND feature != 'NULL' AND modelName != 'NULL'
+        WHERE errorType != 'standard' 
+        AND feature IS NOT NULL 
+        AND feature != 'None'
+        AND modelName IS NOT NULL
     """).fetch_df()
 
     print(f"Inizio calcolo EPC per {len(scenarios)} scenari...")
@@ -58,11 +60,12 @@ def start(dataset_name, filename,performance_metric="Accuracy"):
         feat = row['feature']
 
         # A. Recupero Baseline (percentage 0) per questa specifica RUN e MODELLO
-        # Nota: La baseline non ha feature associata (è NULL nell'esperimento originale)
         baseline_query = """
             SELECT percentage, {} as perf 
             FROM experiments 
-            WHERE experiment_run = ? AND modelName = ? AND errorType = 'NULL'
+            WHERE experiment_run = ? 
+            AND modelName = ? 
+            AND errorType = 'standard'
         """.format(performance_metric)
         
         baseline_df = con.execute(baseline_query, [run, model]).fetch_df()

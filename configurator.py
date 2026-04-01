@@ -1330,6 +1330,7 @@ class CustomRole(QWidget):
             file_name = dialog.selectedFiles()[0]
         try:
             with open(file_name, 'w') as json_file:
+                self.grouped_columns["datasetName"]= os.path.basename(self.grouped_columns["datasetName"])
                 json.dump(self.grouped_columns, json_file, indent=4)
             print(f'Successfully saved JSON to {file_name}')
         except Exception as e:

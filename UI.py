@@ -29,6 +29,7 @@ import pandas as pd
 import numpy as np
 from sklearn.inspection import permutation_importance
 from strategy import RunStrategy
+from sklearn.impute import SimpleImputer
 from pandas.api.types import (
     is_string_dtype, is_object_dtype, is_categorical_dtype,
     is_integer_dtype, is_float_dtype, is_bool_dtype,
@@ -731,6 +732,28 @@ def _run_single(args):
 
     for document in Jsondata['Experiments']:
         stg.EType = document["Errortype"]
+            # ── skip se questo errorType è già completo nel checkpoint ──
+        if already_done and stg.EType in {k[0] for k in already_done}:
+            # verifica che TUTTI i modelli e percentuali siano presenti
+            expected_percentages = set()
+            pct = document.get("Strategy", {}).get("percentage", 0.2)
+            p = pct
+            while p < 1:
+                expected_percentages.add(round(p, 1))
+                p += pct
+            
+            all_complete = all(
+                (stg.EType, str(document.get("Strategy", {}).get("affected_features")), 
+                pct, model)
+                in already_done
+                for pct in expected_percentages
+                for model in stg.models
+            )
+            
+            if all_complete:
+                print(f"*** SKIP documento {stg.EType} — già completo ***", flush=True)
+                continue
+        # ──────────────────────────────────────────────────────────
         if document['Errortype'] == "standard":
             try:
                 stg.models = document['machineLearningModels']
@@ -802,15 +825,36 @@ def start(json_name, directory=""):
     # ── resume: salta i run già completati ────────────────────────
     completed_runs = set()
     all_dfs = []
+
     for run in range(n_runs):
         checkpoint_path = os.path.join(
             experiments_dir,
             f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
         )
         if os.path.exists(checkpoint_path):
-            print(f"  Run {run} già completato — carico checkpoint")
-            all_dfs.append(pd.read_csv(checkpoint_path))
-            completed_runs.add(run)
+            existing_df = pd.read_csv(checkpoint_path)
+            
+            # verifica che tutti gli errorType siano presenti nel checkpoint
+            expected_error_types = set(
+                doc['Errortype'] 
+                for doc in Jsondata['Experiments']
+            )
+            found_error_types = set(existing_df['errorType'].unique())
+            
+            missing_error_types = expected_error_types - found_error_types
+            
+            if missing_error_types:
+                # run parziale — da completare
+                print(f"  Run {run} parziale — mancano: {missing_error_types} "
+                    f"— verrà completato")
+                # NON aggiungere a completed_runs
+                # il checkpoint esiste e verrà usato per il resume interno
+            else:
+                # run completo
+                print(f"  Run {run} completo — carico checkpoint "
+                    f"({len(existing_df)} righe)")
+                all_dfs.append(existing_df)
+                completed_runs.add(run)
     # ──────────────────────────────────────────────────────────────
 
     runs_to_do = [r for r in range(n_runs) if r not in completed_runs]

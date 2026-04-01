@@ -23,6 +23,7 @@ import csv
 from sklearn.inspection import permutation_importance
 from sklearn.linear_model import LinearRegression
 from strategy import RunStrategy
+from sklearn.impute import SimpleImputer
 from sklearn.metrics import silhouette_score, adjusted_mutual_info_score
 from sklearn.cluster import (
     KMeans,
@@ -301,6 +302,21 @@ def _clustering_metrics(stg: RunStrategy):
     else:
         train_features = train_source
         test_features  = stg.test_df
+    # ── imputa NaN solo se presenti — strategia media ──────────────
+    if train_features.isnull().any().any():
+        imputer = SimpleImputer(strategy='mean')
+        train_features = pd.DataFrame(
+            imputer.fit_transform(train_features),
+            columns=train_features.columns
+        )
+        # applica lo stesso imputer al test set per coerenza
+        test_features = pd.DataFrame(
+            imputer.transform(test_features),
+            columns=test_features.columns
+        )
+        print(f"*** NaN imputati con media — run={stg.run} "
+              f"feature={stg.feature} pct={stg.percentage} ***", flush=True)
+    # ──────────────────────────────────────────────────────────────
     n_clusters = get_n_clusters(stg, train_features)
 
     for model_name in stg.models:

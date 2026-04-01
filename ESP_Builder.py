@@ -427,12 +427,13 @@ if __name__ == "__main__":
     # --- settings ---
     #dataset_name = 'online_shoppers_intentionCorrelatedFeatures.csv'
     #dataset_name = 'online_shoppers_intention.csv'
-    dataset_name = 'satimage_sample3600.csv'
+    #dataset_name = 'satimage_sample3600.csv'
+    dataset_name = 'optdigit_sample.csv'
     
     #dataset_name = 'online_shoppers_intentionOneFeatures.csv'
     #dataset_name = 'dataset_32_pendigits.csv'
-    #metric = "SILHOUETTE"
-    metric = "AMI"
+    metric = "SILHOUETTE"
+    #metric = "AMI"
     # AECP in percentuale: 
     AECP_ABS_THRESHOLD = 0.05
 
@@ -443,7 +444,7 @@ if __name__ == "__main__":
 
     # EPC + JSON curve
     clean_name = dataset_name.replace('.csv', '')
-    file_path = f"./CurveData/{clean_name}_curve.json"
+    file_path = f"./CurveData/{clean_name}_{metric}_curve.json"
 
     if os.path.exists(file_path):
         json_path = file_path
