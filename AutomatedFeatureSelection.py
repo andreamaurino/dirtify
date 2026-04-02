@@ -383,7 +383,7 @@ def select_features(csv_path,
 if __name__ == "__main__":
     
     features, report = select_features(
-        csv_path='./datasetRoot/optdigit.csv',
+        csv_path='./datasetRoot/satimage.csv',
         target_col="class",
         n_total=12,          # feature totali da selezionare
         k_neighbors=5,       # vicini per Laplacian Score

@@ -9,11 +9,12 @@ from statsmodels.stats.multitest import multipletests
 from pathlib import Path
 import epc_calcolus
 import re
+import argparse
 
 # ============================================================
 # 1) Estrazione curve + AECP (robustness_index) e salvataggio JSON
 # ============================================================
-def analyze_robustness(df, metric, epc_df, dataset_name):
+def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
     """Estrae le informazioni di robustezza e le salva in un file JSON."""
     df = df.copy()
     df[metric] = pd.to_numeric(df[metric], errors='coerce')
@@ -82,7 +83,7 @@ def analyze_robustness(df, metric, epc_df, dataset_name):
             curve_data_list.append(curve_entry)
 
     os.makedirs('./CurveData', exist_ok=True)
-    json_filename = f"./CurveData/{dataset_name.replace('.csv', '')}_curve.json"
+    json_filename = json_path
     with open(json_filename, 'w') as f:
         json.dump(curve_data_list, f, indent=4)
 
@@ -425,18 +426,17 @@ def plot_hybrid_robustness(
 if __name__ == "__main__":
 
     # --- settings ---
-    #dataset_name = 'online_shoppers_intentionCorrelatedFeatures.csv'
-    #dataset_name = 'online_shoppers_intention.csv'
-    #dataset_name = 'satimage_sample3600.csv'
-    dataset_name = 'optdigit_sample.csv'
+        
     
-    #dataset_name = 'online_shoppers_intentionOneFeatures.csv'
-    #dataset_name = 'dataset_32_pendigits.csv'
-    metric = "SILHOUETTE"
-    #metric = "AMI"
-    # AECP in percentuale: 
-    AECP_ABS_THRESHOLD = 0.05
-
+    parser = argparse.ArgumentParser(description='ESP Builder — Sensitivity Analysis')
+    parser.add_argument('--dataset',        required=True,   help='Nome del dataset (es. optdigits.csv)')
+    parser.add_argument('--metric',         default='AMI',   help='Metrica (default: AMI)')
+    parser.add_argument('--aecp_threshold', type=float,      default=0.05, help='Soglia |AECP| (default: 0.05)')
+    args = parser.parse_args()
+    dataset_name = args.dataset
+    metric       = args.metric
+    AECP_ABS_THRESHOLD = args.aecp_threshold
+   
     filename = 'experiments_' + dataset_name
     percorso_file = './experiments/' + filename
 
@@ -450,7 +450,7 @@ if __name__ == "__main__":
         json_path = file_path
     else:
         epc_df = epc_calcolus.start(dataset_name, filename, metric)
-        json_path = analyze_robustness(df_caricato, metric, epc_df, dataset_name)
+        json_path = analyze_robustness(df_caricato, metric, epc_df, dataset_name,file_path)
 
     results_dict = extract_vectors_from_json(json_path)
 
@@ -515,7 +515,7 @@ if __name__ == "__main__":
         # criterio 1: significativo dopo BY-FDR su AECP
         if not reject_fdr[i]:
             continue
-
+        
         # criterio 2: rilevanza pratica |AECP_mean| > 5%
         if abs(s['AECP_mean']) <= AECP_ABS_THRESHOLD:
             continue

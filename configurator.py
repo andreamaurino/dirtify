@@ -277,9 +277,8 @@ class InitWindow(QWidget):
               ]
           elif self.task_value == 2:
               ML = [
-                  "K-Means", "DBSCAN", "Hierarchical Clustering", 
-                  "Gaussian Mixture Model", "Spectral Clustering", "Agglomerative Clustering",
-                  "Mean Shift", "Affinity Propagation", "OPTICS"
+                            "K-Means","HDBSCAN", "Hierarchical Clustering", "Gaussian Mixture Model", "Agglomerative Clustering"
+  
               ]
           elif self.task_value == 3:
               ML = [
@@ -1489,15 +1488,12 @@ class CustomRole(QWidget):
 
         # Mappa per il Clustering (Task 2) - Abbreviazioni standard di PyCaret
         model_map = {
+  
             "K-Means": "kmeans",
-            "DBSCAN": "dbscan",
+            "HDBSCAN": "hdbscan",
             "Hierarchical Clustering": "hclust",
             "Gaussian Mixture Model": "gmm", 
-            "Spectral Clustering": "sc",
-            "Agglomerative Clustering": "hclust", 
-            "Mean Shift": "meanshift",
-            "Affinity Propagation": "ap",
-            "OPTICS": "optics"
+            "Agglomerative Clustering": "hclust" 
         }
 
         # Mappa per la Regressione (Task 3) - Abbreviazioni standard di PyCaret

@@ -27,7 +27,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import silhouette_score, adjusted_mutual_info_score
 from sklearn.cluster import (
     KMeans,
-    DBSCAN,
+    HDBSCAN,
     AgglomerativeClustering,
     SpectralClustering,
     MeanShift,
@@ -35,17 +35,14 @@ from sklearn.cluster import (
     OPTICS
 )
 from sklearn.mixture import GaussianMixture
+from sklearn.metrics import pairwise_distances_argmin
 
 CLUSTERING_MODELS = {
     "K-Means":                  KMeans(),
-    "DBSCAN":                   DBSCAN(),
+    "HDBSCAN":                  HDBSCAN(),
     "Hierarchical Clustering":  AgglomerativeClustering(),
     "Gaussian Mixture Model":   GaussianMixture(),
-    "Spectral Clustering":      SpectralClustering(),
     "Agglomerative Clustering": AgglomerativeClustering(),
-    "Mean Shift":               MeanShift(),
-    "Affinity Propagation":     AffinityPropagation(),
-    "OPTICS":                   OPTICS(),
 }
 
 def cramers_v(confusion_matrix):
@@ -254,17 +251,15 @@ def _classification_metrics(stg: RunStrategy):
 def _regression_metrics(stg: RunStrategy):
         print(f"Task {stg.task} not supported.")
 
+from hdbscan import HDBSCAN
+
 def _fresh_model(model_name: str, n_clusters: int):
     return {
         "K-Means":                  KMeans(n_clusters=n_clusters, random_state=42),
-        "DBSCAN":                   DBSCAN(),                            
         "Hierarchical Clustering":  AgglomerativeClustering(n_clusters=n_clusters),
-        "Gaussian Mixture Model":   GaussianMixture(n_components=n_clusters,random_state=42),
-        "Spectral Clustering":      SpectralClustering(n_clusters=n_clusters, random_state=42),
+        "Gaussian Mixture Model":   GaussianMixture(n_components=n_clusters, random_state=42),
         "Agglomerative Clustering": AgglomerativeClustering(n_clusters=n_clusters),
-        "Mean Shift":               MeanShift(),                         
-        "Affinity Propagation":     AffinityPropagation(random_state=42),               
-        "OPTICS":                   OPTICS(),                            
+        "HDBSCAN":                  HDBSCAN(prediction_data=True),  
     }[model_name]
 
 def get_n_clusters(stg, train_features: pd.DataFrame) -> int:
@@ -303,41 +298,58 @@ def _clustering_metrics(stg: RunStrategy):
         train_features = train_source
         test_features  = stg.test_df
     # ── imputa NaN solo se presenti — strategia media ──────────────
-    if train_features.isnull().any().any():
-        imputer = SimpleImputer(strategy='mean')
-        train_features = pd.DataFrame(
-            imputer.fit_transform(train_features),
-            columns=train_features.columns
-        )
-        # applica lo stesso imputer al test set per coerenza
-        test_features = pd.DataFrame(
-            imputer.transform(test_features),
-            columns=test_features.columns
-        )
-        print(f"*** NaN imputati con media — run={stg.run} "
-              f"feature={stg.feature} pct={stg.percentage} ***", flush=True)
+
+    imputer = SimpleImputer(strategy='mean')
+    train_features = pd.DataFrame(
+        imputer.fit_transform(train_features),
+        columns=train_features.columns
+    )
+    test_features = pd.DataFrame(
+        imputer.transform(test_features),
+        columns=test_features.columns
+    )
     # ──────────────────────────────────────────────────────────────
     n_clusters = get_n_clusters(stg, train_features)
-
+    assert not train_features.isnull().any().any(), f"NaN in train_features: {train_features.isnull().sum()}"
+    assert not test_features.isnull().any().any(), f"NaN in test_features: {test_features.isnull().sum()}"
     for model_name in stg.models:
         model = _fresh_model(model_name, n_clusters)
         if model_name not in CLUSTERING_MODELS:
             print(f"Modello {model_name} non riconosciuto, skippato")
             continue
+        if has_target:
+            y_true = stg.test_df[stg.target_variable]
         try:
+            labels = None  # inizializzazione difensiva
+            
             if hasattr(model, 'predict'):
                 model.fit(train_features)
-                labels = model.predict(test_features)
+                labels = model.predict(test_features)          # ← aggiunto
+            elif hasattr(model, 'approximate_predict'):
+                model.fit(train_features)
+                labels, _ = model.approximate_predict(test_features)  # ← aggiunto
+            elif type(model).__name__ == 'HDBSCAN':
+                import traceback
+                try:
+                    model.fit(train_features)
+                    labels = model.fit_predict(test_features)
+                except Exception as hdb_err:
+                    print(f"HDBSCAN ERROR detail: {hdb_err}")
+                    traceback.print_exc()
+                    continue
+                            
             else:
-                labels = model.fit_predict(test_features)
+                # AGG: fit su train, assegna test al centroide più vicino
+                model.fit(train_features)
+                centroids = np.array([
+                    train_features.values[model.labels_ == i].mean(axis=0)
+                    for i in range(n_clusters)
+                ])
+                labels = pairwise_distances_argmin(test_features, centroids)
 
-            # ← y_true calcolato QUI, dopo labels, e dipende da has_target
-            if has_target:
-                y_true = stg.test_df[stg.target_variable]  # etichette reali, sempre
-            else:
-                if model_name not in stg.ground_truth_labels:
-                    stg.ground_truth_labels[model_name] = pd.Series(labels, name="cluster_label")
-                y_true = stg.ground_truth_labels[model_name]
+            if labels is None:
+                print(f"Warning {model_name}: labels non calcolate, skip")
+                continue
 
             k = len(np.unique(labels[labels != -1]))
 
