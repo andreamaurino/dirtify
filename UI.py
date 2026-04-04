@@ -796,7 +796,7 @@ def start(json_name, directory=""):
     n_workers = max(1, int(slurm_cpus) - 1) if slurm_cpus else max(1, multiprocessing.cpu_count() - 1)  # ← esegue questo
 
     print("start experiments")
-    n_runs = 19
+    n_runs = 20
 
     file_path = json_name if directory == "" else os.path.join(directory, json_name)
     with open(file_path, 'r') as file:

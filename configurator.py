@@ -277,7 +277,7 @@ class InitWindow(QWidget):
               ]
           elif self.task_value == 2:
               ML = [
-                            "K-Means","HDBSCAN", "Hierarchical Clustering", "Gaussian Mixture Model", "Agglomerative Clustering"
+                            "K-Means","HDBSCAN", "Hierarchical Clustering", "Gaussian Mixture Model", "BIRCH"
   
               ]
           elif self.task_value == 3:
@@ -1493,7 +1493,7 @@ class CustomRole(QWidget):
             "HDBSCAN": "hdbscan",
             "Hierarchical Clustering": "hclust",
             "Gaussian Mixture Model": "gmm", 
-            "Agglomerative Clustering": "hclust" 
+            "BIRCH": "birch" 
         }
 
         # Mappa per la Regressione (Task 3) - Abbreviazioni standard di PyCaret

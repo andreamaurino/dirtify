@@ -24,6 +24,7 @@ from sklearn.inspection import permutation_importance
 from sklearn.linear_model import LinearRegression
 from strategy import RunStrategy
 from sklearn.impute import SimpleImputer
+from sklearn.cluster import Birch
 from sklearn.metrics import silhouette_score, adjusted_mutual_info_score
 from sklearn.cluster import (
     KMeans,
@@ -32,7 +33,7 @@ from sklearn.cluster import (
     SpectralClustering,
     MeanShift,
     AffinityPropagation,
-    OPTICS
+    
 )
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import pairwise_distances_argmin
@@ -42,7 +43,7 @@ CLUSTERING_MODELS = {
     "HDBSCAN":                  HDBSCAN(),
     "Hierarchical Clustering":  AgglomerativeClustering(),
     "Gaussian Mixture Model":   GaussianMixture(),
-    "Agglomerative Clustering": AgglomerativeClustering(),
+    "BIRCH":                    Birch(),
 }
 
 def cramers_v(confusion_matrix):
@@ -256,10 +257,10 @@ from hdbscan import HDBSCAN
 def _fresh_model(model_name: str, n_clusters: int):
     return {
         "K-Means":                  KMeans(n_clusters=n_clusters, random_state=42),
-        "Hierarchical Clustering":  AgglomerativeClustering(n_clusters=n_clusters),
         "Gaussian Mixture Model":   GaussianMixture(n_components=n_clusters, random_state=42),
-        "Agglomerative Clustering": AgglomerativeClustering(n_clusters=n_clusters),
-        "HDBSCAN":                  HDBSCAN(prediction_data=True),  
+        "Hierarchical Clustering":  AgglomerativeClustering(n_clusters=n_clusters),
+        "HDBSCAN":                  HDBSCAN(prediction_data=True),
+        "BIRCH":                    Birch(n_clusters=n_clusters)
     }[model_name]
 
 def get_n_clusters(stg, train_features: pd.DataFrame) -> int:
@@ -289,7 +290,7 @@ def _clustering_metrics(stg: RunStrategy):
     if stg.noisy_df is not None and len(stg.noisy_df) > 0:
         train_source = stg.noisy_df
     else:
-        train_source = stg.train_df  # fallback per il caso standard (no contaminazione)
+        train_source = stg.train_df
 
     if has_target:
         train_features = train_source.drop(columns=[stg.target_variable])
@@ -297,7 +298,6 @@ def _clustering_metrics(stg: RunStrategy):
     else:
         train_features = train_source
         test_features  = stg.test_df
-    # ── imputa NaN solo se presenti — strategia media ──────────────
 
     imputer = SimpleImputer(strategy='mean')
     train_features = pd.DataFrame(
@@ -308,44 +308,53 @@ def _clustering_metrics(stg: RunStrategy):
         imputer.transform(test_features),
         columns=test_features.columns
     )
-    # ──────────────────────────────────────────────────────────────
+
+    assert not train_features.isnull().any().any(), f"NaN in train: {train_features.isnull().sum()}"
+    assert not test_features.isnull().any().any(), f"NaN in test: {test_features.isnull().sum()}"
+
     n_clusters = get_n_clusters(stg, train_features)
-    assert not train_features.isnull().any().any(), f"NaN in train_features: {train_features.isnull().sum()}"
-    assert not test_features.isnull().any().any(), f"NaN in test_features: {test_features.isnull().sum()}"
+
+    if has_target:
+        y_true = stg.test_df[stg.target_variable]
+
     for model_name in stg.models:
-        model = _fresh_model(model_name, n_clusters)
         if model_name not in CLUSTERING_MODELS:
             print(f"Modello {model_name} non riconosciuto, skippato")
             continue
-        if has_target:
-            y_true = stg.test_df[stg.target_variable]
+
+        model = _fresh_model(model_name, n_clusters)
+        labels = None
+
         try:
-            labels = None  # inizializzazione difensiva
-            
-            if hasattr(model, 'predict'):
+            if type(model).__name__ == 'HDBSCAN':
                 model.fit(train_features)
-                labels = model.predict(test_features)          # ← aggiunto
-            elif hasattr(model, 'approximate_predict'):
-                model.fit(train_features)
-                labels, _ = model.approximate_predict(test_features)  # ← aggiunto
-            elif type(model).__name__ == 'HDBSCAN':
-                import traceback
-                try:
-                    model.fit(train_features)
-                    labels = model.fit_predict(test_features)
-                except Exception as hdb_err:
-                    print(f"HDBSCAN ERROR detail: {hdb_err}")
-                    traceback.print_exc()
+                train_labels = model.labels_
+                unique_labels = np.unique(train_labels[train_labels != -1])
+                if len(unique_labels) < 2:
+                    print(f"HDBSCAN: meno di 2 cluster trovati, skip")
                     continue
-                            
-            else:
-                # AGG: fit su train, assegna test al centroide più vicino
+                centroids = np.array([
+                    train_features.values[train_labels == i].mean(axis=0)
+                    for i in unique_labels
+                ])
+                labels = pairwise_distances_argmin(test_features.values, centroids)
+
+            elif hasattr(model, 'predict'):
+                # K-Means, GMM, BIRCH
                 model.fit(train_features)
+                labels = model.predict(test_features)
+
+            else:
+                # Hierarchical Clustering (AgglomerativeClustering)
+                model.fit(train_features)
+                if model.labels_ is None:
+                    print(f"Warning {model_name}: labels_ è None, skip")
+                    continue
                 centroids = np.array([
                     train_features.values[model.labels_ == i].mean(axis=0)
                     for i in range(n_clusters)
                 ])
-                labels = pairwise_distances_argmin(test_features, centroids)
+                labels = pairwise_distances_argmin(test_features.values, centroids)
 
             if labels is None:
                 print(f"Warning {model_name}: labels non calcolate, skip")
@@ -360,8 +369,6 @@ def _clustering_metrics(stg: RunStrategy):
                 silhouette = round(silhouette_score(test_features, labels), 4)
 
             if len(y_true) == len(labels):
-                #da modificare in AEPC = AUC(ami_noisy - ami_clean) / (2 * max_error)
-                #poi si deve calcolare il maxerror ch è la percentale massima di errore e.g. 0.8
                 ami = round(adjusted_mutual_info_score(y_true, labels), 4)
             else:
                 print(f"Warning {model_name}: dimensioni diverse, AMI skippato")
@@ -375,13 +382,13 @@ def _clustering_metrics(stg: RunStrategy):
                 stg.percentage, stg.feature, model_name,
                 ami, silhouette, k
             ])
+
         except Exception as e:
             print(f"Errore con {model_name}: {e}")
             continue
 
-
 def performanceAnalysis(stg: RunStrategy): #, con, dataset_name, train_df, test_df, target_column, model_touse, EType="NULL", feature="NULL", percentage=0):
-    if stg.task=="classification":
+    if stg.task=="Classification":
         _classification_metrics(stg)
     elif stg.task=="Regression":
         _regression_metrics(stg)
@@ -390,138 +397,14 @@ def performanceAnalysis(stg: RunStrategy): #, con, dataset_name, train_df, test_
     else :
         print(f"Task {stg.task} not supported.")
 
-#labels
-def AnalyzeWrongLabels(stg:RunStrategy):#run,con,dataset_name,target_variable,strategy,train_df,test_df, model_touse):
-  stg.EType="Labels"
-  stg.target_variable = stg.strategy.get("affected_features")
-  stg.feature = stg.target_variable
-  step = stg.strategy.get("percentage")
-  stg.percentage=step
-  stg.noisy_df=stg.train_df.copy()
-  while stg.percentage<1:
-    print("***********************************")
-    print("*********** RUN:"+str(stg.run))
-    print("***********************************")
-    print ("labels error")
-    print("target:", stg.target_variable)
-    print ("step:"+str(round(stg.percentage,1)))
-    stg.strategy["mode"]="extended"
-    error,stg.noisy_df=labels(stg.noisy_df,stg.strategy,stg.train_df)
-    all_results = []
-    stg.percentage=round(stg.percentage, 1)
-    results = performanceAnalysis(stg)#, con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(stg.percentage,1))
-    all_results.append(results)
-    
-    stg.percentage+=step
-  return all_results
-
-#duplicated
-def AnalyzeDuplicatedValues(stg:RunStrategy):#run,con,dataset_name,target_variable,strategy,train_df,test_df, model_touse):
-  stg.EType="Duplicated"
-  step = stg.strategy.get("percentage")
-  stg.percentage=step
-  stg.noisy_df=stg.train_df.copy()
-  while stg.percentage<1:
-    print("***********************************")
-    print("*********** RUN:"+str(stg.run))
-    print("***********************************")
-
-    print ("Duplicate error")
-    print ("step:"+str(round(stg.percentage,1)))
-    stg.strategy["mode"]="extended"
-    error,stg.noisy_df=duplicate(stg.noisy_df,stg.strategy,stg.train_df)
-    all_results = []
-    stg.percentage=round(stg.percentage, 1)
-    results = performanceAnalysis(stg)#, con,dataset_name, noisy_df,test_df, target_variable, model_touse, errorType, target_variable, round(stg.percentage,1))
-    all_results.append(results)
-    stg.percentage+=step
-  return all_results
-
-#Noise
-def AnalyzeNoiseValues(stg:RunStrategy):#run,con,dataset_name, strategy, train_df, test_df, target_variable, model_touse):
-    
-    stg.EType = "Noisy"
-    stg.noisy_df = stg.train_df.copy()
-    columns = stg.strategy.get("affected_features")
-    step = stg.strategy.get("percentage")
-    stg.percentage=step
-    while stg.percentage < 1:
-            all_results = []
-            print("Noise error")
-            #print(f"Feature: {columns[i]}")
-            print("***********************************")
-            print("*********** RUN:"+str(stg.run))
-            print("***********************************")
-            print("feature: " + ", ".join(columns))
-            print(f"Step: {round(stg.percentage, 1)}")
-            stg.strategy["mode"]="extended"
-            error,stg.noisy_df = noise(stg.noisy_df, stg.strategy,stg.train_df)
-            stg.percentage=round(stg.percentage, 1)
-            results = performanceAnalysis(stg)#, con, dataset_name, noisy_df, test_df, target_variable, model_touse, stg.EType, columns, )
-            all_results.append(results)
-
-            stg.percentage += step
-
-    return all_results
-
-#missing
-def AnalyzeMissingValues(stg:RunStrategy):#run,con,dataset_name,strategy,train_df,test_df, target_variable, model_touse):
-  stg.EType="Missing"
-  columns = stg.strategy.get("affected_features")
-  step = stg.strategy.get("percentage")
-  stg.noisy_df=stg.train_df.copy()
-  stg.percentage=step
-  while stg.percentage<1:
-      print("***********************************")
-      print("*********** RUN:"+str(stg.run))
-      print("***********************************")
-
-      print ("Missing error")
-  #    print ("feature: "+columns[i])
-      print("feature: " + ", ".join(columns))
-      print ("step:"+str(round(stg.percentage,1)))
-      stg.strategy["mode"]="extended"
-      error,stg.noisy_df=missing(stg.noisy_df,stg.strategy,stg.train_df)
-      all_results = []
-      stg.percentage=round(stg.percentage, 1)
-      results = performanceAnalysis(stg)#, con,dataset_name, noisy_df,test_df, target_variable, model_touse, EType, columns,  round(stg.percentage,1))
-      all_results.append(results)
-      stg.percentage+=step
-  return all_results
-
-#outlier
-def AnalyzeOutlierValues(stg:RunStrategy):#run,con,dataset_name, strategy,train_df,test_df, target_variable, model_touse):
-  stg.EType="Outlier"
-  columns = stg.strategy.get("affected_features")
-  step = stg.strategy.get("percentage")
-  stg.noisy_df=stg.train_df.copy()
-  stg.percentage=step   
-  while stg.percentage<1:
-      print("***********************************")
-      print("*********** RUN:"+str(stg.run))
-      print("***********************************")
-
-      print("Outlier error")
-      print("feature: " + ", ".join(columns))
-      print ("step:"+str(round(stg.percentage,1)))
-      stg.strategy["mode"]="extended"
-      error,stg.noisy_df=outlier(stg.noisy_df,stg.strategy,stg.train_df)      
-      all_results = []
-      stg.percentage=round(stg.percentage, 1)
-      results = performanceAnalysis(stg)#, con,dataset_name, noisy_df,test_df, target_variable, model_touse, EType, columns,  round(stg.percentage,1))
-      all_results.append(results)
-      stg.percentage+=step
-  return all_results
 
 
 
 def AnalyzeValues(stg:RunStrategy):   
-    local_train_df = stg.train_df.copy()
-    local_noise_df = stg.train_df.copy()
     stg.noisy_df = stg.train_df.copy()
+    local_noisy_df=stg.noisy_df.copy()
+    train_df=stg.train_df.copy()
     if stg.EType == "label":
-        #  stg.target_variable = stg.strategy.get("affected_features")
-        #  stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
           stg.feature = stg.target_variable
     elif stg.EType != "duplicated":
         stg.feature = stg.strategy.get("affected_features")
@@ -531,34 +414,24 @@ def AnalyzeValues(stg:RunStrategy):
     stg.percentage=step
     while stg.percentage < 1:
             all_results = []
-            print("***********************************")
-            print("*********** RUN:"+str(stg.run))
-            print("***********************************")
-            print(f"{stg.EType} error")
-            if stg.EType == "label":
-                print("target:", stg.target_variable)   
-            elif stg.EType != "duplicated":
-                print("feature: " + ", ".join(stg.feature))
-            print(f"Step: {round(stg.percentage, 1)}")
             stg.strategy["mode"]="extended"
+            stg.percentage=round(stg.percentage, 1)
             match   stg.EType:
                 case "noise":
-                    error,stg.noisy_df = noise(stg.noisy_df, stg.strategy,stg.train_df)
+                    error,local_noisy_df = noise(local_noisy_df, stg.strategy,train_df)
                 case "missing":
-                    error,stg.noisy_df = missing(stg.noisy_df, stg.strategy,stg.train_df)
+                    error,local_noisy_df = missing(local_noisy_df, stg.strategy,train_df)
                 case "outlier":
-                    error,stg.noisy_df = outlier(stg.noisy_df, stg.strategy,stg.train_df)
+                    error,local_noisy_df = outlier(local_noisy_df, stg.strategy,train_df)
                 case "label":           
-                    error,stg.noisy_df = labels(stg.noisy_df, stg.strategy,stg.train_df)
+                    error,local_noisy_df = labels(local_noisy_df, stg.strategy,train_df)
                 case "duplicate": 
-                    error,stg.noisy_df = duplicate(stg.noisy_df, stg.strategy,stg.train_df)
-
-            stg.percentage=round(stg.percentage, 1)
+                    error,local_noisy_df = duplicate(local_noisy_df, stg.strategy,train_df)
+            stg.noisy_df=local_noisy_df.copy()
             results = performanceAnalysis(stg)
             all_results.append(results)
-
             stg.percentage += step
-    stg.train_df=local_train_df.copy()
-    stg.noisy_df=local_noise_df.copy()
+            stg.strategy["percentage"]=stg.percentage
+    stg.strategy["percentage"]=step
     return all_results
         
