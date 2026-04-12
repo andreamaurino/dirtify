@@ -1,0 +1,549 @@
+{
+    "datasetName": "online_shoppers_intention.csv",
+    "targetVariable": "Revenue",
+    "task":"Classification",
+    "features": [
+        "Administrative",
+        "Administrative_Duration",
+        "Informational",
+        "Informational_Duration",
+        "ProductRelated",
+        "ProductRelated_Duration",
+        "BounceRates",
+        "ExitRates",
+        "PageValues",
+        "SpecialDay",
+        "Month",
+        "OperatingSystems",
+        "Browser",
+        "Region",
+        "TrafficType",
+        "VisitorType",
+        "Weekend",
+        "Revenue"
+    ],
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "rf",
+        "et",
+        "xgboost"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Administrative"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": "Revenue",
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Administrative"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Administrative_Duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Informational"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Informational_Duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ProductRelated"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ProductRelated_Duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BounceRates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ExitRates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PageValues"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "SpecialDay"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Month"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "OperatingSystems"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Browser"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Region"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "TrafficType"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "VisitorType"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Weekend"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Administrative"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Administrative_Duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Informational"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Informational_Duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ProductRelated"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ProductRelated_Duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BounceRates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ExitRates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PageValues"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "SpecialDay"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Month"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "OperatingSystems"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Browser"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Region"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "TrafficType"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "VisitorType"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Weekend"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}

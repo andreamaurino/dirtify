@@ -186,28 +186,53 @@ def extract_vectors_from_json(json_path):
     scenarios = {}
 
     for name, group in df.groupby(group_cols):
-        scenario_key = f"{name[3]} | {name[2]} | {name[1]}"  # model | error | feature
+        scenario_key = f"{name[3]} | {name[2]} | {name[1]}"
 
         AECP_vector = group['robustness_index'].values.astype(float)
-        epc_vector = group['epc'].values.astype(float)
+        epc_vector  = group['epc'].values.astype(float)
 
-        y_matrix = np.array(group['y'].tolist(), dtype=float)
+        # --- FIX: filtra run con y di lunghezza diversa dalla moda ---
+        y_list    = group['y'].tolist()
+        lengths   = [len(y) for y in y_list]
+        from statistics import mode
+        try:
+            expected_len = mode(lengths)
+        except Exception:
+            expected_len = max(set(lengths), key=lengths.count)
+
+        mask = np.array([l == expected_len for l in lengths])
+
+        if mask.sum() < 2:
+            print(f"[SKIP scenario] {scenario_key}: "
+                  f"solo {mask.sum()} run con {expected_len} punti validi")
+            continue
+
+        if not mask.all():
+            n_dropped = (~mask).sum()
+            print(f"[WARN] {scenario_key}: "
+                  f"dropped {n_dropped} run con lunghezza y != {expected_len}")
+
+        y_filtered    = [y for y, ok in zip(y_list, mask) if ok]
+        AECP_vector   = AECP_vector[mask]
+        epc_vector    = epc_vector[mask]
+        # -------------------------------------------------------------
+
+        y_matrix = np.array(y_filtered, dtype=float)
         x_points = np.array(group['x'].iloc[0], dtype=float)
 
         scenarios[scenario_key] = {
             'info': {
-                'dataset': name[0],
-                'feature': name[1],
+                'dataset':   name[0],
+                'feature':   name[1],
                 'errorType': name[2],
                 'modelName': name[3],
-                'metric': name[4]
+                'metric':    name[4]
             },
-            'x_points': x_points,
+            'x_points':    x_points,
             'AECP_vector': AECP_vector,
-            'epc_vector': epc_vector,
-            'y_matrix': y_matrix,
-            'n_runs': len(group)
-
+            'epc_vector':  epc_vector,
+            'y_matrix':    y_matrix,
+            'n_runs':      int(mask.sum())
         }
 
     return scenarios
@@ -584,7 +609,7 @@ if __name__ == "__main__":
             k_range_neg=range(2, 5),
         )
         print_summary_by_sign(results)
-        plot_clusters_by_sign(results, output_path=dataset_name+"_esp_clusters.png")        
+        plot_clusters_by_sign(results, output_path=dataset_name+"_esp_clusters.png",metric=metric)        
         
         #results = cluster_esp_curves(significant_scenarios, auto_k=True, k_range=range(2,7))
         #print_cluster_summary(results)

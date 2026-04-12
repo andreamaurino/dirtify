@@ -1,0 +1,830 @@
+{
+    "datasetName": "optdigit_sample.csv",
+    "task": "Clustering",
+    "targetVariable": "class",
+    "features": [
+        "Attribute64",
+        "Attribute8",
+        "Attribute43",
+        "Attribute63",
+        "Attribute47",
+        "Attribute55",
+        "Attribute30",
+        "Attribute35",
+        "Attribute4",
+        "Attribute24",
+        "Attribute25",
+        "Attribute17",
+        "class"
+    ],
+    "machineLearningModels": [
+        "K-Means",
+        "HDBSCAN",
+        "Gaussian Mixture Model",
+        "BIRCH",
+        "Hierarchical Clustering"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute64"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute47"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute30"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute24"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute25"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute17"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute64"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute47"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute30"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute24"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute25"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute17"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute64"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute47"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute30"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute24"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute25"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute17"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute64"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute47"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute30"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute24"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute25"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute17"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35",
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63",
+                    "Attribute47",
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35",
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63",
+                    "Attribute47",
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35",
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63",
+                    "Attribute47",
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute35",
+                    "Attribute43"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "Attribute63",
+                    "Attribute47",
+                    "Attribute55"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+ 
+    ],
+    "Clusters": 10
+}

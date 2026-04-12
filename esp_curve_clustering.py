@@ -1,35 +1,6 @@
 """
 ESP Curve Shape Clustering
 ==========================
-Raggruppa gli scenari ESP in base alla forma della curva AMI vs. error rate.
-
-Struttura attesa per ogni scenario nella lista significant_scenarios:
-    {
-        'scenario_name': str,
-        'model':         str,
-        'error':         str,
-        'features':      str,
-        'x_points':      list[float],   # es. [0, 20, 40, 60, 80]
-        'y_matrix':      list[list],    # shape (n_runs, n_levels)
-        'AECP_mean':     float,
-        ...
-    }
-
-Uso:
-    from esp_curve_clustering import (
-        cluster_esp_curves, plot_clusters_full, print_cluster_summary,
-        cluster_by_sign, plot_clusters_by_sign, print_summary_by_sign
-    )
-
-    # Clustering globale
-    results = cluster_esp_curves(significant_scenarios, auto_k=True)
-    print_cluster_summary(results)
-    plot_clusters_full(results, output_path="esp_clusters.png")
-
-    # Clustering separato per segno AEPC
-    results_sign = cluster_by_sign(significant_scenarios)
-    print_summary_by_sign(results_sign)
-    plot_clusters_by_sign(results_sign, output_path="esp_clusters_by_sign.png")
 """
 
 import numpy as np
@@ -42,18 +13,77 @@ from collections import defaultdict
 
 
 # ──────────────────────────────────────────────────────────────────
+# 0. Utility: lunghezza attesa y_matrix
+# ──────────────────────────────────────────────────────────────────
+
+def _expected_n_levels(scenarios: list) -> int:
+    """Restituisce la lunghezza y più comune tra gli scenari."""
+    lengths = []
+    for s in scenarios:
+        ym = np.array(s['y_matrix'])
+        if ym.ndim == 2:
+            lengths.append(ym.shape[1])
+        elif ym.ndim == 1:
+            lengths.append(len(ym))
+    if not lengths:
+        return 5
+    return max(set(lengths), key=lengths.count)
+
+
+def _safe_mean_curve(y_matrix_raw, n_levels: int) -> np.ndarray:
+    """
+    Calcola la curva media da y_matrix, troncando o paddando
+    a n_levels colonne per garantire shape uniforme.
+    """
+    ym = np.array(y_matrix_raw)
+    if ym.ndim == 1:
+        ym = ym.reshape(1, -1)
+    # tronca o padda ogni riga
+    rows = []
+    for row in ym:
+        if len(row) >= n_levels:
+            rows.append(row[:n_levels])
+        else:
+            pad = np.full(n_levels - len(row), np.nan)
+            rows.append(np.concatenate([row, pad]))
+    ym_fixed = np.array(rows, dtype=float)
+    return np.nanmean(ym_fixed, axis=0)
+
+
+def _filter_scenarios(scenarios: list) -> list:
+    """
+    Rimuove scenari con y_matrix non rettangolare o con meno di 2 run.
+    """
+    n_levels = _expected_n_levels(scenarios)
+    clean = []
+    for s in scenarios:
+        ym = np.array(s['y_matrix'])
+        if ym.ndim != 2:
+            print(f"[SKIP] {s['scenario_name']}: y_matrix ndim={ym.ndim}")
+            continue
+        if ym.shape[0] < 2:
+            print(f"[SKIP] {s['scenario_name']}: solo {ym.shape[0]} run")
+            continue
+        clean.append(s)
+    if len(clean) < len(scenarios):
+        print(f"[INFO] _filter_scenarios: {len(scenarios)-len(clean)} "
+              f"scenari rimossi, {len(clean)} rimasti")
+    return clean
+
+
+# ──────────────────────────────────────────────────────────────────
 # 1. Estrazione features dalla curva
 # ──────────────────────────────────────────────────────────────────
 
-def extract_curve_features(scenario: dict) -> np.ndarray:
+def extract_curve_features(scenario: dict,
+                            n_levels: int = None) -> np.ndarray:
     """
     Dalla y_matrix (n_runs x n_levels) estrae:
       - curva media AMI normalizzata z-score (shape-invariant)
-      - slope tra livelli consecutivi (4 valori)
-    Restituisce un vettore 1D (9 valori) che rappresenta la forma.
+      - slope tra livelli consecutivi (n_levels-1 valori)
     """
-    y_matrix   = np.array(scenario['y_matrix'])
-    mean_curve = y_matrix.mean(axis=0)
+    n = n_levels if n_levels is not None else 5
+    mean_curve = _safe_mean_curve(scenario['y_matrix'], n)
     slopes     = np.diff(mean_curve)
 
     std = mean_curve.std()
@@ -95,28 +125,48 @@ def cluster_esp_curves(significant_scenarios: list,
                        auto_k: bool = True,
                        k_range: range = range(2, 7),
                        random_state: int = 42) -> dict:
-    """
-    Clusterizza gli scenari ESP in base alla forma della curva AMI.
 
-    Parametri
-    ----------
-    significant_scenarios : list di dict (struttura descritta sopra)
-    n_clusters            : int  — numero cluster fisso (ignora auto_k)
-    auto_k                : bool — cerca k ottimale con silhouette
-    k_range               : range da esplorare se auto_k=True
-    random_state          : int
+    significant_scenarios = _filter_scenarios(significant_scenarios)
+    if len(significant_scenarios) < 4:
+        print(f"[WARN] cluster_esp_curves: solo {len(significant_scenarios)} "
+              f"scenari validi, clustering saltato")
+        return None
 
-    Ritorna dict con:
-        scenarios    : la lista originale
-        labels       : array cluster label per ogni scenario
-        mean_curves  : {cluster_id: curva AMI media}
-        cluster_info : {cluster_id: [info scenario]}
-        k, silhouette, x_points
-    """
-    features        = np.array([extract_curve_features(s)
-                                 for s in significant_scenarios])
+    n_levels = _expected_n_levels(significant_scenarios)
+    if n_levels != 5:
+        print(f"[INFO] n_levels atteso: {n_levels}")
+
+    raw_features = [extract_curve_features(s, n_levels)
+                    for s in significant_scenarios]
+
+    lengths = set(len(f) for f in raw_features)
+    if len(lengths) > 1:
+        min_len = min(lengths)
+        print(f"[WARN] feature lengths diverse {lengths}, tronco a {min_len}")
+        raw_features = [f[:min_len] for f in raw_features]
+
+    features = np.array(raw_features, dtype=float)
+
+    # --- FIX NaN: sostituisce NaN con la media della colonna ---
+    if np.any(np.isnan(features)):
+        n_nan = int(np.sum(np.isnan(features)))
+        print(f"[WARN] features contiene {n_nan} NaN, imputo con media colonna")
+        col_means = np.nanmean(features, axis=0)
+        # se una colonna è tutta NaN la sostituisce con 0
+        col_means = np.where(np.isnan(col_means), 0.0, col_means)
+        nan_mask = np.isnan(features)
+        features[nan_mask] = np.take(col_means,
+                                     np.where(nan_mask)[1])
+
     scaler          = StandardScaler()
     features_scaled = scaler.fit_transform(features)
+
+    # verifica finale: nessun NaN o inf dopo scaling
+    if np.any(~np.isfinite(features_scaled)):
+        print("[WARN] features_scaled contiene NaN/inf dopo scaling, "
+              "rimpiazzo con 0")
+        features_scaled = np.nan_to_num(features_scaled, nan=0.0, posinf=0.0,
+                                        neginf=0.0)
 
     if auto_k or n_clusters is None:
         print("Ricerca k ottimale:")
@@ -130,17 +180,20 @@ def cluster_esp_curves(significant_scenarios: list,
 
     x_points = significant_scenarios[0]['x_points']
 
-    # Curva media per cluster (scala originale)
     mean_curves = {}
     for c in range(k):
         idx = [i for i, l in enumerate(labels) if l == c]
         cluster_curves = np.array([
-            np.array(significant_scenarios[i]['y_matrix']).mean(axis=0)
+            _safe_mean_curve(significant_scenarios[i]['y_matrix'], n_levels)
             for i in idx
-        ])
-        mean_curves[c] = cluster_curves.mean(axis=0)
+        ], dtype=float)
+        # imputa NaN anche nelle curve medie
+        cluster_curves = np.where(np.isnan(cluster_curves),
+                                  np.nanmean(cluster_curves, axis=0,
+                                             keepdims=True),
+                                  cluster_curves)
+        mean_curves[c] = np.nanmean(cluster_curves, axis=0)
 
-    # Info per cluster
     cluster_info = defaultdict(list)
     for i, (s, label) in enumerate(zip(significant_scenarios, labels)):
         cluster_info[int(label)].append({
@@ -151,7 +204,6 @@ def cluster_esp_curves(significant_scenarios: list,
             'AECP_mean':     s['AECP_mean'],
         })
 
-    # Verifica somma
     total = sum(len(v) for v in cluster_info.values())
     assert total == len(significant_scenarios), \
         f"Bug: {total} != {len(significant_scenarios)}"
@@ -164,16 +216,16 @@ def cluster_esp_curves(significant_scenarios: list,
         'k':            k,
         'silhouette':   sil,
         'x_points':     x_points,
+        'n_levels':     n_levels,
     }
-
 
 # ──────────────────────────────────────────────────────────────────
 # 4. Visualizzazione
 # ──────────────────────────────────────────────────────────────────
 
 def _draw_cluster(ax, c, results, color, sign_label=""):
-    """Disegna un singolo pannello cluster."""
     x          = results['x_points']
+    n_levels   = results.get('n_levels', 5)
     info_list  = results['cluster_info'][c]
     mean_curve = results['mean_curves'][c]
     scenarios  = results['scenarios']
@@ -182,21 +234,28 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
     for i, l in enumerate(labels):
         if l != c:
             continue
-        y = np.array(scenarios[i]['y_matrix'])
-        for row in y:
-            ax.plot(x, row, color=color, alpha=0.05, linewidth=0.6)
-        ax.plot(x, y.mean(axis=0), color=color, alpha=0.35, linewidth=1.0)
+        # --- FIX: usa _safe_mean_curve per il plot delle singole curve ---
+        ym = np.array(scenarios[i]['y_matrix'])
+        for row in ym:
+            row_fixed = row[:n_levels] if len(row) >= n_levels else row
+            if len(row_fixed) == len(x):
+                ax.plot(x, row_fixed, color=color,
+                        alpha=0.05, linewidth=0.6)
+        mean_row = _safe_mean_curve(scenarios[i]['y_matrix'], n_levels)
+        if len(mean_row) == len(x):
+            ax.plot(x, mean_row, color=color, alpha=0.35, linewidth=1.0)
 
-    ax.plot(x, mean_curve, color=color, linewidth=2.5, zorder=10)
-    ax.axhline(mean_curve[0], color='gray', linestyle='--',
-               linewidth=0.8, alpha=0.5)
+    if len(mean_curve) == len(x):
+        ax.plot(x, mean_curve, color=color, linewidth=2.5, zorder=10)
+        ax.axhline(mean_curve[0], color='gray', linestyle='--',
+                   linewidth=0.8, alpha=0.5)
 
     models = [i['modelName'] for i in info_list]
     errors = [i['errorType'] for i in info_list]
     mc = {m: models.count(m) for m in set(models)}
     ec = {e: errors.count(e) for e in set(errors)}
 
-    prefix = f"{sign_label} — " if sign_label else ""
+    prefix   = f"{sign_label} — " if sign_label else ""
     subtitle = (
         f"n={len(info_list)}\n"
         f"{', '.join(f'{m}({n})' for m,n in sorted(mc.items()))}\n"
@@ -213,8 +272,11 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
 
 def plot_clusters_full(results: dict,
                        output_path: str = "esp_clusters.png",
-                       figsize_per_cluster: tuple = (4, 3.5)):
-    """Plot con tutte le curve individuali per ogni cluster."""
+                       figsize_per_cluster: tuple = (4, 3.5),
+                       metric: str = "AMI"):
+    if results is None:
+        print("[WARN] plot_clusters_full: results è None, skip")
+        return
     k      = results['k']
     colors = cm.tab10(np.linspace(0, 0.9, k))
     fig, axes = plt.subplots(1, k,
@@ -227,7 +289,7 @@ def plot_clusters_full(results: dict,
     for c, ax in enumerate(axes):
         _draw_cluster(ax, c, results, colors[c])
         if c == 0:
-            ax.set_ylabel("AMI")
+            ax.set_ylabel(metric)
 
     fig.suptitle(
         f"ESP Curve Shape Clustering  "
@@ -259,6 +321,9 @@ def _shape_label(slopes: np.ndarray) -> str:
 
 
 def print_cluster_summary(results: dict):
+    if results is None:
+        print("[WARN] print_cluster_summary: results è None")
+        return
     print(f"\n{'='*60}")
     print(f"ESP CURVE CLUSTERING — k={results['k']}, "
           f"silhouette={results['silhouette']:.4f}")
@@ -291,10 +356,7 @@ def cluster_by_sign(significant_scenarios: list,
                     k_range_pos: range = range(2, 5),
                     k_range_neg: range = range(2, 6),
                     random_state: int = 42) -> dict:
-    """
-    Separa gli scenari in positivi (AECP>0) e negativi (AECP<=0),
-    poi clusterizza ciascun gruppo per forma indipendentemente.
-    """
+
     pos = [s for s in significant_scenarios if s['AECP_mean'] > 0]
     neg = [s for s in significant_scenarios if s['AECP_mean'] <= 0]
 
@@ -330,12 +392,8 @@ def cluster_by_sign(significant_scenarios: list,
 
 
 def plot_clusters_by_sign(results_by_sign: dict,
-                           output_path: str = "esp_clusters_by_sign.png"):
-    """
-    Plot su due righe:
-      riga superiore (verde) = cluster AEPC positivi
-      riga inferiore (rossa) = cluster AEPC negativi
-    """
+                           output_path: str = "esp_clusters_by_sign.png",
+                           metric: str = "AMI"):
     res_pos = results_by_sign['positive']
     res_neg = results_by_sign['negative']
     k_pos   = res_pos['k'] if res_pos else 0
@@ -358,7 +416,7 @@ def plot_clusters_by_sign(results_by_sign: dict,
         for c in range(res['k']):
             _draw_cluster(axes_row[c], c, res, colors[c], sign_label)
             if c == 0:
-                axes_row[c].set_ylabel("AMI")
+                axes_row[c].set_ylabel(metric)
         for c in range(res['k'], n_cols):
             axes_row[c].axis('off')
 
@@ -379,7 +437,7 @@ def plot_clusters_by_sign(results_by_sign: dict,
 
 
 def print_summary_by_sign(results_by_sign: dict):
-    for sign, key in [("POSITIVI (AEPC>0)", 'positive'),
+    for sign, key in [("POSITIVI (AECP>0)", 'positive'),
                       ("NEGATIVI (AEPC<=0)", 'negative')]:
         res = results_by_sign[key]
         if res is None:
