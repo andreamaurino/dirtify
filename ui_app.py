@@ -8,7 +8,7 @@ class DirtifyApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Dirtify UI Prototype")
-        self.geometry("700x500")
+        self.geometry("900x650")
 
         self.ui_logic = DataAnalysisUI()
 
@@ -26,7 +26,7 @@ class DirtifyApp(tk.Tk):
         frame.pack(fill="both", expand=True)
 
         ttk.Button(frame, text="Open Dataset", command=self.open_dataset).grid(row=0, column=0, sticky="ew", pady=5)
-        ttk.Label(frame, textvariable=self.dataset_path).grid(row=0, column=1, sticky="w", padx=10)
+        ttk.Label(frame, textvariable=self.dataset_path, wraplength=500).grid(row=0, column=1, sticky="w", padx=10)
 
         ttk.Label(frame, text="Target Variable:").grid(row=1, column=0, sticky="w", pady=5)
         self.target_combo = ttk.Combobox(
@@ -48,11 +48,34 @@ class DirtifyApp(tk.Tk):
         ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=3, column=0, columnspan=2, sticky="ew", pady=10)
 
         ttk.Label(frame, text="Log / Results:").grid(row=4, column=0, sticky="nw", pady=5)
-        self.output_box = tk.Text(frame, height=12, width=60)
+        self.output_box = tk.Text(frame, height=8, width=60)
         self.output_box.grid(row=4, column=1, sticky="nsew", pady=5)
+
+        ttk.Label(frame, text="Dataset Preview:").grid(row=5, column=0, sticky="nw", pady=(10, 5))
+        preview_frame = ttk.Frame(frame)
+        preview_frame.grid(row=5, column=1, sticky="nsew", pady=(10, 5))
+
+        self.preview_tree = ttk.Treeview(preview_frame, show="headings", height=12)
+        self.preview_tree.grid(row=0, column=0, sticky="nsew")
+
+        scrollbar_y = ttk.Scrollbar(preview_frame, orient="vertical", command=self.preview_tree.yview)
+        scrollbar_y.grid(row=0, column=1, sticky="ns")
+
+        scrollbar_x = ttk.Scrollbar(preview_frame, orient="horizontal", command=self.preview_tree.xview)
+        scrollbar_x.grid(row=1, column=0, sticky="ew")
+
+        self.preview_tree.configure(
+            yscrollcommand=scrollbar_y.set,
+            xscrollcommand=scrollbar_x.set
+        )
+
+        preview_frame.columnconfigure(0, weight=1)
+        preview_frame.rowconfigure(0, weight=1)
 
         frame.columnconfigure(1, weight=1)
         frame.rowconfigure(4, weight=1)
+        frame.rowconfigure(5, weight=1)
+
 
     def open_dataset(self):
         path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
@@ -73,15 +96,37 @@ class DirtifyApp(tk.Tk):
                 return
 
             headers = rows[0]
+            preview_rows = rows[1:11]
+
+            # update target dropdown
             self.target_combo["values"] = headers
 
             if headers:
                 self.target_var.set(headers[0])
 
+            # clear old preview
+            for item in self.preview_tree.get_children():
+                self.preview_tree.delete(item)
+
+            self.preview_tree["columns"] = headers
+            self.preview_tree["show"] = "headings"
+
+            for col in headers:
+                self.preview_tree.heading(col, text=col)
+                self.preview_tree.column(col, width=120, anchor="center")
+
+            for row in preview_rows:
+                padded_row = row + [""] * (len(headers) - len(row))
+                self.preview_tree.insert("", tk.END, values=padded_row[:len(headers)])
+
             self.log(f"Detected columns: {', '.join(headers)}")
+            self.log(f"Preview loaded: showing first {len(preview_rows)} rows.")
 
         except Exception as e:
             self.log(f"Error while reading dataset: {e}")
+
+
+
 
     def run_analysis(self):
         target = self.target_var.get().strip()
