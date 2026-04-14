@@ -1,3 +1,4 @@
+import csv
 import tkinter as tk
 from tkinter import ttk, filedialog
 from ui_layer import DataAnalysisUI
@@ -28,7 +29,13 @@ class DirtifyApp(tk.Tk):
         ttk.Label(frame, textvariable=self.dataset_path).grid(row=0, column=1, sticky="w", padx=10)
 
         ttk.Label(frame, text="Target Variable:").grid(row=1, column=0, sticky="w", pady=5)
-        ttk.Entry(frame, textvariable=self.target_var).grid(row=1, column=1, sticky="ew", pady=5)
+        self.target_combo = ttk.Combobox(
+            frame,
+            textvariable=self.target_var,
+            state="readonly",
+            values=[]
+        )
+        self.target_combo.grid(row=1, column=1, sticky="ew", pady=5)
 
         ttk.Label(frame, text="Analysis Strategy:").grid(row=2, column=0, sticky="w", pady=5)
         ttk.Combobox(
@@ -53,6 +60,28 @@ class DirtifyApp(tk.Tk):
             self.dataset_path.set(path)
             self.ui_logic.open_dataset(path)
             self.log(f"Dataset selected: {path}")
+            self.load_columns_from_csv(path)
+
+    def load_columns_from_csv(self, path):
+        try:
+            with open(path, newline="", encoding="utf-8", errors="ignore") as file:
+                reader = csv.reader(file)
+                rows = list(reader)
+
+            if not rows:
+                self.log("The selected dataset is empty.")
+                return
+
+            headers = rows[0]
+            self.target_combo["values"] = headers
+
+            if headers:
+                self.target_var.set(headers[0])
+
+            self.log(f"Detected columns: {', '.join(headers)}")
+
+        except Exception as e:
+            self.log(f"Error while reading dataset: {e}")
 
     def run_analysis(self):
         target = self.target_var.get().strip()
@@ -63,7 +92,7 @@ class DirtifyApp(tk.Tk):
             return
 
         if not target:
-            self.log("Please insert a target variable.")
+            self.log("Please select a target variable.")
             return
 
         self.ui_logic.select_target_variable(target)
