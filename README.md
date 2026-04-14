@@ -15,7 +15,7 @@ The **Error Sensitivity Profile** characterises the relationship between data co
 
 A positive AEPC means corruption *improves* model performance relative to the clean baseline — a counterintuitive but empirically documented phenomenon. A negative AEPC indicates degradation.
 
-![ESP canonical representation](esp_canonical_example.png)
+![ESP canonical representation](canonical_profile_aepc.jpg)
 
 ---
 
