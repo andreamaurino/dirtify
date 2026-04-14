@@ -101,7 +101,27 @@ This produces:
 
 
 ## Supported Models
-
+### Classification (via PyCaret)
+ 
+| Label | Model |
+|-------|-------|
+| SVM | SVM — Linear Kernel |
+| ET | Extra Trees Classifier |
+| RF | Random Forest Classifier |
+| KN | K Neighbors Classifier |
+| LDA | Linear Discriminant Analysis |
+| MLP | Multilayer Perceptron Classifier |
+| LR | Logistic Regression |
+| NB | Naive Bayes |
+| DT | Decision Tree Classifier |
+| QDA | Quadratic Discriminant Analysis |
+| SGD | Stochastic Gradient Descent Classifier |
+| RC | Ridge Classifier |
+| ADA | AdaBoost |
+| XG | XGBoost |
+ 
+### Clustering (via scikit-learn)
+ 
 | Label | Model |
 |-------|-------|
 | KM | K-Means |
@@ -109,6 +129,7 @@ This produces:
 | GMM | Gaussian Mixture Model |
 | BIRCH | BIRCH |
 | HR | Hierarchical Clustering (Ward linkage) |
+ 
 
 
 
