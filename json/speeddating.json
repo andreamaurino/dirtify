@@ -1,0 +1,3555 @@
+{
+    "datasetName": "speeddating.csv",
+    "targetVariable": "match",
+    "features": [
+        "wave_numeric",
+        "gender",
+        "age_numeric",
+        "age_o_numeric",
+        "d_age-numeric",
+        "d_d_age",
+        "race",
+        "race_o",
+        "samerace",
+        "importance_same_race-numeric",
+        "importance_same_religion-numeric",
+        "d_importance_same_race",
+        "-d_importance_same_religion",
+        "field",
+        "pref_o_attractive-numeric",
+        "pref_o_sincere-numeric",
+        "pref_o_intelligence-numeric",
+        "pref_o_funny-numeric",
+        "pref_o_ambitious-numeric",
+        "pref_o_shared_interests-numeric",
+        "d_pref_o_attractive-",
+        "d_pref_o_sincere-",
+        "d_pref_o_intelligence-",
+        "d_pref_o_funny-",
+        "d_pref_o_ambitious-",
+        "d_pref_o_shared_interests-",
+        "attractive_o-numeric",
+        "sinsere_o-numeric",
+        "intelligence_o-numeric",
+        "funny_o-numeric",
+        "ambitous_o-numeric",
+        "shared_interests_o-numeric",
+        "d_attractive_o-",
+        "d_sinsere_o-",
+        "d_intelligence_o-",
+        "d_funny_o-",
+        "d_ambitous_o-",
+        "d_shared_interests_o-",
+        "attractive_important-numeric",
+        "sincere_important-numeric",
+        "intellicence_important-numeric",
+        "funny_important-numeric",
+        "ambtition_important-numeric",
+        "shared_interests_important-numeric",
+        "d_attractive_important-",
+        "d_sincere_important-",
+        "d_intellicence_important-",
+        "d_funny_important-",
+        "d_ambtition_important-",
+        "d_shared_interests_important-",
+        "attractive-numeric",
+        "sincere-numeric",
+        "intelligence-numeric",
+        "funny-numeric",
+        "ambition-numeric",
+        "d_attractive",
+        "d_sincere-",
+        "d_intelligence-",
+        "d_funny-",
+        "d_ambition",
+        "attractive_partner-numeric",
+        "sincere_partner-numeric",
+        "intelligence_partner-numeric",
+        "funny_partner-numeric",
+        "ambition_partner-numeric",
+        "shared_interests_partner-numeric",
+        "d_attractive_partner-",
+        "d_sincere_partner-",
+        "d_intelligence_partner",
+        "d_funny_partner",
+        "d_ambition_partner",
+        "d_shared_interests_partner",
+        "sports-numeric",
+        "tvsports-numeric",
+        "exercise-numeric",
+        "dining-numeric",
+        "museums-numeric",
+        "art-numeric",
+        "hiking-numeric",
+        "gaming-numeric",
+        "clubbing-numeric",
+        "reading-numeric",
+        "tv-numeric",
+        "theater-numeric",
+        "movies-numeric",
+        "concerts-numeric",
+        "music-numeric",
+        "shopping-numeric",
+        "yoga-numeric",
+        "d_sports",
+        "d_tvsports",
+        "d_exercise",
+        "d_dining",
+        "d_museums",
+        "d_art",
+        "d_hiking",
+        "d_gaming",
+        "d_clubbing",
+        "d_reading",
+        "d_tv",
+        "d_theater",
+        "d_movies",
+        "d_concerts",
+        "d_music",
+        "d_shopping",
+        "d_yoga",
+        "interests_correlate-numeric",
+        "d_interests_correlate",
+        "expected_happy_with_sd_people-numeric",
+        "expected_num_interested_in_me-numeric",
+        "expected_num_matches-numeric",
+        "d_expected_happy_with_sd_people-",
+        "d_expected_num_interested_in_me-",
+        "d_expected_num_matches",
+        "like-numeric",
+        "guess_prob_liked-numeric",
+        "d_like",
+        "d_guess_prob_liked",
+        "met-numeric",
+        "decision",
+        "decision_o",
+        "match"
+    ],
+    "machineLearningModels": [
+        "svm",
+        "dt",
+        "et",
+        "xgboost"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "has_null"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": "match",
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+       
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wave_numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "gender"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "age_numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "age_o_numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_age-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_d_age"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "race"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "race_o"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "samerace"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "importance_same_race-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "importance_same_religion-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_importance_same_race"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "-d_importance_same_religion"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "field"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_attractive-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_sincere-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_intelligence-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_funny-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_ambitious-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_shared_interests-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_attractive-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_sincere-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_intelligence-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_funny-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_ambitious-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_shared_interests-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "attractive_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "sinsere_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "intelligence_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "funny_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ambitous_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "shared_interests_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_sinsere_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_intelligence_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambitous_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_shared_interests_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "attractive_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "sincere_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "intellicence_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "funny_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ambtition_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "shared_interests_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_sincere_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_intellicence_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambtition_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_shared_interests_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "attractive-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "sincere-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "intelligence-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "funny-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ambition-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_sincere-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_intelligence-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambition"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "attractive_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "sincere_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "intelligence_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "funny_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "ambition_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "shared_interests_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive_partner-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_sincere_partner-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_intelligence_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambition_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_shared_interests_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "sports-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "tvsports-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "exercise-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "dining-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "museums-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "art-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "hiking-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "gaming-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "clubbing-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "reading-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "tv-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "theater-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "movies-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "concerts-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "music-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "shopping-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "yoga-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_sports"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_tvsports"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_exercise"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_dining"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_museums"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_art"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_hiking"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_gaming"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_clubbing"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_reading"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_tv"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_theater"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_movies"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_concerts"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_music"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_shopping"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_yoga"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "interests_correlate-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_interests_correlate"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "expected_happy_with_sd_people-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "expected_num_interested_in_me-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "expected_num_matches-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_expected_happy_with_sd_people-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_expected_num_interested_in_me-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_expected_num_matches"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "like-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "guess_prob_liked-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_like"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "d_guess_prob_liked"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "met-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "decision"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "decision_o"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+     
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wave_numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "gender"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "age_numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "age_o_numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_age-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_d_age"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "race"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "race_o"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "samerace"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "importance_same_race-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "importance_same_religion-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_importance_same_race"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "-d_importance_same_religion"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "field"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_attractive-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_sincere-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_intelligence-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_funny-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_ambitious-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pref_o_shared_interests-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_attractive-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_sincere-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_intelligence-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_funny-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_ambitious-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_pref_o_shared_interests-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "attractive_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "sinsere_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "intelligence_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "funny_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ambitous_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "shared_interests_o-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_sinsere_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_intelligence_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambitous_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_shared_interests_o-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "attractive_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "sincere_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "intellicence_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "funny_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ambtition_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "shared_interests_important-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_sincere_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_intellicence_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambtition_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_shared_interests_important-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "attractive-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "sincere-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "intelligence-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "funny-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ambition-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_sincere-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_intelligence-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambition"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "attractive_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "sincere_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "intelligence_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "funny_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "ambition_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "shared_interests_partner-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_attractive_partner-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_sincere_partner-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_intelligence_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_funny_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_ambition_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_shared_interests_partner"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "sports-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "tvsports-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "exercise-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "dining-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "museums-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "art-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "hiking-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "gaming-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "clubbing-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "reading-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "tv-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "theater-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "movies-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "concerts-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "music-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "shopping-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "yoga-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_sports"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_tvsports"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_exercise"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_dining"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_museums"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_art"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_hiking"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_gaming"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_clubbing"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_reading"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_tv"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_theater"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_movies"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_concerts"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_music"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_shopping"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_yoga"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "interests_correlate-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_interests_correlate"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "expected_happy_with_sd_people-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "expected_num_interested_in_me-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "expected_num_matches-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_expected_happy_with_sd_people-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_expected_num_interested_in_me-"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_expected_num_matches"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "like-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "guess_prob_liked-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_like"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "d_guess_prob_liked"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "met-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "decision"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "decision_o"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}

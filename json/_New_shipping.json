@@ -1,0 +1,44 @@
+{
+    "datasetName": "ShippingData.csv",
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },   
+        {
+            "Errortype": "outlier",
+            "Strategy":{"affected_features": ["Weight_in_gms"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy":{"affected_features":["Discount_offered"] , "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+
+        {
+            "Errortype": "noise",
+            "Strategy":{"affected_features": ["Discount_offered"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        },
+        {
+            "Errortype": "missing",
+            "Strategy":{"affected_features": ["Discount_offered"], "selection_criteria": "all", "percentage": 0.2, "mode": "new", "perturbate_data": {"distribution": "random"}}
+        }
+    ],
+    "targetVariable": "Reached.on.Time_Y.N"
+}

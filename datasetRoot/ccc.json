@@ -1,23 +1,23 @@
 {
-    "datasetName": "/Users/andreamaurino/dirtify/datasetRoot/adultdata.csv",
-    "targetVariable": "income2",
+    "datasetName": "C:/Users/mauri/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/australian_credit_data.csv",
+    "targetVariable": "Target",
     "features": [
-        "age",
-        "workclass",
-        "fnlwgt",
-        "Education",
-        "educationYear",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "Gender",
-        "capital-gain",
-        "capital-loss",
-        "hours-per-week",
-        "native-country",
-        "income",
-        "income2"
+        "Unnamed: 0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "Target"
     ],
     "machineLearningModels": [
         "lr",
@@ -44,13 +44,15 @@
             "Errortype": "standard"
         },
         {
-            "Errortype": "outlier",
+            "Errortype": "Missing",
             "Strategy": {
-                "affected_features": [],
+                "affected_features": [
+                    "A1"
+                ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
-                "target_variable": "income2",
+                "target_variable": "Target",
                 "perturbate_data": {
                     "distribution": "random"
                 }

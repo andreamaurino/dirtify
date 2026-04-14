@@ -1,52 +1,57 @@
 {
-    "datasetName": "optdigit_sample.csv",
-    "task": "Clustering",
-    "targetVariable": "class",
+    "datasetName": "default_credit_card_clients.csv",
+    "targetVariable": "default payment next month",
     "features": [
-        "Attribute64",
-        "Attribute8",
-        "Attribute43",
-        "Attribute63",
-        "Attribute47",
-        "Attribute55",
-        "Attribute30",
-        "Attribute35",
-        "Attribute4",
-        "Attribute24",
-        "Attribute25",
-        "Attribute17",
-        "class"
+        "LIMIT_BAL",
+        "SEX",
+        "EDUCATION",
+        "MARRIAGE",
+        "AGE",
+        "PAY_0",
+        "PAY_2",
+        "PAY_3",
+        "PAY_4",
+        "PAY_5",
+        "PAY_6",
+        "BILL_AMT1",
+        "BILL_AMT2",
+        "BILL_AMT3",
+        "BILL_AMT4",
+        "BILL_AMT5",
+        "BILL_AMT6",
+        "PAY_AMT1",
+        "PAY_AMT2",
+        "PAY_AMT3",
+        "PAY_AMT4",
+        "PAY_AMT5",
+        "PAY_AMT6",
+        "default payment next month"
     ],
     "machineLearningModels": [
-        "K-Means",
-        "HDBSCAN",
-        "Gaussian Mixture Model",
-        "BIRCH",
-        "Hierarchical Clustering"
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "xgboost"
     ],
     "Experiments": [
         {
-            "Errortype": "standard"     
+            "Errortype": "standard"
         },
         {
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute64"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute8"
+                    "LIMIT_BAL"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -60,7 +65,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute43"
+                    "SEX"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -74,7 +79,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute63"
+                    "EDUCATION"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -88,7 +93,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute47"
+                    "MARRIAGE"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -102,7 +107,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute55"
+                    "AGE"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -116,7 +121,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute30"
+                    "PAY_0"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -130,7 +135,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute35"
+                    "PAY_2"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -144,7 +149,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute4"
+                    "PAY_3"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -158,7 +163,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute24"
+                    "PAY_4"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -172,7 +177,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute25"
+                    "PAY_5"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -186,511 +191,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute17"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute64"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute8"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute43"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute63"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute47"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute55"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute30"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute35"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute4"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute24"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute25"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute17"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute64"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute8"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute43"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute63"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute47"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute55"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute30"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute35"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute4"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute24"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute25"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute17"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute64"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute8"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute43"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute63"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute47"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute55"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute30"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute35"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute4"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute24"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute25"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Attribute17"
+                    "PAY_6"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -704,8 +205,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute35",
-                    "Attribute43"
+                    "BILL_AMT1"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -719,9 +219,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute63",
-                    "Attribute47",
-                    "Attribute55"
+                    "BILL_AMT2"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -732,11 +230,10 @@
             }
         },
         {
-            "Errortype": "missing",
+            "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute35",
-                    "Attribute43"
+                    "BILL_AMT3"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -747,12 +244,149 @@
             }
         },
         {
-            "Errortype": "missing",
+            "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Attribute63",
-                    "Attribute47",
-                    "Attribute55"
+                    "BILL_AMT4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": "default payment next month",
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "LIMIT_BAL"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -766,8 +400,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Attribute35",
-                    "Attribute43"
+                    "SEX"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -781,9 +414,287 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Attribute63",
-                    "Attribute47",
-                    "Attribute55"
+                    "EDUCATION"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "MARRIAGE"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "AGE"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_0"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT6"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -797,8 +708,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Attribute35",
-                    "Attribute43"
+                    "LIMIT_BAL"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -812,9 +722,301 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Attribute63",
-                    "Attribute47",
-                    "Attribute55"
+                    "SEX"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "EDUCATION"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "MARRIAGE"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "AGE"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_0"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "BILL_AMT6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PAY_AMT6"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -824,7 +1026,5 @@
                 }
             }
         }
- 
-    ],
-    "Clusters": 10
+    ]
 }

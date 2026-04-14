@@ -1,0 +1,115 @@
+{
+    "datasetName": "C:/Users/mauri/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/Iris.csv",
+    "task": "Clustering",
+    "targetVariable": "Species",
+    "features": [
+        "Id",
+        "SepalLengthCm",
+        "SepalWidthCm",
+        "PetalLengthCm",
+        "PetalWidthCm",
+        "Species"
+    ],
+    "machineLearningModels": [
+        "K-Means",
+        "DBSCAN",
+        "Hierarchical Clustering",
+        "Gaussian Mixture Model",
+        "Spectral Clustering",
+        "Agglomerative Clustering",
+        "Mean Shift",
+        "Affinity Propagation",
+        "OPTICS"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm",
+                    "Id",
+                    "PetalWidthCm",
+                    "SepalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm",
+                    "Id",
+                    "PetalWidthCm",
+                    "SepalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm",
+                    "Id",
+                    "PetalWidthCm",
+                    "SepalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm",
+                    "Id",
+                    "PetalWidthCm",
+                    "SepalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm",
+                    "Id",
+                    "PetalWidthCm",
+                    "SepalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+    ],
+    "Clusters": 3
+}

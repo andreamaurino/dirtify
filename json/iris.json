@@ -1,42 +1,25 @@
 {
-    "datasetName": "online_shoppers_intention.csv",
-    "targetVariable": "Revenue",
-    "task":"Classification",
+    "datasetName": "iris.csv",
+    "task": "Clustering",
+    "targetVariable": "",
     "features": [
-        "Administrative",
-        "Administrative_Duration",
-        "Informational",
-        "Informational_Duration",
-        "ProductRelated",
-        "ProductRelated_Duration",
-        "BounceRates",
-        "ExitRates",
-        "PageValues",
-        "SpecialDay",
-        "Month",
-        "OperatingSystems",
-        "Browser",
-        "Region",
-        "TrafficType",
-        "VisitorType",
-        "Weekend",
-        "Revenue"
+        "Id",
+        "SepalLengthCm",
+        "SepalWidthCm",
+        "PetalLengthCm",
+        "PetalWidthCm",
+        "Species"
     ],
     "machineLearningModels": [
-        "lr",
-        "knn",
-        "nb",
-        "svm",
-        "dt",
-        "rbfsvm",
-        "mlp",
-        "ridge",
-        "qda",
-        "ada",
-        "lda",
-        "rf",
-        "et",
-        "xgboost"
+        "K-Means",
+        "DBSCAN",
+        "Hierarchical Clustering",
+        "Gaussian Mixture Model",
+        "Spectral Clustering",
+        "Agglomerative Clustering",
+        "Mean Shift",
+        "Affinity Propagation",
+        "OPTICS"
     ],
     "Experiments": [
         {
@@ -46,23 +29,164 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Administrative"
+                    "Id"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
             }
         },
-        
         {
-            "Errortype": "labels",
+            "Errortype": "duplicate",
             "Strategy": {
-                "affected_features": "Revenue",
+                "affected_features": [
+                    "SepalLengthCm"
+                ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "SepalWidthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "PetalWidthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "Species"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Id"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "SepalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "SepalWidthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "PetalLengthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "PetalWidthCm"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "Species"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -73,10 +197,10 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Administrative"
+                    "Id"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -87,10 +211,10 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Administrative_Duration"
+                    "SepalLengthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -101,10 +225,10 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Informational"
+                    "SepalWidthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -115,10 +239,10 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Informational_Duration"
+                    "PetalLengthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -129,10 +253,10 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated"
+                    "PetalWidthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -143,164 +267,10 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated_Duration"
+                    "Species"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "BounceRates"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "ExitRates"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "PageValues"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "SpecialDay"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Month"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "OperatingSystems"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Browser"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Region"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "TrafficType"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "VisitorType"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Weekend"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -311,10 +281,10 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Administrative"
+                    "Id"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -325,10 +295,10 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Administrative_Duration"
+                    "SepalLengthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -339,10 +309,10 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Informational"
+                    "SepalWidthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -353,10 +323,10 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Informational_Duration"
+                    "PetalLengthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -367,10 +337,10 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated"
+                    "PetalWidthCm"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
@@ -381,164 +351,10 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated_Duration"
+                    "Species"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "BounceRates"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "ExitRates"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "PageValues"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "SpecialDay"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Month"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "OperatingSystems"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Browser"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Region"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "TrafficType"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "VisitorType"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Weekend"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"

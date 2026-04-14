@@ -1,0 +1,134 @@
+{
+    "datasetName": "C:/Users/mauri/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/SouthGermanCreditCorrelated.csv",
+    "targetVariable": "kredit",
+    "task": "classification",
+    "features": [
+        "laufkont",
+        "laufzeit",
+        "moral",
+        "verw",
+        "hoehe",
+        "sparkont",
+        "beszeit",
+        "rate",
+        "famges",
+        "buerge",
+        "wohnzeit",
+        "verm",
+        "alter",
+        "weitkred",
+        "wohn",
+        "bishkred",
+        "beruf",
+        "pers",
+        "telef",
+        "gastarb",
+        "kredit"
+    ],
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "alter",
+                    "wohn",
+                    "hoehe",
+                    "verm",
+                    "laufzeit"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "alter",
+                    "wohn",
+                    "hoehe",
+                    "verm",
+                    "laufzeit"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "beruf",
+                    "telef"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "alter",
+                    "wohn",
+                    "hoehe",
+                    "verm",
+                    "laufzeit"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "label",
+            "Strategy": {
+                "affected_features": [
+                    
+                    "kredit"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}

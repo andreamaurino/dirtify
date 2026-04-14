@@ -1,180 +1,57 @@
 {
-    "datasetName": "satimage_sample3600.csv",
-    "task": "Clustering",
-    "targetVariable": "class",
+    "datasetName": "bank-full.csv",
+    "targetVariable": "y",
     "features": [
-        "Aattr",
-        "Cattr",
-        "Fattr",
-        "C9attr",
-        "F12attr",
-        "A13attr",
-        "B14attr",
-        "A19attr",
-        "F24attr",
-        "F30attr"
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "balance",
+        "housing",
+        "loan",
+        "contact",
+        "day",
+        "month",
+        "duration",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome",
+        "y"
     ],
     "machineLearningModels": [
-        "K-Means",
-        "HDBSCAN",
-        "Gaussian Mixture Model",
-        "BIRCH",
-        "Hierarchical Clustering"
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "gpc",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et",
+        "gbc",
+        "catboost"
     ],
     "Experiments": [
         {
             "Errortype": "standard"
         },
-    
         {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Aattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Cattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Fattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "C9attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "F12attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "A13attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "B14attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "A19attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "F24attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "F30attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-            {
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Aattr"
+                    "age"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -184,11 +61,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Cattr"
+                    "job"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -198,11 +75,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Fattr"
+                    "marital"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -212,11 +89,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "C9attr"
+                    "education"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -226,11 +103,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "F12attr"
+                    "default"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -240,11 +117,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "A13attr"
+                    "balance"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -254,11 +131,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "B14attr"
+                    "housing"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -268,11 +145,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "A19attr"
+                    "loan"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -282,11 +159,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "F24attr"
+                    "contact"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -296,309 +173,11 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "F30attr"
+                    "day"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Aattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Cattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Fattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "C9attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "F12attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "A13attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "B14attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "A19attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "F24attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "F30attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Aattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Cattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Fattr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "C9attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "F12attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"    
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "A13attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "B14attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "A19attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "F24attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "F30attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-         {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Fattr",
-                    "A19attr",
-                    "F12attr",
-                    "Aattr",
-                    "F24attr"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -608,51 +187,93 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "A13attr",
-                    "Cattr",
-                    "F30attr",
-                    "B14attr",
-                    "C9attr"
+                    "month"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
             }
         },
         {
-            "Errortype": "missing",
+            "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Fattr",
-                    "A19attr",
-                    "F12attr",
-                    "Aattr",
-                    "F24attr"
+                    "duration"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
             }
         },
         {
-            "Errortype": "missing",
+            "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "A13attr",
-                    "Cattr",
-                    "F30attr",
-                    "B14attr",
-                    "C9attr"
+                    "campaign"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "pdays"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "previous"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "poutcome"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": "y",
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -662,15 +283,11 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Fattr",
-                    "A19attr",
-                    "F12attr",
-                    "Aattr",
-                    "F24attr"
+                    "age"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -680,15 +297,207 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "A13attr",
-                    "Cattr",
-                    "F30attr",
-                    "B14attr",
-                    "C9attr"
+                    "job"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "marital"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "education"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "default"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "balance"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "housing"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "loan"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "contact"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "day"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "month"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "campaign"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pdays"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "previous"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "poutcome"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -698,15 +507,11 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Fattr",
-                    "A19attr",
-                    "F12attr",
-                    "Aattr",
-                    "F24attr"
+                    "age"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
@@ -716,20 +521,211 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "A13attr",
-                    "Cattr",
-                    "F30attr",
-                    "B14attr",
-                    "C9attr"
+                    "job"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.1,
-                "mode": "extended",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "marital"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "education"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "default"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "balance"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "housing"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "loan"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "contact"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "day"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "month"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "duration"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "campaign"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pdays"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "previous"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "poutcome"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
                 "perturbate_data": {
                     "distribution": "random"
                 }
             }
         }
-    ],
-    "Clusters": 6
+    ]
 }

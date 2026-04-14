@@ -1,16 +1,14 @@
 {
-    "datasetName": "C:/Users/mauri/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/Employee.csv",
-    "targetVariable": "LeaveOrNot",
+    "datasetName": "C:/Users/mauri/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/citrus.csv",
+    "targetVariable": "blue",
     "features": [
-        "Education",
-        "JoiningYear",
-        "City",
-        "PaymentTier",
-        "Age",
-        "Gender",
-        "EverBenched",
-        "ExperienceInCurrentDomain",
-        "LeaveOrNot"
+        "Unnamed: 0",
+        "name",
+        "diameter",
+        "weight",
+        "red",
+        "green",
+        "blue"
     ],
     "machineLearningModels": [
         "lr",
@@ -40,7 +38,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Education"
+                    "Unnamed: 0"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -54,7 +52,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "JoiningYear"
+                    "name"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -68,7 +66,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "City"
+                    "diameter"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -82,7 +80,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "PaymentTier"
+                    "weight"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -96,7 +94,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Age"
+                    "red"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -110,35 +108,7 @@
             "Errortype": "duplicate",
             "Strategy": {
                 "affected_features": [
-                    "Gender"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "EverBenched"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "ExperienceInCurrentDomain"
+                    "green"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -151,7 +121,7 @@
         {
             "Errortype": "labels",
             "Strategy": {
-                "affected_features": "LeaveOrNot",
+                "affected_features": "blue",
                 "selection_criteria": "all",
                 "percentage": 0.2,
                 "mode": "new",
@@ -164,21 +134,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Education"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "JoiningYear"
+                    "Unnamed: 0"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -192,7 +148,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "City"
+                    "name"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -206,7 +162,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "PaymentTier"
+                    "diameter"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -220,7 +176,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Age"
+                    "weight"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -234,7 +190,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Gender"
+                    "red"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -248,21 +204,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "EverBenched"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "ExperienceInCurrentDomain"
+                    "green"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -276,7 +218,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Education"
+                    "Unnamed: 0"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -290,7 +232,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "JoiningYear"
+                    "name"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -304,7 +246,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "City"
+                    "diameter"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -318,7 +260,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "PaymentTier"
+                    "weight"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -332,7 +274,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Age"
+                    "red"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -346,35 +288,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Gender"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "EverBenched"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "ExperienceInCurrentDomain"
+                    "green"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,

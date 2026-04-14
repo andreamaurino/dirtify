@@ -1,26 +1,24 @@
 {
-    "datasetName": "online_shoppers_intention.csv",
-    "targetVariable": "Revenue",
-    "task":"Classification",
+    "datasetName": "bank-full.csv",
+    "targetVariable": "y",
     "features": [
-        "Administrative",
-        "Administrative_Duration",
-        "Informational",
-        "Informational_Duration",
-        "ProductRelated",
-        "ProductRelated_Duration",
-        "BounceRates",
-        "ExitRates",
-        "PageValues",
-        "SpecialDay",
-        "Month",
-        "OperatingSystems",
-        "Browser",
-        "Region",
-        "TrafficType",
-        "VisitorType",
-        "Weekend",
-        "Revenue"
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "balance",
+        "housing",
+        "loan",
+        "contact",
+        "day",
+        "month",
+        "duration",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome",
+        "y"
     ],
     "machineLearningModels": [
         "lr",
@@ -28,39 +26,24 @@
         "nb",
         "svm",
         "dt",
-        "rbfsvm",
         "mlp",
         "ridge",
         "qda",
         "ada",
         "lda",
+        "dummy",
         "rf",
-        "et",
-        "xgboost"
+        "et"
     ],
     "Experiments": [
         {
             "Errortype": "standard"
         },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Administrative"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        
+       
         {
             "Errortype": "labels",
             "Strategy": {
-                "affected_features": "Revenue",
+                "affected_features": "y",
                 "selection_criteria": "all",
                 "percentage": 0.2,
                 "mode": "new",
@@ -73,21 +56,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Administrative"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Administrative_Duration"
+                    "age"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -101,7 +70,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Informational"
+                    "job"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -115,7 +84,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Informational_Duration"
+                    "marital"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -129,7 +98,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated"
+                    "education"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -143,7 +112,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated_Duration"
+                    "default"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -157,7 +126,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "BounceRates"
+                    "balance"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -171,7 +140,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "ExitRates"
+                    "housing"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -185,7 +154,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "PageValues"
+                    "loan"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -199,7 +168,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "SpecialDay"
+                    "contact"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -213,7 +182,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Month"
+                    "day"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -227,7 +196,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "OperatingSystems"
+                    "month"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -241,7 +210,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Browser"
+                    "duration"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -255,7 +224,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Region"
+                    "campaign"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -269,7 +238,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "TrafficType"
+                    "pdays"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -283,7 +252,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "VisitorType"
+                    "previous"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -297,7 +266,7 @@
             "Errortype": "outlier",
             "Strategy": {
                 "affected_features": [
-                    "Weekend"
+                    "poutcome"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -311,7 +280,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Administrative"
+                    "age"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -325,7 +294,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Administrative_Duration"
+                    "job"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -339,7 +308,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Informational"
+                    "marital"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -353,7 +322,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Informational_Duration"
+                    "education"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -367,7 +336,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated"
+                    "default"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -381,7 +350,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "ProductRelated_Duration"
+                    "balance"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -395,7 +364,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "BounceRates"
+                    "housing"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -409,7 +378,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "ExitRates"
+                    "loan"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -423,7 +392,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "PageValues"
+                    "contact"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -437,7 +406,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "SpecialDay"
+                    "day"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -451,7 +420,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Month"
+                    "month"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -465,7 +434,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "OperatingSystems"
+                    "duration"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -479,7 +448,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Browser"
+                    "campaign"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -493,7 +462,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "Region"
+                    "pdays"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -507,7 +476,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "TrafficType"
+                    "previous"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,
@@ -521,21 +490,7 @@
             "Errortype": "noise",
             "Strategy": {
                 "affected_features": [
-                    "VisitorType"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Weekend"
+                    "poutcome"
                 ],
                 "selection_criteria": "all",
                 "percentage": 0.2,

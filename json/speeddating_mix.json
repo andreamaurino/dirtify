@@ -1,0 +1,303 @@
+{
+    "datasetName": "speeddating.csv",
+    "targetVariable": "match",
+    "features": [
+        "has_null",
+        "wave_numeric",
+        "gender",
+        "age_numeric",
+        "age_o_numeric",
+        "d_age-numeric",
+        "d_d_age",
+        "race",
+        "race_o",
+        "samerace",
+        "importance_same_race-numeric",
+        "importance_same_religion-numeric",
+        "d_importance_same_race",
+        "-d_importance_same_religion",
+        "field",
+        "pref_o_attractive-numeric",
+        "pref_o_sincere-numeric",
+        "pref_o_intelligence-numeric",
+        "pref_o_funny-numeric",
+        "pref_o_ambitious-numeric",
+        "pref_o_shared_interests-numeric",
+        "d_pref_o_attractive-",
+        "d_pref_o_sincere-",
+        "d_pref_o_intelligence-",
+        "d_pref_o_funny-",
+        "d_pref_o_ambitious-",
+        "d_pref_o_shared_interests-",
+        "attractive_o-numeric",
+        "sinsere_o-numeric",
+        "intelligence_o-numeric",
+        "funny_o-numeric",
+        "ambitous_o-numeric",
+        "shared_interests_o-numeric",
+        "d_attractive_o-",
+        "d_sinsere_o-",
+        "d_intelligence_o-",
+        "d_funny_o-",
+        "d_ambitous_o-",
+        "d_shared_interests_o-",
+        "attractive_important-numeric",
+        "sincere_important-numeric",
+        "intellicence_important-numeric",
+        "funny_important-numeric",
+        "ambtition_important-numeric",
+        "shared_interests_important-numeric",
+        "d_attractive_important-",
+        "d_sincere_important-",
+        "d_intellicence_important-",
+        "d_funny_important-",
+        "d_ambtition_important-",
+        "d_shared_interests_important-",
+        "attractive-numeric",
+        "sincere-numeric",
+        "intelligence-numeric",
+        "funny-numeric",
+        "ambition-numeric",
+        "d_attractive",
+        "d_sincere-",
+        "d_intelligence-",
+        "d_funny-",
+        "d_ambition",
+        "attractive_partner-numeric",
+        "sincere_partner-numeric",
+        "intelligence_partner-numeric",
+        "funny_partner-numeric",
+        "ambition_partner-numeric",
+        "shared_interests_partner-numeric",
+        "d_attractive_partner-",
+        "d_sincere_partner-",
+        "d_intelligence_partner",
+        "d_funny_partner",
+        "d_ambition_partner",
+        "d_shared_interests_partner",
+        "sports-numeric",
+        "tvsports-numeric",
+        "exercise-numeric",
+        "dining-numeric",
+        "museums-numeric",
+        "art-numeric",
+        "hiking-numeric",
+        "gaming-numeric",
+        "clubbing-numeric",
+        "reading-numeric",
+        "tv-numeric",
+        "theater-numeric",
+        "movies-numeric",
+        "concerts-numeric",
+        "music-numeric",
+        "shopping-numeric",
+        "yoga-numeric",
+        "d_sports",
+        "d_tvsports",
+        "d_exercise",
+        "d_dining",
+        "d_museums",
+        "d_art",
+        "d_hiking",
+        "d_gaming",
+        "d_clubbing",
+        "d_reading",
+        "d_tv",
+        "d_theater",
+        "d_movies",
+        "d_concerts",
+        "d_music",
+        "d_shopping",
+        "d_yoga",
+        "interests_correlate-numeric",
+        "d_interests_correlate",
+        "expected_happy_with_sd_people-numeric",
+        "expected_num_interested_in_me-numeric",
+        "expected_num_matches-numeric",
+        "d_expected_happy_with_sd_people-",
+        "d_expected_num_interested_in_me-",
+        "d_expected_num_matches",
+        "like-numeric",
+        "guess_prob_liked-numeric",
+        "d_like",
+        "d_guess_prob_liked",
+        "met-numeric",
+        "decision",
+        "decision_o",
+        "match"
+    ],
+    "machineLearningModels": [
+       "svm",
+        "dt",
+        "et",
+        "xgboost"
+
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wave_numeric",
+                    "gaming-numeric",
+                    "museums-numeric",
+                    "sports-numeric",
+                    "ambition-numeric",
+                    "shopping-numeric",
+                    "movies-numeric",
+                    "hiking-numeric",
+                    "theater-numeric",
+                    "like-numeric",
+                    "tv-numeric",
+                    "intelligence-numeric",
+                    "yoga-numeric",
+                    "concerts-numeric",
+                    "attractive-numeric",
+                    "funny-numeric",
+                    "art-numeric",
+                    "tvsports-numeric",
+                    "music-numeric",
+                    "clubbing-numeric",
+                    "exercise-numeric",
+                    "dining-numeric",
+                    "sincere-numeric",
+                    "reading-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "race",
+                    "funny-numeric",
+                    "field"
+               
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wave_numeric",
+                    "gaming-numeric",
+                    "museums-numeric",
+                    "sports-numeric",
+                    "ambition-numeric",
+                    "shopping-numeric",
+                    "movies-numeric",
+                    "hiking-numeric",
+                    "theater-numeric",
+                    "like-numeric",
+                    "tv-numeric",
+                    "intelligence-numeric",
+                    "yoga-numeric",
+                    "concerts-numeric",
+                    "attractive-numeric",
+                    "funny-numeric",
+                    "art-numeric",
+                    "tvsports-numeric",
+                    "music-numeric",
+                    "clubbing-numeric",
+                    "exercise-numeric",
+                    "dining-numeric",
+                    "sincere-numeric",
+                    "reading-numeric"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "race",
+                    "funny-numeric",
+                    "field"
+                   
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wave_numeric",
+                    "gaming-numeric",
+                    "museums-numeric",
+                    "sports-numeric",
+                    "ambition-numeric",
+                    "shopping-numeric",
+                    "movies-numeric",
+                    "hiking-numeric",
+                    "theater-numeric",
+                    "like-numeric",
+                    "tv-numeric",
+                    "intelligence-numeric",
+                    "yoga-numeric",
+                    "concerts-numeric",
+                    "attractive-numeric",
+                    "funny-numeric",
+                    "art-numeric",
+                    "tvsports-numeric",
+                    "music-numeric",
+                    "clubbing-numeric",
+                    "exercise-numeric",
+                    "dining-numeric",
+                    "sincere-numeric",
+                    "reading-numeric"
+
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "race",
+                    "funny-numeric",
+                    "field"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.2,
+                "mode": "new",
+                "perturbate_data": {
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}
