@@ -15,7 +15,7 @@ from esp_curve_clustering import cluster_by_sign, plot_clusters_by_sign, print_s
 
 
 # ============================================================
-# 1) Estrazione curve + AECP (robustness_index) e salvataggio JSON
+# 1) Estrazione curve + AEPC (robustness_index) e salvataggio JSON
 # ============================================================
 def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
     """Estrae le informazioni di robustezza e le salva in un file JSON."""
@@ -53,10 +53,12 @@ def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
             y = combined[metric].values.astype(float)
             baseline = float(y[0])
 
-            # AECP in percentuale (soglia operativa: |AECP| > 5.0)
+            # AEPC in percentuale (soglia operativa: |AEPC| > 5.0)
             area_baseline_total = baseline * (x.max() - x.min()) if x.max() != x.min() else 1.0
             area_degradation = np.trapz(y - baseline, x)
-            robustness_index = (area_degradation / area_baseline_total) * 100.0
+            if abs(area_baseline_total) < 1e-6:
+                    continue  # scenario escluso: p0 ≈ 0
+            robustness_index = (area_degradation / abs(area_baseline_total)) * 100.0
 
             # EPC
             try:
@@ -188,7 +190,7 @@ def extract_vectors_from_json(json_path):
     for name, group in df.groupby(group_cols):
         scenario_key = f"{name[3]} | {name[2]} | {name[1]}"
 
-        AECP_vector = group['robustness_index'].values.astype(float)
+        AEPC_vector = group['robustness_index'].values.astype(float)
         epc_vector  = group['epc'].values.astype(float)
 
         # --- FIX: filtra run con y di lunghezza diversa dalla moda ---
@@ -213,7 +215,7 @@ def extract_vectors_from_json(json_path):
                   f"dropped {n_dropped} run con lunghezza y != {expected_len}")
 
         y_filtered    = [y for y, ok in zip(y_list, mask) if ok]
-        AECP_vector   = AECP_vector[mask]
+        AEPC_vector   = AEPC_vector[mask]
         epc_vector    = epc_vector[mask]
         # -------------------------------------------------------------
 
@@ -229,7 +231,7 @@ def extract_vectors_from_json(json_path):
                 'metric':    name[4]
             },
             'x_points':    x_points,
-            'AECP_vector': AECP_vector,
+            'AEPC_vector': AEPC_vector,
             'epc_vector':  epc_vector,
             'y_matrix':    y_matrix,
             'n_runs':      int(mask.sum())
@@ -247,7 +249,7 @@ def plot_hybrid_robustness(
     x_points,
     y_matrix,
     ax,
-    AECP,
+    AEPC,
     EPC,
     dataset_name,
     performance_metric,
@@ -432,14 +434,14 @@ def plot_hybrid_robustness(
 
     ax.set_title(
         f"{dataset_name}\nSignificance Analysis: {scenario_name}\n"
-        f"AECP: {AECP:.2f}% - EPC: {EPC:.2f}"
+        f"AEPC: {AEPC:.2f}% - EPC: {EPC:.2f}"
     )
     ax.set_xlabel("Error Percentage (%)")
     ax.set_ylabel(performance_metric + " Value")
 
     ax.set_title(
         f"{dataset_name}\nSignificance Analysis: {scenario_name}\n"
-        f"AEPC: {AECP:.2f}% - EPC: {EPC:.2f}",
+        f"AEPC: {AEPC:.2f}% - EPC: {EPC:.2f}",
         fontsize=13
     )
     ax.set_xlabel("Error Percentage (%)", fontsize=12)
@@ -460,11 +462,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='ESP Builder — Sensitivity Analysis')
     parser.add_argument('--dataset',        required=True,   help='Nome del dataset (es. optdigits.csv)')
     parser.add_argument('--metric',         default='AMI',   help='Metrica (default: AMI)')
-    parser.add_argument('--aecp', type=float,      default=0.05, help='Soglia |AECP| (default: 0.05)')
+    parser.add_argument('--aepc', type=float,      default=0.05, help='Soglia |AEPC| (default: 0.05)')
     args = parser.parse_args()
     dataset_name = args.dataset
     metric       = args.metric
-    AECP_ABS_THRESHOLD = args.aecp
+    AEPC_ABS_THRESHOLD = args.aepc
    
     filename = 'experiments_' + dataset_name
     percorso_file = './experiments/' + filename
@@ -493,17 +495,17 @@ if __name__ == "__main__":
         model=data["info"]["modelName"]
         feature=data["info"]["feature"]
         error=data["info"]["errorType"]
-        AECP_vec = np.asarray(data['AECP_vector'], dtype=float)
+        AEPC_vec = np.asarray(data['AEPC_vector'], dtype=float)
         epc_vec = np.asarray(data['epc_vector'], dtype=float)
         epc_vec = epc_vec[~np.isnan(epc_vec)]
 
         if "Labels" in scenario_name:
             print(f"Scenario: {scenario_name}  EPC values: {epc_vec}")
 
-        if len(AECP_vec) < 2:
+        if len(AEPC_vec) < 2:
             continue
 
-        AECP_mean, AECP_low, AECP_high, AECP_p = get_confidence_interval_wilcoxon(AECP_vec)
+        AEPC_mean, AEPC_low, AEPC_high, AEPC_p = get_confidence_interval_wilcoxon(AEPC_vec)
         EPC_mean, EPC_low, EPC_high, EPC_p = get_confidence_interval_wilcoxon(epc_vec)
 
         all_stats.append({
@@ -512,10 +514,10 @@ if __name__ == "__main__":
             'error': error,
             'features':feature,
             'data': data,
-            'AECP_mean': AECP_mean,
-            'AECP_low': AECP_low,
-            'AECP_high': AECP_high,
-            'AECP_p': AECP_p,
+            'AEPC_mean': AEPC_mean,
+            'AEPC_low': AEPC_low,
+            'AEPC_high': AEPC_high,
+            'AEPC_p': AEPC_p,
             'EPC_mean': EPC_mean,
             'EPC_low': EPC_low,
             'EPC_high': EPC_high,
@@ -525,34 +527,34 @@ if __name__ == "__main__":
     print(f"\nScenari totali valutati: {len(all_stats)}")
 
     # -------------------------------------------------------
-    # FASE 2: BY-FDR su p-value AECP
+    # FASE 2: BY-FDR su p-value AEPC
     # Controlla FDR sotto dipendenza arbitraria tra test
     # (più conservativo di BH ma corretto per strutture di dipendenza
     # ignote, come nel nostro caso: stessi dataset e modelli condivisi)
     # -------------------------------------------------------
-    AECP_pvals = np.array([s['AECP_p'] for s in all_stats])
-    AECP_pvals = np.nan_to_num(AECP_pvals, nan=1.0)
+    AEPC_pvals = np.array([s['AEPC_p'] for s in all_stats])
+    AEPC_pvals = np.nan_to_num(AEPC_pvals, nan=1.0)
 
     reject_fdr, pvals_corrected, _, _ = multipletests(
-        AECP_pvals, alpha=0.05, method='fdr_by'
+        AEPC_pvals, alpha=0.05, method='fdr_by'
     )
 
     n_sig_fdr = int(np.sum(reject_fdr))
     print(f"Scenari significativi dopo BY-FDR (alpha=0.05): {n_sig_fdr}")
 
     # -------------------------------------------------------
-    # FASE 3: filtro pratico su |AECP_mean| > soglia
+    # FASE 3: filtro pratico su |AEPC_mean| > soglia
     # -------------------------------------------------------
     rows = []
     significant_scenarios = []
 
     for i, s in enumerate(all_stats):
-        # criterio 1: significativo dopo BY-FDR su AECP
+        # criterio 1: significativo dopo BY-FDR su AEPC
         if not reject_fdr[i]:
             continue
         
-        # criterio 2: rilevanza pratica |AECP_mean| > 5%
-        if abs(s['AECP_mean']) <= AECP_ABS_THRESHOLD:
+        # criterio 2: rilevanza pratica |AEPC_mean| > 5%
+        if abs(s['AEPC_mean']) <= AEPC_ABS_THRESHOLD:
             continue
 
         rows.append({
@@ -561,10 +563,10 @@ if __name__ == "__main__":
             'model':s['model'],
             'error': s['error'],
             'features':s['features'],
-            "AECP Mean (%)": f"{s['AECP_mean']:.4f}",
-            "AECP CI 95%": f"[{s['AECP_low']:.4f}, {s['AECP_high']:.4f}]",
-            "AECP p raw": f"{s['AECP_p']:.4g}",
-            "AECP p BY": f"{pvals_corrected[i]:.4g}",
+            "AEPC Mean (%)": f"{s['AEPC_mean']:.4f}",
+            "AEPC CI 95%": f"[{s['AEPC_low']:.4f}, {s['AEPC_high']:.4f}]",
+            "AEPC p raw": f"{s['AEPC_p']:.4g}",
+            "AEPC p BY": f"{pvals_corrected[i]:.4g}",
             "EPC Mean": f"{s['EPC_mean']:.4f}",
             "EPC CI 95%": f"[{s['EPC_low']:.4f}, {s['EPC_high']:.4f}]",
         })
@@ -576,10 +578,10 @@ if __name__ == "__main__":
             'features':s['features'],
             "x_points": s['data']['x_points'],
             "y_matrix": s['data']['y_matrix'],
-            "AECP_mean": s['AECP_mean'],
-            "AECP_ci": (s['AECP_low'], s['AECP_high']),
-            "AECP_p_raw": s['AECP_p'],
-            "AECP_p_by": pvals_corrected[i],
+            "AEPC_mean": s['AEPC_mean'],
+            "AEPC_ci": (s['AEPC_low'], s['AEPC_high']),
+            "AEPC_p_raw": s['AEPC_p'],
+            "AEPC_p_by": pvals_corrected[i],
             "EPC_mean": s['EPC_mean'],
             "EPC_ci": (s['EPC_low'], s['EPC_high']),
         })
@@ -592,7 +594,7 @@ if __name__ == "__main__":
     else:
         df_sig = pd.DataFrame(rows).sort_values(["Scenario"]).reset_index(drop=True)
         print("\n" + "=" * 140)
-        print(f"{'SCENARI SIGNIFICATIVI (BY-FDR + soglia pratica |AECP| > 5%)':^140}")
+        print(f"{'SCENARI SIGNIFICATIVI (BY-FDR + soglia pratica |AEPC| > 5%)':^140}")
         print("=" * 140)
         df_sig=df_sig.drop(columns=['Scenario'])
         print(df_sig.to_string(index=False))
@@ -600,7 +602,7 @@ if __name__ == "__main__":
         print("=" * 140)
         print(f"Scenari significativi finali: {len(significant_scenarios)}")
 
-        # significant_scenarios è la tua lista con AECP_mean già calcolato
+        # significant_scenarios è la tua lista con AEPC_mean già calcolato
 
         results = cluster_by_sign(
             significant_scenarios,
@@ -614,43 +616,42 @@ if __name__ == "__main__":
         #results = cluster_esp_curves(significant_scenarios, auto_k=True, k_range=range(2,7))
         #print_cluster_summary(results)
         #plot_clusters_full(results, output_path=dataset_name+"_esp_clusters.png")
-    #for sc in significant_scenarios:
-    #    fig = plt.figure(figsize=(14, 7))
-    #    ax = plt.gca()
+    for sc in significant_scenarios:
+        fig = plt.figure(figsize=(14, 7))
+        ax = plt.gca()
 
-   #     plot_hybrid_robustness(
-   #         scenario_name=sc["scenario_name"],
-   #         x_points=sc["x_points"],
-   #         y_matrix=sc["y_matrix"],
-   #         ax=ax,
-   #        AECP=sc["AECP_mean"],
-   #         EPC=sc["EPC_mean"],
-   #         dataset_name=dataset_name,
-   #         performance_metric=metric,
-   #      text_fontsize=13,
-   #         y_clip=None,   # rimuove il taglio fisso
-   #         target_span_frac=0.20,
-   #         pad_frac=0.10,
-   #     )
+        plot_hybrid_robustness(
+            scenario_name=sc["scenario_name"],
+            x_points=sc["x_points"],
+            y_matrix=sc["y_matrix"],
+            ax=ax,
+           AEPC=sc["AEPC_mean"],
+            EPC=sc["EPC_mean"],
+            dataset_name=dataset_name,
+            performance_metric=metric,
+         text_fontsize=13,
+            y_clip=None,   # rimuove il taglio fisso
+            target_span_frac=0.20,
+            pad_frac=0.10,
+        )
+        txt = (
+            f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
+            f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
+            f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]"
+        )
+        ax.text(
+            0.01, 0.01, txt,
+            transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=11,
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
+                    alpha=0.85, edgecolor="none")
+        )
 
-    #    txt = (
-    #        f"AECP mean {sc['AECP_mean']:.3f}%  CI95% [{sc['AECP_ci'][0]:.3f}, {sc['AECP_ci'][1]:.3f}]\n"
-    #        f"AECP p-raw {sc['AECP_p_raw']:.4g}  p-BY {sc['AECP_p_by']:.4g}\n"
-    #        f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]"
-    #    )
-    #    ax.text(
-    #        0.01, 0.01, txt,
-    #        transform=ax.transAxes,
-    #        ha="left", va="bottom", fontsize=11,
-    #        bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
-    #                alpha=0.85, edgecolor="none")
-    #    )
-
-    #    plt.tight_layout()
+        plt.tight_layout()
         
         # sanitizza il nome file rimuovendo caratteri non validi
     #    safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])
     #    safe_name = safe_name.replace(' ', '_')
         #plt.savefig(f"{safe_name}.png", dpi=300, bbox_inches='tight') per salvare le immagini
-    #    plt.show()
-    #   plt.close()
+        plt.show()
+        plt.close()

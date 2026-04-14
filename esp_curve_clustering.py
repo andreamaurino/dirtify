@@ -201,7 +201,7 @@ def cluster_esp_curves(significant_scenarios: list,
             'modelName':     s['model'],
             'errorType':     s['error'],
             'feature':       s['features'],
-            'AECP_mean':     s['AECP_mean'],
+            'AEPC_mean':     s['AEPC_mean'],
         })
 
     total = sum(len(v) for v in cluster_info.values())
@@ -336,12 +336,12 @@ def print_cluster_summary(results: dict):
         slopes     = np.diff(mean_curve)
         models = [i['modelName'] for i in info_list]
         errors = [i['errorType'] for i in info_list]
-        aecp   = [i['AECP_mean'] for i in info_list]
+        aecp   = [i['AEPC_mean'] for i in info_list]
 
         print(f"\nCluster {c}  (n={len(info_list)})")
         print(f"  Curva media : {np.round(mean_curve, 4)}")
         print(f"  Slope       : {np.round(slopes, 4)}")
-        print(f"  AECP medio  : {np.mean(aecp):.2f}%")
+        print(f"  AEPC medio  : {np.mean(aecp):.2f}%")
         print(f"  Modelli     : { {m: models.count(m) for m in set(models)} }")
         print(f"  Errori      : { {e: errors.count(e) for e in set(errors)} }")
         print(f"  Forma       : {_shape_label(slopes)}")
@@ -357,11 +357,11 @@ def cluster_by_sign(significant_scenarios: list,
                     k_range_neg: range = range(2, 6),
                     random_state: int = 42) -> dict:
 
-    pos = [s for s in significant_scenarios if s['AECP_mean'] > 0]
-    neg = [s for s in significant_scenarios if s['AECP_mean'] <= 0]
+    pos = [s for s in significant_scenarios if s['AEPC_mean'] > 0]
+    neg = [s for s in significant_scenarios if s['AEPC_mean'] <= 0]
 
-    print(f"Scenari positivi (AECP>0) : {len(pos)}")
-    print(f"Scenari negativi (AECP<=0): {len(neg)}")
+    print(f"Scenari positivi (AEPC>0) : {len(pos)}")
+    print(f"Scenari negativi (AEPC<=0): {len(neg)}")
 
     res_pos, res_neg = None, None
 
@@ -437,7 +437,7 @@ def plot_clusters_by_sign(results_by_sign: dict,
 
 
 def print_summary_by_sign(results_by_sign: dict):
-    for sign, key in [("POSITIVI (AECP>0)", 'positive'),
+    for sign, key in [("POSITIVI (AEPC>0)", 'positive'),
                       ("NEGATIVI (AEPC<=0)", 'negative')]:
         res = results_by_sign[key]
         if res is None:
@@ -453,11 +453,11 @@ def print_summary_by_sign(results_by_sign: dict):
             slopes     = np.diff(mean_curve)
             models = [i['modelName'] for i in info_list]
             errors = [i['errorType'] for i in info_list]
-            aecp   = [i['AECP_mean'] for i in info_list]
+            aecp   = [i['AEPC_mean'] for i in info_list]
             print(f"\n  Cluster {c}  (n={len(info_list)})")
             print(f"  Curva media : {np.round(mean_curve, 4)}")
             print(f"  Slope       : {np.round(slopes, 4)}")
-            print(f"  AECP medio  : {np.mean(aecp):.2f}%")
+            print(f"  AEPC medio  : {np.mean(aecp):.2f}%")
             print(f"  Modelli     : { {m: models.count(m) for m in set(models)} }")
             print(f"  Errori      : { {e: errors.count(e) for e in set(errors)} }")
             print(f"  Forma       : {_shape_label(slopes)}")
