@@ -284,9 +284,9 @@ class InitWindow(QWidget):
               ML = [
                   "Linear Regression", "Ridge Regression", "Lasso Regression", 
                   "Elastic Net", "Decision Tree Regressor", "Random Forest Regressor", 
-                  "Support Vector Regression", "K-Nearest Neighbors Regressor", 
+                   "K-Nearest Neighbors Regressor", 
                   "Gradient Boosting Regressor", "XGBoost Regressor", 
-                  "LightGBM Regressor", "CatBoost Regressor"
+                  "LightGBM Regressor", "CatBoost Regressor", "Support Vector Regression",
               ]
           else:
               ML = [] # Caso di fallback
@@ -1504,13 +1504,16 @@ class CustomRole(QWidget):
             "Elastic Net": "en",
             "Decision Tree Regressor": "dt",
             "Random Forest Regressor": "rf",
-            "Support Vector Regression": "svm",
-            "K-Nearest Neighbors Regressor": "knn",
             "Gradient Boosting Regressor": "gbr",
             "XGBoost Regressor": "xgboost",
             "LightGBM Regressor": "lightgbm",
-            "CatBoost Regressor": "catboost"
+            "CatBoost Regressor": "catboost",
+            "Support Vector Regression": "svm",
+            "K-Nearest Neighbors Regressor": "knn",
+            
         }
+
+
 
         # Estrae il valore del task (usa 1 come default di sicurezza se la chiave manca)
         task_value = grouped_columns.get("task", 1)

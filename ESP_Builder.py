@@ -14,13 +14,17 @@ import argparse
 from esp_curve_clustering import cluster_by_sign, plot_clusters_by_sign, print_summary_by_sign
 
 
-# ============================================================
-# 1) Estrazione curve + AEPC (robustness_index) e salvataggio JSON
-# ============================================================
-def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
+def analyze_robustness(df, metric, epc_df, dataset_name, json_path, target_std_D0=None):
     """Estrae le informazioni di robustezza e le salva in un file JSON."""
     df = df.copy()
     df[metric] = pd.to_numeric(df[metric], errors='coerce')
+
+    # trasformazione NRMSE → P_reg = e^(-RMSE/std(y_D0))
+    is_rmse = metric == 'NRMSE' and target_std_D0 is not None and target_std_D0 > 0
+    def transform(val): 
+        if is_rmse:
+            return np.exp(-val / target_std_D0)
+        return val
 
     baseline_df = df[df['percentage'] == 0].copy()
     test_df = df[df['percentage'] > 0].copy()
@@ -33,17 +37,24 @@ def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
             b_val_series = baseline_df[baseline_df['modelName'] == model][metric].dropna()
             if b_val_series.empty:
                 continue
-            b_val = float(b_val_series.values[0])
-            MIN_BASELINE = 0.05  # soglia minima di qualità al baseline
+            b_val = transform(float(b_val_series.values[0]))
+
+            MIN_BASELINE = 0.05
             if abs(b_val) < MIN_BASELINE:
                 print(f"  [SKIP] {model} baseline={b_val:.4f} < {MIN_BASELINE}, saltato")
-                continue    
+                continue
 
             current_test = group_data[group_data['modelName'] == model].copy().dropna(subset=[metric])
             current_test = current_test.groupby('percentage')[metric].mean().reset_index()
+
+            # applica trasformazione ai valori della curva
+            current_test[metric] = current_test[metric].apply(transform)
+
             if len(current_test) < 2:
-                    print(f"  [SKIP] run={run_id} model={model} feat={feat} err={err}: "f"solo {len(current_test)} punti validi per {metric}, saltato")
-                    continue
+                print(f"  [SKIP] run={run_id} model={model} feat={feat} err={err}: "
+                      f"solo {len(current_test)} punti validi per {metric}, saltato")
+                continue
+
             combined = pd.concat([
                 pd.DataFrame({'percentage': [0.0], metric: [b_val]}),
                 current_test[['percentage', metric]]
@@ -53,14 +64,12 @@ def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
             y = combined[metric].values.astype(float)
             baseline = float(y[0])
 
-            # AEPC in percentuale (soglia operativa: |AEPC| > 5.0)
             area_baseline_total = baseline * (x.max() - x.min()) if x.max() != x.min() else 1.0
             area_degradation = np.trapz(y - baseline, x)
             if abs(area_baseline_total) < 1e-6:
-                    continue  # scenario escluso: p0 ≈ 0
+                continue
             robustness_index = (area_degradation / abs(area_baseline_total)) * 100.0
 
-            # EPC
             try:
                 myepc = epc_df[
                     (epc_df['feature'] == feat) &
@@ -79,6 +88,7 @@ def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
                 'errorType': err,
                 'modelName': model,
                 'metric': metric,
+                'metric_transformed': is_rmse,  # flag utile per il plotting
                 'x': x.tolist(),
                 'y': y.tolist(),
                 'baseline': baseline,
@@ -88,12 +98,11 @@ def analyze_robustness(df, metric, epc_df, dataset_name,json_path):
             curve_data_list.append(curve_entry)
 
     os.makedirs('./CurveData', exist_ok=True)
-    json_filename = json_path
-    with open(json_filename, 'w') as f:
+    with open(json_path, 'w') as f:
         json.dump(curve_data_list, f, indent=4)
 
-    print(f"Dati salvati in: {json_filename}")
-    return json_filename
+    print(f"Dati salvati in: {json_path}")
+    return json_path
 
 
 # ============================================================
@@ -230,12 +239,14 @@ def extract_vectors_from_json(json_path):
                 'modelName': name[3],
                 'metric':    name[4]
             },
-            'x_points':    x_points,
-            'AEPC_vector': AEPC_vector,
-            'epc_vector':  epc_vector,
-            'y_matrix':    y_matrix,
-            'n_runs':      int(mask.sum())
+            'x_points':         x_points,
+            'AEPC_vector':      AEPC_vector,
+            'epc_vector':       epc_vector,
+            'y_matrix':         y_matrix,
+            'n_runs':           int(mask.sum()),
+            'metric_transformed': bool(group['metric_transformed'].iloc[0]) if 'metric_transformed' in group.columns else False,  # <-- aggiunto
         }
+
 
     return scenarios
 
@@ -463,16 +474,31 @@ if __name__ == "__main__":
     parser.add_argument('--dataset',        required=True,   help='Nome del dataset (es. optdigits.csv)')
     parser.add_argument('--metric',         default='AMI',   help='Metrica (default: AMI)')
     parser.add_argument('--aepc', type=float,      default=0.05, help='Soglia |AEPC| (default: 0.05)')
+    parser.add_argument('--target',         default=None,    help='Nome colonna target (richiesto se metric=RMSE)')
     args = parser.parse_args()
+
     dataset_name = args.dataset
     metric       = args.metric
     AEPC_ABS_THRESHOLD = args.aepc
-   
+
     filename = 'experiments_' + dataset_name
     percorso_file = './experiments/' + filename
 
     df_caricato = pd.read_csv(percorso_file)
 
+    # calcola target_std_D0 solo se metric=RMSE
+    target_std_D0 = None
+    if metric == 'RMSE':
+        d0_path = './datasets/' + dataset_name
+        d0_df = pd.read_csv(d0_path)
+        if args.target is None:
+            target_col = d0_df.columns[-1]
+        print(f"  [INFO] --target non specificato, uso ultima colonna: '{target_col}'")
+    else:
+        target_col = args.target
+    
+    target_std_D0 = d0_df[target_col].std()
+        
     # EPC + JSON curve
     clean_name = dataset_name.replace('.csv', '')
     file_path = f"./CurveData/{clean_name}_{metric}_curve.json"
@@ -481,8 +507,10 @@ if __name__ == "__main__":
         json_path = file_path
     else:
         epc_df = epc_calcolus.start(dataset_name, filename, metric)
-        json_path = analyze_robustness(df_caricato, metric, epc_df, dataset_name,file_path)
-
+        json_path = analyze_robustness(
+            df_caricato, metric, epc_df, dataset_name, file_path,
+            target_std_D0=target_std_D0
+        )
     results_dict = extract_vectors_from_json(json_path)
 
     # -------------------------------------------------------
@@ -573,9 +601,9 @@ if __name__ == "__main__":
 
         significant_scenarios.append({
             "scenario_name": s['scenario_name'],
-             'model':s['model'],
+            'model': s['model'],
             'error': s['error'],
-            'features':s['features'],
+            'features': s['features'],
             "x_points": s['data']['x_points'],
             "y_matrix": s['data']['y_matrix'],
             "AEPC_mean": s['AEPC_mean'],
@@ -584,6 +612,7 @@ if __name__ == "__main__":
             "AEPC_p_by": pvals_corrected[i],
             "EPC_mean": s['EPC_mean'],
             "EPC_ci": (s['EPC_low'], s['EPC_high']),
+            "metric_transformed": s['data'].get("metric_transformed", False),  # <-- aggiunto
         })
 
     # -------------------------------------------------------
@@ -612,38 +641,45 @@ if __name__ == "__main__":
         print_summary_by_sign(results)
         plot_clusters_by_sign(results, output_path=dataset_name+"_esp_clusters.png",metric=metric)        
     # uncomment the block below to plot each significant scenario with the hybrid plot    
-    # for sc in significant_scenarios:
-    #     fig = plt.figure(figsize=(14, 7))
-    #     ax = plt.gca()
+    for sc in significant_scenarios:
+        fig = plt.figure(figsize=(14, 7))
+        ax = plt.gca()
 
-    #     plot_hybrid_robustness(
-    #         scenario_name=sc["scenario_name"],
-    #         x_points=sc["x_points"],
-    #         y_matrix=sc["y_matrix"],
-    #         ax=ax,
-    #        AEPC=sc["AEPC_mean"],
-    #         EPC=sc["EPC_mean"],
-    #         dataset_name=dataset_name,
-    #         performance_metric=metric,
-    #      text_fontsize=13,
-    #         y_clip=None,   # rimuove il taglio fisso
-    #         target_span_frac=0.20,
-    #         pad_frac=0.10,
-    #     )
-    #     txt = (
-    #         f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
-    #         f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
-    #         f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]"
-    #     )
-    #     ax.text(
-    #         0.01, 0.01, txt,
-    #         transform=ax.transAxes,
-    #         ha="left", va="bottom", fontsize=11,
-    #         bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
-    #                 alpha=0.85, edgecolor="none")
-    #     )
+        # etichetta asse y in funzione della trasformazione
+        is_transformed = sc.get("metric_transformed", False)
+        y_label = r"$e^{-RMSE/\sigma_{y_0}}$" if is_transformed else metric
 
-    #     plt.tight_layout()
+        plot_hybrid_robustness(
+            scenario_name=sc["scenario_name"],
+            x_points=sc["x_points"],
+            y_matrix=sc["y_matrix"],
+            ax=ax,
+            AEPC=sc["AEPC_mean"],
+            EPC=sc["EPC_mean"],
+            dataset_name=dataset_name,
+            performance_metric=y_label,  # <-- etichetta corretta
+            text_fontsize=13,
+            y_clip=None,
+            target_span_frac=0.20,
+            pad_frac=0.10,
+        )
+
+        metric_label = y_label
+        txt = (
+            f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
+            f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
+            f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]\n"
+            + (f"metric: {metric_label}" if is_transformed else "")
+        )
+        ax.text(
+            0.01, 0.01, txt,
+            transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=11,
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
+                    alpha=0.85, edgecolor="none")
+        )
+
+        plt.tight_layout()
         
         # to save the scenario name as a safe filename, we can replace or remove characters that are not allowed in filenames
     #    safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])

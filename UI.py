@@ -680,8 +680,8 @@ def _run_single(args):
         '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
         '  percentage DOUBLE, feature VARCHAR, modelName VARCHAR, '
         '  Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE, '
-        '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL)'
-    )
+        '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL, RMSE DOUBLE NULL, MAE DOUBLE NULL, R2 DOUBLE NULL, MSE DOUBLE NULL)'
+    )                                                           
 
     already_done = set()  # set di (errorType, feature, percentage, modelName) già completati
     if os.path.exists(checkpoint_path):
@@ -795,8 +795,8 @@ def start(json_name, directory=""):
     slurm_cpus = os.environ.get('SLURM_CPUS_PER_TASK')  # None su Windows
     n_workers = max(1, int(slurm_cpus) - 1) if slurm_cpus else max(1, multiprocessing.cpu_count() - 1)  # ← esegue questo
 
-    print("start experiments")
-    n_runs = 20
+    n_runs = 2
+    print("start experiments with "+str(n_runs)+" runs")
 
     file_path = json_name if directory == "" else os.path.join(directory, json_name)
     with open(file_path, 'r') as file:

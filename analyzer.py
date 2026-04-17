@@ -35,6 +35,12 @@ from sklearn.cluster import (
     AffinityPropagation,
     
 )
+from pycaret.regression import setup, compare_models, predict_model
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import numpy as np
+from hdbscan import HDBSCAN
+
+
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import pairwise_distances_argmin
 
@@ -250,9 +256,41 @@ def _classification_metrics(stg: RunStrategy):
                     ])
 
 def _regression_metrics(stg: RunStrategy):
-        print(f"Task {stg.task} not supported.")
 
-from hdbscan import HDBSCAN
+    stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
+
+    s = setup(stg.train_df, target=stg.target_variable, session_id=123)
+    models = compare_models(include=stg.models, n_select=20)
+    if not isinstance(models, list):
+        models = [models]
+
+    for m in models:
+        predictions = predict_model(m, data=stg.test_df)
+        y_true = predictions[stg.target_variable]
+        y_pred = predictions['prediction_label']
+        model_name = m.__class__.__name__
+
+        rmse = float(round(np.sqrt(mean_squared_error(y_true, y_pred)), 4))
+        mae  = float(round(mean_absolute_error(y_true, y_pred), 4))
+        r2   = float(round(r2_score(y_true, y_pred), 4))
+        mse  = float(round(mean_squared_error(y_true, y_pred), 4))
+
+        stg.con.execute("""
+            INSERT INTO experiments
+            VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?, ?, ?, ?)
+            """, [
+            stg.run,
+            stg.dataset_name,
+            str(stg.EType),
+            stg.percentage,
+            stg.feature,
+            model_name,
+            rmse,
+            mae,
+            r2,
+            mse
+        ])
+
 
 def _fresh_model(model_name: str, n_clusters: int):
     return {
