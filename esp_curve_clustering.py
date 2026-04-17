@@ -230,7 +230,22 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
     mean_curve = results['mean_curves'][c]
     scenarios  = results['scenarios']
     labels     = results['labels']
+    # Aggiungi questo dizionario all'inizio del file o dentro _draw_cluster
+    MODEL_ABBREV = {
+        'Gaussian Mixture Model': 'GM',
+        'Hierarchical Clustering': 'HC',
+        'K-Means': 'KM',
+        'HDBSCAN': 'HD',
+        'BIRCH': 'BI',
+    }
 
+    ERROR_ABBREV = {
+        'duplicate': 'Dup',
+        'missing': 'Mis',
+        'outlier': 'Out',
+        'noise': 'Noi',
+        'label': 'Label',
+    }
     for i, l in enumerate(labels):
         if l != c:
             continue
@@ -250,24 +265,27 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
         ax.axhline(mean_curve[0], color='gray', linestyle='--',
                    linewidth=0.8, alpha=0.5)
 
-    models = [i['modelName'] for i in info_list]
-    errors = [i['errorType'] for i in info_list]
+    models = [MODEL_ABBREV.get(i['modelName'], i['modelName']) 
+          for i in info_list]
+    errors = [ERROR_ABBREV.get(i['errorType'], i['errorType']) 
+            for i in info_list]
     mc = {m: models.count(m) for m in set(models)}
     ec = {e: errors.count(e) for e in set(errors)}
-
+    
     prefix   = f"{sign_label} — " if sign_label else ""
     subtitle = (
         f"n={len(info_list)}\n"
         f"{', '.join(f'{m}({n})' for m,n in sorted(mc.items()))}\n"
         f"{', '.join(f'{e}({n})' for e,n in sorted(ec.items()))}"
     )
-    ax.set_title(f"{prefix}Cluster {c}\n{subtitle}", fontsize=7.5)
-    ax.set_xlabel("Error rate (%)")
-    ax.set_xticks(x)
-    ax.grid(True, alpha=0.3)
+    ax.set_title(f"{prefix}Cluster {c}\n{subtitle}", 
+                 fontsize=24)
+    ax.set_xlabel("Error rate (%)", fontsize=10)
+    ax.tick_params(axis='both', labelsize=10)
     ax.text(0.98, 0.02, f"sil={results['silhouette']:.3f}",
-            transform=ax.transAxes, fontsize=7,
-            ha='right', va='bottom', color='gray')
+            transform=ax.transAxes, fontsize=9,
+            ha='right', va='bottom', color='black')
+
 
 
 def plot_clusters_full(results: dict,
@@ -400,7 +418,7 @@ def plot_clusters_by_sign(results_by_sign: dict,
     k_neg   = res_neg['k'] if res_neg else 0
     n_cols  = max(k_pos, k_neg, 1)
 
-    fig, axes = plt.subplots(2, n_cols, figsize=(4 * n_cols, 7),
+    fig, axes = plt.subplots(2, n_cols, figsize=(5 * n_cols, 9),
                              sharey='row')
     if n_cols == 1:
         axes = axes.reshape(2, 1)
@@ -425,13 +443,13 @@ def plot_clusters_by_sign(results_by_sign: dict,
 
     n_pos = results_by_sign['n_positive']
     n_neg = results_by_sign['n_negative']
-    fig.suptitle(
-        f"ESP Curve Shape Clustering by Sign\n"
-        f"Positive (n={n_pos})  |  Negative (n={n_neg})",
-        fontsize=11, fontweight='bold'
-    )
+    #fig.suptitle(
+    #    f"ESP Curve Shape Clustering by Sign\n"
+    #    f"Positive (n={n_pos})  |  Negative (n={n_neg})",
+    #    fontsize=11, fontweight='bold'
+    #)
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
     print(f"Salvato: {output_path}")
 

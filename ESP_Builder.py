@@ -602,7 +602,6 @@ if __name__ == "__main__":
         print("=" * 140)
         print(f"Scenari significativi finali: {len(significant_scenarios)}")
 
-        # significant_scenarios è la tua lista con AEPC_mean già calcolato
 
         results = cluster_by_sign(
             significant_scenarios,
@@ -612,46 +611,44 @@ if __name__ == "__main__":
         )
         print_summary_by_sign(results)
         plot_clusters_by_sign(results, output_path=dataset_name+"_esp_clusters.png",metric=metric)        
-        
-        #results = cluster_esp_curves(significant_scenarios, auto_k=True, k_range=range(2,7))
-        #print_cluster_summary(results)
-        #plot_clusters_full(results, output_path=dataset_name+"_esp_clusters.png")
-    for sc in significant_scenarios:
-        fig = plt.figure(figsize=(14, 7))
-        ax = plt.gca()
+    # uncomment the block below to plot each significant scenario with the hybrid plot    
+    # for sc in significant_scenarios:
+    #     fig = plt.figure(figsize=(14, 7))
+    #     ax = plt.gca()
 
-        plot_hybrid_robustness(
-            scenario_name=sc["scenario_name"],
-            x_points=sc["x_points"],
-            y_matrix=sc["y_matrix"],
-            ax=ax,
-           AEPC=sc["AEPC_mean"],
-            EPC=sc["EPC_mean"],
-            dataset_name=dataset_name,
-            performance_metric=metric,
-         text_fontsize=13,
-            y_clip=None,   # rimuove il taglio fisso
-            target_span_frac=0.20,
-            pad_frac=0.10,
-        )
-        txt = (
-            f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
-            f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
-            f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]"
-        )
-        ax.text(
-            0.01, 0.01, txt,
-            transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=11,
-            bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
-                    alpha=0.85, edgecolor="none")
-        )
+    #     plot_hybrid_robustness(
+    #         scenario_name=sc["scenario_name"],
+    #         x_points=sc["x_points"],
+    #         y_matrix=sc["y_matrix"],
+    #         ax=ax,
+    #        AEPC=sc["AEPC_mean"],
+    #         EPC=sc["EPC_mean"],
+    #         dataset_name=dataset_name,
+    #         performance_metric=metric,
+    #      text_fontsize=13,
+    #         y_clip=None,   # rimuove il taglio fisso
+    #         target_span_frac=0.20,
+    #         pad_frac=0.10,
+    #     )
+    #     txt = (
+    #         f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
+    #         f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
+    #         f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]"
+    #     )
+    #     ax.text(
+    #         0.01, 0.01, txt,
+    #         transform=ax.transAxes,
+    #         ha="left", va="bottom", fontsize=11,
+    #         bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
+    #                 alpha=0.85, edgecolor="none")
+    #     )
 
-        plt.tight_layout()
+    #     plt.tight_layout()
         
-        # sanitizza il nome file rimuovendo caratteri non validi
+        # to save the scenario name as a safe filename, we can replace or remove characters that are not allowed in filenames
     #    safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])
     #    safe_name = safe_name.replace(' ', '_')
+    #   uncomment the line below to save the plot for each significant scenario
         #plt.savefig(f"{safe_name}.png", dpi=300, bbox_inches='tight') per salvare le immagini
-        plt.show()
-        plt.close()
+        #plt.show()
+        #plt.close()
