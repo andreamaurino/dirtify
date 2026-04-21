@@ -6,7 +6,6 @@ from pucktrick.labels import *
 from pucktrick.duplicated import *
 from pucktrick.missing import *
 from pucktrick.outliers import *
-from pycaret.classification import *
 import cvxopt as opt
 from cvxopt import blas, solvers
 import category_encoders
@@ -35,7 +34,8 @@ from sklearn.cluster import (
     AffinityPropagation,
     
 )
-from pycaret.regression import setup, compare_models, predict_model
+import pycaret.classification as pycaret_clf
+import pycaret.regression as pycaret_reg
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
 from hdbscan import HDBSCAN
@@ -205,13 +205,12 @@ def save_results_to_csv(results, output_file="synthetic_data_analysis_results.cs
 
 def _classification_metrics(stg: RunStrategy):
         stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-        
-        s = setup(stg.train_df, target=stg.target_variable, session_id=123)
-        models = compare_models(include=stg.models, n_select=20)
+        s = pycaret_clf.setup(stg.train_df, target=stg.target_variable, session_id=123)
+        models = pycaret_clf.compare_models(include=stg.models, n_select=20)
         if not isinstance(models, list):
             models = [models]
         for m in models:
-            predictions = predict_model(m, data=stg.test_df)
+            predictions = pycaret_clf.predict_model(m, data=stg.test_df)
             y_true = predictions[stg.target_variable]
             y_pred = predictions['prediction_label']
             model_name = m.__class__.__name__
@@ -258,14 +257,14 @@ def _classification_metrics(stg: RunStrategy):
 def _regression_metrics(stg: RunStrategy):
 
     stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-
-    s = setup(stg.train_df, target=stg.target_variable, session_id=123)
-    models = compare_models(include=stg.models, n_select=20)
+    s = pycaret_reg.setup(stg.train_df, target=stg.target_variable, session_id=123)
+    models = pycaret_reg.compare_models(include=stg.models, n_select=20)
+    
     if not isinstance(models, list):
         models = [models]
 
     for m in models:
-        predictions = predict_model(m, data=stg.test_df)
+        predictions = pycaret_reg.predict_model(m, data=stg.test_df)
         y_true = predictions[stg.target_variable]
         y_pred = predictions['prediction_label']
         model_name = m.__class__.__name__

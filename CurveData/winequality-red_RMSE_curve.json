@@ -1,0 +1,6554 @@
+[
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826,
+            0.5826
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253,
+            0.6253
+        ],
+        "baseline": 0.6253,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518,
+            0.6087999939918518
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792,
+            0.6244999766349792
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403,
+            0.6227999925613403
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385,
+            0.7385
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165,
+            0.746999979019165
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527,
+            0.7473999857902527
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 0,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984,
+            0.7984
+        ],
+        "baseline": 0.7984,
+        "robustness_index": 0.0,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[alcohol]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[chlorides]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[citric_acid]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[density]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[fixed_acidity]",
+        "errorType": "missing",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[free_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[pH]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[residual_sugar]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[sulphates]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[total_sulfur_dioxide]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "duplicate",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "[volatile_acidity]",
+        "errorType": "missing",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "RandomForestRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.5826,
+            0.5982,
+            0.5982,
+            0.5982,
+            0.5982
+        ],
+        "baseline": 0.5826,
+        "robustness_index": 2.3429454170957693,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "XGBRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6087999939918518,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151,
+            0.6410999894142151
+        ],
+        "baseline": 0.6087999939918518,
+        "robustness_index": 4.642328560033813,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "GradientBoostingRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6253,
+            0.6244,
+            0.6244,
+            0.6244,
+            0.6244
+        ],
+        "baseline": 0.6253,
+        "robustness_index": -0.12593954901647375,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "Ridge",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6227999925613403,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047,
+            0.6201000213623047
+        ],
+        "baseline": 0.6227999925613403,
+        "robustness_index": -0.37933121826803906,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "LinearRegression",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.6244999766349792,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981,
+            0.6220999956130981
+        ],
+        "baseline": 0.6244999766349792,
+        "robustness_index": -0.336266368729331,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "KNeighborsRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7385,
+            0.7612,
+            0.7612,
+            0.7612,
+            0.7612
+        ],
+        "baseline": 0.7385,
+        "robustness_index": 2.689573459715633,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "ElasticNet",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.746999979019165,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912,
+            0.7422999739646912
+        ],
+        "baseline": 0.746999979019165,
+        "robustness_index": -0.5505360827539102,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "Lasso",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7473999857902527,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243,
+            0.7423999905586243
+        ],
+        "baseline": 0.7473999857902527,
+        "robustness_index": -0.5853620431968601,
+        "epc": 0.0
+    },
+    {
+        "experiment_run": 1,
+        "dataset": "winequality-red.csv",
+        "feature": "quality",
+        "errorType": "labels",
+        "modelName": "DecisionTreeRegressor",
+        "metric": "RMSE",
+        "metric_transformed": false,
+        "x": [
+            0.0,
+            20.0,
+            40.0,
+            60.0,
+            80.0
+        ],
+        "y": [
+            0.7984,
+            0.7945,
+            0.7945,
+            0.7945,
+            0.7945
+        ],
+        "baseline": 0.7984,
+        "robustness_index": -0.42741733466934023,
+        "epc": 0.0
+    }
+]

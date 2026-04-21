@@ -1464,7 +1464,7 @@ class CustomRole(QWidget):
         ERRORTYPES = ["duplicate", "labels", "missing", "outlier", "noise"]
         
         # Mappa per la Classificazione (Task 1)
-        model_map = {
+        model_map1 = {
             "Logistic Regression": "lr",
             "K-Nearest Neighbors": "knn",
             "Naive Bayes": "nb",
@@ -1487,7 +1487,7 @@ class CustomRole(QWidget):
         }
 
         # Mappa per il Clustering (Task 2) - Abbreviazioni standard di PyCaret
-        model_map = {
+        model_map2 = {
   
             "K-Means": "kmeans",
             "HDBSCAN": "hdbscan",
@@ -1497,7 +1497,7 @@ class CustomRole(QWidget):
         }
 
         # Mappa per la Regressione (Task 3) - Abbreviazioni standard di PyCaret
-        model_map = {
+        model_map3 = {
             "Linear Regression": "lr",
             "Ridge Regression": "ridge",
             "Lasso Regression": "lasso",
@@ -1517,7 +1517,12 @@ class CustomRole(QWidget):
 
         # Estrae il valore del task (usa 1 come default di sicurezza se la chiave manca)
         task_value = grouped_columns.get("task", 1)
-        active_map = model_map
+        if task_value=="Classification":
+            active_map = model_map1
+        elif task_value=="Clustering":
+            active_map = model_map2
+        else:
+            active_map = model_map3
 
         # Mappa i modelli scelti utilizzando il dizionario attivo
         grouped_columns["machineLearningModels"] = [

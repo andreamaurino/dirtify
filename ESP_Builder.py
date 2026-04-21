@@ -489,7 +489,7 @@ if __name__ == "__main__":
     # calcola target_std_D0 solo se metric=RMSE
     target_std_D0 = None
     if metric == 'RMSE':
-        d0_path = './datasets/' + dataset_name
+        d0_path = './datasetRoot/' + dataset_name
         d0_df = pd.read_csv(d0_path)
         if args.target is None:
             target_col = d0_df.columns[-1]
