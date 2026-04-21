@@ -204,9 +204,16 @@ def save_results_to_csv(results, output_file="synthetic_data_analysis_results.cs
             ])
 
 def _classification_metrics(stg: RunStrategy):
+        
         stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-        s = pycaret_clf.setup(stg.train_df, target=stg.target_variable, session_id=123)
+        # USA noisy_df se disponibile, altrimenti train_df (caso standard)
+        train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
+        s = pycaret_clf.setup(train, target=stg.target_variable, session_id=123)
         models = pycaret_clf.compare_models(include=stg.models, n_select=20)
+        
+        #stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
+        #s = pycaret_clf.setup(stg.train_df, target=stg.target_variable, session_id=123)
+        #models = pycaret_clf.compare_models(include=stg.models, n_select=20)
         if not isinstance(models, list):
             models = [models]
         for m in models:
@@ -255,10 +262,15 @@ def _classification_metrics(stg: RunStrategy):
                     ])
 
 def _regression_metrics(stg: RunStrategy):
-
     stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-    s = pycaret_reg.setup(stg.train_df, target=stg.target_variable, session_id=123)
+    # USA noisy_df se disponibile, altrimenti train_df (caso standard)
+    train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
+    s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123)
     models = pycaret_reg.compare_models(include=stg.models, n_select=20)
+
+    #stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
+    #s = pycaret_reg.setup(stg.train_df, target=stg.target_variable, session_id=123)
+    #models = pycaret_reg.compare_models(include=stg.models, n_select=20)
     
     if not isinstance(models, list):
         models = [models]
