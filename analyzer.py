@@ -223,7 +223,7 @@ def _classification_metrics(stg: RunStrategy):
                 auc = round(roc_auc_score(y_true, predictions['prediction_score']), 4) 
                 stg.con.execute("""
                     INSERT INTO experiments 
-                    VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?,NULL, NULL, NULL)
+                    VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?,NULL, NULL, NULL,NULL, NULL, NULL, NULL)
                     """, [
                     stg.run,
                     stg.dataset_name,
@@ -240,7 +240,7 @@ def _classification_metrics(stg: RunStrategy):
             else:
                 stg.con.execute("""
                     INSERT INTO experiments 
-                    VALUES (?,?, ?, ?, ?, ?, ?, NULL, ?, ?, ?,NULL, NULL, NULL)
+                    VALUES (?,?, ?, ?, ?, ?, ?, NULL, ?, ?, ?,NULL, NULL, NULL,NULL, NULL, NULL,NULL)
                         """, [
                     stg.run,
                     stg.dataset_name,
@@ -413,7 +413,7 @@ def _clustering_metrics(stg: RunStrategy):
             print(f"Model: {model_name}, Silhouette: {silhouette}, AMI: {ami}, Clusters: {k}")
             stg.con.execute("""
                 INSERT INTO experiments 
-                VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, ?, ?, ?,NULL, NULL, NULL,NULL)
             """, [
                 stg.run, stg.dataset_name, str(stg.EType),
                 stg.percentage, stg.feature, model_name,
