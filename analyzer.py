@@ -262,12 +262,31 @@ def _classification_metrics(stg: RunStrategy):
                     ])
 
 def _regression_metrics(stg: RunStrategy):
+    print(f"START regression: EType={stg.EType}, pct={stg.percentage}, feature={stg.feature}, shape={stg.noisy_df.shape if stg.noisy_df is not None else stg.train_df.shape}", flush=True)
     stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-    # USA noisy_df se disponibile, altrimenti train_df (caso standard)
     train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
-    s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123)
-    models = pycaret_reg.compare_models(include=stg.models, n_select=20)
+    
+    # guardie dati degeneri
+    if train[stg.target_variable].nunique() < 2:
+        print(f"SKIP target degenere", flush=True)
+        return
+    if train.isnull().all().any():
+        print(f"SKIP colonne tutte NaN", flush=True)
+        return
+    if len(train) < 10:
+        print(f"SKIP dataset troppo piccolo", flush=True)
+        return
 
+    print(f"SETUP regression...", flush=True)
+    s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123, verbose=False)
+    print(f"COMPARE models...", flush=True)
+
+    
+    # USA noisy_df se disponibile, altrimenti train_df (caso standard)
+    #train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
+    #s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123)
+    models = pycaret_reg.compare_models(include=stg.models, n_select=20)
+    #old
     #stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
     #s = pycaret_reg.setup(stg.train_df, target=stg.target_variable, session_id=123)
     #models = pycaret_reg.compare_models(include=stg.models, n_select=20)
