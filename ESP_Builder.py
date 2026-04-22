@@ -493,11 +493,11 @@ if __name__ == "__main__":
         d0_df = pd.read_csv(d0_path)
         if args.target is None:
             target_col = d0_df.columns[-1]
-        print(f"  [INFO] --target non specificato, uso ultima colonna: '{target_col}'")
-    else:
-        target_col = args.target
+            print(f"  [INFO] --target non specificato, uso ultima colonna: '{target_col}'")
+        else:
+            target_col = args.target
     
-    target_std_D0 = d0_df[target_col].std()
+        target_std_D0 = d0_df[target_col].std()
         
     # EPC + JSON curve
     clean_name = dataset_name.replace('.csv', '')
@@ -569,7 +569,8 @@ if __name__ == "__main__":
 
     n_sig_fdr = int(np.sum(reject_fdr))
     print(f"Scenari significativi dopo BY-FDR (alpha=0.05): {n_sig_fdr}")
-
+    #show all results
+    #reject_fdr=all_stats
     # -------------------------------------------------------
     # FASE 3: filtro pratico su |AEPC_mean| > soglia
     # -------------------------------------------------------

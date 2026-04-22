@@ -772,11 +772,14 @@ class CorrelatedFeature(QWidget):
         self.next_button = QPushButton("Next", self)
         self.next_button.setStyleSheet("background-color: #0088CC; color: #000000;")
         experiments = self.grouped_columns.get("Experiments", [])
-        if len(experiments)==2:
-           self.next_button.setEnabled(False)
-        else:
-            self.next_button.setEnabled(True)
-            self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
+        #if len(experiments)==2:
+        #   self.next_button.setEnabled(False)
+        #else:
+        #    self.next_button.setEnabled(True)
+        #    self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
+        self.next_button.setEnabled(True)
+        self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
+
 
         self.next_button.clicked.connect(self.open_next_window)
         button_layout.addWidget(self.next_button)  # Aggiungi il pulsante "Next" al layout orizzontale
@@ -876,209 +879,162 @@ class CustomRole(QWidget):
             grouped_columns["Experiments"] = [
                 exp for exp in grouped_columns["Experiments"]
                 if exp.get("ErrorStrategy") != "custom-role"
-            ]    
-        self.ErrorType="Label"
-        self.setWindowTitle("Custome role")
+            ]
+        self.ErrorType = "Label"
+        self.setWindowTitle("Custom role")
         self.setGeometry(100, 100, 1000, 1000)
+        self.setStyleSheet("background-color: #2e2e2e;")
 
-        # Imposta il colore di sfondo
-        self.setStyleSheet("background-color: #2e2e2e;")  # Sfondo grigio scuro
-
-        self.column_types3 = {}  # Dizionario per memorizzare i ML
-        self.column_types2 = {}  # Dictionary for features
+        self.column_types3 = {}
+        self.column_types2 = {}
         self.layout = QVBoxLayout()
 
+        # Error Type
         self.label1 = QLabel("Error Type:")
-        self.label1.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.label1.setStyleSheet("color: #ffffff;")
         self.layout.addWidget(self.label1)
-        
-        # ComboBox (scelta a tendina)
+
         self.combo = QComboBox()
-        self.combo.addItems(["Label","Missing","Noise","Outlier"])
-        # Segnale per catturare il cambiamento
+        self.combo.addItems(["Label", "Missing", "Noise", "Outlier"])
         self.combo.currentIndexChanged.connect(self.selection_changed)
-        self.layout.addWidget(self.combo)
         self.combo.setStyleSheet("""
-            QComboBox {
-                color: white;         /* testo della scelta */
-            }
+            QComboBox { color: white; }
             QComboBox QAbstractItemView {
-                color: white;         /* testo delle voci */
-                selection-background-color: #555555; /* sfondo della voce selezionata */
+                color: white;
+                selection-background-color: #555555;
             }
         """)
-        
-        # Label per il titolo
+        self.layout.addWidget(self.combo)
+
+        # ML Models
         self.label = QLabel("Choose ML", self)
-        self.label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.label.setStyleSheet("color: #ffffff;")
         self.layout.addWidget(self.label)
 
-        # ScrollArea per ospitare i modelli di ML e i radiobuttons
         self.scroll_area3 = QScrollArea(self)
         self.scroll_area_widget3 = QWidget()
         self.scroll_area_layout3 = QVBoxLayout(self.scroll_area_widget3)
         self.display_columns3()
-
         self.scroll_area3.setWidgetResizable(True)
         self.scroll_area3.setWidget(self.scroll_area_widget3)
         self.layout.addWidget(self.scroll_area3)
 
-        # Label e input per "Step"
+        # Step
         self.step_label = QLabel("Step:", self)
-        self.step_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.step_label.setStyleSheet("color: #ffffff;")
         self.step_input = QLineEdit(self)
         self.step_input.setText("0.1")
-        self.step_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
-
-        # Aggiungi label e input in un layout orizzontale
+        self.step_input.setStyleSheet("color: #ffffff; background-color: #444444;")
         self.step_layout = QHBoxLayout()
         self.step_layout.addWidget(self.step_label)
         self.step_layout.addWidget(self.step_input)
         self.layout.addLayout(self.step_layout)
 
+        # Features
         self.label_features = QLabel("Choose Features", self)
-        self.label_features.setStyleSheet("color: #ffffff;")  
+        self.label_features.setStyleSheet("color: #ffffff;")
         self.layout.addWidget(self.label_features)
 
-        # ScrollArea for integer features
         self.scroll_area2 = QScrollArea(self)
         self.scroll_area_widget2 = QWidget()
         self.scroll_area_layout2 = QVBoxLayout(self.scroll_area_widget2)
-
         self.scroll_area2.setWidgetResizable(True)
         self.scroll_area2.setWidget(self.scroll_area_widget2)
         self.layout.addWidget(self.scroll_area2)
+        self.display_columns2()
 
-        self.display_columns2() 
-
-  # selection Input
+        # Selection criteria
         self.selection_label = QLabel("Selection criteria:", self)
-        self.selection_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.selection_label.setStyleSheet("color: #ffffff;")
         self.selection_input = QLineEdit(self)
         self.selection_input.setText("all")
         self.selection_input.setStyleSheet("background-color: #3c3c3c; color: #ffffff;")
-
-        # Aggiungi label e input in un layout orizzontale
         self.selection_layout = QHBoxLayout()
         self.selection_layout.addWidget(self.selection_label)
         self.selection_layout.addWidget(self.selection_input)
         self.layout.addLayout(self.selection_layout)
 
-  # Label e input per "distribution"
+        # Distribution
         self.distribution_label = QLabel("Distribution:", self)
-        self.distribution_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.distribution_label.setStyleSheet("color: #ffffff;")
         self.distribution_input = QLineEdit(self)
         self.distribution_input.setText("random")
-        self.distribution_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
-
-        # Aggiungi label e input in un layout orizzontale
+        self.distribution_input.setStyleSheet("color: #ffffff; background-color: #444444;")
         self.distribution_layout = QHBoxLayout()
         self.distribution_layout.addWidget(self.distribution_label)
         self.distribution_layout.addWidget(self.distribution_input)
         self.layout.addLayout(self.distribution_layout)
-   # Label e input per "param"
+
+        # Parameter
         self.param_label = QLabel("Parameter:", self)
-        self.param_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.param_label.setStyleSheet("color: #ffffff;")
         self.param_input = QLineEdit(self)
         self.param_input.setText("")
-        self.param_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
-
-        # Aggiungi label e input in un layout orizzontale
+        self.param_input.setStyleSheet("color: #ffffff; background-color: #444444;")
         self.param_layout = QHBoxLayout()
         self.param_layout.addWidget(self.param_label)
         self.param_layout.addWidget(self.param_input)
         self.layout.addLayout(self.param_layout)
 
-  # Label e input per "value"
+        # Parameter value
         self.value_label = QLabel("Parameter value:", self)
-        self.value_label.setStyleSheet("color: #ffffff;")  # Testo bianco
+        self.value_label.setStyleSheet("color: #ffffff;")
         self.value_input = QLineEdit(self)
         self.value_input.setText("")
-        self.value_input.setStyleSheet("color: #ffffff; background-color: #444444;")  # Testo bianco e sfondo scuro
-
-        # Aggiungi label e input in un layout orizzontale
+        self.value_input.setStyleSheet("color: #ffffff; background-color: #444444;")
         self.value_layout = QHBoxLayout()
         self.value_layout.addWidget(self.value_label)
         self.value_layout.addWidget(self.value_input)
         self.layout.addLayout(self.value_layout)
 
-        # Crea un layout orizzontale per i pulsanti
-        button_layout = QHBoxLayout()
+        # Pulsanti
+        experiments = self.grouped_columns.get("Experiments", [])
+        has_previous_strategy = any(
+            exp.get("ErrorStrategy") in ["one-feature", "Correlated-features"]
+            for exp in experiments
+        )
 
         self.next_rule = QPushButton("Add new rule", self)
-        self.next_rule.setStyleSheet("background-color: #0088CC; color: #000000;")
+        self.next_rule.setEnabled(True)
+        self.next_rule.setStyleSheet("background-color: #0088CC; color: #ffffff;")
         self.next_rule.clicked.connect(self.open_same_window)
-        experiments = self.grouped_columns.get("Experiments", [])
-        if len(experiments)==2:
-            if self.grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature": #or ....:
-                self.next_rule.setEnabled(False)
-        else:
-            self.next_rule.setEnabled(True)
-            self.next_rule.setStyleSheet("background-color: #0088CC; color: #ffffff;")
-
-        
         self.layout.addWidget(self.next_rule)
 
         self.next_button = QPushButton("Save", self)
-        self.next_button.setStyleSheet("background-color: #0088CC; color: #000000;")
-        self.next_button.clicked.connect(self.open_next_window)
-        if len(experiments)==2:
-            if self.grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature": #or ....:
-                self.next_button.setEnabled(False)
-        else:
-            self.next_button.setEnabled(True)
-            self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
-
+        self.next_button.setEnabled(True)
+        self.next_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
         self.next_button.clicked.connect(self.open_next_window)
         self.layout.addWidget(self.next_button)
 
         self.run_button = QPushButton("Save and Run...", self)
-        self.run_button.setStyleSheet("background-color: #0088CC; color: #000000;")
+        self.run_button.setEnabled(True)
+        self.run_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
         self.run_button.clicked.connect(self.run)
-        experiments = self.grouped_columns.get("Experiments", [])
-        if len(experiments)==2:
-           self.run_button.setEnabled(False)
-        else:
-            self.run_button.setEnabled(True)
-            self.run_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
-        self.run_button.clicked.connect(self.run)  
         self.layout.addWidget(self.run_button)
 
         self.skip_button = QPushButton("Skip and Save", self)
-        self.skip_button.setStyleSheet("background-color: #0088CC; color: #000000;")
-        experiments = self.grouped_columns.get("Experiments", [])
-        if len(experiments)==1:
-           self.skip_button.setEnabled(False)
-        else:
-            self.skip_button.setEnabled(True)
-            self.skip_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
-       
+        self.skip_button.setEnabled(has_previous_strategy)
+        self.skip_button.setStyleSheet(
+            "background-color: #0088CC; color: #ffffff;" if has_previous_strategy
+            else "background-color: #555555; color: #888888;"
+        )
         self.skip_button.clicked.connect(self.open_skip_window)
         self.layout.addWidget(self.skip_button)
-        
-        self.skip_button2 = QPushButton("Skip, Save and Run", self)
-        self.skip_button2.setStyleSheet("background-color: #0088CC; color: #000000;")
-        if len(experiments)==1:
-           self.skip_button2.setEnabled(False)
-        else:
-            self.skip_button2.setEnabled(True)
-            self.skip_button2.setStyleSheet("background-color: #0088CC; color: #ffffff;")
 
+        self.skip_button2 = QPushButton("Skip, Save and Run", self)
+        self.skip_button2.setEnabled(has_previous_strategy)
+        self.skip_button2.setStyleSheet(
+            "background-color: #0088CC; color: #ffffff;" if has_previous_strategy
+            else "background-color: #555555; color: #888888;"
+        )
         self.skip_button2.clicked.connect(self.skip_run)
         self.layout.addWidget(self.skip_button2)
 
         self.prev_button = QPushButton("Back", self)
+        self.prev_button.setEnabled(True)
         self.prev_button.setStyleSheet("background-color: #0088CC; color: #ffffff;")
         self.prev_button.clicked.connect(self.open_prev_window)
         self.layout.addWidget(self.prev_button)
-
-        self.layout.addLayout(button_layout)
-
-        self.setLayout(self.layout)
-
-        # Aggiungi il layout dei pulsanti al layout principale
-        self.layout.addLayout(button_layout)
-
 
         self.setLayout(self.layout)
 
@@ -1199,35 +1155,30 @@ class CustomRole(QWidget):
 
     def open_same_window(self):
         newML = []
-        newFeat=[]
+        newFeat = []
         addedDocument = {"ErrorStrategy": "custom-role"}
-        addedDocument["ErrorType"]=self.ErrorType
+        addedDocument["ErrorType"] = self.ErrorType
         addedDocument["Step"] = float(self.step_input.text())
-        addedDocument["selection_criteria"]=self.selection_input.text()
-        addedDocument["distribution"]=self.distribution_input.text()
-        if self.param_input.text()=="" or self.param_input.text() is None:
-            addedDocument["param"]=None
-        else:
-            addedDocument["param"]=self.param_input.text()
-        if self.value_input.text()=="" or self.value_input.text() is None:
-            addedDocument["value"]=None
-        else:
-            addedDocument["value"]=self.value_input.text()
+        addedDocument["selection_criteria"] = self.selection_input.text()
+        addedDocument["distribution"] = self.distribution_input.text()
+        addedDocument["param"] = self.param_input.text() if self.param_input.text() != "" else None
+        addedDocument["value"] = self.value_input.text() if self.value_input.text() != "" else None
+
         for column2, col_type2 in self.column_types2.items():
             if col_type2 == "Yes":
                 newFeat.append(column2)
         addedDocument["affected_features"] = newFeat
-        self.grouped_columns["Experiments"].append(addedDocument)
+
         for column3, col_type3 in self.column_types3.items():
             if col_type3 == "Yes":
                 newML.append(column3)
         if newML != self.grouped_columns["machineLearningModels"]:
             addedDocument["machineLearningModels"] = newML
-        self.grouped_columns["Experiments"].append(addedDocument)
-        self.prepare(self.grouped_columns)
-        print(self.grouped_columns)
+
+        self.grouped_columns["Experiments"].append(addedDocument)  # ← una volta sola
+
         self.close()
-        self.next_window = CustomRole(self.grouped_columns)  
+        self.next_window = CustomRole(self.grouped_columns)
         self.next_window.showMaximized()
 
 
@@ -1250,7 +1201,6 @@ class CustomRole(QWidget):
             if col_type2 == "Yes":
                 newFeat.append(column2)
         addedDocument["affected_features"] = newFeat
-        self.grouped_columns["Experiments"].append(addedDocument)#
 
         for column3, col_type3 in self.column_types3.items():
            if col_type3 == "Yes":
@@ -1383,6 +1333,7 @@ class CustomRole(QWidget):
                                 "percentage": percentage,
                             "mode": "new",
                             "perturbate_data": {
+                                "sampling":"random",
                                 "distribution": distribution
                                 }
                         }
@@ -1398,6 +1349,7 @@ class CustomRole(QWidget):
                                 "percentage": percentage,
                             "mode": "new",
                             "perturbate_data": {
+                                "sampling":"random",
                                 "distribution": distribution
                                 }
                             }
@@ -1407,14 +1359,22 @@ class CustomRole(QWidget):
         return new_docs
 
     def correlated_feature_groups(self):
-        df=pd.read_csv(self.grouped_columns["datasetName"])
-        target=self.grouped_columns["targetVariable"]
-        min_corr=self.grouped_columns["Experiments"][1]["Min"] 
-        max_corr=self.grouped_columns["Experiments"][1]["Max"]    
+        corr_exp = None
+        for exp in self.grouped_columns["Experiments"]:
+            if exp.get("ErrorStrategy") == "Correlated-features":
+                corr_exp = exp
+                break
+        
+        if corr_exp is None:
+            return []
+
+        df = pd.read_csv(self.grouped_columns["datasetName"])
+        target = self.grouped_columns["targetVariable"]
+        min_corr = corr_exp["Min"]
+        max_corr = corr_exp["Max"]
+        
         original_cols = [c for c in df.columns if c != target]
-
         cat_cols = df.select_dtypes(include=["object", "category"]).columns.tolist()
-
         df_dummies = pd.get_dummies(df[original_cols], drop_first=False)
 
         dummy_to_orig = {}
@@ -1450,13 +1410,13 @@ class CustomRole(QWidget):
         for s in groups_orig:
             found = False
             for m in merged:
-                if not s.isdisjoint(m):  # se c’è intersezione
+                if not s.isdisjoint(m):
                     m.update(s)
                     found = True
                     break
             if not found:
                 merged.append(set(s))
-                merged = [g for g in merged if len(g) >= 2]
+        merged = [g for g in merged if len(g) >= 2]
 
         return merged
 
@@ -1526,67 +1486,78 @@ class CustomRole(QWidget):
 
         # Mappa i modelli scelti utilizzando il dizionario attivo
         grouped_columns["machineLearningModels"] = [
-            active_map.get(model, model) for model in grouped_columns.get("machineLearningModels", [])
-        ]
-        
-        if grouped_columns["Experiments"][1]["ErrorStrategy"] == "one-feature":
-            dataset_columns=grouped_columns["features"].copy()
-            try:
-                dataset_columns.remove(grouped_columns["targetVariable"])
-            except ValueError:
-                pass
-            grouped_columns["Experiments"].append(self.expand_one_feature_strategy(grouped_columns["Experiments"], dataset_columns))
-            new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
-            grouped_columns["Experiments"] = new_doc
-        elif grouped_columns["Experiments"][1]["ErrorStrategy"] == "Correlated-features":
-            ## calcola la correlazione
-            groups=self.correlated_feature_groups()
-            for i in ERRORTYPES:
-                for group in groups:
-                    doc = {
-                        "Errortype":i,
-                        "Strategy": {
-                            "affected_features":  list(group),
-                            "selection_criteria": self.grouped_columns["Experiments"][1]["Selection_criteria"],
-                            "percentage": self.grouped_columns["Experiments"][1]["Step"],
-                            "mode": "new",
-                            "perturbate_data": {
-                                "distribution": "random"
-                                }
-                            }
-                        }
-                    grouped_columns["Experiments"].append(doc)
-            new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
-            grouped_columns["Experiments"] = new_doc
-        else: 
-            
-                doc = {
-                            "Errortype":self.ErrorType,
+            active_map.get(model, model) 
+            for model in grouped_columns.get("machineLearningModels", [])
+            ]
+
+        new_experiments = [grouped_columns["Experiments"][0]]  # mantieni "standard"
+
+        for exp in grouped_columns["Experiments"][1:]:
+            strategy = exp.get("ErrorStrategy")
+
+            if strategy == "one-feature":
+                dataset_columns = grouped_columns["features"].copy()
+                try:
+                    dataset_columns.remove(grouped_columns["targetVariable"])
+                except ValueError:
+                    pass
+                expanded = self.expand_one_feature_strategy([exp], dataset_columns)
+                new_experiments.extend(expanded)
+
+            elif strategy == "Correlated-features":
+                groups = self.correlated_feature_groups()
+                errortypes_corr = ["duplicate", "missing", "outlier", "noise"]  # ← no "labels"
+                for etype in errortypes_corr:
+                    for group in groups:
+                        doc = {
+                            "Errortype": etype,
                             "Strategy": {
-                                "affected_features": self.grouped_columns["Experiments"][1]["affected_features"],
-                                "selection_criteria": self.grouped_columns["Experiments"][1]["selection_criteria"],
-                                "percentage": self.grouped_columns["Experiments"][1]["Step"],
-                            "mode": "new",
-                            "target_variable": self.grouped_columns["targetVariable"],
-                            "perturbate_data": {
-                                "distribution": self.grouped_columns["Experiments"][1]["distribution"]
-                                }
+                                "affected_features": list(group),
+                                "selection_criteria": exp["Selection_criteria"],
+                                "percentage": exp["Step"],
+                                "mode": "new",
+                                "perturbate_data": { "sampling": "random","distribution": "random"}
                             }
                         }
-                grouped_columns["Experiments"].append(doc)
-                new_doc = [d for d in grouped_columns["Experiments"] if "ErrorStrategy" not in d]
-                grouped_columns["Experiments"] = new_doc
-        flattened = []
-        for item in grouped_columns["Experiments"]:
-                if isinstance(item, list):
-                    flattened.extend(item)
-                else:
-                    flattened.append(item)
+                        new_experiments.append(doc)
 
-        grouped_columns["Experiments"] = flattened
+            elif strategy == "custom-role":
+                perturbate = {
+                    "sampling": "random",
+                    "distribution": exp.get("distribution", "random"),
+                }
+                if exp.get("param") is not None:
+                    try:
+                        perturbate["param"] = json.loads(exp["param"])
+                    except (json.JSONDecodeError, TypeError):
+                        perturbate["param"] = exp["param"]  # fallback: stringa grezza
 
-        print(grouped_columns)        
+                if exp.get("value") is not None:
+                    try:
+                        perturbate["value"] = json.loads(exp["value"])
+                    except (json.JSONDecodeError, TypeError):
+                        perturbate["value"] = exp["value"]
+                
+                if exp.get("value") is not None:
+                    perturbate["value"] = exp["value"]
+
+                doc = {
+                    "Errortype": exp.get("ErrorType", self.ErrorType),
+                    "Strategy": {
+                        "affected_features": exp.get("affected_features", []),
+                        "selection_criteria": exp.get("selection_criteria", "all"),
+                        "percentage": exp.get("Step", 0.1),
+                        "mode": "new",
+                        "target_variable": grouped_columns["targetVariable"],
+                        "perturbate_data": perturbate
+                    }
+                }
+                new_experiments.append(doc)
+
+        grouped_columns["Experiments"] = new_experiments
+        print(grouped_columns)
         return grouped_columns
+
     
     def clear_layout2(self, layout):
          if layout is not None:
