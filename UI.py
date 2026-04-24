@@ -862,7 +862,7 @@ def start(json_name, directory=""):
     if not runs_to_do:
         print("Tutti i run già completati, procedo solo al merge finale")
     else:
-        n_workers = max(1, multiprocessing.cpu_count() - 1)
+        n_workers = max(1, multiprocessing.cpu_count() - 20)
         print(f"Avvio {len(runs_to_do)} run su {n_workers} worker "
               f"(saltati {len(completed_runs)} già completati)")
 

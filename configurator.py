@@ -1378,9 +1378,16 @@ class CustomRole(QWidget):
         df_dummies = pd.get_dummies(df[original_cols], drop_first=False)
 
         dummy_to_orig = {}
-        for col in df_dummies.columns:
-            base = col.split("_")[0]
-            dummy_to_orig[col] = base
+        for dummy_col in df_dummies.columns:
+            # cerca la colonna originale il cui nome è prefisso del dummy
+            matched = None
+            for orig_col in original_cols:
+                # le colonne numeriche passano invariate (dummy == orig)
+                # le categoriche generano orig_col + "_" + valore
+                if dummy_col == orig_col or dummy_col.startswith(orig_col + "_"):
+                    matched = orig_col
+                    break
+            dummy_to_orig[dummy_col] = matched if matched else dummy_col
 
         corr = df_dummies.corr().abs()
 

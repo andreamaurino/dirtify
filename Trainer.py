@@ -1,6 +1,6 @@
 import argparse
 import sys
-#from PyQt5.QtWidgets import QApplication, QFileDialog
+from PyQt5.QtWidgets import QApplication, QFileDialog
 import UI
 import os
 import sys
