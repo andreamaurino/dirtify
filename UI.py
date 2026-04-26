@@ -780,7 +780,7 @@ def _run_single(args):
     return run_df
 
 
-def start(json_name, directory=""):
+def start(json_name, multiprocessor="No", directory=""):
     import platform
     if platform.system() != 'Windows':
         try:
@@ -792,6 +792,8 @@ def start(json_name, directory=""):
             multiprocessing.set_start_method('spawn', force=True)
         except RuntimeError:
             pass
+
+   
     slurm_cpus = os.environ.get('SLURM_CPUS_PER_TASK')  # None su Windows
     n_workers = max(1, int(slurm_cpus) - 1) if slurm_cpus else max(1, multiprocessing.cpu_count() - 1)  # ← esegue questo
 
@@ -859,30 +861,47 @@ def start(json_name, directory=""):
 
     runs_to_do = [r for r in range(n_runs) if r not in completed_runs]
 
+    
+    
     if not runs_to_do:
         print("Tutti i run già completati, procedo solo al merge finale")
     else:
-        n_workers = max(1, multiprocessing.cpu_count() - 20)
-        print(f"Avvio {len(runs_to_do)} run su {n_workers} worker "
-              f"(saltati {len(completed_runs)} già completati)")
-
         tasks = [
             (run, Jsondata, dataset_name, data.copy(), target_variable, 
              test_name, experiments_dir)
             for run in runs_to_do
         ]
 
-        with ProcessPoolExecutor(max_workers=n_workers) as executor:
-            futures = {executor.submit(_run_single, t): t[0] for t in tasks}
-            for future in as_completed(futures):
-                run_id = futures[future]
+        if multiprocessor.lower() == "no":
+            # ── modalità monoprocesso ──────────────────────────────
+            print(f"Avvio {len(runs_to_do)} run in modalità sequenziale "
+                  f"(saltati {len(completed_runs)} già completati)")
+            for task in tasks:
+                run_id = task[0]
                 try:
-                    run_df = future.result()
+                    run_df = _run_single(task)   # chiamata diretta, no executor
                     all_dfs.append(run_df)
                     print(f"  Run {run_id} completato — {len(run_df)} righe")
                 except Exception as e:
                     print(f"  [ERR] Run {run_id} fallito: {e}")
                     import traceback; traceback.print_exc()
+        else:
+            # ── modalità parallela (originale) ────────────────────
+            n_workers = max(1, multiprocessing.cpu_count() - 20)
+            print(f"Avvio {len(runs_to_do)} run su {n_workers} worker "
+                  f"(saltati {len(completed_runs)} già completati)")
+
+            with ProcessPoolExecutor(max_workers=n_workers) as executor:
+                futures = {executor.submit(_run_single, t): t[0] for t in tasks}
+                for future in as_completed(futures):
+                    run_id = futures[future]
+                    try:
+                        run_df = future.result()
+                        all_dfs.append(run_df)
+                        print(f"  Run {run_id} completato — {len(run_df)} righe")
+                    except Exception as e:
+                        print(f"  [ERR] Run {run_id} fallito: {e}")
+                        import traceback; traceback.print_exc()   
 
     if not all_dfs:
         print("Nessun risultato!")

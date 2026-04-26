@@ -206,14 +206,10 @@ def save_results_to_csv(results, output_file="synthetic_data_analysis_results.cs
 def _classification_metrics(stg: RunStrategy):
         
         stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-        # USA noisy_df se disponibile, altrimenti train_df (caso standard)
         train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
         s = pycaret_clf.setup(train, target=stg.target_variable, session_id=123)
         models = pycaret_clf.compare_models(include=stg.models, n_select=20)
         
-        #stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-        #s = pycaret_clf.setup(stg.train_df, target=stg.target_variable, session_id=123)
-        #models = pycaret_clf.compare_models(include=stg.models, n_select=20)
         if not isinstance(models, list):
             models = [models]
         for m in models:
@@ -221,13 +217,44 @@ def _classification_metrics(stg: RunStrategy):
             y_true = predictions[stg.target_variable]
             y_pred = predictions['prediction_label']
             model_name = m.__class__.__name__
+
+            n_classes = len(set(y_true))
+            avg = 'binary' if n_classes == 2 else 'weighted'
+
+            precision = round(precision_score(y_true, y_pred, average=avg, zero_division=0), 4)
+            recall    = round(recall_score(y_true, y_pred, average=avg, zero_division=0), 4)
+            f1        = round(f1_score(y_true, y_pred, average=avg, zero_division=0), 4)
             accuracy = round(accuracy_score(y_true, y_pred), 4)
-            precision = round(precision_score(y_true, y_pred), 4)
-            recall = round(recall_score(y_true, y_pred), 4)
-            f1 = round(f1_score(y_true, y_pred), 4)
+
             auc = None
-            if "prediction_score" in predictions.columns:
-                auc = round(roc_auc_score(y_true, predictions['prediction_score']), 4) 
+            try:
+                if n_classes == 2:
+                    if "prediction_score" in predictions.columns:
+                        y_prob = predictions['prediction_score']
+                        auc = round(roc_auc_score(y_true, y_prob), 4)
+                else:
+                    predictions_proba = pycaret_clf.predict_model(m,
+                                                                data=stg.test_df,
+                                                                raw_score=True)
+                    prob_cols = [c for c in predictions_proba.columns
+                                if c.startswith('prediction_score_')]
+                    if prob_cols:
+                        y_prob = predictions_proba[prob_cols].values
+
+                        # 2. normalizza a somma 1 per riga (le colonne raw_score
+                        #    possono essere log-odds o score non normalizzati)
+                        row_sums = y_prob.sum(axis=1, keepdims=True)
+                        row_sums = np.where(row_sums == 0, 1, row_sums)  # evita /0
+                        y_prob = y_prob / row_sums
+
+                        auc = round(roc_auc_score(y_true, y_prob,
+                                                multi_class='ovr',
+                                                average='weighted'), 4)
+            except Exception as e:
+                print(f"  [WARN] AUC non calcolabile per {model_name}: {e}")
+                auc = None
+
+                
                 stg.con.execute("""
                     INSERT INTO experiments 
                     VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?,NULL, NULL, NULL,NULL, NULL, NULL, NULL)
