@@ -131,6 +131,17 @@ This produces:
 | HR | Hierarchical Clustering (Ward linkage) |
  
 
+## List of selected features for ADBIS paper
+The selected features per dataset are as follows:
+### SatImage
+top-4: F12attr, F24attr, Fattr, B14attr; middle-3 A13attr, Aattr, A19attr; bottom-3 C9attr, F30attr, Cattr. 
+### Optdigits 
+top-6 Attribute64, Attribute8, Attribute43, Attribute63, Attribute47, Attribute55; middle-3 Attribute30, Attribute35, Attribute4; bottom-3 Attribute24, Attribute25, Attribute17. 
+(Note: bottom stratum omitted from Optdigits due to near-zero Laplacian Score variance; top stratum extended to 6 accordingly.) 
+### DryBean
+top-2 Area, ShapeFactor2; middle-2 Eccentricity, ShapeFactor1; bottom-3 Roundness, Extent, ShapeFactor4. 
+### PenDigit 
+top-4 Attribute14, Attribute8, Attribute16, Attribute6; middle-2 Attribute4, Attribute7; bottom-3 Attribute3, Attribute2, Attribute13.
 
 
 ## License
