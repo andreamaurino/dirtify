@@ -202,34 +202,34 @@ def extract_vectors_from_json(json_path):
         AEPC_vector = group['robustness_index'].values.astype(float)
         epc_vector  = group['epc'].values.astype(float)
 
-        # --- FIX: filtra run con y di lunghezza diversa dalla moda ---
-        y_list    = group['y'].tolist()
-        lengths   = [len(y) for y in y_list]
+        y_list  = group['y'].tolist()
+        lengths = [len(y) for y in y_list]
+
         from statistics import mode
         try:
             expected_len = mode(lengths)
         except Exception:
             expected_len = max(set(lengths), key=lengths.count)
 
-        mask = np.array([l == expected_len for l in lengths])
-
-        if mask.sum() < 2:
-            print(f"[SKIP scenario] {scenario_key}: "
-                  f"solo {mask.sum()} run con {expected_len} punti validi")
+        if sum(1 for l in lengths if l == expected_len) < 2:
+            print(f"[SKIP] {scenario_key}: meno di 2 run con lunghezza {expected_len}")
             continue
 
-        if not mask.all():
-            n_dropped = (~mask).sum()
-            print(f"[WARN] {scenario_key}: "
-                  f"dropped {n_dropped} run con lunghezza y != {expected_len}")
+        # padding con NaN invece di scartare i run corti
+        y_padded = []
+        for y in y_list:
+            y = list(y)
+            if len(y) < expected_len:
+                y = y + [float('nan')] * (expected_len - len(y))
+            elif len(y) > expected_len:
+                y = y[:expected_len]
+            y_padded.append(y)
 
-        y_filtered    = [y for y, ok in zip(y_list, mask) if ok]
-        AEPC_vector   = AEPC_vector[mask]
-        epc_vector    = epc_vector[mask]
-        # -------------------------------------------------------------
+        y_matrix = np.array(y_padded, dtype=float)
 
-        y_matrix = np.array(y_filtered, dtype=float)
         x_points = np.array(group['x'].iloc[0], dtype=float)
+        if len(x_points) != expected_len:
+            x_points = x_points[:expected_len]
 
         scenarios[scenario_key] = {
             'info': {
@@ -239,17 +239,16 @@ def extract_vectors_from_json(json_path):
                 'modelName': name[3],
                 'metric':    name[4]
             },
-            'x_points':         x_points,
-            'AEPC_vector':      AEPC_vector,
-            'epc_vector':       epc_vector,
-            'y_matrix':         y_matrix,
-            'n_runs':           int(mask.sum()),
-            'metric_transformed': bool(group['metric_transformed'].iloc[0]) if 'metric_transformed' in group.columns else False,  # <-- aggiunto
+            'x_points':           x_points,
+            'AEPC_vector':        AEPC_vector,
+            'epc_vector':         epc_vector,
+            'y_matrix':           y_matrix,
+            'n_runs':             len(y_padded),
+            'metric_transformed': bool(group['metric_transformed'].iloc[0]) \
+                                  if 'metric_transformed' in group.columns else False,
         }
 
-
     return scenarios
-
 
 
 # ============================================================
@@ -278,6 +277,17 @@ def plot_hybrid_robustness(
     y_matrix = np.asarray(y_matrix, dtype=float)
 
     mean_y, ci_y_low, ci_y_high = pointwise_mean_ci(y_matrix, confidence=confidence)
+    mean_y    = pd.Series(mean_y).ffill().bfill().values
+    ci_y_low  = pd.Series(ci_y_low).ffill().bfill().values
+    ci_y_high = pd.Series(ci_y_high).ffill().bfill().values
+  # ricostruisci x_points se non è allineato con mean_y
+    n_points = len(mean_y)
+    if len(x_points) != n_points:
+        print(f"[WARN] x_points={len(x_points)}, mean_y={n_points} — ricostruisco x_points")
+        # genera x da 0 a 90 con n_points valori equidistanti
+        x_points = np.linspace(0, (n_points - 1) * 10, n_points)
+
+
     baseline_y = float(mean_y[0])
 
     ax.plot(
@@ -683,8 +693,9 @@ if __name__ == "__main__":
         plt.tight_layout()
         
         # to save the scenario name as a safe filename, we can replace or remove characters that are not allowed in filenames
-    #    safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])
-    #    safe_name = safe_name.replace(' ', '_')
+        #safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])
+        #safe_name = safe_name.replace(' ', '_')
+    
     #   uncomment the line below to save the plot for each significant scenario
         #plt.savefig(f"{safe_name}.png", dpi=300, bbox_inches='tight') per salvare le immagini
         #plt.show()

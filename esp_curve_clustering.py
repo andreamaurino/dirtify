@@ -237,6 +237,26 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
         'K-Means': 'KM',
         'HDBSCAN': 'HD',
         'BIRCH': 'BI',
+
+        "LogisticRegression": 'LR',
+        "K-Nearest Neighbors": 'KNN',
+        "NaiveBayes": 'NB',
+        "SupportVectorMachine": 'SVM',
+        "DecisionTreeClassifier": 'DT',
+        "RadialBasis Function SVM": 'RBF-SVM',
+        "Xgboost": 'XGB', 
+        "Multi-Layer Perceptron": 'MLP', 
+        "AdaBoost": 'AB', 
+        "LinearDiscriminantAnalysis": 'LDA',
+        "SGDClassifier": 'SGD', 
+        "RandomForest": 'RF',
+        "RidgeClassifier": 'Ridge',
+        "Extra Trees": 'ET',
+        "GaussianNB": 'GNB',
+        "QuadraticDiscriminantAnalysis": 'QDA',
+        "SDGClassifier": 'SDG',
+        "ExtraTreesClassifier":"ET",
+        "RandomForestClassifier":"RF"
     }
 
     ERROR_ABBREV = {

@@ -665,31 +665,21 @@ def correlation_analysis(train_df, target_variable,data):
 def _run_single(args):
     (run, Jsondata, dataset_name, data, target_variable, test_name, experiments_dir) = args
     
-    import duckdb
 
-    # ── path del checkpoint di questo run ──
     checkpoint_path = os.path.join(
         experiments_dir,
         f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
     )
 
-    # ── resume: se il checkpoint esiste carica lo stato precedente ──
-    local_con = duckdb.connect()
-    local_con.sql(
-        'CREATE TABLE experiments ('
-        '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
-        '  percentage DOUBLE, feature VARCHAR, modelName VARCHAR, '
-        '  Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1 DOUBLE, '
-        '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL, RMSE DOUBLE NULL, MAE DOUBLE NULL, R2 DOUBLE NULL, MSE DOUBLE NULL)'
-    )                                                           
+    # ── buffer in memoria per tutti i risultati del run ──
+    results_buffer = []
 
-    already_done = set()  # set di (errorType, feature, percentage, modelName) già completati
+    # ── resume: carica scenari già completati dal CSV ──
+    already_done = set()
     if os.path.exists(checkpoint_path):
-        print(f"*** RUN {run} — resume da checkpoint esistente ***", flush=True)
+        print(f"*** RUN {run} — resume da checkpoint ***", flush=True)
         existing_df = pd.read_csv(checkpoint_path)
-        # reinserisci i dati già calcolati in duckdb
-        local_con.execute("INSERT INTO experiments SELECT * FROM existing_df")
-        # costruisci il set di scenari già completati
+        results_buffer = existing_df.to_dict('records')  # ricarica in memoria
         for _, row in existing_df.iterrows():
             already_done.add((
                 row['errorType'],
@@ -699,6 +689,38 @@ def _run_single(args):
             ))
         print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
 
+    # # ── path del checkpoint di questo run ──
+    # checkpoint_path = os.path.join(
+    #     experiments_dir,
+    #     f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
+    # )
+
+    # # ── resume: se il checkpoint esiste carica lo stato precedente ──
+    local_con = duckdb.connect()
+    local_con.sql(
+         'CREATE TABLE experiments ('
+         '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
+         '  percentage DOUBLE, feature VARCHAR, modelName VARCHAR, '
+         '  Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1_Weighted DOUBLE, F1_Macro DOUBLE, F1_Binary DOUBLE, F1_per_class_json TEXT,'
+         '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL, '
+         'RMSE DOUBLE NULL, MAE DOUBLE NULL, R2 DOUBLE NULL, MSE DOUBLE NULL)'
+     )                                                           
+
+    # already_done = set()  # set di (errorType, feature, percentage, modelName) già completati
+    # if os.path.exists(checkpoint_path):
+    #     print(f"*** RUN {run} — resume da checkpoint esistente ***", flush=True)
+    #     existing_df = pd.read_csv(checkpoint_path)
+    #     # reinserisci i dati già calcolati in duckdb
+    #     local_con.execute("INSERT INTO experiments SELECT * FROM existing_df")
+    #     # costruisci il set di scenari già completati
+    #     for _, row in existing_df.iterrows():
+    #         already_done.add((
+    #             row['errorType'],
+    #             str(row['feature']),
+    #             row['percentage'],
+    #             row['modelName']
+    #         ))
+    #     print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
     data = data.dropna()
     if not (target_variable is None or target_variable == ''):
         data = data.dropna(subset=[target_variable])
@@ -716,19 +738,21 @@ def _run_single(args):
 
     stg = RunStrategy(
         run=run,
-        con=local_con,
+        dataset_name=dataset_name,
         task=task,
         noisy_df=None,
-        dataset_name=dataset_name,
-        target_variable=target_variable,
+        strategy=None,
         train_df=train_df,
         test_df=test_df,
+        target_variable=target_variable,
         n_clusters=Jsondata.get('Clusters'),
-        strategy=None,
+        results_buffer=results_buffer,  # passa il buffer già popolato dal resume
+        already_done=already_done,      # passa il set già popolato dal resume
     )
     
     # passa il set degli scenari già completati a stg
     stg.already_done = already_done
+    stg.results_buffer = results_buffer   # ← passa il buffer a stg
 
     for document in Jsondata['Experiments']:
         stg.EType = document["Errortype"]
@@ -769,18 +793,25 @@ def _run_single(args):
             AnalyzeValues(stg)
 
         # ── checkpoint incrementale dopo ogni documento ────────────
+        
         run_df = local_con.sql('SELECT * FROM experiments').to_df()
         run_df.to_csv(checkpoint_path, index=False)
         print(f"*** RUN {run} — checkpoint aggiornato dopo {document['Errortype']} ***", 
               flush=True)
         # ──────────────────────────────────────────────────────────
 
-    local_con.close()
+    #local_con.close()
+    run_df = pd.DataFrame(stg.results_buffer)
     print(f"*** RUN {run} DONE ***", flush=True)
     return run_df
 
+def _flush_to_csv(buffer: list, path: str):
+    """Scrive l'intero buffer su CSV (sovrascrive — è la fonte di verità)."""
+    if not buffer:
+        return
+    pd.DataFrame(buffer).to_csv(path, index=False)
 
-def start(json_name, multiprocessor="No", directory=""):
+def start(json_name, multiprocessor="No", worker=0, directory=""):
     import platform
     if platform.system() != 'Windows':
         try:
@@ -887,7 +918,10 @@ def start(json_name, multiprocessor="No", directory=""):
                     import traceback; traceback.print_exc()
         else:
             # ── modalità parallela (originale) ────────────────────
-            n_workers = max(1, multiprocessing.cpu_count() - 20)
+            if worker==0:
+                n_workers = max(1, multiprocessing.cpu_count() - 20)
+            else:
+                n_workers = worker
             print(f"Avvio {len(runs_to_do)} run su {n_workers} worker "
                   f"(saltati {len(completed_runs)} già completati)")
 
@@ -912,4 +946,6 @@ def start(json_name, multiprocessor="No", directory=""):
     final_df.insert(0, ',', range(len(final_df)))
     experiments_filename = f'experiments_{os.path.basename(dataset_name)}'
     final_df.to_csv(os.path.join(experiments_dir, experiments_filename), index=False)
+    con = duckdb.connect()
+    con.register('experiments', final_df)   
     print(f"That's all folks! file {experiments_filename} salvato — {len(final_df)} righe totali")

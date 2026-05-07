@@ -1456,11 +1456,11 @@ class CustomRole(QWidget):
         # Mappa per il Clustering (Task 2) - Abbreviazioni standard di PyCaret
         model_map2 = {
   
-            "K-Means": "kmeans",
-            "HDBSCAN": "hdbscan",
-            "Hierarchical Clustering": "hclust",
-            "Gaussian Mixture Model": "gmm", 
-            "BIRCH": "birch" 
+            "K-Means": "K-Means",
+            "HDBSCAN": "HDBSCAN",
+            "Hierarchical Clustering": "Hierarchical Clustering",
+            "Gaussian Mixture Model": "Gaussian Mixture Model", 
+            "BIRCH": "BIRCH" 
         }
 
         # Mappa per la Regressione (Task 3) - Abbreviazioni standard di PyCaret

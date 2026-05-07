@@ -401,8 +401,8 @@ def select_features(csv_path,
 if __name__ == "__main__":
 
     features, report = select_features(
-        csv_path='./datasetRoot/cCTG.csv',
-        target_col="NSP",          # target binario/multiclasse
+        csv_path='./datasetRoot/shuttle.csv',
+        target_col="class",          # target binario/multiclasse
         n_total=9,
         scoring='combined',            # 'mi' | 'anova' | 'combined'
         weight_mi=0.6,

@@ -383,10 +383,10 @@ def select_features(csv_path,
 if __name__ == "__main__":
     
     features, report = select_features(
-        csv_path='./datasetRoot/satimage.csv',
-        target_col="class",
-        n_total=12,          # feature totali da selezionare
-        k_neighbors=5,       # vicini per Laplacian Score
+        csv_path='./datasetRoot/drybean.csv',
+        target_col="target",
+        n_total=9,          # feature totali da selezionare
+        k_neighbors=8,       # vicini per Laplacian Score
         corr_threshold=0.95, # soglia correlazione
         top_frac=0.50,       # 50% dalle più rilevanti
         mid_frac=0.30,       # 30% dalla fascia media

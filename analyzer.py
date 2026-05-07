@@ -18,6 +18,8 @@ from scipy.stats import chi2_contingency, pointbiserialr
 from sklearn.metrics import matthews_corrcoef
 import json
 import os
+import sys
+from contextlib import contextmanager
 import csv
 from sklearn.inspection import permutation_importance
 from sklearn.linear_model import LinearRegression
@@ -38,7 +40,6 @@ import pycaret.classification as pycaret_clf
 import pycaret.regression as pycaret_reg
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
-from hdbscan import HDBSCAN
 
 
 from sklearn.mixture import GaussianMixture
@@ -203,90 +204,145 @@ def save_results_to_csv(results, output_file="synthetic_data_analysis_results.cs
                 result.get("F1", ""),
             ])
 
+@contextmanager
+def suppress_output():
+    with open(os.devnull, 'w') as devnull:
+        old_stdout_fd = os.dup(1)
+        old_stderr_fd = os.dup(2)
+        os.dup2(devnull.fileno(), 1)
+        os.dup2(devnull.fileno(), 2)
+        old_stdout, old_stderr = sys.stdout, sys.stderr
+        sys.stdout = sys.stderr = devnull
+        try:
+            yield
+        finally:
+            os.dup2(old_stdout_fd, 1)
+            os.dup2(old_stderr_fd, 2)
+            os.close(old_stdout_fd)
+            os.close(old_stderr_fd)
+            sys.stdout = old_stdout
+            sys.stderr = old_stderr
+
+
 def _classification_metrics(stg: RunStrategy):
         
         stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
         train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
-        s = pycaret_clf.setup(train, target=stg.target_variable, session_id=123)
-        models = pycaret_clf.compare_models(include=stg.models, n_select=20)
+        #s = pycaret_clf.setup(train, target=stg.target_variable, session_id=123)
+        with suppress_output():
+            s = pycaret_clf.setup(
+                train,
+                target=stg.target_variable,
+                session_id=123,
+                verbose=False,      # ← no output di setup
+                html=False,         # ← no tabella HTML
+                system_log=False,   # ← no log interno di pycaret
+            )
+            models = pycaret_clf.compare_models(
+                include=stg.models,
+                n_select=20,
+                verbose=False,      # ← no tabella comparativa
+            )
+        #models = pycaret_clf.compare_models(include=stg.models, n_select=20)
         
-        if not isinstance(models, list):
-            models = [models]
-        for m in models:
-            predictions = pycaret_clf.predict_model(m, data=stg.test_df)
-            y_true = predictions[stg.target_variable]
-            y_pred = predictions['prediction_label']
-            model_name = m.__class__.__name__
+            if not isinstance(models, list):
+                models = [models]
+            for m in models:
+                predictions = pycaret_clf.predict_model(m, data=stg.test_df)
+                y_true = predictions[stg.target_variable]
+                y_pred = predictions['prediction_label']
+                model_name = m.__class__.__name__
 
-            n_classes = len(set(y_true))
-            avg = 'binary' if n_classes == 2 else 'weighted'
+                n_classes = len(set(y_true))
+                classes   = sorted(set(y_true))
 
-            precision = round(precision_score(y_true, y_pred, average=avg, zero_division=0), 4)
-            recall    = round(recall_score(y_true, y_pred, average=avg, zero_division=0), 4)
-            f1        = round(f1_score(y_true, y_pred, average=avg, zero_division=0), 4)
-            accuracy = round(accuracy_score(y_true, y_pred), 4)
+                # --- metriche comuni a binario e multiclasse ---
+                accuracy   = round(accuracy_score(y_true, y_pred), 4)
+                f1_macro   = round(f1_score(y_true, y_pred, average='macro',    zero_division=0), 4)
+                f1_weighted = round(f1_score(y_true, y_pred, average='weighted', zero_division=0), 4)
+                precision  = round(precision_score(y_true, y_pred, average='weighted', zero_division=0), 4)
+                recall     = round(recall_score(y_true, y_pred, average='weighted',    zero_division=0), 4)
 
-            auc = None
-            try:
-                if n_classes == 2:
-                    if "prediction_score" in predictions.columns:
-                        y_prob = predictions['prediction_score']
-                        auc = round(roc_auc_score(y_true, y_prob), 4)
-                else:
-                    predictions_proba = pycaret_clf.predict_model(m,
-                                                                data=stg.test_df,
-                                                                raw_score=True)
-                    prob_cols = [c for c in predictions_proba.columns
-                                if c.startswith('prediction_score_')]
-                    if prob_cols:
-                        y_prob = predictions_proba[prob_cols].values
+                # --- F1 per classe — funziona uguale per binario e multiclasse ---
+                f1_per_class = f1_score(y_true, y_pred, average=None, zero_division=0)
+                f1_per_class_dict = {str(c): round(f, 4) for c, f in zip(classes, f1_per_class)}
+                # es. binario:     {'0': 0.91, '1': 0.73}
+                # es. multiclasse: {'1': 0.88, '2': 0.61, '3': 0.44}
 
-                        # 2. normalizza a somma 1 per riga (le colonne raw_score
-                        #    possono essere log-odds o score non normalizzati)
-                        row_sums = y_prob.sum(axis=1, keepdims=True)
-                        row_sums = np.where(row_sums == 0, 1, row_sums)  # evita /0
-                        y_prob = y_prob / row_sums
+                # --- F1 binaria solo se binario (altrimenti None) ---
+                f1_binary = round(f1_score(y_true, y_pred, average='binary', zero_division=0), 4) \
+                            if n_classes == 2 else None
 
-                        auc = round(roc_auc_score(y_true, y_prob,
-                                                multi_class='ovr',
-                                                average='weighted'), 4)
-            except Exception as e:
-                print(f"  [WARN] AUC non calcolabile per {model_name}: {e}")
+                # --- serializza per il DB ---
+                import json
+                f1_per_class_json = json.dumps(f1_per_class_dict)
                 auc = None
+                try:
+                    if n_classes == 2:
+                        if "prediction_score" in predictions.columns:
+                            y_prob = predictions['prediction_score']
+                            auc = round(roc_auc_score(y_true, y_prob), 4)
+                    else:
+                        predictions_proba = pycaret_clf.predict_model(m,
+                                                                    data=stg.test_df,
+                                                                    raw_score=True)
+                        prob_cols = [c for c in predictions_proba.columns
+                                    if c.startswith('prediction_score_')]
+                        if prob_cols:
+                            y_prob = predictions_proba[prob_cols].values
+                            row_sums = y_prob.sum(axis=1, keepdims=True)
+                            row_sums = np.where(row_sums == 0, 1, row_sums)
+                            y_prob = y_prob / row_sums
+                            auc = round(roc_auc_score(y_true, y_prob,
+                                                    multi_class='ovr',
+                                                    average='weighted'), 4)
+                except Exception as e:
+                    print(f"  [WARN] AUC non calcolabile per {model_name}: {e}")
+                    auc = None
 
-                
-                stg.con.execute("""
-                    INSERT INTO experiments 
-                    VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?,NULL, NULL, NULL,NULL, NULL, NULL, NULL)
-                    """, [
-                    stg.run,
-                    stg.dataset_name,
-                    str(stg.EType),  # o json.dumps(EType)
-                    stg.percentage,
-                    stg.feature,
-                    model_name,
-                    accuracy,
-                    auc,
-                    recall,
-                    precision,
-                    f1
-                    ])
-            else:
-                stg.con.execute("""
-                    INSERT INTO experiments 
-                    VALUES (?,?, ?, ?, ?, ?, ?, NULL, ?, ?, ?,NULL, NULL, NULL,NULL, NULL, NULL,NULL)
-                        """, [
-                    stg.run,
-                    stg.dataset_name,
-                    str(stg.EType),  # o json.dumps(EType)
-                    stg.percentage,
-                    stg.feature,
-                    model_name,
-                    accuracy,
-                    recall,
-                    precision,
-                    f1
-                    ])
+            # ← INSERT sempre qui, fuori dal try/except, auc è None se fallito
+            stg.results_buffer.append({
+                'experiment_run':   stg.run,
+                'datasetName':      stg.dataset_name,
+                'errorType':        str(stg.EType),
+                'percentage':       stg.percentage,
+                'feature':          stg.feature,
+                'modelName':        model_name,
+                'Accuracy':         accuracy,
+                'Auc':              auc,
+                'Recall':           recall,
+                'Precision':        precision,
+                'F1_Weighted':      f1_weighted,
+                'F1_Macro':         f1_macro,
+                'F1_Binary':        f1_binary,
+                'F1_per_class_json': f1_per_class_json,
+                'AMI':              None,
+                'SILHOUETTE':       None,
+                'K':                None,
+                'RMSE':             None,
+                'MAE':              None,
+                'R2':               None,
+                'MSE':              None,
+                })
+            # stg.con.execute("""
+            #     INSERT INTO experiments 
+            #     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL,NULL,NULL,NULL)
+            #     """, [
+            #     stg.run,
+            #     stg.dataset_name,
+            #     str(stg.EType),
+            #     stg.percentage,
+            #     stg.feature,
+            #     model_name,
+            #     accuracy,
+            #     auc,
+            #     recall,
+            #     precision,
+            #     f1_weighted,    # colonna f1 esistente — ora sempre weighted
+            #     f1_macro,       # nuova
+            #     f1_binary,      # nuova — None se multiclasse
+            #     f1_per_class_json  # nuova — JSON con f1 per ogni classe
+            # ])
 
 def _regression_metrics(stg: RunStrategy):
     print(f"START regression: EType={stg.EType}, pct={stg.percentage}, feature={stg.feature}, shape={stg.noisy_df.shape if stg.noisy_df is not None else stg.train_df.shape}", flush=True)
@@ -304,15 +360,27 @@ def _regression_metrics(stg: RunStrategy):
         print(f"SKIP dataset troppo piccolo", flush=True)
         return
 
-    print(f"SETUP regression...", flush=True)
-    s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123, verbose=False)
-    print(f"COMPARE models...", flush=True)
+    
+    #s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123, verbose=False)
+    s = pycaret_reg.setup(
+        train,
+        target=stg.target_variable,
+        session_id=123,
+        verbose=False,
+        html=False,
+        system_log=False,
+    )
+    models = pycaret_reg.compare_models(
+        include=stg.models,
+        n_select=20,
+        verbose=False,
+    )
 
     
     # USA noisy_df se disponibile, altrimenti train_df (caso standard)
     #train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
     #s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123)
-    models = pycaret_reg.compare_models(include=stg.models, n_select=20)
+    #models = pycaret_reg.compare_models(include=stg.models, n_select=20)
     #old
     #stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
     #s = pycaret_reg.setup(stg.train_df, target=stg.target_variable, session_id=123)
@@ -332,21 +400,44 @@ def _regression_metrics(stg: RunStrategy):
         r2   = float(round(r2_score(y_true, y_pred), 4))
         mse  = float(round(mean_squared_error(y_true, y_pred), 4))
 
-        stg.con.execute("""
-            INSERT INTO experiments
-            VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ?, ?, ?, ?)
-            """, [
-            stg.run,
-            stg.dataset_name,
-            str(stg.EType),
-            stg.percentage,
-            stg.feature,
-            model_name,
-            rmse,
-            mae,
-            r2,
-            mse
-        ])
+        stg.results_buffer.append({
+            'experiment_run':   stg.run,
+            'datasetName':      stg.dataset_name,
+            'errorType':        str(stg.EType),
+            'percentage':       stg.percentage,
+            'feature':          stg.feature,
+            'modelName':        model_name,
+            'Accuracy':         None,
+            'Auc':              None,
+            'Recall':           None,
+            'Precision':        None,
+            'F1_Weighted':      None,
+            'F1_Macro':         None,
+            'F1_Binary':        None,
+            'F1_per_class_json': None,
+            'AMI':              None,
+            'SILHOUETTE':       None,
+            'K':                None,
+            'RMSE':             rmse,
+            'MAE':              mae,
+            'R2':               r2,
+            'MSE':              mse,
+        })
+        # stg.con.execute("""
+        #     INSERT INTO experiments
+        #     VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,NULL,NULL,?, ?, ?, ?)
+        #     """, [
+        #     stg.run,
+        #     stg.dataset_name,
+        #     str(stg.EType),
+        #     stg.percentage,
+        #     stg.feature,
+        #     model_name,
+        #     rmse,
+        #     mae,
+        #     r2,
+        #     mse
+        # ])
 
 
 def _fresh_model(model_name: str, n_clusters: int):
@@ -354,7 +445,7 @@ def _fresh_model(model_name: str, n_clusters: int):
         "K-Means":                  KMeans(n_clusters=n_clusters, random_state=42),
         "Gaussian Mixture Model":   GaussianMixture(n_components=n_clusters, random_state=42),
         "Hierarchical Clustering":  AgglomerativeClustering(n_clusters=n_clusters),
-        "HDBSCAN":                  HDBSCAN(prediction_data=True),
+        "HDBSCAN":                  HDBSCAN(),
         "BIRCH":                    Birch(n_clusters=n_clusters)
     }[model_name]
 
@@ -469,14 +560,37 @@ def _clustering_metrics(stg: RunStrategy):
                 print(f"Warning {model_name}: dimensioni diverse, AMI skippato")
 
             print(f"Model: {model_name}, Silhouette: {silhouette}, AMI: {ami}, Clusters: {k}")
-            stg.con.execute("""
-                INSERT INTO experiments 
-                VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, ?, ?, ?,NULL, NULL, NULL,NULL)
-            """, [
-                stg.run, stg.dataset_name, str(stg.EType),
-                stg.percentage, stg.feature, model_name,
-                ami, silhouette, k
-            ])
+            stg.results_buffer.append({
+            'experiment_run':   stg.run,
+            'datasetName':      stg.dataset_name,
+            'errorType':        str(stg.EType),
+            'percentage':       stg.percentage,
+            'feature':          stg.feature,
+            'modelName':        model_name,
+            'Accuracy':         None,
+            'Auc':              None,
+            'Recall':           None,
+            'Precision':        None,
+            'F1_Weighted':      None,
+            'F1_Macro':         None,
+            'F1_Binary':        None,
+            'F1_per_class_json': None,
+            'AMI':              ami,
+            'SILHOUETTE':       silhouette,
+            'K':                k,
+            'RMSE':             None,
+            'MAE':              None,
+            'R2':               None,
+            'MSE':              None,
+        })
+            # stg.con.execute("""
+            #     INSERT INTO experiments 
+            #     VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL,NULL,NULL,?, ?, ?,NULL, NULL, NULL,NULL)
+            # """, [
+            #     stg.run, stg.dataset_name, str(stg.EType),
+            #     stg.percentage, stg.feature, model_name,
+            #     ami, silhouette, k
+            # ])
 
         except Exception as e:
             print(f"Errore con {model_name}: {e}")
