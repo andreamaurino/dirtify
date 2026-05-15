@@ -689,11 +689,6 @@ def _run_single(args):
             ))
         print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
 
-    # # ── path del checkpoint di questo run ──
-    # checkpoint_path = os.path.join(
-    #     experiments_dir,
-    #     f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
-    # )
 
     # # ── resume: se il checkpoint esiste carica lo stato precedente ──
     local_con = duckdb.connect()
@@ -706,21 +701,6 @@ def _run_single(args):
          'RMSE DOUBLE NULL, MAE DOUBLE NULL, R2 DOUBLE NULL, MSE DOUBLE NULL)'
      )                                                           
 
-    # already_done = set()  # set di (errorType, feature, percentage, modelName) già completati
-    # if os.path.exists(checkpoint_path):
-    #     print(f"*** RUN {run} — resume da checkpoint esistente ***", flush=True)
-    #     existing_df = pd.read_csv(checkpoint_path)
-    #     # reinserisci i dati già calcolati in duckdb
-    #     local_con.execute("INSERT INTO experiments SELECT * FROM existing_df")
-    #     # costruisci il set di scenari già completati
-    #     for _, row in existing_df.iterrows():
-    #         already_done.add((
-    #             row['errorType'],
-    #             str(row['feature']),
-    #             row['percentage'],
-    #             row['modelName']
-    #         ))
-    #     print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
     data = data.dropna()
     if not (target_variable is None or target_variable == ''):
         data = data.dropna(subset=[target_variable])
@@ -756,6 +736,8 @@ def _run_single(args):
 
     for document in Jsondata['Experiments']:
         stg.EType = document["Errortype"]
+        if "CustomError" in document:
+            stg.CustomError = document["CustomError"]   
             # ── skip se questo errorType è già completo nel checkpoint ──
         if already_done and stg.EType in {k[0] for k in already_done}:
             # verifica che TUTTI i modelli e percentuali siano presenti
@@ -794,7 +776,8 @@ def _run_single(args):
 
         # ── checkpoint incrementale dopo ogni documento ────────────
         
-        run_df = local_con.sql('SELECT * FROM experiments').to_df()
+        #run_df = local_con.sql('SELECT * FROM experiments').to_df()
+        run_df = pd.DataFrame(stg.results_buffer)
         run_df.to_csv(checkpoint_path, index=False)
         print(f"*** RUN {run} — checkpoint aggiornato dopo {document['Errortype']} ***", 
               flush=True)

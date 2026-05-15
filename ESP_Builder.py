@@ -50,6 +50,8 @@ def analyze_robustness(df, metric, epc_df, dataset_name, json_path, target_std_D
             # applica trasformazione ai valori della curva
             current_test[metric] = current_test[metric].apply(transform)
 
+            
+
             if len(current_test) < 2:
                 print(f"  [SKIP] run={run_id} model={model} feat={feat} err={err}: "
                       f"solo {len(current_test)} punti validi per {metric}, saltato")
@@ -485,12 +487,13 @@ if __name__ == "__main__":
     parser.add_argument('--metric',         default='AMI',   help='Metrica (default: AMI)')
     parser.add_argument('--aepc', type=float,      default=0.05, help='Soglia |AEPC| (default: 0.05)')
     parser.add_argument('--target',         default=None,    help='Nome colonna target (richiesto se metric=RMSE)')
+    parser.add_argument('--showall',         default="no",    help='"yes" per mostrare tutti gli scenari significativi, "no" per solo il report (default: no)')
     args = parser.parse_args()
 
     dataset_name = args.dataset
     metric       = args.metric
     AEPC_ABS_THRESHOLD = args.aepc
-
+    show_all_results = args.showall.lower() == "yes"
     filename = 'experiments_' + dataset_name
     percorso_file = './experiments/' + filename
 
@@ -651,52 +654,53 @@ if __name__ == "__main__":
         )
         print_summary_by_sign(results)
         plot_clusters_by_sign(results, output_path=dataset_name+"_esp_clusters.png",metric=metric)        
+    if show_all_results:    
     # uncomment the block below to plot each significant scenario with the hybrid plot    
-    for sc in significant_scenarios:
-        fig = plt.figure(figsize=(14, 7))
-        ax = plt.gca()
+        for sc in significant_scenarios:
+            fig = plt.figure(figsize=(14, 7))
+            ax = plt.gca()
 
-        # etichetta asse y in funzione della trasformazione
-        is_transformed = sc.get("metric_transformed", False)
-        y_label = r"$e^{-RMSE/\sigma_{y_0}}$" if is_transformed else metric
+            # etichetta asse y in funzione della trasformazione
+            is_transformed = sc.get("metric_transformed", False)
+            y_label = r"$e^{-RMSE/\sigma_{y_0}}$" if is_transformed else metric
 
-        plot_hybrid_robustness(
-            scenario_name=sc["scenario_name"],
-            x_points=sc["x_points"],
-            y_matrix=sc["y_matrix"],
-            ax=ax,
-            AEPC=sc["AEPC_mean"],
-            EPC=sc["EPC_mean"],
-            dataset_name=dataset_name,
-            performance_metric=y_label,  # <-- etichetta corretta
-            text_fontsize=13,
-            y_clip=None,
-            target_span_frac=0.20,
-            pad_frac=0.10,
-        )
+            plot_hybrid_robustness(
+                scenario_name=sc["scenario_name"],
+                x_points=sc["x_points"],
+                y_matrix=sc["y_matrix"],
+                ax=ax,
+                AEPC=sc["AEPC_mean"],
+                EPC=sc["EPC_mean"],
+                dataset_name=dataset_name,
+                performance_metric=y_label,  # <-- etichetta corretta
+                text_fontsize=13,
+                y_clip=None,
+                target_span_frac=0.20,
+                pad_frac=0.10,
+            )
 
-        metric_label = y_label
-        txt = (
-            f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
-            f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
-            f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]\n"
-            + (f"metric: {metric_label}" if is_transformed else "")
-        )
-        ax.text(
-            0.01, 0.01, txt,
-            transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=11,
-            bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
-                    alpha=0.85, edgecolor="none")
-        )
+            metric_label = y_label
+            txt = (
+                f"AEPC mean {sc['AEPC_mean']:.3f}%  CI95% [{sc['AEPC_ci'][0]:.3f}, {sc['AEPC_ci'][1]:.3f}]\n"
+                f"AEPC p-raw {sc['AEPC_p_raw']:.4g}  p-BY {sc['AEPC_p_by']:.4g}\n"
+                f"EPC  mean {sc['EPC_mean']:.3f}   CI95% [{sc['EPC_ci'][0]:.3f}, {sc['EPC_ci'][1]:.3f}]\n"
+                + (f"metric: {metric_label}" if is_transformed else "")
+            )
+            ax.text(
+                0.01, 0.01, txt,
+                transform=ax.transAxes,
+                ha="left", va="bottom", fontsize=11,
+                bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
+                        alpha=0.85, edgecolor="none")
+            )
 
-        plt.tight_layout()
+            plt.tight_layout()
+            
+            # to save the scenario name as a safe filename, we can replace or remove characters that are not allowed in filenames
+            #safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])
+            #safe_name = safe_name.replace(' ', '_')
         
-        # to save the scenario name as a safe filename, we can replace or remove characters that are not allowed in filenames
-        #safe_name = re.sub(r'[\\/:*?"<>|]', '_', sc['scenario_name'])
-        #safe_name = safe_name.replace(' ', '_')
-    
-    #   uncomment the line below to save the plot for each significant scenario
-        #plt.savefig(f"{safe_name}.png", dpi=300, bbox_inches='tight') per salvare le immagini
-        #plt.show()
-        #plt.close()
+        #   uncomment the line below to save the plot for each significant scenario
+            #plt.savefig(f"{safe_name}.png", dpi=300, bbox_inches='tight') per salvare le immagini
+            plt.show()
+            plt.close()

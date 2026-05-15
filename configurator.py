@@ -283,9 +283,9 @@ class InitWindow(QWidget):
           elif self.task_value == 3:
               ML = [
                   "Linear Regression", "Ridge Regression", "Lasso Regression", 
-                  "Elastic Net", "Decision Tree Regressor", "Random Forest Regressor", 
-                   "K-Nearest Neighbors Regressor", 
-                  "Gradient Boosting Regressor", "XGBoost Regressor", 
+                  "Elastic Net",  "Random Forest Regressor","XGBoost Regressor", 
+                   "Decision Tree Regressor", "K-Nearest Neighbors Regressor",
+                  "Gradient Boosting Regressor",  
                   "LightGBM Regressor", "CatBoost Regressor", "Support Vector Regression",
               ]
           else:
@@ -872,15 +872,19 @@ class CorrelatedFeature(QWidget):
 # Classe per la finestra custom role
 class CustomRole(QWidget):
 
-    def __init__(self, grouped_columns, parent=None):
+    def __init__(self, grouped_columns, parent=None, from_back=False):
         super(CustomRole, self).__init__(parent)
         self.grouped_columns = grouped_columns
-        if len(grouped_columns["Experiments"]) > 1:
+        
+        # pulisci le custom-role solo se arrivi dal tasto Back
+        if from_back and len(grouped_columns["Experiments"]) > 1:
             grouped_columns["Experiments"] = [
                 exp for exp in grouped_columns["Experiments"]
                 if exp.get("ErrorStrategy") != "custom-role"
             ]
+        
         self.ErrorType = "Label"
+        # ... resto del costruttore invariato
         self.setWindowTitle("Custom role")
         self.setGeometry(100, 100, 1000, 1000)
         self.setStyleSheet("background-color: #2e2e2e;")
@@ -1043,10 +1047,10 @@ class CustomRole(QWidget):
 
 
     def open_prev_window(self):
-        self.close()  
-        self.next_window = CorrelatedFeature(self.grouped_columns)  
+        self.close()
+        self.next_window = CustomRole(self.grouped_columns, from_back=True)
         self.next_window.showMaximized()
-   
+
     def display_columns2(self):
         self.clear_layout2(self.scroll_area_layout2)
         self.column_types2.clear()
@@ -1178,7 +1182,7 @@ class CustomRole(QWidget):
         self.grouped_columns["Experiments"].append(addedDocument)  # ← una volta sola
 
         self.close()
-        self.next_window = CustomRole(self.grouped_columns)
+        self.next_window = CustomRole(self.grouped_columns)  # from_back=False di default
         self.next_window.showMaximized()
 
 
@@ -1226,8 +1230,8 @@ class CustomRole(QWidget):
         UI.start(file_name)
 
     def open_prev_window(self):
-        self.close()  
-        self.next_window = CorrelatedFeature(self.grouped_columns)  
+        self.close()
+        self.next_window = CorrelatedFeature(self.grouped_columns)
         self.next_window.showMaximized()
 
     def save_window(self):

@@ -31,6 +31,7 @@ class RunStrategy:
     target_variable: str
     models: list[str] = field(default_factory=list)
     EType: str = "NULL"
+    CustomError: str="NULL"
     feature: str = "NULL"
     percentage: int = 0
     task: str = "classification"

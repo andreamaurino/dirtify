@@ -233,7 +233,7 @@ def _classification_metrics(stg: RunStrategy):
             s = pycaret_clf.setup(
                 train,
                 target=stg.target_variable,
-                session_id=123,
+                session_id=stg.run*12,
                 verbose=False,      # ← no output di setup
                 html=False,         # ← no tabella HTML
                 system_log=False,   # ← no log interno di pycaret
@@ -360,84 +360,62 @@ def _regression_metrics(stg: RunStrategy):
         print(f"SKIP dataset troppo piccolo", flush=True)
         return
 
-    
-    #s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123, verbose=False)
-    s = pycaret_reg.setup(
-        train,
-        target=stg.target_variable,
-        session_id=123,
-        verbose=False,
-        html=False,
-        system_log=False,
-    )
-    models = pycaret_reg.compare_models(
-        include=stg.models,
-        n_select=20,
-        verbose=False,
-    )
+    with suppress_output():    
+        #s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123, verbose=False)
+        s = pycaret_reg.setup(
+            train,
+            target=stg.target_variable,
+            session_id=stg.run*12,
+            verbose=False,
+            html=False,
+            system_log=False,
+        )
+        models = pycaret_reg.compare_models(
+            include=stg.models,
+            n_select=20,
+            verbose=False,
+        )
 
-    
-    # USA noisy_df se disponibile, altrimenti train_df (caso standard)
-    #train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
-    #s = pycaret_reg.setup(train, target=stg.target_variable, session_id=123)
-    #models = pycaret_reg.compare_models(include=stg.models, n_select=20)
-    #old
-    #stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
-    #s = pycaret_reg.setup(stg.train_df, target=stg.target_variable, session_id=123)
-    #models = pycaret_reg.compare_models(include=stg.models, n_select=20)
-    
-    if not isinstance(models, list):
-        models = [models]
+        
+        
+        if not isinstance(models, list):
+            models = [models]
 
-    for m in models:
-        predictions = pycaret_reg.predict_model(m, data=stg.test_df)
-        y_true = predictions[stg.target_variable]
-        y_pred = predictions['prediction_label']
-        model_name = m.__class__.__name__
+        for m in models:
+            predictions = pycaret_reg.predict_model(m, data=stg.test_df)
+            y_true = predictions[stg.target_variable]
+            y_pred = predictions['prediction_label']
+            model_name = m.__class__.__name__
 
-        rmse = float(round(np.sqrt(mean_squared_error(y_true, y_pred)), 4))
-        mae  = float(round(mean_absolute_error(y_true, y_pred), 4))
-        r2   = float(round(r2_score(y_true, y_pred), 4))
-        mse  = float(round(mean_squared_error(y_true, y_pred), 4))
-
-        stg.results_buffer.append({
-            'experiment_run':   stg.run,
-            'datasetName':      stg.dataset_name,
-            'errorType':        str(stg.EType),
-            'percentage':       stg.percentage,
-            'feature':          stg.feature,
-            'modelName':        model_name,
-            'Accuracy':         None,
-            'Auc':              None,
-            'Recall':           None,
-            'Precision':        None,
-            'F1_Weighted':      None,
-            'F1_Macro':         None,
-            'F1_Binary':        None,
-            'F1_per_class_json': None,
-            'AMI':              None,
-            'SILHOUETTE':       None,
-            'K':                None,
-            'RMSE':             rmse,
-            'MAE':              mae,
-            'R2':               r2,
-            'MSE':              mse,
-        })
-        # stg.con.execute("""
-        #     INSERT INTO experiments
-        #     VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,NULL,NULL,?, ?, ?, ?)
-        #     """, [
-        #     stg.run,
-        #     stg.dataset_name,
-        #     str(stg.EType),
-        #     stg.percentage,
-        #     stg.feature,
-        #     model_name,
-        #     rmse,
-        #     mae,
-        #     r2,
-        #     mse
-        # ])
+            rmse = float(round(np.sqrt(mean_squared_error(y_true, y_pred)), 4))
+            mae  = float(round(mean_absolute_error(y_true, y_pred), 4))
+            r2   = float(round(r2_score(y_true, y_pred), 4))
+            mse  = float(round(mean_squared_error(y_true, y_pred), 4))
+            print(f"Model: {model_name}, RSME: {rmse}, MAE: {mae}, r2: {r2}, mse:{mse}")
+            stg.results_buffer.append({
+                'experiment_run':   stg.run,
+                'datasetName':      stg.dataset_name,
+                'errorType':        str(stg.EType),
+                'percentage':       stg.percentage,
+                'feature':          stg.feature,
+                'modelName':        model_name,
+                'Accuracy':         None,
+                'Auc':              None,
+                'Recall':           None,
+                'Precision':        None,
+                'F1_Weighted':      None,
+                'F1_Macro':         None,
+                'F1_Binary':        None,
+                'F1_per_class_json': None,
+                'AMI':              None,
+                'SILHOUETTE':       None,
+                'K':                None,
+                'RMSE':             rmse,
+                'MAE':              mae,
+                'R2':               r2,
+                'MSE':              mse,
+            })
+        
 
 
 def _fresh_model(model_name: str, n_clusters: int):
@@ -636,6 +614,8 @@ def AnalyzeValues(stg:RunStrategy):
                     error,local_noisy_df = labels(local_noisy_df, stg.strategy,train_df)
                 case "duplicate": 
                     error,local_noisy_df = duplicate(local_noisy_df, stg.strategy,train_df)
+            if stg.CustomError is not None:
+                        stg.EType = stg.CustomError
             stg.noisy_df=local_noisy_df.copy()
             results = performanceAnalysis(stg)
             all_results.append(results)

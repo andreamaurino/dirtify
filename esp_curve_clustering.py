@@ -256,7 +256,24 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
         "QuadraticDiscriminantAnalysis": 'QDA',
         "SDGClassifier": 'SDG',
         "ExtraTreesClassifier":"ET",
-        "RandomForestClassifier":"RF"
+        "RandomForestClassifier":"RF",
+        "AdaBoostClassifier":"ADA",
+        "KNeighborsClassifier":"KNN",
+        "XGBClassifier":"XGB",
+        "MLPClassifier":"MLP",def _Draw_cluster_originale(cluster_id, cluster_data):
+            """
+            Stampa i modelli e gli errori di un cluster, ciascuno su una singola riga.
+            """
+            print(f"Cluster {cluster_id}:")
+            
+            # Converte tutti gli elementi in stringhe e li unisce con una virgola
+            modelli_str = ", ".join(map(str, cluster_data['models']))
+            print(f"  Modelli: {modelli_str}")
+            
+            errori_str = ", ".join(map(str, cluster_data['errors']))
+            print(f"  Errori:  {errori_str}")
+            print("-" * 30)
+        
     }
 
     ERROR_ABBREV = {
