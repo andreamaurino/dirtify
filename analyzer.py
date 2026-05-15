@@ -345,6 +345,7 @@ def _classification_metrics(stg: RunStrategy):
             # ])
 
 def _regression_metrics(stg: RunStrategy):
+    
     print(f"START regression: EType={stg.EType}, pct={stg.percentage}, feature={stg.feature}, shape={stg.noisy_df.shape if stg.noisy_df is not None else stg.train_df.shape}", flush=True)
     stg.target_variable = stg.target_variable[0] if isinstance(stg.target_variable, list) else stg.target_variable
     train = stg.noisy_df if stg.noisy_df is not None else stg.train_df
@@ -365,6 +366,7 @@ def _regression_metrics(stg: RunStrategy):
         s = pycaret_reg.setup(
             train,
             target=stg.target_variable,
+            memory=stg.tmp_dir,
             session_id=stg.run*12,
             verbose=False,
             html=False,
@@ -606,6 +608,8 @@ def AnalyzeValues(stg:RunStrategy):
             match   stg.EType:
                 case "noise":
                     error,local_noisy_df = noise(local_noisy_df, stg.strategy,train_df)
+                case "noise-shift":
+                    error,local_noisy_df = noise(local_noisy_df, stg.strategy,train_df)
                 case "missing":
                     error,local_noisy_df = missing(local_noisy_df, stg.strategy,train_df)
                 case "outlier":
@@ -614,8 +618,8 @@ def AnalyzeValues(stg:RunStrategy):
                     error,local_noisy_df = labels(local_noisy_df, stg.strategy,train_df)
                 case "duplicate": 
                     error,local_noisy_df = duplicate(local_noisy_df, stg.strategy,train_df)
-            if stg.CustomError is not None:
-                        stg.EType = stg.CustomError
+                case _:
+                    print(f"[WARN] error_type non gestito: {stg.EType}", flush=True)
             stg.noisy_df=local_noisy_df.copy()
             results = performanceAnalysis(stg)
             all_results.append(results)

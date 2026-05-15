@@ -664,130 +664,139 @@ def correlation_analysis(train_df, target_variable,data):
 
 def _run_single(args):
     (run, Jsondata, dataset_name, data, target_variable, test_name, experiments_dir) = args
+    import tempfile
+    import shutil
     
-
-    checkpoint_path = os.path.join(
-        experiments_dir,
-        f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
-    )
-
-    # ── buffer in memoria per tutti i risultati del run ──
-    results_buffer = []
-
-    # ── resume: carica scenari già completati dal CSV ──
-    already_done = set()
-    if os.path.exists(checkpoint_path):
-        print(f"*** RUN {run} — resume da checkpoint ***", flush=True)
-        existing_df = pd.read_csv(checkpoint_path)
-        results_buffer = existing_df.to_dict('records')  # ricarica in memoria
-        for _, row in existing_df.iterrows():
-            already_done.add((
-                row['errorType'],
-                str(row['feature']),
-                row['percentage'],
-                row['modelName']
-            ))
-        print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
-
-
-    # # ── resume: se il checkpoint esiste carica lo stato precedente ──
-    local_con = duckdb.connect()
-    local_con.sql(
-         'CREATE TABLE experiments ('
-         '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
-         '  percentage DOUBLE, feature VARCHAR, modelName VARCHAR, '
-         '  Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1_Weighted DOUBLE, F1_Macro DOUBLE, F1_Binary DOUBLE, F1_per_class_json TEXT,'
-         '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL, '
-         'RMSE DOUBLE NULL, MAE DOUBLE NULL, R2 DOUBLE NULL, MSE DOUBLE NULL)'
-     )                                                           
-
-    data = data.dropna()
-    if not (target_variable is None or target_variable == ''):
-        data = data.dropna(subset=[target_variable])
-
-    if test_name == "":
-        train_df, test_df = train_test_split(data, test_size=0.2, random_state=run)
-    else:
-        test_name_path = os.path.join('datasetRoot', test_name)
-        test_df = pd.read_csv(test_name_path, sep=',')
-        train_df = data.copy()
-
-    train_df.index = range(len(train_df))
-    included_models = Jsondata['machineLearningModels']
-    task = Jsondata['task']
-
-    stg = RunStrategy(
-        run=run,
-        dataset_name=dataset_name,
-        task=task,
-        noisy_df=None,
-        strategy=None,
-        train_df=train_df,
-        test_df=test_df,
-        target_variable=target_variable,
-        n_clusters=Jsondata.get('Clusters'),
-        results_buffer=results_buffer,  # passa il buffer già popolato dal resume
-        already_done=already_done,      # passa il set già popolato dal resume
+    # tmp unica per tutto il run
+    tmp_dir = tempfile.mkdtemp(
+        prefix=f'pycaret_{os.path.basename(dataset_name)}_{run}_'
     )
     
-    # passa il set degli scenari già completati a stg
-    stg.already_done = already_done
-    stg.results_buffer = results_buffer   # ← passa il buffer a stg
+    try:    
 
-    for document in Jsondata['Experiments']:
-        stg.EType = document["Errortype"]
-        if "CustomError" in document:
-            stg.CustomError = document["CustomError"]   
-            # ── skip se questo errorType è già completo nel checkpoint ──
-        if already_done and stg.EType in {k[0] for k in already_done}:
-            # verifica che TUTTI i modelli e percentuali siano presenti
-            expected_percentages = set()
-            pct = document.get("Strategy", {}).get("percentage", 0.2)
-            p = pct
-            while p < 1:
-                expected_percentages.add(round(p, 1))
-                p += pct
-            
-            all_complete = all(
-                (stg.EType, str(document.get("Strategy", {}).get("affected_features")), 
-                pct, model)
-                in already_done
-                for pct in expected_percentages
-                for model in stg.models
-            )
-            
-            if all_complete:
-                print(f"*** SKIP documento {stg.EType} — già completo ***", flush=True)
-                continue
-        # ──────────────────────────────────────────────────────────
-        if document['Errortype'] == "standard":
-            try:
-                stg.models = document['machineLearningModels']
-            except KeyError:
-                stg.models = included_models
-            performanceAnalysis(stg)
+        checkpoint_path = os.path.join(
+            experiments_dir,
+            f'checkpoint_{os.path.basename(dataset_name)}_run{run}.csv'
+        )
+
+        # ── buffer in memoria per tutti i risultati del run ──
+        results_buffer = []
+
+        # ── resume: carica scenari già completati dal CSV ──
+        already_done = set()
+        if os.path.exists(checkpoint_path):
+            print(f"*** RUN {run} — resume da checkpoint ***", flush=True)
+            existing_df = pd.read_csv(checkpoint_path)
+            results_buffer = existing_df.to_dict('records')  # ricarica in memoria
+            for _, row in existing_df.iterrows():
+                already_done.add((
+                    row['errorType'],
+                    str(row['feature']),
+                    row['percentage'],
+                    row['modelName']
+                ))
+            print(f"*** RUN {run} — {len(already_done)} scenari già completati ***", flush=True)
+
+
+        # # ── resume: se il checkpoint esiste carica lo stato precedente ──
+        local_con = duckdb.connect()
+        local_con.sql(
+            'CREATE TABLE experiments ('
+            '  experiment_run INTEGER, datasetName VARCHAR, errorType VARCHAR, '
+            '  percentage DOUBLE, feature VARCHAR, modelName VARCHAR, '
+            '  Accuracy DOUBLE, Auc DOUBLE, Recall DOUBLE, Precision DOUBLE, F1_Weighted DOUBLE, F1_Macro DOUBLE, F1_Binary DOUBLE, F1_per_class_json TEXT,'
+            '  AMI DOUBLE NULL, SILHOUETTE DOUBLE NULL, K DOUBLE NULL, '
+            'RMSE DOUBLE NULL, MAE DOUBLE NULL, R2 DOUBLE NULL, MSE DOUBLE NULL)'
+        )                                                           
+
+        data = data.dropna()
+        if not (target_variable is None or target_variable == ''):
+            data = data.dropna(subset=[target_variable])
+
+        if test_name == "":
+            train_df, test_df = train_test_split(data, test_size=0.2, random_state=run)
         else:
-            stg.strategy = document["Strategy"]
-            try:
-                stg.models = document['machineLearningModels']
-            except KeyError:
-                stg.models = included_models
-            AnalyzeValues(stg)
+            test_name_path = os.path.join('datasetRoot', test_name)
+            test_df = pd.read_csv(test_name_path, sep=',')
+            train_df = data.copy()
 
-        # ── checkpoint incrementale dopo ogni documento ────────────
+        train_df.index = range(len(train_df))
+        included_models = Jsondata['machineLearningModels']
+        task = Jsondata['task']
+
+        stg = RunStrategy(
+            run=run,
+            dataset_name=dataset_name,
+            task=task,
+            tmp_dir=tmp_dir, 
+            noisy_df=None,
+            strategy=None,
+            train_df=train_df,
+            test_df=test_df,
+            target_variable=target_variable,
+            n_clusters=Jsondata.get('Clusters'),
+            results_buffer=results_buffer,  # passa il buffer già popolato dal resume
+            already_done=already_done,      # passa il set già popolato dal resume
+        )
         
-        #run_df = local_con.sql('SELECT * FROM experiments').to_df()
+        # passa il set degli scenari già completati a stg
+        stg.already_done = already_done
+        stg.results_buffer = results_buffer   # ← passa il buffer a stg
+
+        for document in Jsondata['Experiments']:
+            stg.EType = document["Errortype"]
+           
+                # ── skip se questo errorType è già completo nel checkpoint ──
+            if already_done and stg.EType in {k[0] for k in already_done}:
+                # verifica che TUTTI i modelli e percentuali siano presenti
+                expected_percentages = set()
+                pct = document.get("Strategy", {}).get("percentage", 0.2)
+                p = pct
+                while p < 1:
+                    expected_percentages.add(round(p, 1))
+                    p += pct
+                
+                all_complete = all(
+                    (stg.EType, str(document.get("Strategy", {}).get("affected_features")), 
+                    pct, model)
+                    in already_done
+                    for pct in expected_percentages
+                    for model in stg.models
+                )
+                
+                if all_complete:
+                    print(f"*** SKIP documento {stg.EType} — già completo ***", flush=True)
+                    continue
+            # ──────────────────────────────────────────────────────────
+            if document['Errortype'] == "standard":
+                try:
+                    stg.models = document['machineLearningModels']
+                except KeyError:
+                    stg.models = included_models
+                performanceAnalysis(stg)
+            else:
+                stg.strategy = document["Strategy"]
+                try:
+                    stg.models = document['machineLearningModels']
+                except KeyError:
+                    stg.models = included_models
+                AnalyzeValues(stg)
+
+            # ── checkpoint incrementale dopo ogni documento ────────────
+            
+            #run_df = local_con.sql('SELECT * FROM experiments').to_df()
+            run_df = pd.DataFrame(stg.results_buffer)
+            run_df.to_csv(checkpoint_path, index=False)
+            print(f"*** RUN {run} — checkpoint aggiornato dopo {document['Errortype']} ***", 
+                flush=True)
+            # ──────────────────────────────────────────────────────────
+
+        #local_con.close()
         run_df = pd.DataFrame(stg.results_buffer)
-        run_df.to_csv(checkpoint_path, index=False)
-        print(f"*** RUN {run} — checkpoint aggiornato dopo {document['Errortype']} ***", 
-              flush=True)
-        # ──────────────────────────────────────────────────────────
-
-    #local_con.close()
-    run_df = pd.DataFrame(stg.results_buffer)
-    print(f"*** RUN {run} DONE ***", flush=True)
-    return run_df
-
+        print(f"*** RUN {run} DONE ***", flush=True)
+        return run_df
+    finally:
+        shutil.rmtree(tmp_dir, ignore_errors=True)
 def _flush_to_csv(buffer: list, path: str):
     """Scrive l'intero buffer su CSV (sovrascrive — è la fonte di verità)."""
     if not buffer:
