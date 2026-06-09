@@ -1,12 +1,9 @@
 """
-UI Layer for the Data Analysis Tool
+UI layer per il Data Analysis Tool.
 
-This module represents the user interaction layer.
-It defines how the user loads datasets, configures the analysis,
-and triggers the backend computation.
-
-The implementation is intentionally lightweight and focuses
-on modeling the interaction flow rather than rendering a full GUI.
+Questo modulo rappresenta il livello di interazione con l'utente.
+Modella il flusso di utilizzo dell'applicazione senza implementare
+una vera interfaccia grafica.
 """
 
 from typing import Optional
@@ -14,66 +11,70 @@ from typing import Optional
 
 class DataAnalysisUI:
     def __init__(self):
+        # Stato corrente dell'interazione utente
         self.dataset_path: Optional[str] = None
         self.testset_path: Optional[str] = None
         self.target_variable: Optional[str] = None
         self.analysis_strategy: Optional[str] = None
 
+
     def open_dataset(self, path: str):
-        """User selects a dataset file"""
+        """Selezione del dataset da parte dell'utente"""
         self.dataset_path = path
-        print(f"Dataset selected: {path}")
+        print(f"Dataset selezionato: {path}")
+
 
     def open_testset(self, path: str):
-        """User selects an optional test dataset"""
+        """Selezione opzionale del test set"""
         self.testset_path = path
-        print(f"Test set selected: {path}")
+        print(f"Test set selezionato: {path}")
+
 
     def select_target_variable(self, target: str):
-        """User selects the target variable"""
+        """Scelta della variabile target"""
         self.target_variable = target
-        print(f"Target variable selected: {target}")
+        print(f"Variabile target selezionata: {target}")
+
 
     def select_analysis_strategy(self, strategy: str):
-        """User selects the analysis strategy"""
+        """Scelta della strategia di analisi"""
         self.analysis_strategy = strategy
-        print(f"Analysis strategy selected: {strategy}")
+        print(f"Strategia di analisi selezionata: {strategy}")
+
+        
 
     def run_analysis(self, config_file: str):
         """
-        Triggers the backend analysis process.
-        This method delegates the computation to the analysis engine.
+        Avvio dell'analisi.
+        Questo metodo rappresenta il punto di integrazione
+        con il backend di analisi.
         """
-        print("Starting analysis with configuration:")
+        print("Avvio analisi con la seguente configurazione:")
         print(f"- Dataset: {self.dataset_path}")
         print(f"- Testset: {self.testset_path}")
         print(f"- Target: {self.target_variable}")
-        print(f"- Strategy: {self.analysis_strategy}")
+        print(f"- Strategia: {self.analysis_strategy}")
 
-        # Example integration point with backend
+        # Punto di integrazione con il backend
         # start(config_file)
 
     def show_results(self):
-        """Displays analysis results (tables and plots)"""
-        print("Displaying analysis results")
+        """Visualizzazione dei risultati (tabelle e grafici)"""
+        print("Visualizzazione dei risultati dell'analisi")
 
     def save_project(self):
-        """Saves project configuration and results"""
-        print("Project saved successfully")
-
+        """Salvataggio della configurazione e dei risultati"""
+        print("Progetto salvato correttamente")
 
 
 if __name__ == "__main__":
     """
-    Example usage demonstrating the interaction flow of the UI layer.
-
-    This block is provided for illustrative purposes only.
-    It shows how a user would interact with the system through the UI,
-    without requiring a real graphical interface.
+    Esempio di utilizzo del livello UI.
+    Serve solo a mostrare il flusso di interazione dell'utente.
     """
 
     ui = DataAnalysisUI()
     ui.open_dataset("datasetRoot/example.csv")
     ui.select_target_variable("target")
     ui.select_analysis_strategy("custom_rules")
-    ui.run_analysis("json/example_config.json")    
+    ui.run_analysis("json/example_config.json")
