@@ -13,6 +13,7 @@ class DirtifyApp(tk.Tk):
         self.ui_logic = DataAnalysisUI()
 
         self.dataset_path = tk.StringVar(value="No dataset selected")
+        self.testset_path = tk.StringVar(value="No testset selected")
         self.target_var = tk.StringVar()
         self.strategy_var = tk.StringVar(value="custom_rules")
 
@@ -28,32 +29,44 @@ class DirtifyApp(tk.Tk):
         ttk.Button(frame, text="Open Dataset", command=self.open_dataset).grid(row=0, column=0, sticky="ew", pady=5)
         ttk.Label(frame, textvariable=self.dataset_path, wraplength=500).grid(row=0, column=1, sticky="w", padx=10)
 
-        ttk.Label(frame, text="Target Variable:").grid(row=1, column=0, sticky="w", pady=5)
+        ttk.Button(frame, text="Open Testset", command=self.open_testset).grid(row=1, column=0, sticky="ew", pady=5)
+        ttk.Label(frame, textvariable=self.testset_path, wraplength=500).grid(row=1, column=1, sticky="w", padx=10)
+
+
+        ttk.Label(frame, text="Target Variable:").grid(row=2, column=0, sticky="w", pady=5)
         self.target_combo = ttk.Combobox(
             frame,
             textvariable=self.target_var,
             state="readonly",
             values=[]
         )
-        self.target_combo.grid(row=1, column=1, sticky="ew", pady=5)
+        self.target_combo.grid(row=2, column=1, sticky="ew", pady=5)
 
-        ttk.Label(frame, text="Analysis Strategy:").grid(row=2, column=0, sticky="w", pady=5)
+        ttk.Label(frame, text="Analysis Strategy:").grid(row=3, column=0, sticky="w", pady=5)
         ttk.Combobox(
             frame,
             textvariable=self.strategy_var,
             values=["custom_rules", "exploratory_analysis", "standard_analysis"],
             state="readonly"
-        ).grid(row=2, column=1, sticky="ew", pady=5)
+        ).grid(row=3, column=1, sticky="ew", pady=5)
 
-        ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=3, column=0, columnspan=2, sticky="ew", pady=10)
+        ttk.Label(frame, text="Custom Rules:").grid(row=4, column=0, sticky="nw", pady=5)
+        self.custom_rules_box = tk.Text(frame, height=4, width=60)
+        self.custom_rules_box.grid(row=4, column=1, sticky="ew", pady=5)
+        self.custom_rules_box.insert(
+            tk.END,
+            "Example: IF age > 40 THEN apply custom modification\n"
+        )
 
-        ttk.Label(frame, text="Log / Results:").grid(row=4, column=0, sticky="nw", pady=5)
+        ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=5, column=0, columnspan=2, sticky="ew", pady=10)
+
+        ttk.Label(frame, text="Log / Results:").grid(row=6, column=0, sticky="nw", pady=5)
         self.output_box = tk.Text(frame, height=8, width=60)
-        self.output_box.grid(row=4, column=1, sticky="nsew", pady=5)
+        self.output_box.grid(row=6, column=1, sticky="nsew", pady=5)
 
-        ttk.Label(frame, text="Dataset Preview:").grid(row=5, column=0, sticky="nw", pady=(10, 5))
+        ttk.Label(frame, text="Dataset Preview:").grid(row=7, column=0, sticky="nw", pady=(10, 5))
         preview_frame = ttk.Frame(frame)
-        preview_frame.grid(row=5, column=1, sticky="nsew", pady=(10, 5))
+        preview_frame.grid(row=7, column=1, sticky="nsew", pady=(10, 5))
 
         self.preview_tree = ttk.Treeview(preview_frame, show="headings", height=12)
         self.preview_tree.grid(row=0, column=0, sticky="nsew")
@@ -73,8 +86,8 @@ class DirtifyApp(tk.Tk):
         preview_frame.rowconfigure(0, weight=1)
 
         frame.columnconfigure(1, weight=1)
-        frame.rowconfigure(4, weight=1)
-        frame.rowconfigure(5, weight=1)
+        frame.rowconfigure(6, weight=1)
+        frame.rowconfigure(7, weight=1)
 
 
     def open_dataset(self):
@@ -84,6 +97,16 @@ class DirtifyApp(tk.Tk):
             self.ui_logic.open_dataset(path)
             self.log(f"Dataset selected: {path}")
             self.load_columns_from_csv(path)
+
+
+    def open_testset(self):
+        path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
+        if path:
+           self.testset_path.set(path)
+           self.ui_logic.open_testset(path)
+           self.log(f"Testset selected: {path}")
+
+    
 
     def load_columns_from_csv(self, path):
         try:
@@ -127,10 +150,10 @@ class DirtifyApp(tk.Tk):
 
 
 
-
     def run_analysis(self):
         target = self.target_var.get().strip()
         strategy = self.strategy_var.get().strip()
+        custom_rules = self.custom_rules_box.get("1.0", tk.END).strip()
 
         if self.dataset_path.get() == "No dataset selected":
             self.log("Please select a dataset first.")
@@ -147,7 +170,15 @@ class DirtifyApp(tk.Tk):
         self.log("Analysis started from UI prototype.")
         self.log(f"Target: {target}")
         self.log(f"Strategy: {strategy}")
+        if custom_rules:
+            self.log("Custom rules:")
+            self.log(custom_rules)
+        else:
+            self.log("No custom rules provided.")
+
         self.log("This is a visible UI prototype. Backend integration will come later.")
+
+
 
     def log(self, message):
         self.output_box.insert(tk.END, message + "\n")
