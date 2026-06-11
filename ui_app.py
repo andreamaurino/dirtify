@@ -16,6 +16,7 @@ class DirtifyApp(tk.Tk):
         self.testset_path = tk.StringVar(value="No testset selected")
         self.target_var = tk.StringVar()
         self.strategy_var = tk.StringVar(value="custom_rules")
+        self.status_var = tk.StringVar(value="Ready")
 
         self.build_ui()
 
@@ -85,6 +86,13 @@ class DirtifyApp(tk.Tk):
         preview_frame.columnconfigure(0, weight=1)
         preview_frame.rowconfigure(0, weight=1)
 
+        ttk.Label(
+            frame,
+            textvariable=self.status_var,
+            relief="sunken",
+            anchor="w"
+        ).grid(row=8, column=0, columnspan=2, sticky="ew", pady=(10, 0))
+
         frame.columnconfigure(1, weight=1)
         frame.rowconfigure(6, weight=1)
         frame.rowconfigure(7, weight=1)
@@ -94,15 +102,18 @@ class DirtifyApp(tk.Tk):
         path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
         if path:
             self.dataset_path.set(path)
+            self.status_var.set("Dataset loaded")
             self.ui_logic.open_dataset(path)
             self.log(f"Dataset selected: {path}")
             self.load_columns_from_csv(path)
+            
 
 
     def open_testset(self):
         path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv"), ("All files", "*.*")])
         if path:
            self.testset_path.set(path)
+           self.status_var.set("Testset loaded")
            self.ui_logic.open_testset(path)
            self.log(f"Testset selected: {path}")
 
@@ -166,6 +177,7 @@ class DirtifyApp(tk.Tk):
         self.ui_logic.select_target_variable(target)
         self.ui_logic.select_analysis_strategy(strategy)
         self.ui_logic.run_analysis("json/example_config.json")
+        self.status_var.set("Analysis completed")
 
         self.log("Analysis started from UI prototype.")
         self.log(f"Target: {target}")
