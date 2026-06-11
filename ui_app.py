@@ -59,15 +59,33 @@ class DirtifyApp(tk.Tk):
             "Example: IF age > 40 THEN apply custom modification\n"
         )
 
-        ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=5, column=0, columnspan=2, sticky="ew", pady=10)
+        ttk.Label(frame, text="Exploratory Analysis:").grid(row=5, column=0, sticky="nw", pady=5)
 
-        ttk.Label(frame, text="Log / Results:").grid(row=6, column=0, sticky="nw", pady=5)
+        analysis_tools_frame = ttk.Frame(frame)
+        analysis_tools_frame.grid(row=5, column=1, sticky="w", pady=5)
+
+        ttk.Button(
+            analysis_tools_frame,
+            text="Show Distributions",
+            command=self.show_distributions
+        ).grid(row=0, column=0, padx=(0, 10))
+
+        ttk.Button(
+            analysis_tools_frame,
+            text="Show Correlations",
+            command=self.show_correlations
+        ).grid(row=0, column=1)
+
+
+        ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=6, column=0, columnspan=2, sticky="ew", pady=10)
+
+        ttk.Label(frame, text="Log / Results:").grid(row=7, column=0, sticky="nw", pady=5)
         self.output_box = tk.Text(frame, height=8, width=60)
-        self.output_box.grid(row=6, column=1, sticky="nsew", pady=5)
+        self.output_box.grid(row=7, column=1, sticky="nsew", pady=5)
 
-        ttk.Label(frame, text="Dataset Preview:").grid(row=7, column=0, sticky="nw", pady=(10, 5))
+        ttk.Label(frame, text="Dataset Preview:").grid(row=8, column=0, sticky="nw", pady=(10, 5))
         preview_frame = ttk.Frame(frame)
-        preview_frame.grid(row=7, column=1, sticky="nsew", pady=(10, 5))
+        preview_frame.grid(row=8, column=1, sticky="nsew", pady=(10, 5))
 
         self.preview_tree = ttk.Treeview(preview_frame, show="headings", height=12)
         self.preview_tree.grid(row=0, column=0, sticky="nsew")
@@ -91,11 +109,11 @@ class DirtifyApp(tk.Tk):
             textvariable=self.status_var,
             relief="sunken",
             anchor="w"
-        ).grid(row=8, column=0, columnspan=2, sticky="ew", pady=(10, 0))
+        ).grid(row=9, column=0, columnspan=2, sticky="ew", pady=(10, 0))
 
         frame.columnconfigure(1, weight=1)
-        frame.rowconfigure(6, weight=1)
         frame.rowconfigure(7, weight=1)
+        frame.rowconfigure(8, weight=1)
 
 
     def open_dataset(self):
@@ -117,8 +135,16 @@ class DirtifyApp(tk.Tk):
            self.ui_logic.open_testset(path)
            self.log(f"Testset selected: {path}")
 
-    
+    def show_distributions(self):
+           self.log("Exploratory analysis: distributions requested.")
+           self.status_var.set("Showing distributions")
 
+    def show_correlations(self):
+           self.log("Exploratory analysis: correlations requested.")
+           self.status_var.set("Showing correlations")
+
+    
+    
     def load_columns_from_csv(self, path):
         try:
             with open(path, newline="", encoding="utf-8", errors="ignore") as file:
