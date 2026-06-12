@@ -18,15 +18,34 @@ class DirtifyApp(tk.Tk):
         self.target_var = tk.StringVar()
         self.strategy_var = tk.StringVar(value="custom_rules")
         self.status_var = tk.StringVar(value="Ready")
+        style = ttk.Style(self)
+        style.configure("Run.TButton", font=("Arial", 10, "bold"))
 
         self.build_ui()
 
-    def build_ui(self):
-        title = ttk.Label(self, text="Dirtify Workbench Prototype", font=("Arial", 16, "bold"))
-        title.pack(pady=10)
 
-        frame = ttk.Frame(self, padding=10)
-        frame.pack(fill="both", expand=True)
+
+    def build_ui(self):
+        title = ttk.Label(
+            self,
+            text="Dirtify Workbench Prototype",
+            font=("Arial", 18, "bold")
+        )
+        title.pack(pady=(15, 2))
+
+        subtitle = ttk.Label(
+            self,
+            text="Dataset management • Analysis configuration • Results workflow",
+            font=("Arial", 10)
+        )
+        subtitle.pack(pady=(0, 8))
+
+        ttk.Separator(self, orient="horizontal").pack(fill="x", padx=12, pady=(0, 10))
+
+        frame = ttk.LabelFrame(self, text="Workbench workflow", padding=12)
+        frame.pack(fill="both", expand=True, padx=12, pady=(0, 10))
+
+        frame.columnconfigure(0, minsize=130)
 
         ttk.Button(frame, text="Open Dataset", command=self.open_dataset).grid(row=0, column=0, sticky="ew", pady=5)
         ttk.Label(frame, textvariable=self.dataset_path, wraplength=500).grid(row=0, column=1, sticky="w", padx=10)
@@ -78,7 +97,12 @@ class DirtifyApp(tk.Tk):
         ).grid(row=0, column=1)
 
 
-        ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=6, column=0, columnspan=2, sticky="ew", pady=10)
+        ttk.Button(
+            frame,
+            text="Run Analysis",
+            command=self.run_analysis,
+            style="Run.TButton"
+        ).grid(row=6, column=0, columnspan=2, sticky="ew", pady=(12, 10))
 
 
         ttk.Label(frame, text="Results View:").grid(row=7, column=0, sticky="nw", pady=5)
@@ -121,26 +145,53 @@ class DirtifyApp(tk.Tk):
         ).grid(row=0, column=4, padx=(10, 0))
 
 
+        log_frame = ttk.LabelFrame(frame, text="Log / Results")
+        log_frame.grid(row=8, column=0, columnspan=2, sticky="nsew", pady=10)
 
-        ttk.Label(frame, text="Log / Results:").grid(row=8, column=0, sticky="nw", pady=5)
-        self.output_box = tk.Text(frame, height=8, width=60)
-        self.output_box.grid(row=8, column=1, sticky="nsew", pady=5)
+        self.output_box = tk.Text(
+            log_frame,
+            height=8,
+            width=60,
+            relief="flat",
+            borderwidth=0,
+            highlightthickness=1,
+            highlightbackground="#C8C8C8",
+            highlightcolor="#C8C8C8"
+        )
 
-        ttk.Label(frame, text="Dataset Preview:").grid(row=9, column=0, sticky="nw", pady=(10, 5))
-        preview_frame = ttk.Frame(frame)
-        preview_frame.grid(row=9, column=1, sticky="nsew", pady=(10, 5))
+        self.output_box.pack(fill="both", expand=True, padx=5, pady=5)
 
-        self.preview_tree = ttk.Treeview(preview_frame, show="headings", height=12)
+
+        preview_outer_frame = ttk.LabelFrame(frame, text="Dataset Preview")
+        preview_outer_frame.grid(row=9, column=0, columnspan=2, sticky="nsew", pady=10)
+
+        preview_border = tk.Frame(
+            preview_outer_frame,
+            relief="flat",
+            borderwidth=0,
+            highlightthickness=1,
+            highlightbackground="#C8C8C8",
+            highlightcolor="#C8C8C8"
+        )
+        preview_border.pack(fill="both", expand=True, padx=5, pady=5)
+
+        preview_frame = ttk.Frame(preview_border)
+        preview_frame.pack(fill="both", expand=True, padx=0, pady=0)
+
+
+        self.preview_tree = ttk.Treeview(
+            preview_frame,
+            show="headings",
+            height=12
+        )
         self.preview_tree.grid(row=0, column=0, sticky="nsew")
 
-        scrollbar_y = ttk.Scrollbar(preview_frame, orient="vertical", command=self.preview_tree.yview)
-        scrollbar_y.grid(row=0, column=1, sticky="ns")
+        
 
         scrollbar_x = ttk.Scrollbar(preview_frame, orient="horizontal", command=self.preview_tree.xview)
         scrollbar_x.grid(row=1, column=0, sticky="ew")
 
         self.preview_tree.configure(
-            yscrollcommand=scrollbar_y.set,
             xscrollcommand=scrollbar_x.set
         )
 
