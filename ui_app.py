@@ -1,4 +1,5 @@
 import csv
+import json
 import tkinter as tk
 from tkinter import ttk, filedialog
 from ui_layer import DataAnalysisUI
@@ -79,13 +80,40 @@ class DirtifyApp(tk.Tk):
 
         ttk.Button(frame, text="Run Analysis", command=self.run_analysis).grid(row=6, column=0, columnspan=2, sticky="ew", pady=10)
 
-        ttk.Label(frame, text="Log / Results:").grid(row=7, column=0, sticky="nw", pady=5)
-        self.output_box = tk.Text(frame, height=8, width=60)
-        self.output_box.grid(row=7, column=1, sticky="nsew", pady=5)
 
-        ttk.Label(frame, text="Dataset Preview:").grid(row=8, column=0, sticky="nw", pady=(10, 5))
+        ttk.Label(frame, text="Results View:").grid(row=7, column=0, sticky="nw", pady=5)
+
+        results_tools_frame = ttk.Frame(frame)
+        results_tools_frame.grid(row=7, column=1, sticky="w", pady=5)
+
+        ttk.Button(
+            results_tools_frame,
+            text="Show Results Table",
+            command=self.show_results_table
+        ).grid(row=0, column=0, padx=(0, 10))
+
+
+        ttk.Button(
+            results_tools_frame,
+            text="Show Graph Placeholder",
+            command=self.show_graph_placeholder
+        ).grid(row=0, column=1)
+
+
+        ttk.Button(
+            results_tools_frame,
+            text="Save Project",
+            command=self.save_project
+        ).grid(row=0, column=2, padx=(10, 0))
+
+
+        ttk.Label(frame, text="Log / Results:").grid(row=8, column=0, sticky="nw", pady=5)
+        self.output_box = tk.Text(frame, height=8, width=60)
+        self.output_box.grid(row=8, column=1, sticky="nsew", pady=5)
+
+        ttk.Label(frame, text="Dataset Preview:").grid(row=9, column=0, sticky="nw", pady=(10, 5))
         preview_frame = ttk.Frame(frame)
-        preview_frame.grid(row=8, column=1, sticky="nsew", pady=(10, 5))
+        preview_frame.grid(row=9, column=1, sticky="nsew", pady=(10, 5))
 
         self.preview_tree = ttk.Treeview(preview_frame, show="headings", height=12)
         self.preview_tree.grid(row=0, column=0, sticky="nsew")
@@ -109,11 +137,11 @@ class DirtifyApp(tk.Tk):
             textvariable=self.status_var,
             relief="sunken",
             anchor="w"
-        ).grid(row=9, column=0, columnspan=2, sticky="ew", pady=(10, 0))
+        ).grid(row=10, column=0, columnspan=2, sticky="ew", pady=(10, 0))
 
         frame.columnconfigure(1, weight=1)
-        frame.rowconfigure(7, weight=1)
         frame.rowconfigure(8, weight=1)
+        frame.rowconfigure(9, weight=1)
 
 
     def open_dataset(self):
@@ -135,16 +163,46 @@ class DirtifyApp(tk.Tk):
            self.ui_logic.open_testset(path)
            self.log(f"Testset selected: {path}")
 
+
     def show_distributions(self):
-           self.log("Exploratory analysis: distributions requested.")
-           self.status_var.set("Showing distributions")
+        self.log("Exploratory analysis: distributions requested.")
+        self.status_var.set("Showing distributions")
 
     def show_correlations(self):
-           self.log("Exploratory analysis: correlations requested.")
-           self.status_var.set("Showing correlations")
+        self.log("Exploratory analysis: correlations requested.")
+        self.status_var.set("Showing correlations")
 
-    
-    
+    def show_results_table(self):
+        self.log("Results view: table requested.")
+        self.status_var.set("Showing results table")
+
+
+    def show_graph_placeholder(self):
+        self.log("Results view: graph placeholder requested.")
+        self.status_var.set("Showing graph placeholder")
+
+    def save_project(self):
+        project_data = {
+            "dataset_path": self.dataset_path.get(),
+            "testset_path": self.testset_path.get(),
+            "target_variable": self.target_var.get(),
+            "analysis_strategy": self.strategy_var.get(),
+            "custom_rules": self.custom_rules_box.get("1.0", tk.END).strip()
+        }
+
+        path = filedialog.asksaveasfilename(
+            defaultextension=".json",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")]
+        )
+
+        if path:
+            with open(path, "w", encoding="utf-8") as file:
+                json.dump(project_data, file, indent=4)
+
+            self.log(f"Project saved: {path}")
+            self.status_var.set("Project saved")
+
+
     def load_columns_from_csv(self, path):
         try:
             with open(path, newline="", encoding="utf-8", errors="ignore") as file:
