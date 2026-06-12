@@ -107,6 +107,13 @@ class DirtifyApp(tk.Tk):
         ).grid(row=0, column=2, padx=(10, 0))
 
 
+        ttk.Button(
+            results_tools_frame,
+            text="Save Results",
+            command=self.save_results
+        ).grid(row=0, column=3, padx=(10, 0))
+
+
         ttk.Label(frame, text="Log / Results:").grid(row=8, column=0, sticky="nw", pady=5)
         self.output_box = tk.Text(frame, height=8, width=60)
         self.output_box.grid(row=8, column=1, sticky="nsew", pady=5)
@@ -202,6 +209,27 @@ class DirtifyApp(tk.Tk):
             self.log(f"Project saved: {path}")
             self.status_var.set("Project saved")
 
+
+    def save_results(self):
+        results_text = self.output_box.get("1.0", tk.END).strip()
+
+        if not results_text:
+            self.log("No results available to save.")
+            self.status_var.set("No results to save")
+            return
+
+        path = filedialog.asksaveasfilename(
+            defaultextension=".txt",
+            filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+        )
+
+        if path:
+            with open(path, "w", encoding="utf-8") as file:
+                file.write(results_text)
+
+            self.log(f"Results saved: {path}")
+            self.status_var.set("Results saved")
+            
 
     def load_columns_from_csv(self, path):
         try:
