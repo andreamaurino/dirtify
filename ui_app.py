@@ -114,6 +114,14 @@ class DirtifyApp(tk.Tk):
         ).grid(row=0, column=3, padx=(10, 0))
 
 
+        ttk.Button(
+            results_tools_frame,
+            text="Load Project",
+            command=self.load_project
+        ).grid(row=0, column=4, padx=(10, 0))
+
+
+
         ttk.Label(frame, text="Log / Results:").grid(row=8, column=0, sticky="nw", pady=5)
         self.output_box = tk.Text(frame, height=8, width=60)
         self.output_box.grid(row=8, column=1, sticky="nsew", pady=5)
@@ -230,6 +238,42 @@ class DirtifyApp(tk.Tk):
             self.log(f"Results saved: {path}")
             self.status_var.set("Results saved")
             
+
+    def load_project(self):
+        path = filedialog.askopenfilename(
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")]
+        )
+
+        if path:
+            with open(path, "r", encoding="utf-8") as file:
+                project_data = json.load(file)
+
+            dataset_path = project_data.get("dataset_path", "No dataset selected")
+            testset_path = project_data.get("testset_path", "No testset selected")
+            target_variable = project_data.get("target_variable", "")
+            analysis_strategy = project_data.get("analysis_strategy", "custom_rules")
+            custom_rules = project_data.get("custom_rules", "")
+
+            self.dataset_path.set(dataset_path)
+            self.testset_path.set(testset_path)
+            self.strategy_var.set(analysis_strategy)
+
+            self.custom_rules_box.delete("1.0", tk.END)
+            self.custom_rules_box.insert(tk.END, custom_rules)
+
+            if dataset_path != "No dataset selected":
+                self.ui_logic.open_dataset(dataset_path)
+                self.load_columns_from_csv(dataset_path)
+
+            if target_variable:
+                self.target_var.set(target_variable)
+
+            if testset_path != "No testset selected":
+                self.ui_logic.open_testset(testset_path)
+
+            self.log(f"Project loaded: {path}")
+            self.status_var.set("Project loaded")
+    
 
     def load_columns_from_csv(self, path):
         try:
