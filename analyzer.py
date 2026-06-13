@@ -243,8 +243,13 @@ def _classification_metrics(stg: RunStrategy):
                 n_select=20,
                 verbose=False,      # ← no tabella comparativa
             )
-        #models = pycaret_clf.compare_models(include=stg.models, n_select=20)
-        
+            # ottimizzazione iperparametri
+            tuned_models = [
+                pycaret_clf.tune_model(m, verbose=False)
+                for m in models
+            ]
+            models = tuned_models
+            
             if not isinstance(models, list):
                 models = [models]
             for m in models:
@@ -377,8 +382,12 @@ def _regression_metrics(stg: RunStrategy):
             n_select=20,
             verbose=False,
         )
-
-        
+        #optimize models with tuning
+        tuned_models = [
+            pycaret_reg.tune_model(m, optimize='RMSE', verbose=False) 
+            for m in models
+        ]
+        models = tuned_models if tuned_models else models
         
         if not isinstance(models, list):
             models = [models]
