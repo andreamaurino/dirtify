@@ -373,7 +373,10 @@ class DirtifyApp(tk.Tk):
         strategy = self.strategy_var.get().strip()
         custom_rules = self.custom_rules_box.get("1.0", tk.END).strip()
 
-        if self.dataset_path.get() == "No dataset selected":
+        dataset_path = self.dataset_path.get()
+        testset_path = self.testset_path.get()
+
+        if dataset_path == "No dataset selected":
             self.log("Please select a dataset first.")
             return
 
@@ -381,21 +384,34 @@ class DirtifyApp(tk.Tk):
             self.log("Please select a target variable.")
             return
 
+        self.ui_logic.open_dataset(dataset_path)
+
+        if testset_path != "No test set selected":
+            self.ui_logic.open_testset(testset_path)
+
         self.ui_logic.select_target_variable(target)
         self.ui_logic.select_analysis_strategy(strategy)
-        self.ui_logic.run_analysis("json/example_config.json")
-        self.status_var.set("Analysis completed")
 
-        self.log("Analysis started from UI prototype.")
-        self.log(f"Target: {target}")
-        self.log(f"Strategy: {strategy}")
-        if custom_rules:
-            self.log("Custom rules:")
-            self.log(custom_rules)
-        else:
-            self.log("No custom rules provided.")
+        try:
+            generated_config = self.ui_logic.run_analysis("json/ui_generated_config.json")
+            self.status_var.set("Dirtify config generated")
 
-        self.log("This is a visible UI prototype. Backend integration will come later.")
+            self.log("Dirtify configuration generated from UI selections.")
+            self.log(f"Config file: {generated_config}")
+            self.log(f"Target: {target}")
+            self.log(f"Strategy: {strategy}")
+
+            if custom_rules:
+                self.log("Custom rules:")
+                self.log(custom_rules)
+            else:
+                self.log("No custom rules provided.")
+
+            self.log("Backend execution is not started automatically yet.")
+
+        except Exception as e:
+            self.status_var.set("Error during config generation")
+            self.log(f"Error while generating Dirtify config: {e}")
 
 
 
