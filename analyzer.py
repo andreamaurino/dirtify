@@ -41,6 +41,8 @@ import pycaret.classification as pycaret_clf
 import pycaret.regression as pycaret_reg
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import numpy as np
+from sklearn.cluster import DBSCAN
+from sklearn_extra.cluster import KMedoids   # pip install scikit-learn-extra
 
 
 from sklearn.mixture import GaussianMixture
@@ -52,6 +54,8 @@ CLUSTERING_MODELS = {
     "Hierarchical Clustering":  AgglomerativeClustering(),
     "Gaussian Mixture Model":   GaussianMixture(),
     "BIRCH":                    Birch(),
+    "DBSCAN":                   DBSCAN(),
+    "K-Medoids":                KMedoids(),
 }
 
 def cramers_v(confusion_matrix):
@@ -449,7 +453,17 @@ CLUSTERING_PARAM_GRIDS = {
         "threshold": [0.3, 0.5, 0.7],
         "branching_factor": [30, 50],
     },
+    "DBSCAN": {
+        "eps": [0.3, 0.5, 0.8, 1.2],
+        "min_samples": [3, 5, 10],
+    },
+    "K-Medoids": {
+        "metric": ["euclidean", "manhattan"],
+        "method": ["pam", "alternate"],
+        "init": ["k-medoids++", "random"],
+    },
 }
+
 def _fresh_model(model_name: str, n_clusters: int, **kwargs):
     builders = {
         "K-Means":                 lambda: KMeans(n_clusters=n_clusters, random_state=42, **kwargs),
@@ -457,8 +471,11 @@ def _fresh_model(model_name: str, n_clusters: int, **kwargs):
         "Hierarchical Clustering": lambda: AgglomerativeClustering(n_clusters=n_clusters, **kwargs),
         "HDBSCAN":                 lambda: HDBSCAN(**kwargs),
         "BIRCH":                   lambda: Birch(n_clusters=n_clusters, **kwargs),
+        "DBSCAN":                  lambda: DBSCAN(**kwargs),
+        "K-Medoids":               lambda: KMedoids(n_clusters=n_clusters, random_state=42, **kwargs),
     }
     return builders[model_name]()
+
 _OPTIMIZED_PARAMS_CACHE = {}
 
 def _optimize_model(model_name, n_clusters, clean_train_features, cache_key):
@@ -549,7 +566,7 @@ def _clustering_metrics(stg: RunStrategy):
     else:
         clean_train_features = train_features  
 
-    n_clusters = get_n_clusters(stg, train_features)
+    n_clusters = get_n_clusters(stg, clean_train_features)
 
     if has_target:
         y_true = stg.test_df[stg.target_variable]
@@ -566,12 +583,12 @@ def _clustering_metrics(stg: RunStrategy):
         labels = None
 
         try:
-            if type(model).__name__ == 'HDBSCAN':
+            if type(model).__name__ in ('HDBSCAN', 'DBSCAN'):
                 model.fit(train_features)
                 train_labels = model.labels_
                 unique_labels = np.unique(train_labels[train_labels != -1])
                 if len(unique_labels) < 2:
-                    print(f"HDBSCAN: meno di 2 cluster trovati, skip")
+                    print(f"{model_name}: meno di 2 cluster trovati, skip")
                     continue
                 centroids = np.array([
                     train_features.values[train_labels == i].mean(axis=0)
@@ -580,7 +597,7 @@ def _clustering_metrics(stg: RunStrategy):
                 labels = pairwise_distances_argmin(test_features.values, centroids)
 
             elif hasattr(model, 'predict'):
-                # K-Means, GMM, BIRCH
+                # K-Means, GMM, BIRCH, K-Medoids
                 model.fit(train_features)
                 labels = model.predict(test_features)
 
