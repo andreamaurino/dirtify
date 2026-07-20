@@ -23,9 +23,15 @@ def analyze_robustness(df, metric, epc_df, dataset_name, json_path, target_std_D
 
     # trasformazione NRMSE → P_reg = e^(-RMSE/std(y_D0))
     is_rmse = metric == 'RMSE' and target_std_D0 is not None and target_std_D0 > 0
-    def transform(val): 
+    is_silhouette = metric == 'SILHOUETTE'
+
+    def transform(val):
+        if val is None:
+            return None
         if is_rmse:
             return np.exp(-val / target_std_D0)
+        if is_silhouette:
+            return (1 + val) / 2
         return val
 
     baseline_df = df[df['percentage'] == 0].copy()
@@ -486,7 +492,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='ESP Builder — Sensitivity Analysis')
     parser.add_argument('--dataset',        required=True,   help='Nome del dataset (es. optdigits.csv)')
-    parser.add_argument('--metric',         default='AMI',   help='Metrica (default: AMI)')
+    parser.add_argument('--metric',         default='SILHOUETTE',   help='Metrica (default: SILHOUETTE)')
     parser.add_argument('--aepc', type=float,      default=0.05, help='Soglia |AEPC| (default: 0.05)')
     parser.add_argument('--target',         default=None,    help='Nome colonna target (richiesto se metric=RMSE)')
     parser.add_argument('--showall',         default="no",    help='"yes" per mostrare tutti gli scenari significativi, "no" per solo il report (default: no)')

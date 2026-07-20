@@ -106,13 +106,7 @@ def start(dataset_name, filename,performance_metric="Accuracy"):
     # Exporting and sorting the results
     epc_df = con.sql('select * from epc').fetchdf()
     epc_df.to_csv(f'./epc_at/epc_{dataset_name}.csv', index=False) 
-    # Filtra e restituisci i risultati dalla tabella corretta
-    #epc_df = con.sql('''
-    #    select experiment_run,datasetName, errorType, feature, modelName, percentage, epc_at 
-    #    from epc_at e
-    #    where e.percentage = (select max(percentage) from epc_at where experiment_run=e.experiment_run and datasetName=e.datasetName and errorType=e.errorType and feature=e.feature and modelName=e.modelName)
-    #    order by epc_at asc
-    #    ''').to_df()
+   
 
 # Salva il risultato ordinato nel file CSV
     epc_df.to_csv(f'./epc_at/epc_at_sorted_{dataset_name}.csv', index=False)
@@ -141,10 +135,6 @@ def visualize_feature(df,dataset_name,file_name):
   base_df=con.sql('select percentage,accuracy,auc,precision,recall, f1 from experiments where datasetName=\''+dataset_name+'\' and errorType=\''+errorType+'\' and modelName=\''+model+'\' and feature=\''+feature+'\'' ).to_df()
   base_df= pd.concat([baseline_df, base_df], ignore_index=True)
   plt.plot(base_df['percentage'], base_df['Accuracy'], label='Accuracy', color='blue')
-  #plt.plot(base_df['percentage'], base_df['Precision'], label='Precision', color='red')
-  #plt.plot(base_df['percentage'], base_df['Recall'], label='Recall', color='green')
-  #plt.plot(base_df['percentage'], base_df['F1'], label='F1', color='brown')
-  #plt.plot(base_df['percentage'], base_df['Auc'], label='Auc', color='orange')
   plt.xlabel('Percentage')
   plt.ylabel('Values')
   plt.title('Trend of performance for feature '+feature+' related to model '+model+' for error '+errorType)
