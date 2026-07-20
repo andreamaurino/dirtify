@@ -1,0 +1,726 @@
+{
+    "datasetName": "shuttle_train.csv",
+    "testset":"shuttle_split.csv",
+    "task": "Classification",
+    "targetVariable": "class",
+    "features": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "class"
+    ],
+    "machineLearningModels": [
+        "lr",
+        "knn",
+        "nb",
+        "svm",
+        "dt",
+        "rbfsvm",
+        "xgboost",
+        "mlp",
+        "qda",
+        "ada",
+        "lda",
+        "rf",
+        "et"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A7"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A9"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+      {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A7"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A9"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A7"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A9"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A2"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A3"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A4"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A5"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A6"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A7"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A9"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A7",
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "A5",
+                    "A9",
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A7",
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "A5",
+                    "A9",
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A7",
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "A5",
+                    "A9",
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A7",
+                    "A1"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "A5",
+                    "A9",
+                    "A8"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "Label",
+            "Strategy": {
+                "affected_features": [],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "class",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {"model-name": "NAR","flip_distribution": {"1": {"1": 1.00,"2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00},"2": {"1": 1.00, "2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00},"3": {"1": 1.00, "2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00},"4": {"1": 1.00, "2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00},"5": {"1": 1.00, "2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00},"6": {"1": 1.00, "2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00},"7": {"1": 1.00, "2": 0.00,"3": 0.00,"4": 0.00,"5": 0.00,"6": 0.00,"7": 0.00}}}
+                }
+            }
+        }
+    ],
+    "testset": "shuttle_split.csv"
+}

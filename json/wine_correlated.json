@@ -1,0 +1,174 @@
+{
+    "datasetName": "winequality-red.csv",
+    "task": "Regression",
+    "targetVariable": "quality",
+    "features": [
+        "fixed_acidity",
+        "volatile_acidity",
+        "citric_acid",
+        "residual_sugar",
+        "chlorides",
+        "free_sulfur_dioxide",
+        "total_sulfur_dioxide",
+        "density",
+        "pH",
+        "sulphates",
+        "alcohol",
+        "quality"
+    ],
+    "machineLearningModels": [
+        "lr",
+        "ridge",
+        "lasso",
+        "en",
+        "dt",
+        "rf",
+        "knn",
+        "gbr",
+        "xgboost",
+        "lightgbm",
+        "catboost",
+        "svm"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid",
+                    "fixed_acidity",
+                    "pH",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide",
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid",
+                    "fixed_acidity",
+                    "pH",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide",
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid",
+                    "fixed_acidity",
+                    "pH",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide",
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid",
+                    "fixed_acidity",
+                    "pH",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide",
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+Area
+ShapeFactor2
+Eccentricity
+ShapeFactor1
+Roundness
+Extent
+ShapeFactor4

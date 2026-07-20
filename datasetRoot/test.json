@@ -1,532 +1,57 @@
 {
-    "datasetName": "C:/Users/mauri/Universita Degli Studi Dropbox/Andrea Maurino/lavoro/ricerca/Dq4ML/epc/dirtify/datasetRoot/Healthcare-Diabetes.csv",
-    "task": "Clustering",
+    "datasetName": "winequality-red.csv",
+    "task": "Classification",
+    "targetVariable": "quality",
     "features": [
-        "Id",
-        "Pregnancies",
-        "Glucose",
-        "BloodPressure",
-        "SkinThickness",
-        "Insulin",
-        "BMI",
-        "DiabetesPedigreeFunction",
-        "Age",
-        "Outcome"
+        "fixed_acidity",
+        "volatile_acidity",
+        "citric_acid",
+        "residual_sugar",
+        "chlorides",
+        "free_sulfur_dioxide",
+        "total_sulfur_dioxide",
+        "density",
+        "pH",
+        "sulphates",
+        "alcohol",
+        "quality"
     ],
     "machineLearningModels": [
-        "K-Means",
-        "DBSCAN",
-        "Hierarchical Clustering",
-        "Gaussian Mixture Model",
-        "Spectral Clustering",
-        "Agglomerative Clustering",
-        "OPTICS"
+        "lr",
+        "knn",
+        "nb",
+        "dt",
+        "xgboost",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et"
     ],
     "Experiments": [
         {
-            "Errortype": "standard"
-        },
-        {
-            "Errortype": "duplicate",
+            "Errortype": "Label",
             "Strategy": {
                 "affected_features": [
-                    "Id"
+                    "quality"
                 ],
                 "selection_criteria": "all",
-                "percentage": 0.2,
+                "percentage": 0.1,
                 "mode": "new",
+                "target_variable": "quality",
                 "perturbate_data": {
-                    "distribution": "random"
-                }
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {  "3": {"4": 1.0},
+            "4": {"3": 0.3, "5": 0.7},
+            "5": {"4": 0.4, "6": 0.6},
+            "6": {"5": 0.5, "7": 0.5},
+            "7": {"6": 0.7, "8": 0.3},
+            "8": {"7": 1.0}
             }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Pregnancies"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Glucose"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "BloodPressure"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "SkinThickness"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Insulin"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "BMI"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "DiabetesPedigreeFunction"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "duplicate",
-            "Strategy": {
-                "affected_features": [
-                    "Age"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Id"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Pregnancies"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Glucose"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "BloodPressure"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "SkinThickness"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Insulin"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "BMI"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "DiabetesPedigreeFunction"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "missing",
-            "Strategy": {
-                "affected_features": [
-                    "Age"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Id"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Pregnancies"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Glucose"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "BloodPressure"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "SkinThickness"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Insulin"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "BMI"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "DiabetesPedigreeFunction"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "outlier",
-            "Strategy": {
-                "affected_features": [
-                    "Age"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Id"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Pregnancies"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Glucose"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "BloodPressure"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "SkinThickness"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Insulin"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "BMI"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "DiabetesPedigreeFunction"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
-                }
-            }
-        },
-        {
-            "Errortype": "noise",
-            "Strategy": {
-                "affected_features": [
-                    "Age"
-                ],
-                "selection_criteria": "all",
-                "percentage": 0.2,
-                "mode": "new",
-                "perturbate_data": {
-                    "distribution": "random"
                 }
             }
         }

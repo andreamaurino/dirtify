@@ -1,0 +1,9 @@
+ASTV
+ALTV
+MSTV
+Mean
+LB
+Width
+Tendency
+DS
+Nzeros

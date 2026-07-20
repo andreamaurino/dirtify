@@ -36,6 +36,7 @@ from sklearn.cluster import (
     AffinityPropagation,
     
 )
+from sklearn.model_selection import ParameterGrid
 import pycaret.classification as pycaret_clf
 import pycaret.regression as pycaret_reg
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
@@ -428,15 +429,66 @@ def _regression_metrics(stg: RunStrategy):
             })
         
 
+CLUSTERING_PARAM_GRIDS = {
+    "K-Means": {
+        "init": ["k-means++", "random"],
+        "n_init": [10, 20],
+    },
+    "Gaussian Mixture Model": {
+        "covariance_type": ["full", "tied", "diag", "spherical"],
+        "n_init": [1, 5],
+    },
+    "Hierarchical Clustering": {
+        "linkage": ["ward", "complete", "average"],
+    },
+    "HDBSCAN": {
+        "min_cluster_size": [5, 10, 20],
+        "min_samples": [None, 5, 10],
+    },
+    "BIRCH": {
+        "threshold": [0.3, 0.5, 0.7],
+        "branching_factor": [30, 50],
+    },
+}
+def _fresh_model(model_name: str, n_clusters: int, **kwargs):
+    builders = {
+        "K-Means":                 lambda: KMeans(n_clusters=n_clusters, random_state=42, **kwargs),
+        "Gaussian Mixture Model":  lambda: GaussianMixture(n_components=n_clusters, random_state=42, **kwargs),
+        "Hierarchical Clustering": lambda: AgglomerativeClustering(n_clusters=n_clusters, **kwargs),
+        "HDBSCAN":                 lambda: HDBSCAN(**kwargs),
+        "BIRCH":                   lambda: Birch(n_clusters=n_clusters, **kwargs),
+    }
+    return builders[model_name]()
+_OPTIMIZED_PARAMS_CACHE = {}
 
-def _fresh_model(model_name: str, n_clusters: int):
-    return {
-        "K-Means":                  KMeans(n_clusters=n_clusters, random_state=42),
-        "Gaussian Mixture Model":   GaussianMixture(n_components=n_clusters, random_state=42),
-        "Hierarchical Clustering":  AgglomerativeClustering(n_clusters=n_clusters),
-        "HDBSCAN":                  HDBSCAN(),
-        "BIRCH":                    Birch(n_clusters=n_clusters)
-    }[model_name]
+def _optimize_model(model_name, n_clusters, clean_train_features, cache_key):
+    cache_bucket = _OPTIMIZED_PARAMS_CACHE.setdefault(model_name, {})
+    if cache_key in cache_bucket:
+        best_params = cache_bucket[cache_key]
+        return _fresh_model(model_name, n_clusters, **best_params), best_params
+
+    grid = CLUSTERING_PARAM_GRIDS.get(model_name, {})
+    if not grid:
+        cache_bucket[cache_key] = {}
+        return _fresh_model(model_name, n_clusters), {}
+
+    best_score, best_params = -1.0, {}
+    for params in ParameterGrid(grid):
+        try:
+            model = _fresh_model(model_name, n_clusters, **params)
+            model.fit(clean_train_features)
+            labels = model.labels_ if hasattr(model, "labels_") else model.predict(clean_train_features)
+            valid = labels != -1
+            if len(np.unique(labels[valid])) < 2:
+                continue
+            score = silhouette_score(clean_train_features.values[valid], labels[valid])
+            if score > best_score:
+                best_score, best_params = score, params
+        except Exception:
+            continue
+
+    cache_bucket[cache_key] = best_params
+    return _fresh_model(model_name, n_clusters, **best_params), best_params
 
 def get_n_clusters(stg, train_features: pd.DataFrame) -> int:
     if stg.n_clusters is not None:
@@ -456,7 +508,7 @@ def get_n_clusters(stg, train_features: pd.DataFrame) -> int:
     return best_k
 
 def _clustering_metrics(stg: RunStrategy):
-    
+
     has_target = (
         stg.target_variable is not None and
         stg.target_variable in stg.train_df.columns
@@ -487,6 +539,16 @@ def _clustering_metrics(stg: RunStrategy):
     assert not train_features.isnull().any().any(), f"NaN in train: {train_features.isnull().sum()}"
     assert not test_features.isnull().any().any(), f"NaN in test: {test_features.isnull().sum()}"
 
+    if stg.noisy_df is not None and len(stg.noisy_df) > 0:
+        clean_raw = stg.train_df.drop(columns=[stg.target_variable]) if has_target else stg.train_df
+        clean_imputer = SimpleImputer(strategy='mean')
+        clean_train_features = pd.DataFrame(
+            clean_imputer.fit_transform(clean_raw),
+            columns=clean_raw.columns
+        )
+    else:
+        clean_train_features = train_features  
+
     n_clusters = get_n_clusters(stg, train_features)
 
     if has_target:
@@ -497,7 +559,10 @@ def _clustering_metrics(stg: RunStrategy):
             print(f"Modello {model_name} non riconosciuto, skippato")
             continue
 
-        model = _fresh_model(model_name, n_clusters)
+        model, best_params = _optimize_model(
+            model_name, n_clusters, clean_train_features,
+            cache_key=(stg.dataset_name, stg.run)  
+        )
         labels = None
 
         try:
@@ -548,41 +613,34 @@ def _clustering_metrics(stg: RunStrategy):
             else:
                 print(f"Warning {model_name}: dimensioni diverse, AMI skippato")
 
-            print(f"Model: {model_name}, Silhouette: {silhouette}, AMI: {ami}, Clusters: {k}")
+            print(f"Model: {model_name}, Silhouette: {silhouette}, AMI: {ami}, Clusters: {k}, Params: {best_params}")
             stg.results_buffer.append({
-            'experiment_run':   stg.run,
-            'datasetName':      stg.dataset_name,
-            'errorType':        str(stg.EType),
-            'percentage':       stg.percentage,
-            'feature':          stg.feature,
-            'modelName':        model_name,
-            'Accuracy':         None,
-            'Auc':              None,
-            'Recall':           None,
-            'Precision':        None,
-            'F1_Weighted':      None,
-            'F1_Macro':         None,
-            'F1_Binary':        None,
-            'F1_per_class_json': None,
-            'AMI':              ami,
-            'SILHOUETTE':       silhouette,
-            'K':                k,
-            'RMSE':             None,
-            'MAE':              None,
-            'R2':               None,
-            'MSE':              None,
-        })
-            # stg.con.execute("""
-            #     INSERT INTO experiments 
-            #     VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL,NULL,NULL,?, ?, ?,NULL, NULL, NULL,NULL)
-            # """, [
-            #     stg.run, stg.dataset_name, str(stg.EType),
-            #     stg.percentage, stg.feature, model_name,
-            #     ami, silhouette, k
-            # ])
+                'experiment_run':    stg.run,
+                'datasetName':       stg.dataset_name,
+                'errorType':         str(stg.EType),
+                'percentage':        stg.percentage,
+                'feature':           stg.feature,
+                'modelName':         model_name,
+                'Accuracy':          None,
+                'Auc':               None,
+                'Recall':            None,
+                'Precision':         None,
+                'F1_Weighted':       None,
+                'F1_Macro':          None,
+                'F1_Binary':         None,
+                'F1_per_class_json': None,
+                'AMI':               ami,
+                'SILHOUETTE':        silhouette,
+                'K':                 k,
+                'RMSE':              None,
+                'MAE':               None,
+                'R2':                None,
+                'MSE':               None,
+            })
+
 
         except Exception as e:
-            print(f"Errore con {model_name}: {e}")
+            print(f"Error with {model_name}: {e}")
             continue
 
 def performanceAnalysis(stg: RunStrategy): #, con, dataset_name, train_df, test_df, target_column, model_touse, EType="NULL", feature="NULL", percentage=0):

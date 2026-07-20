@@ -1,0 +1,848 @@
+{
+    "datasetName": "winequality-red.csv",
+    "task": "Classification",
+    "targetVariable": "quality",
+    "features": [
+        "fixed_acidity",
+        "volatile_acidity",
+        "citric_acid",
+        "residual_sugar",
+        "chlorides",
+        "free_sulfur_dioxide",
+        "total_sulfur_dioxide",
+        "density",
+        "pH",
+        "sulphates",
+        "alcohol",
+        "quality"
+    ],
+    "machineLearningModels": [
+       "lr",
+        "knn",
+        "nb",
+        "dt",
+        "xgboost",
+        "mlp",
+        "ridge",
+        "qda",
+        "ada",
+        "lda",
+        "dummy",
+        "rf",
+        "et"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "volatile_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "residual_sugar"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "chlorides"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "pH"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "sulphates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "alcohol"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": "quality",
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "volatile_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "residual_sugar"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "chlorides"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "pH"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "sulphates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "alcohol"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "volatile_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "residual_sugar"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "chlorides"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "pH"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "sulphates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "alcohol"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "volatile_acidity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "citric_acid"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "residual_sugar"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "chlorides"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "pH"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "sulphates"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "alcohol"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity",
+                    "pH",
+                    "citric_acid",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide",
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity",
+                    "pH",
+                    "citric_acid",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide",
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity",
+                    "pH",
+                    "citric_acid",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide",
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "fixed_acidity",
+                    "pH",
+                    "citric_acid",
+                    "density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "free_sulfur_dioxide",
+                    "total_sulfur_dioxide"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        }
+    ]
+}

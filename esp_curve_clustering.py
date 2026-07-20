@@ -10,7 +10,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import silhouette_score
 from collections import defaultdict
-
+import textwrap
 
 # ──────────────────────────────────────────────────────────────────
 # 0. Utility: lunghezza attesa y_matrix
@@ -260,21 +260,16 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
         "AdaBoostClassifier":"ADA",
         "KNeighborsClassifier":"KNN",
         "XGBClassifier":"XGB",
-        "MLPClassifier":"MLP",def _Draw_cluster_originale(cluster_id, cluster_data):
-            """
-            Stampa i modelli e gli errori di un cluster, ciascuno su una singola riga.
-            """
-            print(f"Cluster {cluster_id}:")
-            
-            # Converte tutti gli elementi in stringhe e li unisce con una virgola
-            modelli_str = ", ".join(map(str, cluster_data['models']))
-            print(f"  Modelli: {modelli_str}")
-            
-            errori_str = ", ".join(map(str, cluster_data['errors']))
-            print(f"  Errori:  {errori_str}")
-            print("-" * 30)
-        
-    }
+        "MLPClassifier":"MLP",
+        "DecisionTreeRegressor":"DT",
+        "RidgeRegressor":"Ridge",
+        "ElasticNet":"ENet",
+        "Lasso":"Las",
+        "RandomForestRegressor":"RF",
+        "XGBRegressor":"XGB",
+        "LinearRegression":"LR",
+    }    
+
 
     ERROR_ABBREV = {
         'duplicate': 'Dup',
@@ -282,12 +277,16 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
         'outlier': 'Out',
         'noise': 'Noi',
         'label': 'Label',
+        'Noise-shift': 'NSF',
     }
     for i, l in enumerate(labels):
         if l != c:
             continue
         # --- FIX: usa _safe_mean_curve per il plot delle singole curve ---
         ym = np.array(scenarios[i]['y_matrix'])
+        p0 = np.mean([row[0] for row in ym if len(row) > 0])
+        ax.axhline(p0, color='gray', linestyle='--',
+               linewidth=0.6, alpha=0.25)
         for row in ym:
             row_fixed = row[:n_levels] if len(row) >= n_levels else row
             if len(row_fixed) == len(x):
@@ -299,31 +298,52 @@ def _draw_cluster(ax, c, results, color, sign_label=""):
 
     if len(mean_curve) == len(x):
         ax.plot(x, mean_curve, color=color, linewidth=2.5, zorder=10)
-        ax.axhline(mean_curve[0], color='gray', linestyle='--',
-                   linewidth=0.8, alpha=0.5)
+        #ax.axhline(mean_curve[0], color='gray', linestyle='--',
+        #           linewidth=0.8, alpha=0.5)
 
+    
+
+   
     models = [MODEL_ABBREV.get(i['modelName'], i['modelName']) 
-          for i in info_list]
+            for i in info_list]
     errors = [ERROR_ABBREV.get(i['errorType'], i['errorType']) 
             for i in info_list]
     mc = {m: models.count(m) for m in set(models)}
     ec = {e: errors.count(e) for e in set(errors)}
     
-    prefix   = f"{sign_label} — " if sign_label else ""
+    prefix = f"{sign_label} — " if sign_label else ""
+    
+    # 1. Costruisci le stringhe complete
+    models_str = ', '.join(f'{m}({n})' for m, n in sorted(mc.items()))
+    errors_str = ', '.join(f'{e}({n})' for e, n in sorted(ec.items()))
+    
+    # 2. Avvolgi le stringhe usando textwrap.
+    # Il parametro 'width' decide dopo quanti caratteri andare a capo. 
+    # Puoi regolare questo valore (es. 40, 50, 60) in base alla larghezza della tua figura.
+    wrapped_models = textwrap.fill(models_str, width=60)
+    wrapped_errors = textwrap.fill(errors_str, width=60)
+   
+    # 3. Componi il sottotitolo usando le stringhe formattate a più righe
     subtitle = (
         f"n={len(info_list)}\n"
-        f"{', '.join(f'{m}({n})' for m,n in sorted(mc.items()))}\n"
-        f"{', '.join(f'{e}({n})' for e,n in sorted(ec.items()))}"
+        f"{wrapped_models}\n"
+        f"{wrapped_errors}"
     )
+    
+    # Suggerimento: un fontsize=24 potrebbe essere eccessivo se il titolo ora occupa 4 o 5 righe,
+    # rischiando di schiacciare il grafico. Potresti volerlo ridurre (es. 14 o 16).
     ax.set_title(f"{prefix}Cluster {c}\n{subtitle}", 
-                 fontsize=24)
+                    fontsize=14, pad=15)
     ax.set_xlabel("Error rate (%)", fontsize=10)
     ax.tick_params(axis='both', labelsize=10)
     ax.text(0.98, 0.02, f"sil={results['silhouette']:.3f}",
             transform=ax.transAxes, fontsize=9,
             ha='right', va='bottom', color='black')
+   
+    
 
-
+        
+    
 
 def plot_clusters_full(results: dict,
                        output_path: str = "esp_clusters.png",

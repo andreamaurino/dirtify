@@ -14,13 +14,15 @@ import argparse
 from esp_curve_clustering import cluster_by_sign, plot_clusters_by_sign, print_summary_by_sign
 
 
+
+
 def analyze_robustness(df, metric, epc_df, dataset_name, json_path, target_std_D0=None):
     """Estrae le informazioni di robustezza e le salva in un file JSON."""
     df = df.copy()
     df[metric] = pd.to_numeric(df[metric], errors='coerce')
 
     # trasformazione NRMSE → P_reg = e^(-RMSE/std(y_D0))
-    is_rmse = metric == 'NRMSE' and target_std_D0 is not None and target_std_D0 > 0
+    is_rmse = metric == 'RMSE' and target_std_D0 is not None and target_std_D0 > 0
     def transform(val): 
         if is_rmse:
             return np.exp(-val / target_std_D0)
@@ -90,7 +92,7 @@ def analyze_robustness(df, metric, epc_df, dataset_name, json_path, target_std_D
                 'errorType': err,
                 'modelName': model,
                 'metric': metric,
-                'metric_transformed': is_rmse,  # flag utile per il plotting
+                'metric_transformed': bool(is_rmse),  # <-- MODIFICA QUI: cast esplicito a bool nativo
                 'x': x.tolist(),
                 'y': y.tolist(),
                 'baseline': baseline,
@@ -105,6 +107,7 @@ def analyze_robustness(df, metric, epc_df, dataset_name, json_path, target_std_D
 
     print(f"Dati salvati in: {json_path}")
     return json_path
+
 
 
 # ============================================================
@@ -246,8 +249,7 @@ def extract_vectors_from_json(json_path):
             'epc_vector':         epc_vector,
             'y_matrix':           y_matrix,
             'n_runs':             len(y_padded),
-            'metric_transformed': bool(group['metric_transformed'].iloc[0]) \
-                                  if 'metric_transformed' in group.columns else False,
+            'metric_transformed': bool(group['metric_transformed'].iloc[0]) if 'metric_transformed' in group.columns else False,
         }
 
     return scenarios

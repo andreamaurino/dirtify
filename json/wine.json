@@ -22,10 +22,8 @@
         "lasso",
         "en",
         "dt",
-        "rf",
         "knn",
-        "gbr",
-        "xgboost"
+        "gbr"
     ],
     "Experiments": [
         {

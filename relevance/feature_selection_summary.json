@@ -1,0 +1,130 @@
+{
+    "california_housing": {
+        "path": "datasetRoot/california_housing.csv",
+        "sampled_path": "datasetRoot/california_housing_sampled.csv",
+        "target": "MedHouseVal",
+        "max_rows": 5000,
+        "top": [
+            "MedInc",
+            "Latitude",
+            "AveOccup"
+        ],
+        "middle": [
+            "AveRooms",
+            "Longitude",
+            "HouseAge"
+        ],
+        "low": [
+            "HouseAge",
+            "AveBedrms",
+            "Population"
+        ],
+        "all_selected": [
+            "MedInc",
+            "Latitude",
+            "AveOccup",
+            "AveRooms",
+            "Longitude",
+            "HouseAge",
+            "HouseAge",
+            "AveBedrms",
+            "Population"
+        ]
+    },
+    "concrete_strength": {
+        "path": "datasetRoot/concrete_strength.csv",
+        "sampled_path": "datasetRoot/concrete_strength.csv",
+        "target": "Concrete compressive strength",
+        "max_rows": null,
+        "top": [
+            "Age",
+            "Cement",
+            "Water"
+        ],
+        "middle": [
+            "Superplasticizer",
+            "Coarse Aggregate",
+            "Fine Aggregate"
+        ],
+        "low": [
+            "Fine Aggregate",
+            "Blast Furnace Slag",
+            "Fly Ash"
+        ],
+        "all_selected": [
+            "Age",
+            "Cement",
+            "Water",
+            "Superplasticizer",
+            "Coarse Aggregate",
+            "Fine Aggregate",
+            "Fine Aggregate",
+            "Blast Furnace Slag",
+            "Fly Ash"
+        ]
+    },
+    "bike_sharing": {
+        "path": "datasetRoot/bike_sharing.csv",
+        "sampled_path": "datasetRoot/bike_sharing_sampled.csv",
+        "target": "cnt",
+        "max_rows": 5000,
+        "top": [
+            "hr",
+            "atemp",
+            "temp"
+        ],
+        "middle": [
+            "season",
+            "mnth",
+            "windspeed"
+        ],
+        "low": [
+            "workingday",
+            "weathersit",
+            "holiday"
+        ],
+        "all_selected": [
+            "hr",
+            "atemp",
+            "temp",
+            "season",
+            "mnth",
+            "windspeed",
+            "workingday",
+            "weathersit",
+            "holiday"
+        ]
+    },
+    "superconductivity": {
+        "path": "datasetRoot/superconductivity.csv",
+        "sampled_path": "datasetRoot/superconductivity_sampled.csv",
+        "target": "critical_temp",
+        "max_rows": 5000,
+        "top": [
+            "wtd_std_ThermalConductivity",
+            "wtd_mean_Valence",
+            "range_atomic_radius"
+        ],
+        "middle": [
+            "wtd_entropy_atomic_mass",
+            "range_fie",
+            "wtd_gmean_Density"
+        ],
+        "low": [
+            "wtd_std_ElectronAffinity",
+            "gmean_FusionHeat",
+            "number_of_elements"
+        ],
+        "all_selected": [
+            "wtd_std_ThermalConductivity",
+            "wtd_mean_Valence",
+            "range_atomic_radius",
+            "wtd_entropy_atomic_mass",
+            "range_fie",
+            "wtd_gmean_Density",
+            "wtd_std_ElectronAffinity",
+            "gmean_FusionHeat",
+            "number_of_elements"
+        ]
+    }
+}

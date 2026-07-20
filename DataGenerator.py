@@ -474,96 +474,123 @@ from ucimlrepo import fetch_ucirepo
 #     print(df_raw["buggy"].unique())      # valori distinti presenti
 #     print(df_raw["buggy"].value_counts(dropna=False))  # include NaN
 
+# import pandas as pd
+# import numpy as np
+# from ucimlrepo import fetch_ucirepo
+# from sklearn.datasets import fetch_california_housing
+# import os
+
+# os.makedirs('datasetRoot', exist_ok=True)
+
+# # ============================================================
+# # 1. California Housing (sklearn — più affidabile di UCI)
+# # ============================================================
+# print("Scaricando California Housing...")
+# california = fetch_california_housing(as_frame=True)
+# df_california = california.frame  # include già la colonna target 'MedHouseVal'
+# df_california.to_csv('datasetRoot/california_housing.csv', index=False)
+# print(f"  Salvato: {len(df_california)} righe, {len(df_california.columns)} colonne")
+# print(f"  Colonne: {list(df_california.columns)}")
+
+# # ============================================================
+# # 2. Concrete Compressive Strength (UCI id=165)
+# # ============================================================
+# print("Scaricando Concrete Compressive Strength...")
+# concrete = fetch_ucirepo(id=165)
+# df_concrete = pd.concat([concrete.data.features, concrete.data.targets], axis=1)
+# # rinomina target per chiarezza
+# df_concrete.columns = [c.strip() for c in df_concrete.columns]
+# df_concrete.to_csv('datasetRoot/concrete_strength.csv', index=False)
+# print(f"  Salvato: {len(df_concrete)} righe, {len(df_concrete.columns)} colonne")
+# print(f"  Colonne: {list(df_concrete.columns)}")
+
+# # ============================================================
+# # 3. Student Performance (UCI id=320)
+# # ============================================================
+# print("Scaricando Student Performance...")
+# student = fetch_ucirepo(id=320)
+# df_student = pd.concat([student.data.features, student.data.targets], axis=1)
+# df_student.columns = [c.strip() for c in df_student.columns]
+# # il target è G3 (voto finale), droppiamo G1 e G2 che sono voti intermedi
+# # e creerebbero data leakage
+# if 'G1' in df_student.columns:
+#     df_student = df_student.drop(columns=['G1', 'G2'])
+# df_student.to_csv('datasetRoot/student_performance.csv', index=False)
+# print(f"  Salvato: {len(df_student)} righe, {len(df_student.columns)} colonne")
+# print(f"  Colonne: {list(df_student.columns)}")
+
+# # ============================================================
+# # 4. Bike Sharing (UCI id=275)
+# # ============================================================
+# print("Scaricando Bike Sharing...")
+# bike = fetch_ucirepo(id=275)
+# df_bike = pd.concat([bike.data.features, bike.data.targets], axis=1)
+# df_bike.columns = [c.strip() for c in df_bike.columns]
+# # droppiamo 'casual' e 'registered' che sommati danno 'cnt' (target) — data leakage
+# if 'casual' in df_bike.columns:
+#     df_bike = df_bike.drop(columns=['casual', 'registered'])
+# # droppiamo anche 'instant' (indice) e 'dteday' (data stringa)
+# for col in ['instant', 'dteday']:
+#     if col in df_bike.columns:
+#         df_bike = df_bike.drop(columns=[col])
+# df_bike.to_csv('datasetRoot/bike_sharing.csv', index=False)
+# print(f"  Salvato: {len(df_bike)} righe, {len(df_bike.columns)} colonne")
+# print(f"  Colonne: {list(df_bike.columns)}")
+
+# # ============================================================
+# # 5. Superconductivity (UCI id=464)
+# # ============================================================
+# print("Scaricando Superconductivity...")
+# supercon = fetch_ucirepo(id=464)
+# df_supercon = pd.concat([supercon.data.features, supercon.data.targets], axis=1)
+# df_supercon.columns = [c.strip() for c in df_supercon.columns]
+# df_supercon.to_csv('datasetRoot/superconductivity.csv', index=False)
+# print(f"  Salvato: {len(df_supercon)} righe, {len(df_supercon.columns)} colonne")
+# print(f"  Colonne: {list(df_supercon.columns)}")
+
+# # ============================================================
+# # Riepilogo finale
+# # ============================================================
+# print("\n=== RIEPILOGO ===")
+# datasets = {
+#     'california_housing.csv':  'MedHouseVal',
+#     'concrete_strength.csv':   'Concrete compressive strength',
+#     'student_performance.csv': 'G3',
+#     'bike_sharing.csv':        'cnt',
+#     'superconductivity.csv':   'critical_temp',
+# }
+# for fname, target in datasets.items():
+#     path = f'datasetRoot/{fname}'
+#     if os.path.exists(path):
+#         df = pd.read_csv(path)
+#         print(f"  {fname}")
+#         print(f"    righe: {len(df)}, colonne: {len(df.columns)}, target: '{target}'")
+#         print(f"    target range: [{df[target].min():.2f}, {df[target].max():.2f}]")
+#         print(f"    missing: {df.isnull().sum().sum()}")
+
 import pandas as pd
-import numpy as np
-from ucimlrepo import fetch_ucirepo
-from sklearn.datasets import fetch_california_housing
 import os
 
-os.makedirs('datasetRoot', exist_ok=True)
+base_dir = "./experiments"
 
-# ============================================================
-# 1. California Housing (sklearn — più affidabile di UCI)
-# ============================================================
-print("Scaricando California Housing...")
-california = fetch_california_housing(as_frame=True)
-df_california = california.frame  # include già la colonna target 'MedHouseVal'
-df_california.to_csv('datasetRoot/california_housing.csv', index=False)
-print(f"  Salvato: {len(df_california)} righe, {len(df_california.columns)} colonne")
-print(f"  Colonne: {list(df_california.columns)}")
+for x in range(20):
+    filename = f"checkpoint_bike_sharing_sampled.csv_run{x}.csv"
+    filepath = os.path.join(base_dir, filename)
+    
+    if not os.path.exists(filepath):
+        print(f"[SKIP] File non trovato: {filename}")
+        continue
+    
+    df = pd.read_csv(filepath)
+    original_rows = len(df)
+    
+    # Rimuove righe che contengono "noise-shift" in qualsiasi colonna
+    mask = ~df.apply(lambda row: row.astype(str).str.contains("noise-shift").any(), axis=1)
+    df_filtered = df[mask]
+    
+    removed = original_rows - len(df_filtered)
+    df_filtered.to_csv(filepath, index=False)
+    
+    print(f"[OK] {filename}: {removed} righe rimosse, {len(df_filtered)} rimaste")
 
-# ============================================================
-# 2. Concrete Compressive Strength (UCI id=165)
-# ============================================================
-print("Scaricando Concrete Compressive Strength...")
-concrete = fetch_ucirepo(id=165)
-df_concrete = pd.concat([concrete.data.features, concrete.data.targets], axis=1)
-# rinomina target per chiarezza
-df_concrete.columns = [c.strip() for c in df_concrete.columns]
-df_concrete.to_csv('datasetRoot/concrete_strength.csv', index=False)
-print(f"  Salvato: {len(df_concrete)} righe, {len(df_concrete.columns)} colonne")
-print(f"  Colonne: {list(df_concrete.columns)}")
-
-# ============================================================
-# 3. Student Performance (UCI id=320)
-# ============================================================
-print("Scaricando Student Performance...")
-student = fetch_ucirepo(id=320)
-df_student = pd.concat([student.data.features, student.data.targets], axis=1)
-df_student.columns = [c.strip() for c in df_student.columns]
-# il target è G3 (voto finale), droppiamo G1 e G2 che sono voti intermedi
-# e creerebbero data leakage
-if 'G1' in df_student.columns:
-    df_student = df_student.drop(columns=['G1', 'G2'])
-df_student.to_csv('datasetRoot/student_performance.csv', index=False)
-print(f"  Salvato: {len(df_student)} righe, {len(df_student.columns)} colonne")
-print(f"  Colonne: {list(df_student.columns)}")
-
-# ============================================================
-# 4. Bike Sharing (UCI id=275)
-# ============================================================
-print("Scaricando Bike Sharing...")
-bike = fetch_ucirepo(id=275)
-df_bike = pd.concat([bike.data.features, bike.data.targets], axis=1)
-df_bike.columns = [c.strip() for c in df_bike.columns]
-# droppiamo 'casual' e 'registered' che sommati danno 'cnt' (target) — data leakage
-if 'casual' in df_bike.columns:
-    df_bike = df_bike.drop(columns=['casual', 'registered'])
-# droppiamo anche 'instant' (indice) e 'dteday' (data stringa)
-for col in ['instant', 'dteday']:
-    if col in df_bike.columns:
-        df_bike = df_bike.drop(columns=[col])
-df_bike.to_csv('datasetRoot/bike_sharing.csv', index=False)
-print(f"  Salvato: {len(df_bike)} righe, {len(df_bike.columns)} colonne")
-print(f"  Colonne: {list(df_bike.columns)}")
-
-# ============================================================
-# 5. Superconductivity (UCI id=464)
-# ============================================================
-print("Scaricando Superconductivity...")
-supercon = fetch_ucirepo(id=464)
-df_supercon = pd.concat([supercon.data.features, supercon.data.targets], axis=1)
-df_supercon.columns = [c.strip() for c in df_supercon.columns]
-df_supercon.to_csv('datasetRoot/superconductivity.csv', index=False)
-print(f"  Salvato: {len(df_supercon)} righe, {len(df_supercon.columns)} colonne")
-print(f"  Colonne: {list(df_supercon.columns)}")
-
-# ============================================================
-# Riepilogo finale
-# ============================================================
-print("\n=== RIEPILOGO ===")
-datasets = {
-    'california_housing.csv':  'MedHouseVal',
-    'concrete_strength.csv':   'Concrete compressive strength',
-    'student_performance.csv': 'G3',
-    'bike_sharing.csv':        'cnt',
-    'superconductivity.csv':   'critical_temp',
-}
-for fname, target in datasets.items():
-    path = f'datasetRoot/{fname}'
-    if os.path.exists(path):
-        df = pd.read_csv(path)
-        print(f"  {fname}")
-        print(f"    righe: {len(df)}, colonne: {len(df.columns)}, target: '{target}'")
-        print(f"    target range: [{df[target].min():.2f}, {df[target].max():.2f}]")
-        print(f"    missing: {df.isnull().sum().sum()}")
+print("\nDone.")

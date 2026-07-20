@@ -1,0 +1,897 @@
+{
+    "datasetName": "superconductivity_sampled.csv",
+    "task": "Regression",
+    "targetVariable": "critical_temp",
+    "features": [
+        "wtd_std_ThermalConductivity",
+        "wtd_mean_Valence",
+        "range_atomic_radius",
+        "wtd_entropy_atomic_mass",
+        "range_fie",
+        "wtd_gmean_Density",
+        "wtd_std_ElectronAffinity",
+        "gmean_FusionHeat",
+        "number_of_elements",
+        "critical_temp"
+    ],
+    "machineLearningModels": [
+        "lr",
+        "ridge",
+        "lasso",
+        "en",
+        "rf",
+        "xgboost",
+        "dt"
+    ],
+    "Experiments": [
+        {
+            "Errortype": "standard"
+        },
+        {  
+            "Errortype": "noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ElectronAffinity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_mean_Valence"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_entropy_atomic_mass"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "range_fie"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_gmean_Density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ElectronAffinity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "gmean_FusionHeat"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "number_of_elements"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "labels",
+            "Strategy": {
+                "affected_features": "critical_temp",
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_mean_Valence"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_entropy_atomic_mass"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "range_fie"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_gmean_Density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ElectronAffinity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "gmean_FusionHeat"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "number_of_elements"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_mean_Valence"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_entropy_atomic_mass"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "range_fie"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_gmean_Density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ElectronAffinity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "gmean_FusionHeat"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "number_of_elements"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_mean_Valence"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_entropy_atomic_mass"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "range_fie"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_gmean_Density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ElectronAffinity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "gmean_FusionHeat"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "number_of_elements"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "duplicate",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity",
+                    "gmean_FusionHeat",
+                    "wtd_entropy_atomic_mass",
+                    "number_of_elements",
+                    "wtd_gmean_Density",
+                    "wtd_mean_Valence",
+                    "range_fie",
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "missing",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity",
+                    "gmean_FusionHeat",
+                    "wtd_entropy_atomic_mass",
+                    "number_of_elements",
+                    "wtd_gmean_Density",
+                    "wtd_mean_Valence",
+                    "range_fie",
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "outlier",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity",
+                    "gmean_FusionHeat",
+                    "wtd_entropy_atomic_mass",
+                    "number_of_elements",
+                    "wtd_gmean_Density",
+                    "wtd_mean_Valence",
+                    "range_fie",
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {
+            "Errortype": "noise",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity",
+                    "gmean_FusionHeat",
+                    "wtd_entropy_atomic_mass",
+                    "number_of_elements",
+                    "wtd_gmean_Density",
+                    "wtd_mean_Valence",
+                    "range_fie",
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random"
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "number_of_elements"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_std_ThermalConductivity"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "Noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_mean_Valence"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "Noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "range_atomic_radius"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "Noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_entropy_atomic_mass"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "range_fie"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        {   "CustomError": "noise-Shift",
+            "Errortype": "noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "wtd_gmean_Density"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        },
+        
+        {   "CustomError": "noise-Shift",
+            "Errortype": "noise-shift",
+            "Strategy": {
+                "affected_features": [
+                    "gmean_FusionHeat"
+                ],
+                "selection_criteria": "all",
+                "percentage": 0.1,
+                "mode": "new",
+                "target_variable": "critical_temp",
+                "perturbate_data": {
+                    "sampling": "random",
+                    "distribution": "random",
+                    "param": {
+                        "distribution": "shift",
+                        "param": {
+                            "shift_value": 2.0,
+                            "shift_unit": "std",
+                            "shift_sign": "positive"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
+
+
+        
+        
+        
+        
+        
+        
